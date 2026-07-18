@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ahumador — Trufquén</title>
+<meta name="description" content="Ahumador Trufquén: el artefacto de greda de Pomaire que origina el estudio. Cocción y ahumado en un solo objeto. Invención registrada en INAPI.">
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@200;300;400&family=Space+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --fondo:#100E0D;--fondo-2:#181513;--grafito:#0A0908;
+  --mineral:#F0EBE3;--ceniza:#CFC8BE;--cobre:#C07E45;--terracota:#C98A5E;
+  --humo:#8F857B;--tinta:#F0EBE3;--linea:rgba(240,235,227,0.13)
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:focus-visible{outline:2px solid var(--cobre);outline-offset:3px}
+.skip{position:absolute;inset-inline-start:-999px;z-index:120;font-family:'Space Mono',monospace;font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--fondo);background:var(--cobre);padding:1rem 1.4rem}
+.skip:focus{position:fixed;inset-inline-start:0;inset-block-start:0}
+html{scroll-behavior:smooth}
+body{font-family:'Lato',sans-serif;font-weight:300;background:var(--fondo);color:var(--mineral);line-height:1.75;-webkit-font-smoothing:antialiased}
+body.locked{overflow:hidden}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+.lang [data-en]{display:none}
+.lang.en [data-es]{display:none}
+.lang.en [data-en]{display:inline}
+.lang.en [data-en].block{display:block}
+
+nav.top{position:fixed;top:0;left:0;right:0;z-index:80;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;
+  height:var(--navh,104px);padding:0 clamp(1.2rem,4vw,3rem);pointer-events:none;
+  transition:height .5s cubic-bezier(.22,.68,.24,1),background .45s,box-shadow .45s}
+nav.top > *{pointer-events:auto}
+nav.top.solid{height:62px;--bs:.52;background:rgba(16,14,13,.92);backdrop-filter:blur(18px);box-shadow:0 1px 0 var(--linea)}
+.brand{position:absolute;left:50%;top:50%;display:flex;flex-direction:column;align-items:center;gap:.45rem;mix-blend-mode:difference;color:#fff;
+  transform:translate(-50%,-50%) scale(var(--bs,1));transition:transform .5s cubic-bezier(.22,.68,.24,1);will-change:transform}
+.brand img{height:clamp(40px,4.2vw,54px);width:auto;filter:invert(1) brightness(3)}
+.brand .word{font-weight:200;font-size:clamp(1.1rem,2.3vw,1.6rem);letter-spacing:.44em;text-indent:.44em;text-transform:uppercase;white-space:nowrap;line-height:1}
+.menubtn,.langbtn{background:none;border:none;cursor:pointer;font-family:'Space Mono',monospace;font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;padding:8px 0;min-height:44px;mix-blend-mode:difference;color:#fff;transition:opacity .2s}
+.menubtn{grid-column:1;justify-self:start}
+.langbtn{grid-column:3;justify-self:end}
+.menubtn:hover,.langbtn:hover{opacity:.6}
+.sheet{position:fixed;inset:0;z-index:95;background:var(--fondo);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .4s}
+.sheet.open{opacity:1;pointer-events:auto}
+.sheet nav{display:flex;flex-direction:column;gap:.3rem;text-align:center}
+.sheet a{font-weight:200;font-size:clamp(1.6rem,4vw,2.4rem);letter-spacing:.12em;text-transform:uppercase;color:var(--mineral);padding:.3rem 1rem}
+.sheet a:hover{color:var(--cobre)}
+.sheet .close{position:absolute;top:1.6rem;right:clamp(1.2rem,4vw,3rem);background:none;border:none;font-family:'Space Mono',monospace;font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;color:var(--mineral);cursor:pointer;min-height:44px;min-width:44px;display:inline-flex;align-items:center;justify-content:center}
+
+.hero{position:relative;height:100vh;height:100dvh;background:var(--grafito);overflow:hidden}
+.hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 55%}
+.hero::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(10,9,8,.5) 0%,rgba(10,9,8,.08) 32%,rgba(10,9,8,.2) 60%,rgba(16,14,13,.95) 100%)}
+.hero-line{position:absolute;left:0;right:0;bottom:clamp(2.5rem,7vh,5rem);z-index:2;text-align:center;padding:0 1.5rem}
+.hero-line h1{font-weight:200;font-size:clamp(2rem,5vw,3.4rem);letter-spacing:.14em;text-transform:uppercase;color:var(--mineral);margin-bottom:1rem}
+.hero-line p{font-weight:200;font-size:clamp(.95rem,1.8vw,1.2rem);line-height:1.6;color:var(--humo);max-width:34rem;margin:0 auto}
+.hero-line .em{color:var(--cobre)}
+
+.wrap{max-width:1180px;margin:0 auto;padding:0 clamp(1.4rem,5vw,3.5rem)}
+.narrow{max-width:38rem;margin:0 auto;text-align:center}
+section{padding:clamp(4.5rem,10vh,7rem) 0}
+.idx{font-family:'Space Mono',monospace;font-size:.56rem;letter-spacing:.24em;color:var(--humo);text-transform:uppercase;display:block;margin-bottom:2rem;text-align:center}
+h2{font-weight:200;line-height:1.3;font-size:clamp(1.5rem,3.4vw,2.3rem)}
+.lede{font-size:1.02rem;line-height:1.9;color:var(--ceniza);margin-top:1.4rem}
+.em{color:var(--terracota)}
+.band-c{background:var(--fondo-2)}
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,5vw,4rem);margin-top:2.5rem;text-align:left}
+@media(max-width:760px){.duo{grid-template-columns:1fr;gap:1.5rem}}
+.duo p{font-size:.92rem;line-height:1.9;color:var(--ceniza)}
+.pull{font-weight:200;font-size:clamp(1.15rem,2.4vw,1.6rem);line-height:1.5;color:var(--mineral);max-width:44rem;margin:0 auto;border-left:1px solid var(--cobre);padding-left:1.6rem;text-align:left}
+
+.plate{width:100%;background:var(--grafito);cursor:zoom-in}
+.plate img{width:100%;height:clamp(380px,80vh,820px);object-fit:cover;display:block}
+
+.gal{padding:clamp(4rem,9vh,6rem) 0}
+.car{display:flex;gap:2px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding:0 clamp(1.4rem,5vw,3.5rem);cursor:grab}
+.car::-webkit-scrollbar{display:none}
+.car.drag{cursor:grabbing;scroll-snap-type:none}
+.car figure{flex:0 0 clamp(280px,44vw,580px);scroll-snap-align:center;margin:0;position:relative;overflow:hidden;background:var(--grafito)}
+.car img{width:100%;aspect-ratio:4/5;object-fit:cover;transition:opacity .5s,transform 1s cubic-bezier(.2,.6,.2,1);opacity:.42}
+.car .ph{width:100%;aspect-ratio:4/5;background:linear-gradient(155deg,#2a2018,#12100c 60%,#0c0a08);display:flex;align-items:center;justify-content:center;opacity:.42;transition:opacity .5s}
+.car .ph span{font-family:'Space Mono',monospace;font-size:.56rem;letter-spacing:.2em;color:rgba(240,235,227,.55);text-transform:uppercase}
+.car figure.on img,.car figure.on .ph{opacity:1}
+.car figure.on:hover img{transform:scale(1.03)}
+.car figure.sym img{object-fit:contain;padding:14%;background:var(--fondo-2)}
+.car figure.sym.on:hover img{transform:none}
+.car figure::after{content:"⤢";position:absolute;right:1rem;bottom:1rem;font-size:.8rem;color:rgba(240,235,227,.85);opacity:0;transition:opacity .3s;pointer-events:none}
+.car figure.on:hover::after{opacity:1}
+
+.car-ui{max-width:1180px;margin:2rem auto 0;padding:0 clamp(1.4rem,5vw,3.5rem);display:grid;grid-template-columns:1fr auto;gap:2rem;align-items:end}
+@media(max-width:760px){.car-ui{grid-template-columns:1fr;gap:1.5rem}}
+.car-txt{min-height:8.5rem}
+.car-txt .n{font-family:'Space Mono',monospace;font-size:.56rem;letter-spacing:.18em;color:var(--cobre);text-transform:uppercase;display:block;margin-bottom:.7rem}
+.car-txt h3{font-weight:200;font-size:clamp(1.5rem,3vw,2.1rem);line-height:1.2;margin-bottom:.5rem}
+.car-txt .spec{font-family:'Space Mono',monospace;font-size:.56rem;letter-spacing:.14em;color:var(--humo);text-transform:uppercase;display:block;margin-bottom:.9rem}
+.car-txt p{font-size:.92rem;line-height:1.8;color:var(--ceniza);max-width:34rem}
+.car-txt .fade{animation:swap .45s cubic-bezier(.2,.6,.2,1)}
+@keyframes swap{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.car-ctl{display:flex;flex-direction:column;align-items:flex-end;gap:1rem}
+.car-count{font-family:'Space Mono',monospace;font-size:.56rem;letter-spacing:.14em;color:var(--humo)}
+.car-btns{display:flex;gap:.5rem}
+.car-btn{background:none;border:1px solid var(--linea);color:var(--mineral);width:46px;height:46px;cursor:pointer;font-size:1.1rem;line-height:1;transition:all .2s}
+.car-btn:hover{border-color:var(--cobre);color:var(--cobre)}
+.car-prog{width:100%;max-width:1180px;margin:1.5rem auto 0;padding:0 clamp(1.4rem,5vw,3.5rem)}
+.car-prog i{display:block;height:1px;background:var(--linea);position:relative}
+.car-prog i::after{content:'';position:absolute;left:0;top:0;height:1px;background:var(--cobre);width:var(--p,16.6%);transition:width .3s}
+
+details.more{max-width:38rem;margin:0 auto;border-top:1px solid var(--linea)}
+details.more summary{cursor:pointer;list-style:none;padding:1.1rem 0;font-family:'Space Mono',monospace;font-size:.56rem;letter-spacing:.18em;text-transform:uppercase;color:var(--cobre);display:flex;justify-content:center;gap:.6rem;align-items:center}
+details.more summary::-webkit-details-marker{display:none}
+details.more summary::after{content:"+";font-size:.92rem;transition:transform .25s}
+details.more[open] summary::after{transform:rotate(45deg)}
+.fgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.4rem 2rem;padding:1rem 0 2.5rem;text-align:left}
+.fgrid dt{font-family:'Space Mono',monospace;font-size:.56rem;letter-spacing:.16em;text-transform:uppercase;color:var(--cobre);margin-bottom:.4rem}
+.fgrid dd{font-size:.85rem;line-height:1.7;color:var(--ceniza)}
+
+footer{background:var(--grafito);color:var(--humo);padding:clamp(3rem,7vw,4.5rem) 0;text-align:center}
+footer .fbrand{display:inline-flex;flex-direction:column;align-items:center;gap:.6rem;margin-bottom:1.5rem}
+footer .fbrand img{height:44px}
+footer .fbrand span{font-weight:200;letter-spacing:.42em;text-indent:.42em;text-transform:uppercase;color:var(--mineral);font-size:1.1rem}
+footer a{font-family:'Space Mono',monospace;font-size:.62rem;letter-spacing:.14em;color:var(--humo);text-transform:uppercase;margin:0 .7rem;line-height:2.4}
+footer a:hover{color:var(--cobre)}
+.legal{font-family:'Space Mono',monospace;font-size:.56rem;letter-spacing:.08em;color:rgba(160,150,140,.85);line-height:1.9;text-transform:uppercase;margin-top:2rem;max-width:44rem;margin-left:auto;margin-right:auto;padding:0 1.5rem}
+
+.lb{position:fixed;inset:0;z-index:100;background:rgba(8,7,6,.98);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .35s}
+.lb.open{opacity:1;pointer-events:auto}
+.lb img{max-width:92vw;max-height:82vh;object-fit:contain}
+.lb-cap{position:absolute;bottom:2.2rem;left:0;right:0;text-align:center;font-family:'Space Mono',monospace;font-size:.56rem;letter-spacing:.16em;color:var(--humo);text-transform:uppercase;padding:0 4rem}
+.lb-count{position:absolute;top:2rem;left:0;right:0;text-align:center;font-family:'Space Mono',monospace;font-size:.56rem;letter-spacing:.16em;color:rgba(143,133,123,.8)}
+.lb-x{position:absolute;top:1.2rem;right:1.4rem;background:none;border:none;color:var(--mineral);font-size:1.4rem;cursor:pointer;min-width:44px;min-height:44px;display:flex;align-items:center;justify-content:center}
+.lb-nav{position:absolute;top:50%;transform:translateY(-50%);background:none;border:none;color:var(--mineral);font-size:2rem;cursor:pointer;padding:1.5rem;opacity:.55;transition:opacity .2s}
+.lb-nav:hover{opacity:1}
+.lb-prev{left:.5rem}.lb-next{right:.5rem}
+@media(max-width:640px){.lb-nav{font-size:1.4rem;padding:.8rem}}
+@media(max-width:640px){
+nav.top{height:88px}
+nav.top.solid{height:56px;--bs:.6}
+.idx,.car-txt .n,.car-count,.lb-cap,.lb-count,.more summary{font-size:.68rem}
+.car-txt .spec{font-size:.64rem}
+.fgrid dt,.legal{font-size:.66rem}
+.menubtn,.langbtn{font-size:.72rem;padding:8px 10px}
+.car-txt p,.duo p{font-size:.95rem}
+}
+
+@media (prefers-reduced-motion: no-preference){
+  .reveal{opacity:0;transform:translateY(20px);transition:opacity .9s cubic-bezier(.2,.6,.2,1),transform .9s cubic-bezier(.2,.6,.2,1)}
+  .reveal.in{opacity:1;transform:none}
+}
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
+}
+</style>
+</head>
+<body class="lang">
+<a href="#contenido" class="skip"><span data-es>Saltar al contenido</span><span data-en>Skip to content</span></a>
+
+<nav class="top" id="nav">
+  <button class="menubtn" id="menuBtn" aria-expanded="false" aria-controls="sheet"><span data-es>Menú</span><span data-en>Menu</span></button>
+  <a href="index.html" class="brand"><img src="img/brand/icon-blanco.png" alt=""><span class="word">Trufquén</span></a>
+  <button class="langbtn" id="langBtn" aria-label="Cambiar idioma / Switch language">EN/ES</button>
+</nav>
+
+<div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-label="Menú de navegación">
+  <button class="close" id="sheetClose"><span data-es>Cerrar</span><span data-en>Close</span></button>
+  <nav>
+    <a href="index.html"><span data-es>Inicio</span><span data-en>Home</span></a>
+    <a href="ahumador-trufquen.html"><span data-es>Ahumador</span><span data-en>Smoking vessel</span></a>
+    <a href="probetas-trufquen.html"><span data-es>Probetas</span><span data-en>Test pieces</span></a>
+    <a href="engarce-trufquen.html">Engarce</a>
+    <a href="luminarias-trufquen.html"><span data-es>Luminarias</span><span data-en>Lighting</span></a>
+    <a href="tralma-trufquen.html">Tralma</a>
+    <a href="index.html#contacto"><span data-es>Contacto</span><span data-en>Contact</span></a>
+  </nav>
+</div>
+
+<main id="contenido">
+<header class="hero">
+  <img src="img/ahumador/hero.jpg" alt="Ahumador">
+  <div class="hero-line">
+    <h1><span data-es>Ahumador</span><span data-en>Smoking vessel</span></h1>
+    <p><span data-es>Cocina y ahúma en un solo cuerpo de greda, sobre la llama de una cocina convencional. <span class="em">La invención que origina el estudio.</span></span><span data-en class="block">Cooks and smokes in a single clay body, over a conventional stove flame. <span class="em">The invention that originates the studio.</span></span></p>
+  </div>
+</header>
+
+<section>
+  <div class="wrap narrow">
+    <span class="idx"><span data-es>2014 — Patente INAPI</span><span data-en>2014 — INAPI patent</span></span>
+    <h2><span data-es>Ahumar dentro de la cocina,<br><span class="em">no fuera de ella.</span></span><span data-en class="block">Smoking inside the kitchen,<br><span class="em">not outside it.</span></span></h2>
+    <p class="lede"><span data-es>Hasta este artefacto, ahumar exigía cámaras externas o esencias artificiales. El control vuelve al cocinero: intensidad, color y punto se regulan en el mismo objeto.</span><span data-en class="block">Until this device, smoking required external chambers or artificial essences. Control returns to the cook: intensity, color and doneness are regulated in the same object.</span></p>
+    <p class="lede"><span data-es>Astillas de madera en la base, alimento sobre parrilla de acero, y una cámara de greda que concentra humo y calor en un solo gesto. La forma nace de una matriz geométrica de la iconografía mapuche —el rombo del Pichikemenküe— convertida en sección constructiva: dos cuerpos que calzan mediante una pestaña perimetral, sellando la cámara sin herrajes ni juntas sintéticas.</span><span data-en class="block">Wood chips at the base, food on a steel grill, and a clay chamber that concentrates smoke and heat in a single gesture. The form is born from a geometric matrix of Mapuche iconography —the Pichikemenküe rhombus— turned into a constructive section: two bodies fitting through a perimeter flange, sealing the chamber without hardware or synthetic joints.</span></p>
+  </div>
+</section>
+
+<figure class="plate">
+  <img src="img/ahumador/plate-torno.jpg" alt="Greda levantada al torno en el taller alfarero" data-cap="La greda se levanta al torno · taller alfarero" loading="lazy">
+</figure>
+
+<section class="gal band-c">
+  <div class="wrap narrow" style="margin-bottom:3rem">
+    <span class="idx"><span data-es>Evidencia material</span><span data-en>Material evidence</span></span>
+    <h2><span data-es>La misma greda, dos estados</span><span data-en class="block">The same clay, two states</span></h2>
+  </div>
+
+  <div class="car" id="car" role="region" aria-roledescription="carousel" aria-label="La misma greda, dos estados">
+    <figure role="group" aria-roledescription="slide" aria-label="01 de 6" data-n="01" data-t-es="Greda natural bruñida" data-t-en="Burnished natural clay" data-s-es="Sellada con piedra de río" data-s-en="Sealed with river stone" data-d-es="Sin recubrimientos. La superficie se impermeabiliza por fricción: es un sellado mecánico, no químico." data-d-en="No coatings. The surface is waterproofed by friction: a mechanical seal, not a chemical one.">
+      <img src="img/ahumador/ahumador-01-brunida.jpg" alt="Greda natural bruñida" data-cap="01 · greda natural bruñida" loading="lazy">
+    </figure>
+    <figure role="group" aria-roledescription="slide" aria-label="02 de 6" data-n="02" data-t-es="Esmaltada negra" data-t-en="Black glazed" data-s-es="Esmalte cerámico" data-s-en="Ceramic glaze" data-d-es="La misma pieza, otro estado. El esmalte cambia la lectura del volumen sin tocar su geometría." data-d-en="The same piece, another state. The glaze changes how the volume reads without touching its geometry.">
+      <img src="img/ahumador/finish-negro.jpg" alt="Esmaltada negra" data-cap="02 · esmaltada negra" loading="lazy">
+    </figure>
+    <figure role="group" aria-roledescription="slide" aria-label="03 de 6" data-n="03" data-t-es="El conjunto" data-t-en="The set" data-s-es="Platos bajos y platos base" data-s-en="Low plates and base plates" data-d-es="Cocinar, servir y consumir ocurren en un mismo sistema material. La pieza va del fuego a la mesa sin trasvasije." data-d-en="Cooking, serving and eating happen within one material system. The piece goes from fire to table without transfer.">
+      <img src="img/ahumador/conjunto.jpg" alt="El conjunto" data-cap="03 · el conjunto" loading="lazy">
+    </figure>
+    <figure role="group" aria-roledescription="slide" aria-label="04 de 6" data-n="04" data-t-es="La cámara" data-t-en="The chamber" data-s-es="Tapa con pestaña de calce" data-s-en="Lid with fitting flange" data-d-es="Dos cuerpos que calzan por una pestaña perimetral. El humo queda sellado sin herrajes ni juntas sintéticas." data-d-en="Two bodies fitting through a perimeter flange. The smoke is sealed without hardware or synthetic joints.">
+      <img src="img/ahumador/finish-natural.jpg" alt="La cámara" data-cap="04 · la cámara" loading="lazy">
+    </figure>
+    <figure role="group" aria-roledescription="slide" aria-label="05 de 6" data-n="05" data-t-es="Sobre la llama" data-t-en="Over the flame" data-s-es="En uso, sobre brasas" data-s-en="In use, over embers" data-d-es="El ahumador trabaja directo sobre las brasas: la greda va del fuego a la mesa sin intermediarios." data-d-en="The smoking vessel works directly over embers: the clay goes from fire to table with nothing in between.">
+      <img src="img/ahumador/ahumador-05-fuego.jpg" alt="Sobre la llama" data-cap="05 · sobre la llama" loading="lazy">
+    </figure>
+    <figure class="sym" role="group" aria-roledescription="slide" aria-label="06 de 6" data-n="06" data-t-es="Geometría de origen" data-t-en="Origin geometry" data-s-es="Rombo Pichikemenküe" data-s-en="Pichikemenküe rhombus" data-d-es="El rombo Pichikemenküe, iconografía mapuche. Su proyección horizontal define la sección constructiva del ahumador." data-d-en="The Pichikemenküe rhombus, Mapuche iconography. Its horizontal projection defines the constructive section of the smoking vessel.">
+      <img src="img/ahumador/pichikemenkue-horizontal.png" alt="Geometría de origen" data-cap="Rombo Pichikemenküe — iconografía mapuche" loading="lazy">
+    </figure>
+  </div>
+
+  <div class="car-prog"><i id="prog"></i></div>
+
+  <div class="car-ui">
+    <div class="car-txt" id="txt" aria-live="polite" aria-atomic="true">
+      <span class="n" id="tn">01</span>
+      <h3 id="tt"></h3>
+      <span class="spec" id="ts"></span>
+      <p id="td"></p>
+    </div>
+    <div class="car-ctl">
+      <span class="car-count" id="count">01 / 06</span>
+      <div class="car-btns">
+        <button class="car-btn" id="btnPrev" aria-controls="car" aria-label="Pieza anterior">‹</button>
+        <button class="car-btn" id="btnNext" aria-controls="car" aria-label="Pieza siguiente">›</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="narrow">
+      <span class="idx"><span data-es>Probado en cocina profesional</span><span data-en>Tested in professional kitchens</span></span>
+      <h2><span data-es>El control vuelve<br>a manos del cocinero</span><span data-en class="block">Control returns<br>to the cook's hands</span></h2>
+    </div>
+    <div class="duo">
+      <p><span data-es>Validado en las cocinas de una escuela profesional de gastronomía: control de temperatura por el orificio de la tapa y cocción directa a la llama. Las observaciones de ese ensayo definieron la parrilla de acero y el sistema de cierre definitivos.</span><span data-en class="block">Validated in the kitchens of a professional culinary school: temperature control through the lid's opening and direct-flame cooking. The observations from that trial defined the final steel grill and closing system.</span></p>
+      <p><span data-es>Una segunda validación en servicio real confirmó el aroma y el sabor ahumado en preparación directa al fuego, con un tamaño calificado como apropiado para cocina de servicio. La pieza no se probó en un laboratorio: se probó cocinando.</span><span data-en class="block">A second validation in real service confirmed the smoked aroma and flavor in direct-fire preparation, with a size rated appropriate for service kitchens. The piece wasn't tested in a lab: it was tested by cooking.</span></p>
+    </div>
+  </div>
+</section>
+
+<section class="band-c">
+  <div class="wrap">
+    <p class="pull"><span data-es>La geometría que previene fisuras en la cocción es la misma que define el carácter del objeto. El nombre del estudio nace aquí: trufquén, ceniza en mapuzungun.</span><span data-en class="block">The geometry that prevents cracking during firing is the same one that defines the object's character. The studio's name is born here: trufquén, ash in Mapuzungun.</span></p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <details class="more">
+      <summary><span data-es>Ficha técnica</span><span data-en>Technical sheet</span></summary>
+      <dl class="fgrid">
+        <div><dt><span data-es>Pieza</span><span data-en>Piece</span></dt><dd><span data-es>Pieza 0 · 2014 · origen del estudio</span><span data-en>Piece 0 · 2014 · origin of the studio</span></dd></div>
+        <div><dt><span data-es>Material</span><span data-en>Material</span></dt><dd><span data-es>Greda de Pomaire. Verificada libre de plomo (ICP-OES).</span><span data-en>Pomaire clay. Verified lead-free (ICP-OES).</span></dd></div>
+        <div><dt><span data-es>Geometría</span><span data-en>Geometry</span></dt><dd><span data-es>Matriz romboidal del Pichikemenküe, iconografía mapuche, llevada a sección constructiva.</span><span data-en>Rhomboid matrix of the Pichikemenküe, Mapuche iconography, taken to constructive section.</span></dd></div>
+        <div><dt><span data-es>Componentes</span><span data-en>Components</span></dt><dd><span data-es>Base, tapa con pestaña de calce, parrilla de acero, asas.</span><span data-en>Base, lid with fitting flange, steel grill, handles.</span></dd></div>
+        <div><dt><span data-es>Terminación</span><span data-en>Finish</span></dt><dd><span data-es>Bruñido con piedra de río o esmalte cerámico negro.</span><span data-en>Burnished with river stone or black ceramic glaze.</span></dd></div>
+        <div><dt><span data-es>Diseño</span><span data-en>Design</span></dt><dd><span data-es>Raúl Hernández Tralma</span><span data-en>Raúl Hernández Tralma</span></dd></div>
+        <div><dt><span data-es>Alfarería</span><span data-en>Pottery</span></dt><dd><span data-es>Rodrigo Veliz · Taller Barros, Pomaire</span><span data-en>Rodrigo Veliz · Taller Barros, Pomaire</span></dd></div>
+        <div><dt><span data-es>Dimensiones</span><span data-en>Dimensions</span></dt><dd><span data-es>Aprox. Ø 260 × 215 mm. Referenciales: la greda natural varía.</span><span data-en>Approx. Ø 260 × 215 mm. Referential: natural clay varies.</span></dd></div>
+        <div><dt><span data-es>Propiedad intelectual</span><span data-en>Intellectual property</span></dt><dd><span data-es>Invención registrada en INAPI, Chile.</span><span data-en>Invention registered with INAPI, Chile.</span></dd></div>
+      </dl>
+    </details>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="fbrand"><img src="img/brand/icon-blanco.png" alt=""><span>Trufquén</span></div>
+  <div>
+    <a href="index.html"><span data-es>Inicio</span><span data-en>Home</span></a>
+    <a href="https://trufquen.studio">trufquen.studio</a>
+    <a href="https://instagram.com/trufquen">@trufquen</a>
+    <a href="mailto:contacto@trufquen.studio">contacto@trufquen.studio</a>
+  </div>
+  <p class="legal"><span data-es>© 2026 Trufquén · Marca registrada INAPI N° 1391981 · Patente de invención INAPI N° 2015-01441 · Santiago de Chile</span><span data-en class="block">© 2026 Trufquén · Registered trademark INAPI No. 1391981 · INAPI invention patent No. 2015-01441 · Santiago, Chile</span></p>
+</footer>
+
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Vista ampliada de imagen">
+  <button class="lb-x" id="lbX" aria-label="Cerrar">✕</button>
+  <button class="lb-nav lb-prev" id="lbPrev" aria-label="Imagen anterior">‹</button>
+  <img id="lbImg" alt="">
+  <button class="lb-nav lb-next" id="lbNext" aria-label="Imagen siguiente">›</button>
+  <div class="lb-count" id="lbCount"></div>
+  <div class="lb-cap" id="lbCap"></div>
+</div>
+
+<script>
+function toggleLang(){var b=document.body;b.classList.toggle('en');document.documentElement.lang=b.classList.contains('en')?'en':'es';carPaint(carAt)}
+var sheetEl=document.getElementById('sheet'), menuBtn=document.getElementById('menuBtn'), sheetPrevFocus=null;
+function openSheet(){sheetPrevFocus=document.activeElement;sheetEl.classList.add('open');menuBtn.setAttribute('aria-expanded','true');document.getElementById('sheetClose').focus()}
+function closeSheet(){sheetEl.classList.remove('open');menuBtn.setAttribute('aria-expanded','false');if(sheetPrevFocus)sheetPrevFocus.focus()}
+menuBtn.addEventListener('click',openSheet);
+document.getElementById('sheetClose').addEventListener('click',closeSheet);
+document.getElementById('langBtn').addEventListener('click',toggleLang);
+sheetEl.querySelectorAll('a').forEach(function(a){a.addEventListener('click',closeSheet)});
+(function(){var n=document.getElementById('nav'),h=document.querySelector('.hero');
+  new IntersectionObserver(function(e){n.classList.toggle('solid',!e[0].isIntersecting)},{rootMargin:'-88% 0px 0px 0px'}).observe(h)})();
+
+var car=document.getElementById('car'), figs=[].slice.call(car.querySelectorAll('figure')), carAt=0, snapping=false;
+function slideW(){return figs[0].getBoundingClientRect().width+2}
+function carPaint(i){
+  var f=figs[i]; if(!f) return;
+  var en=document.body.classList.contains('en');
+  var t=document.getElementById('txt');
+  document.getElementById('tn').textContent=f.dataset.n;
+  document.getElementById('tt').textContent=en?f.dataset.tEn:f.dataset.tEs;
+  document.getElementById('ts').textContent=en?f.dataset.sEn:f.dataset.sEs;
+  document.getElementById('td').textContent=en?f.dataset.dEn:f.dataset.dEs;
+  document.getElementById('count').textContent=('0'+(i+1)).slice(-2)+' / '+('0'+figs.length).slice(-2);
+  document.getElementById('prog').style.setProperty('--p',((i+1)/figs.length*100)+'%');
+  figs.forEach(function(x,j){x.classList.toggle('on',j===i);x.setAttribute('aria-hidden',j===i?'false':'true')});
+  t.classList.remove('fade'); void t.offsetWidth; t.classList.add('fade');
+}
+function carTo(i,smooth){carAt=i;snapping=true;car.scrollTo({left:i*slideW(),behavior:smooth===false?'auto':'smooth'});carPaint(i);setTimeout(function(){snapping=false},450)}
+function carGo(d){carTo((carAt+d+figs.length)%figs.length)}
+car.addEventListener('scroll',function(){
+  if(snapping) return;
+  var i=Math.round(car.scrollLeft/slideW()); i=Math.max(0,Math.min(figs.length-1,i));
+  if(i!==carAt){carAt=i;carPaint(i)}
+});
+(function(){
+  var down=false,x0=0,s0=0,moved=0;
+  car.addEventListener('mousedown',function(e){down=true;moved=0;x0=e.pageX;s0=car.scrollLeft;car.classList.add('drag')});
+  window.addEventListener('mouseup',function(){if(!down)return;down=false;car.classList.remove('drag');
+    var i=Math.round(car.scrollLeft/slideW());carTo(Math.max(0,Math.min(figs.length-1,i)))});
+  car.addEventListener('mousemove',function(e){if(!down)return;e.preventDefault();moved=Math.abs(e.pageX-x0);car.scrollLeft=s0-(e.pageX-x0)});
+  car.addEventListener('click',function(e){if(moved>6){e.preventDefault();e.stopPropagation()}},true);
+})();
+window.addEventListener('resize',function(){carTo(carAt,false)});
+document.getElementById('btnPrev').addEventListener('click',function(){carGo(-1)});
+document.getElementById('btnNext').addEventListener('click',function(){carGo(1)});
+carPaint(0);
+
+var lbSet=[],lbAt=0,lb=document.getElementById('lb'),lbImg=document.getElementById('lbImg'),lbPrevFocus=null;
+function lbOpen(img){lbPrevFocus=document.activeElement;lbSet=[].slice.call(document.querySelectorAll('.car img, .plate img, .hero img'));lbAt=lbSet.indexOf(img);lbRender();lb.classList.add('open');document.body.classList.add('locked');document.getElementById('lbX').focus()}
+function lbRender(){var im=lbSet[lbAt];if(!im)return;lbImg.src=im.currentSrc||im.src;
+  document.getElementById('lbCap').textContent=im.dataset.cap||im.alt||'';
+  document.getElementById('lbCount').textContent=(lbAt+1)+' / '+lbSet.length}
+function lbGo(d){lbAt=(lbAt+d+lbSet.length)%lbSet.length;lbRender()}
+function lbClose(){lb.classList.remove('open');document.body.classList.remove('locked');if(lbPrevFocus)lbPrevFocus.focus()}
+document.getElementById('lbX').addEventListener('click',lbClose);
+document.getElementById('lbPrev').addEventListener('click',function(){lbGo(-1)});
+document.getElementById('lbNext').addEventListener('click',function(){lbGo(1)});
+lb.addEventListener('keydown',function(e){
+  if(e.key!=='Tab')return;
+  var f=[document.getElementById('lbX'),document.getElementById('lbPrev'),document.getElementById('lbNext')];
+  var i=f.indexOf(document.activeElement);
+  if(e.shiftKey && (i<=0)){e.preventDefault();f[f.length-1].focus()}
+  else if(!e.shiftKey && i===f.length-1){e.preventDefault();f[0].focus()}
+});
+document.addEventListener('click',function(e){
+  var t=e.target.closest('.car figure, .plate');
+  if(t){var im=t.querySelector('img');if(im){e.preventDefault();lbOpen(im)}}
+});
+lb.addEventListener('click',function(e){if(e.target===lb)lbClose()});
+document.addEventListener('keydown',function(e){
+  if(e.key==='Escape' && sheetEl.classList.contains('open')){closeSheet();return}
+  if(lb.classList.contains('open')){
+    if(e.key==='Escape')lbClose(); if(e.key==='ArrowLeft')lbGo(-1); if(e.key==='ArrowRight')lbGo(1);
+  } else { if(e.key==='ArrowLeft')carGo(-1); if(e.key==='ArrowRight')carGo(1); }
+});
+(function(){var x0=null;
+  lb.addEventListener('touchstart',function(e){x0=e.touches[0].clientX},{passive:true});
+  lb.addEventListener('touchend',function(e){if(x0===null)return;var dx=e.changedTouches[0].clientX-x0;if(Math.abs(dx)>50)lbGo(dx>0?-1:1);x0=null},{passive:true})})();
+
+(function(){
+  if(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  document.querySelectorAll('section .wrap > *, .plate').forEach(function(el){el.classList.add('reveal')});
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.06,rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.reveal').forEach(function(el,i){el.style.transitionDelay=((i%4)*50)+'ms';io.observe(el)});
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,6 @@
+# Material bruto de fotografía (no se publica)
+*.ARW
+*.CR2
+*.MOV
+*.psd
+.DS_Store

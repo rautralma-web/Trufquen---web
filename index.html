@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Trufquén — Estudio de diseño material</title>
+<meta name="description" content="Trufquén es un estudio chileno de diseño material. Greda, vidrio y fuego como sistema.">
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@200;300;400&family=Space+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --fondo:#100E0D;--fondo-2:#181513;--grafito:#0A0908;
+  --mineral:#F0EBE3;--ceniza:#CFC8BE;--cobre:#C07E45;
+  --terracota:#C98A5E;--humo:#8F857B;--tinta:#F0EBE3;
+  --linea:rgba(240,235,227,0.13);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:focus-visible{outline:2px solid var(--cobre);outline-offset:3px}
+.skip{position:absolute;inset-inline-start:-999px;z-index:120;font-family:'Space Mono',monospace;font-size:0.62rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--fondo);background:var(--cobre);padding:1rem 1.4rem}
+.skip:focus{position:fixed;inset-inline-start:0;inset-block-start:0}
+html{scroll-behavior:smooth}
+body{font-family:'Lato',sans-serif;font-weight:300;background:var(--fondo);color:var(--mineral);line-height:1.75;-webkit-font-smoothing:antialiased}
+body.locked{overflow:hidden}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+.lang [data-en]{display:none}
+.lang.en [data-es]{display:none}
+.lang.en [data-en]{display:inline}
+.lang.en [data-en].block{display:block}
+
+/* ---------- HEADER: logo grande, centrado, contraste automático ---------- */
+nav.top{position:fixed;top:0;left:0;right:0;z-index:80;display:grid;overflow:visible;grid-template-columns:1fr auto 1fr;align-items:center;
+  height:var(--navh,104px);padding:0 clamp(1.2rem,4vw,3rem);pointer-events:none;
+  transition:height .5s cubic-bezier(.22,.68,.24,1),background .45s,box-shadow .45s}
+nav.top > *{pointer-events:auto}
+nav.top.solid{height:62px;background:rgba(16,14,13,0.92);backdrop-filter:blur(18px);box-shadow:0 1px 0 var(--linea)}
+/* difference: el logo se invierte solo según el fondo que tenga detrás */
+.brand{position:absolute;left:50%;top:50%;display:flex;flex-direction:column;align-items:center;gap:0.45rem;mix-blend-mode:difference;color:#fff;
+  transform:translate(-50%,-50%) scale(var(--bs,1));
+  transition:transform .5s cubic-bezier(.22,.68,.24,1);will-change:transform}
+.brand img{height:clamp(40px,4.2vw,54px);width:auto;filter:invert(1) brightness(3)}
+.brand .word{font-weight:200;font-size:clamp(1.1rem,2.3vw,1.6rem);letter-spacing:0.44em;text-indent:0.44em;text-transform:uppercase;white-space:nowrap;line-height:1}
+nav.top.solid{--bs:0.52}
+.menubtn,.langbtn{background:none;border:none;cursor:pointer;font-family:'Space Mono',monospace;font-size:0.62rem;letter-spacing:0.16em;text-transform:uppercase;padding:8px 0;min-height:44px;mix-blend-mode:difference;color:#fff;transition:opacity .2s}
+.menubtn{grid-column:1;justify-self:start}
+.langbtn{grid-column:3;justify-self:end}
+.menubtn:hover,.langbtn:hover{opacity:0.6}
+
+.sheet{position:fixed;inset:0;z-index:95;background:var(--fondo);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .4s}
+.sheet.open{opacity:1;pointer-events:auto}
+.sheet nav{display:flex;flex-direction:column;gap:0.3rem;text-align:center}
+.sheet a{font-weight:200;font-size:clamp(1.6rem,4vw,2.4rem);letter-spacing:0.12em;text-transform:uppercase;color:var(--mineral);padding:0.3rem 1rem;transition:color .2s}
+.sheet a:hover{color:var(--cobre)}
+.sheet .close{position:absolute;top:1.6rem;right:clamp(1.2rem,4vw,3rem);background:none;border:none;font-family:'Space Mono',monospace;font-size:0.62rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--mineral);cursor:pointer;min-height:44px;min-width:44px;display:inline-flex;align-items:center;justify-content:center}
+
+/* ---------- HERO ---------- */
+.hero{position:relative;height:100vh;height:100dvh;background:var(--grafito);overflow:hidden}
+.hero img,.hero video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 45%}
+.hero::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(19,17,16,0.5) 0%,rgba(19,17,16,0.1) 32%,rgba(19,17,16,0.2) 62%,rgba(19,17,16,0.85) 100%)}
+.hero-line{position:absolute;left:0;right:0;bottom:clamp(2.5rem,7vh,5rem);z-index:2;text-align:center;padding:0 1.5rem}
+.hero-line p{font-weight:200;font-size:clamp(1.05rem,2.4vw,1.7rem);line-height:1.5;color:var(--mineral);max-width:34rem;margin:0 auto}
+.hero-line .em{color:var(--cobre)}
+.scroll-hint{font-family:'Space Mono',monospace;font-size:0.56rem;letter-spacing:0.24em;text-transform:uppercase;color:rgba(240,235,227,0.5);margin-top:2rem;display:block}
+
+/* ---------- ESTRUCTURA ---------- */
+.wrap{max-width:1180px;margin:0 auto;padding:0 clamp(1.4rem,5vw,3.5rem)}
+.narrow{max-width:38rem;margin:0 auto;text-align:center}
+section{padding:clamp(5rem,11vh,8rem) 0}
+.idx{font-family:'Space Mono',monospace;font-size:0.56rem;letter-spacing:0.24em;color:var(--humo);text-transform:uppercase;display:block;margin-bottom:2rem;text-align:center}
+h2{font-weight:200;line-height:1.3;font-size:clamp(1.5rem,3.4vw,2.3rem);color:var(--tinta)}
+.lede{font-size:1.02rem;line-height:1.9;color:var(--ceniza);margin-top:1.4rem}
+.em{color:var(--terracota)}
+
+/* 3 principios */
+.principles{display:grid;grid-template-columns:repeat(3,1fr);gap:2.5rem;margin-top:4rem;text-align:left;border-top:1px solid var(--linea);padding-top:2.5rem}
+@media(max-width:760px){.principles{grid-template-columns:1fr;gap:2rem}}
+.principle .k{font-family:'Space Mono',monospace;font-size:0.56rem;letter-spacing:0.16em;color:var(--cobre);text-transform:uppercase;display:block;margin-bottom:0.8rem}
+.principle h3{font-weight:300;text-transform:uppercase;letter-spacing:0.1em;font-size:0.95rem;margin-bottom:0.6rem}
+.principle p{font-size:0.92rem;line-height:1.75;color:var(--ceniza)}
+
+/* Plano — imagen a máxima dimensión */
+.plate{width:100%;background:var(--grafito);position:relative;cursor:zoom-in}
+.plate img{width:100%;height:100vh;object-fit:cover;display:block}
+.plate.half img{height:72vh}
+@media(max-width:760px){.plate img,.plate.half img{height:62vh}}
+.plate-cap{font-family:'Space Mono',monospace;font-size:0.56rem;letter-spacing:0.16em;color:var(--humo);text-transform:uppercase;text-align:center;padding:1.2rem 1.5rem;background:var(--grafito)}
+
+/* Piezas — bandas a ancho completo, apiladas. Texto alterna izq/der. */
+.band{border-top:1px solid var(--linea);padding:clamp(3rem,7vh,5.5rem) 0}
+.band:first-of-type{border-top:none}
+.band .shot{position:relative;overflow:hidden;background:linear-gradient(150deg,#2a2018,#12100c);cursor:zoom-in}
+.band .shot img{width:100%;height:clamp(360px,72vh,760px);object-fit:cover;transition:transform 1.1s cubic-bezier(.2,.6,.2,1)}
+.band .shot:hover img{transform:scale(1.03)}
+.band .shot::after{content:"⤢";position:absolute;right:1.2rem;bottom:1.2rem;font-size:0.85rem;color:rgba(240,235,227,0.8);opacity:0;transition:opacity .3s;pointer-events:none}
+.band .shot:hover::after{opacity:1}
+.band .meta{display:flex;flex-direction:column;align-items:center;text-align:center;gap:0.3rem;padding-top:1.9rem}
+.band .num{font-family:'Space Mono',monospace;font-size:0.56rem;letter-spacing:0.2em;color:var(--cobre)}
+.band h3{font-weight:200;font-size:clamp(1.5rem,3.4vw,2.3rem);letter-spacing:0.02em;line-height:1.15}
+.band h3 a{position:relative;display:inline-block;transition:color .25s}
+.band h3 a::after{content:'';position:absolute;left:0;right:0;bottom:-4px;height:1px;background:var(--cobre);transform:scaleX(0);transform-origin:left;transition:transform .35s cubic-bezier(.2,.6,.2,1)}
+.band h3 a:hover{color:var(--cobre)}
+.band h3 a:hover::after{transform:scaleX(1)}
+.band .yr{font-family:'Space Mono',monospace;font-size:0.56rem;letter-spacing:0.16em;color:var(--humo);text-transform:uppercase;display:block;margin-top:0.45rem}
+.band .desc{font-size:0.92rem;line-height:1.8;color:var(--ceniza);max-width:36rem;padding-top:0.3rem;margin:0 auto}
+
+/* Estudio — Raúl */
+.founder{display:grid;grid-template-columns:0.85fr 1.15fr;gap:clamp(2rem,5vw,4rem);align-items:center;text-align:left;margin-top:3rem}
+@media(max-width:820px){.founder{grid-template-columns:1fr;gap:2rem}}
+.founder figure{margin:0;cursor:zoom-in}
+.founder img{width:100%;aspect-ratio:4/5;object-fit:cover;background:var(--grafito)}
+.founder figcaption{font-family:'Space Mono',monospace;font-size:0.56rem;letter-spacing:0.14em;color:var(--humo);text-transform:uppercase;padding-top:0.8rem}
+.founder h3{font-weight:200;font-size:clamp(1.4rem,2.6vw,1.9rem);letter-spacing:0.02em;margin-bottom:1rem}
+.founder p{font-size:0.92rem;line-height:1.85;color:var(--ceniza);margin-bottom:1rem}
+
+/* Detalle plegable */
+details.more{border-top:1px solid var(--linea);margin-top:1.5rem}
+details.more summary{cursor:pointer;list-style:none;padding:1rem 0;font-family:'Space Mono',monospace;font-size:0.56rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--cobre);display:flex;gap:0.6rem;align-items:center}
+details.more summary::-webkit-details-marker{display:none}
+details.more summary::after{content:"+";font-size:0.9rem;transition:transform .25s}
+details.more[open] summary::after{transform:rotate(45deg)}
+.track{padding-bottom:1.5rem}
+.trow{display:grid;grid-template-columns:3.2rem 1fr;gap:1.2rem;padding:0.7rem 0;border-bottom:1px solid var(--linea);align-items:baseline}
+.trow .y{font-family:'Space Mono',monospace;font-size:0.56rem;color:var(--cobre)}
+.trow .t{font-size:0.92rem;color:var(--ceniza);line-height:1.6}
+
+/* Taller */
+.names{margin-top:3rem;border-top:1px solid var(--linea)}
+.names > div{display:flex;justify-content:space-between;align-items:baseline;gap:1.5rem;padding:1.05rem 0.2rem;border-bottom:1px solid var(--linea);text-align:left}
+.names .n{font-size:0.92rem;color:var(--tinta)}
+.names .r{font-family:'Space Mono',monospace;font-size:0.56rem;color:var(--humo);letter-spacing:0.12em;text-transform:uppercase;line-height:1.6;text-align:right;flex-shrink:0}
+@media(max-width:520px){.names > div{flex-direction:column;gap:0.2rem;align-items:flex-start}.names .r{text-align:left}}
+
+.contact{text-align:center;background:var(--fondo-2)}
+.cta{display:inline-block;border:1px solid var(--cobre);color:var(--cobre);padding:1rem 2.4rem;font-family:'Space Mono',monospace;font-size:0.62rem;letter-spacing:0.2em;text-transform:uppercase;margin-top:2rem;transition:all .25s}
+.cta:hover{background:var(--cobre);color:var(--grafito)}
+
+footer{background:var(--grafito);color:var(--humo);padding:clamp(3rem,7vw,4.5rem) 0;text-align:center}
+footer .fbrand{display:inline-flex;flex-direction:column;align-items:center;gap:0.6rem;margin-bottom:1.5rem}
+footer .fbrand img{height:44px}
+footer .fbrand span{font-weight:200;letter-spacing:0.42em;text-indent:0.42em;text-transform:uppercase;color:var(--mineral);font-size:1.1rem}
+footer a{font-family:'Space Mono',monospace;font-size:0.62rem;letter-spacing:0.14em;color:var(--humo);text-transform:uppercase;margin:0 0.7rem;line-height:2.4}
+footer a:hover{color:var(--cobre)}
+.legal{font-family:'Space Mono',monospace;font-size:0.56rem;letter-spacing:0.08em;color:rgba(160,150,140,0.85);line-height:1.9;text-transform:uppercase;margin-top:2rem;max-width:44rem;margin-left:auto;margin-right:auto;padding:0 1.5rem}
+
+/* ---------- LIGHTBOX + CARRUSEL ---------- */
+.lb{position:fixed;inset:0;z-index:100;background:rgba(12,10,9,0.97);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .35s}
+.lb.open{opacity:1;pointer-events:auto}
+.lb img{max-width:92vw;max-height:82vh;object-fit:contain;user-select:none}
+.lb-cap{position:absolute;bottom:2.2rem;left:0;right:0;text-align:center;font-family:'Space Mono',monospace;font-size:0.56rem;letter-spacing:0.16em;color:var(--humo);text-transform:uppercase;padding:0 4rem}
+.lb-count{position:absolute;top:2rem;left:0;right:0;text-align:center;font-family:'Space Mono',monospace;font-size:0.56rem;letter-spacing:0.16em;color:rgba(160,148,136,0.7)}
+.lb-x{position:absolute;top:1.2rem;right:1.4rem;background:none;border:none;color:var(--mineral);font-size:1.4rem;cursor:pointer;line-height:1;min-width:44px;min-height:44px;display:flex;align-items:center;justify-content:center}
+.lb-nav{position:absolute;top:50%;transform:translateY(-50%);background:none;border:none;color:var(--mineral);font-size:2rem;cursor:pointer;padding:1.5rem;opacity:0.55;transition:opacity .2s;line-height:1}
+.lb-nav:hover{opacity:1}
+.lb-prev{left:0.5rem}.lb-next{right:0.5rem}
+@media(max-width:640px){.lb-nav{font-size:1.4rem;padding:0.8rem}.lb-cap{padding:0 1.5rem}}
+@media(max-width:640px){
+nav.top{height:88px}
+nav.top.solid{height:56px;--bs:.6}
+.idx,.lb-cap,.lb-count,.principle .k,.plate-cap,.band .num,.band .yr,.more summary,.trow .y,.scroll-hint{font-size:0.66rem}
+.founder figcaption,.names .r,.legal{font-size:0.66rem}
+.menubtn,.langbtn,.cta{font-size:0.72rem}
+.menubtn,.langbtn{padding:8px 10px}
+}
+
+@media (prefers-reduced-motion: no-preference){
+  .reveal{opacity:0;transform:translateY(20px);transition:opacity .9s cubic-bezier(.2,.6,.2,1),transform .9s cubic-bezier(.2,.6,.2,1)}
+  .reveal.in{opacity:1;transform:none}
+}
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
+}
+</style>
+</head>
+<body class="lang">
+<a href="#contenido" class="skip"><span data-es>Saltar al contenido</span><span data-en>Skip to content</span></a>
+
+<nav class="top" id="nav">
+  <button class="menubtn" id="menuBtn" aria-expanded="false" aria-controls="sheet"><span data-es>Menú</span><span data-en>Menu</span></button>
+  <a href="#" class="brand">
+    <img src="img/brand/icon-blanco.png" alt="">
+    <span class="word">Trufquén</span>
+  </a>
+  <button class="langbtn" id="langBtn" aria-label="Cambiar idioma / Switch language">EN/ES</button>
+</nav>
+
+<div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-label="Menú de navegación">
+  <button class="close" id="sheetClose"><span data-es>Cerrar</span><span data-en>Close</span></button>
+  <nav>
+    <a href="#piezas"><span data-es>Piezas</span><span data-en>Pieces</span></a>
+    <a href="#nombre"><span data-es>El nombre</span><span data-en>The name</span></a>
+    <a href="#taller"><span data-es>Taller</span><span data-en>Workshop</span></a>
+    <a href="#estudio"><span data-es>Estudio</span><span data-en>Studio</span></a>
+    <a href="#contacto"><span data-es>Contacto</span><span data-en>Contact</span></a>
+  </nav>
+</div>
+
+<main id="contenido">
+<!-- HERO — reemplazable por <video> (ver specs) -->
+<header class="hero">
+  <img src="img/home/hero-vidrio-greda-wide-flip.jpg" alt="Vidrio incandescente soplado dentro de un molde de greda">
+  <div class="hero-line">
+    <p><span data-es>Greda, vidrio y fuego<br>como <span class="em">sistema.</span></span><span data-en class="block">Clay, glass and fire<br>as a <span class="em">system.</span></span></p>
+    <span class="scroll-hint"><span data-es>Estudio de diseño material · Santiago</span><span data-en>Material design studio · Santiago</span></span>
+  </div>
+</header>
+
+<!-- MANIFIESTO -->
+<section>
+  <div class="wrap">
+    <div class="narrow">
+      <h2><span data-es>No diseñamos desde una estética.<br>Diseñamos desde el <span class="em">comportamiento de la materia.</span></span><span data-en class="block">We don't design from an aesthetic.<br>We design from the <span class="em">behavior of matter.</span></span></h2>
+      <p class="lede"><span data-es>Greda de Pomaire y vidrio soplado a boca, articulados con método de diseño industrial. La unión es mecánica, no una fusión. No hay otro proyecto igual en Chile.</span><span data-en class="block">Pomaire clay and mouth-blown glass, articulated through industrial design method. The union is mechanical, not a fusion. There is no other project like it in Chile.</span></p>
+    </div>
+    <div class="principles">
+      <div class="principle">
+        <span class="k">01 / <span data-es>Investigación</span><span data-en>Research</span></span>
+        <h3><span data-es>La materia se prueba</span><span data-en>Matter is tested</span></h3>
+        <p><span data-es>Cada pieza nace de una hipótesis, un ensayo y una corrección. Probetas y una patente, no intuición.</span><span data-en class="block">Each piece begins with a hypothesis, a trial and a correction. Test pieces and a patent, not intuition.</span></p>
+      </div>
+      <div class="principle">
+        <span class="k">02 / <span data-es>Oficio</span><span data-en>Craft</span></span>
+        <h3><span data-es>Ejecutan los maestros</span><span data-en>Masters execute</span></h3>
+        <p><span data-es>Coordinamos; los alfareros y sopladores ejecutan y co-determinan la viabilidad material.</span><span data-en class="block">We coordinate; potters and glassblowers execute and co-determine material feasibility.</span></p>
+      </div>
+      <div class="principle">
+        <span class="k">03 / <span data-es>Colisión</span><span data-en>Collision</span></span>
+        <h3><span data-es>Greda y vidrio en tensión</span><span data-en>Clay and glass in tension</span></h3>
+        <p><span data-es>El objeto es evidencia del proceso que contiene: temperatura, espesor, compatibilidad y forma.</span><span data-en class="block">The object is evidence of the process it contains: temperature, thickness, compatibility and form.</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PLANO -->
+<figure class="plate" data-lb="proceso">
+  <img src="img/home/proceso-soplado.jpg" alt="Soplado de vidrio incandescente contra greda" data-cap="Soplado de cristal en pieza de greda calada" loading="lazy">
+</figure>
+
+<!-- PIEZAS -->
+<section id="piezas">
+  <div class="wrap">
+    <span class="idx">01 — <span data-es>Piezas</span><span data-en>Pieces</span></span>
+    <div class="narrow">
+      <h2><span data-es>Objetos como evidencia</span><span data-en class="block">Objects as evidence</span></h2>
+      <p class="lede"><span data-es>Cada familia explora una relación distinta entre opacidad, transparencia, peso, temperatura y luz.</span><span data-en class="block">Each family explores a different relationship between opacity, transparency, weight, temperature and light.</span></p>
+    </div>
+
+  </div>
+
+  <div class="wrap">
+    <article class="band">
+      <div class="shot"><img src="img/ahumador/hero.jpg" alt="Ahumador Trufquén" data-cap="Ahumador · 2014 · greda de Pomaire" loading="lazy"></div>
+      <div class="meta">
+        <span class="num">01</span>
+        <div>
+          <h3><a href="ahumador-trufquen.html"><span data-es>Ahumador</span><span data-en>Smoking vessel</span></a></h3>
+          <span class="yr">2014 · <span data-es>Patente INAPI</span><span data-en>INAPI patent</span></span>
+        </div>
+        <p class="desc"><span data-es>Cocina y ahúma en un solo cuerpo de greda, sobre la llama de una cocina convencional. La invención que origina el estudio.</span><span data-en class="block">Cooks and smokes in a single clay body, over a conventional stove flame. The invention that originates the studio.</span></p>
+      </div>
+    </article>
+
+    <article class="band">
+      <div class="shot"><img src="img/home/piece-probetas.jpg" alt="Probeta de greda con vidrio" data-cap="Probetas · 2017 · ensayo greda–vidrio" loading="lazy"></div>
+      <div class="meta">
+        <span class="num">02</span>
+        <div>
+          <h3><a href="probetas-trufquen.html"><span data-es>Probetas</span><span data-en>Test pieces</span></a></h3>
+          <span class="yr">2017 · <span data-es>Fondart · Investigación</span><span data-en>Fondart · Research</span></span>
+        </div>
+        <p class="desc"><span data-es>El ensayo que probó que la cohesión greda–vidrio era posible y determinó su naturaleza mecánica.</span><span data-en class="block">The trial that proved clay–glass cohesion was possible and determined its mechanical nature.</span></p>
+      </div>
+    </article>
+
+    <article class="band">
+      <div class="shot"><img src="img/home/piece-engarce-v2.jpg" alt="Pieza Engarce" data-cap="Engarce · 2018 · greda y cristal soplado a boca" loading="lazy"></div>
+      <div class="meta">
+        <span class="num">03</span>
+        <div>
+          <h3><a href="engarce-trufquen.html">Engarce</a></h3>
+          <span class="yr">2018 · <span data-es>11 piezas únicas</span><span data-en>11 unique pieces</span></span>
+        </div>
+        <p class="desc"><span data-es>El cristal se expande contra estructuras de greda y queda retenido por forma. La serie que fijó los parámetros del estudio.</span><span data-en class="block">Glass expands against clay structures and is held by form. The series that set the studio's parameters.</span></p>
+      </div>
+    </article>
+
+    <article class="band">
+      <div class="shot"><img src="img/home/piece-luminarias-v2.jpg" alt="Luminaria de greda encendida" data-cap="Luminarias · greda y cobre" loading="lazy"></div>
+      <div class="meta">
+        <span class="num">04</span>
+        <div>
+          <h3><a href="luminarias-trufquen.html"><span data-es>Luminarias</span><span data-en>Lighting</span></a></h3>
+          <span class="yr">2018 · <span data-es>Serie</span><span data-en>Series</span></span>
+        </div>
+        <p class="desc"><span data-es>La greda deja de contener la luz: la filtra. El espesor y el calado deciden cuánta sale.</span><span data-en class="block">The clay stops containing light: it filters it. Thickness and perforation decide how much escapes.</span></p>
+      </div>
+    </article>
+
+    <article class="band">
+      <div class="shot"><img src="img/home/piece-tralma.jpg" alt="Copa Tralma" data-cap="Tralma · 2020 · borosilicato y greda colada" loading="lazy"></div>
+      <div class="meta">
+        <span class="num">05</span>
+        <div>
+          <h3><a href="tralma-trufquen.html">Tralma</a></h3>
+          <span class="yr">2020 · <span data-es>Cristalería</span><span data-en>Glassware</span></span>
+        </div>
+        <p class="desc"><span data-es>Borosilicato soplado a boca sobre greda colada. La línea que sobrevivió al cierre de la última cristalería del país.</span><span data-en class="block">Mouth-blown borosilicate over cast clay. The line that survived the closing of the country's last glassworks.</span></p>
+      </div>
+    </article>
+
+    <article class="band">
+      <div class="shot"><img src="img/home/piece-2026.jpg" alt="Pieza en desarrollo" data-cap="Nueva etapa · 2026" loading="lazy"></div>
+      <div class="meta">
+        <span class="num">06</span>
+        <div>
+          <h3><span data-es>Nueva etapa</span><span data-en>New chapter</span></h3>
+          <span class="yr">2026 · <span data-es>En desarrollo</span><span data-en>In development</span></span>
+        </div>
+        <p class="desc"><span data-es>Nuevas piezas desde el mismo cruce material, hacia Design Week México.</span><span data-en class="block">New pieces from the same material crossing, toward Design Week México.</span></p>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- PLANO -->
+<figure class="plate" data-lb="nombre">
+  <img src="img/bg/home-nombre.jpg" alt="Vidrio incandescente en el momento del soplado" data-cap="Transformación térmica · el instante" loading="lazy">
+</figure>
+
+<!-- EL NOMBRE -->
+<section id="nombre">
+  <div class="wrap narrow">
+    <span class="idx">02 — <span data-es>El nombre</span><span data-en>The name</span></span>
+    <h2><span data-es><em>Trufquén</em> es ceniza en mapuzungun.<br><span class="em">Lo que queda cuando el fuego terminó.</span></span><span data-en class="block"><em>Trufquén</em> is ash in Mapuzungun.<br><span class="em">What remains when the fire is done.</span></span></h2>
+    <p class="lede"><span data-es>No la materia antes del fuego. No el fuego. La ceniza: evidencia de una transformación que no admite retorno. El nombre nació con nuestra primera pieza y desde entonces ordena el método.</span><span data-en class="block">Not the matter before the fire. Not the fire. The ash: evidence of a transformation that admits no return. The name was born with our first piece and has ordered the method ever since.</span></p>
+  </div>
+</section>
+
+<!-- PLANO -->
+<figure class="plate half" data-lb="taller">
+  <img src="img/bg/taller-lizama.jpg" alt="El maestro Raúl Lizama soplando cristal a boca" data-cap="Maestro Raúl Lizama · soplado a boca · CristalArt" loading="lazy">
+</figure>
+<p class="plate-cap"><span data-es>Maestro Raúl Lizama · soplado a boca</span><span data-en>Master Raúl Lizama · mouth-blowing</span></p>
+
+<!-- TALLER -->
+<section id="taller">
+  <div class="wrap">
+    <span class="idx">03 — <span data-es>El taller</span><span data-en>The workshop</span></span>
+    <div class="narrow">
+      <h2><span data-es>El diseño no reemplaza al oficio:<br><span class="em">lo articula.</span></span><span data-en class="block">Design does not replace craft:<br><span class="em">it articulates it.</span></span></h2>
+      <p class="lede"><span data-es>Cada colaborador aporta saberes productivos que no pueden reemplazarse por relato ni por software.</span><span data-en class="block">Each collaborator brings productive knowledge that cannot be replaced by narrative or software.</span></p>
+    </div>
+    <div class="names">
+      <div><div class="n">Raúl Hernández Tralma</div><div class="r"><span data-es>Dirección · Investigación</span><span data-en>Direction · Research</span></div></div>
+      <div><div class="n">José Domingo Prado</div><div class="r"><span data-es>Alfarería · Engarce</span><span data-en>Pottery · Engarce</span></div></div>
+      <div><div class="n">Javier Neira</div><div class="r"><span data-es>Ceramista · Tralma</span><span data-en>Ceramist · Tralma</span></div></div>
+      <div><div class="n">Raúl Lizama · CristalArt</div><div class="r"><span data-es>Soplado a boca · Engarce</span><span data-en>Mouth-blowing · Engarce</span></div></div>
+      <div><div class="n">Francisco Saitua · La Vidriería</div><div class="r"><span data-es>Borosilicato · Tralma</span><span data-en>Borosilicate · Tralma</span></div></div>
+      <div><div class="n">Rodrigo Veliz · Taller Barros</div><div class="r"><span data-es>Alfarería de Pomaire</span><span data-en>Pomaire pottery</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ESTUDIO — Raúl Hernández -->
+<section id="estudio">
+  <div class="wrap">
+    <span class="idx">04 — <span data-es>El estudio</span><span data-en>The studio</span></span>
+    <div class="founder">
+      <figure>
+        <img src="img/home/raul-taller.jpg" alt="Raúl Hernández Tralma en el taller" data-cap="Raúl Hernández Tralma · taller" loading="lazy">
+        <figcaption><span data-es>Raúl Hernández Tralma · taller</span><span data-en>Raúl Hernández Tralma · workshop</span></figcaption>
+      </figure>
+      <div>
+        <h3>Raúl Hernández Tralma</h3>
+        <p><span data-es>Diseñador industrial. Lleva más de una década trabajando la greda de Pomaire y el vidrio soplado a boca, no como estética sino como problema técnico. Dirige la investigación del estudio y sostiene el punto exacto donde greda y vidrio coexisten sin destruirse —un punto que no se improvisa: se calibra con años de prueba.</span><span data-en class="block">Industrial designer. For over a decade he has worked Pomaire clay and mouth-blown glass, not as aesthetics but as a technical problem. He directs the studio's research and holds the exact point where clay and glass coexist without destroying each other —a point that isn't improvised: it's calibrated over years of testing.</span></p>
+        <p><span data-es>Su trabajo se desarrolló con respaldo sostenido del Fondart Nacional a lo largo de sucesivas etapas, un recorrido poco común en el diseño chileno. <span class="em">No es un acumulado de premios: es una misma pregunta material, llevada a producción real cada vez.</span></span><span data-en class="block">His work developed with sustained National Fondart backing across successive stages, an uncommon path in Chilean design. <span class="em">It is not a stack of awards: it is a single material question, taken to real production each time.</span></span></p>
+
+        <details class="more">
+          <summary><span data-es>Trayectoria completa</span><span data-en>Full track record</span></summary>
+          <div class="track">
+            <div class="trow"><span class="y">2026</span><span class="t">Design Week México · <span data-es>seleccionado</span><span data-en>selected</span></span></div>
+            <div class="trow"><span class="y">2019</span><span class="t">New York Now · <span data-es>finalista mejor producto revelación</span><span data-en>finalist, best breakthrough product</span></span></div>
+            <div class="trow"><span class="y">2019</span><span class="t">Wanted Design · "Chilenos en NY" · <span data-es>GAM / La Moneda</span><span data-en>GAM / La Moneda</span></span></div>
+            <div class="trow"><span class="y">2018</span><span class="t">BID Bienal Iberoamericana, Madrid · Matadero</span></div>
+            <div class="trow"><span class="y">2018</span><span class="t">Engarce · <span data-es>individual en Centro Cultural GAM</span><span data-en>solo show at GAM Cultural Center</span></span></div>
+            <div class="trow"><span class="y">2018</span><span class="t">Wanted Design, Nueva York</span></div>
+            <div class="trow"><span class="y">2017</span><span class="t"><span data-es>Patente de invención · INAPI</span><span data-en>Invention patent · INAPI</span></span></div>
+            <div class="trow"><span class="y">2017</span><span class="t">Premios CLAP · CMCM · <span data-es>ganador entre 300+</span><span data-en>winner among 300+</span></span></div>
+            <div class="trow"><span class="y">2015</span><span class="t">Milán · "Comer con diseño" · <span data-es>Espacio Giovanni Sacchi</span><span data-en>Giovanni Sacchi Space</span></span></div>
+            <div class="trow"><span class="y">2015</span><span class="t">BID-EST, Madrid · Matadero</span></div>
+          </div>
+        </details>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section id="contacto" class="contact">
+  <div class="wrap narrow">
+    <h2><span data-es>Exhibiciones, colaboraciones,<br>prensa y encargos</span><span data-en class="block">Exhibitions, collaborations,<br>press and commissions</span></h2>
+    <a href="mailto:contacto@trufquen.studio" class="cta">contacto@trufquen.studio</a>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="fbrand">
+    <img src="img/brand/icon-blanco.png" alt="">
+    <span>Trufquén</span>
+  </div>
+  <div>
+    <a href="https://trufquen.studio">trufquen.studio</a>
+    <a href="https://instagram.com/trufquen">@trufquen</a>
+  </div>
+  <p class="legal"><span data-es>© 2026 Trufquén · Marca registrada INAPI N° 1391981 · Patente de invención INAPI N° 2015-01441 · Santiago de Chile</span><span data-en class="block">© 2026 Trufquén · Registered trademark INAPI No. 1391981 · INAPI invention patent No. 2015-01441 · Santiago, Chile</span></p>
+</footer>
+
+<!-- LIGHTBOX -->
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Vista ampliada de imagen">
+  <button class="lb-x" id="lbX" aria-label="Cerrar">✕</button>
+  <button class="lb-nav lb-prev" id="lbPrev" aria-label="Imagen anterior">‹</button>
+  <img id="lbImg" alt="">
+  <button class="lb-nav lb-next" id="lbNext" aria-label="Imagen siguiente">›</button>
+  <div class="lb-count" id="lbCount"></div>
+  <div class="lb-cap" id="lbCap"></div>
+</div>
+
+<script>
+function toggleLang(){
+  const b=document.body;b.classList.toggle('en');
+  document.documentElement.lang=b.classList.contains('en')?'en':'es';
+}
+var sheetEl=document.getElementById('sheet'), menuBtn=document.getElementById('menuBtn'), sheetPrevFocus=null;
+function openSheet(){sheetPrevFocus=document.activeElement;sheetEl.classList.add('open');menuBtn.setAttribute('aria-expanded','true');document.getElementById('sheetClose').focus()}
+function closeSheet(){sheetEl.classList.remove('open');menuBtn.setAttribute('aria-expanded','false');if(sheetPrevFocus)sheetPrevFocus.focus()}
+menuBtn.addEventListener('click',openSheet);
+document.getElementById('sheetClose').addEventListener('click',closeSheet);
+document.getElementById('langBtn').addEventListener('click',toggleLang);
+sheetEl.querySelectorAll('a').forEach(function(a){a.addEventListener('click',closeSheet)});
+
+/* nav sólida al salir del hero */
+(function(){
+  const nav=document.getElementById('nav'), hero=document.querySelector('.hero');
+  new IntersectionObserver(function(e){nav.classList.toggle('solid',!e[0].isIntersecting)},
+    {rootMargin:'-88% 0px 0px 0px'}).observe(hero);
+})();
+
+/* ---- LIGHTBOX + CARRUSEL ---- */
+var lbSet=[], lbAt=0, lbPrevFocus=null;
+var lb=document.getElementById('lb'), lbImg=document.getElementById('lbImg'),
+    lbCap=document.getElementById('lbCap'), lbCount=document.getElementById('lbCount');
+
+function lbCollect(){
+  // todas las imágenes ampliables de la página, en orden de aparición
+  return [].slice.call(document.querySelectorAll('.band .shot img, .plate img, .founder img, .hero img'));
+}
+function lbOpen(img){
+  lbPrevFocus=document.activeElement;
+  lbSet=lbCollect(); lbAt=lbSet.indexOf(img);
+  lbRender(); lb.classList.add('open'); document.body.classList.add('locked');
+  document.getElementById('lbX').focus();
+}
+function lbRender(){
+  var im=lbSet[lbAt]; if(!im) return;
+  lbImg.src=im.currentSrc||im.src;
+  lbImg.alt=im.alt||'';
+  lbCap.textContent=im.dataset.cap||im.alt||'';
+  lbCount.textContent=(lbAt+1)+' / '+lbSet.length;
+}
+function lbGo(d){ lbAt=(lbAt+d+lbSet.length)%lbSet.length; lbRender(); }
+function lbClose(){ lb.classList.remove('open'); document.body.classList.remove('locked'); if(lbPrevFocus)lbPrevFocus.focus(); }
+document.getElementById('lbX').addEventListener('click',lbClose);
+document.getElementById('lbPrev').addEventListener('click',function(){lbGo(-1)});
+document.getElementById('lbNext').addEventListener('click',function(){lbGo(1)});
+lb.addEventListener('keydown',function(e){
+  if(e.key!=='Tab')return;
+  var f=[document.getElementById('lbX'),document.getElementById('lbPrev'),document.getElementById('lbNext')];
+  var i=f.indexOf(document.activeElement);
+  if(e.shiftKey && i<=0){e.preventDefault();f[f.length-1].focus()}
+  else if(!e.shiftKey && i===f.length-1){e.preventDefault();f[0].focus()}
+});
+
+document.addEventListener('click',function(e){
+  var t=e.target.closest('.band .shot, .plate, .founder figure');
+  if(t){ var im=t.querySelector('img'); if(im){ e.preventDefault(); lbOpen(im); } }
+});
+lb.addEventListener('click',function(e){ if(e.target===lb) lbClose(); });
+document.addEventListener('keydown',function(e){
+  if(e.key==='Escape' && sheetEl.classList.contains('open')){closeSheet();return}
+  if(!lb.classList.contains('open')) return;
+  if(e.key==='Escape') lbClose();
+  if(e.key==='ArrowLeft') lbGo(-1);
+  if(e.key==='ArrowRight') lbGo(1);
+});
+/* swipe en móvil */
+(function(){
+  var x0=null;
+  lb.addEventListener('touchstart',function(e){x0=e.touches[0].clientX},{passive:true});
+  lb.addEventListener('touchend',function(e){
+    if(x0===null) return; var dx=e.changedTouches[0].clientX-x0;
+    if(Math.abs(dx)>50) lbGo(dx>0?-1:1); x0=null;
+  },{passive:true});
+})();
+
+/* reveal */
+(function(){
+  if(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  document.querySelectorAll('section .wrap > *, .item, .plate, .principle').forEach(function(el){el.classList.add('reveal')});
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(e){ if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)} });
+  },{threshold:0.06,rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.reveal').forEach(function(el,i){el.style.transitionDelay=((i%4)*50)+'ms';io.observe(el)});
+})();
+</script>
+</body>
+</html>
