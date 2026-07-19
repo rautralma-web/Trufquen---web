@@ -61,7 +61,7 @@ nav.top.solid{{height:62px;--bs:.52;background:rgba(16,14,13,.92);backdrop-filte
 .sheet .close{{position:absolute;top:1.6rem;right:clamp(1.2rem,4vw,3rem);background:none;border:none;font-family:'Space Mono',monospace;font-size:var(--fs-ui);letter-spacing:.16em;text-transform:uppercase;color:var(--mineral);cursor:pointer;min-height:44px;min-width:44px;display:inline-flex;align-items:center;justify-content:center}}
 
 .hero{{position:relative;height:100vh;height:100dvh;background:var(--grafito);overflow:hidden}}
-.hero img{{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:{heropos}}}
+.hero img,.hero video{{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:{heropos}}}
 .hero::after{{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(10,9,8,.5) 0%,rgba(10,9,8,.08) 32%,rgba(10,9,8,.2) 60%,rgba(16,14,13,.95) 100%)}}
 .hero-line{{position:absolute;left:0;right:0;bottom:clamp(2.5rem,7vh,5rem);z-index:2;text-align:center;padding:0 1.5rem}}
 .hero-line h1{{font-weight:200;font-size:var(--fs-h1);letter-spacing:.08em;text-transform:uppercase;color:var(--mineral);margin-bottom:1rem}}
@@ -82,7 +82,8 @@ h2{{font-weight:200;line-height:1.3;font-size:var(--fs-h2)}}
 .pull{{font-weight:200;font-size:var(--fs-pull);line-height:1.5;color:var(--mineral);max-width:44rem;margin:0 auto;border-left:1px solid var(--cobre);padding-left:1.6rem;text-align:left}}
 
 .plate{{width:100%;background:var(--grafito);cursor:zoom-in}}
-.plate img,.plate video{{width:100%;height:clamp(380px,80vh,820px);object-fit:cover;display:block}}
+.plate img{{width:100%;height:clamp(380px,80vh,820px);object-fit:cover;display:block}}
+.plate video{{width:100%;height:auto;max-height:90vh;object-fit:contain;background:var(--grafito);display:block;margin:0 auto}}
 
 .gal{{padding:clamp(4rem,9vh,6rem) 0}}
 .car{{display:flex;gap:2px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding:0 clamp(1.4rem,5vw,3.5rem);cursor:grab}}
@@ -187,7 +188,7 @@ nav.top.solid{{height:56px;--bs:.6}}
 
 <main id="contenido">
 <header class="hero">
-  <img src="{hero}" alt="{h1_es}">
+  {hero_media}
   <div class="hero-line">
     <h1><span data-es>{h1_es}</span><span data-en>{h1_en}</span></h1>
     <p><span data-es>{hp_es}</span><span data-en class="block">{hp_en}</span></p>
@@ -470,7 +471,7 @@ P.append(dict(
  quote_es='Sabemos hacer esto; y sabemos rehacerlo cuando el terreno se mueve. Esa capacidad —no una copa en particular— es lo que la línea deja instalado.',
  quote_en='We know how to do this; and we know how to redo it when the ground shifts. That capacity —not any one cup— is what the line leaves installed.',
  meta='Tralma: greda colada y vidrio borosilicato soplado a boca. La línea que sobrevivió al cierre de la última cristalería del país.',
- hero='img/tralma/hero-serie.jpg', heropos='center 72%',
+ hero='img/tralma/hero-serie.jpg', hero_video='img/tralma/tralma-fabricacion.mp4', hero_poster='img/tralma/hero-serie.jpg', heropos='center 45%',
  h1_es='Tralma', h1_en='Tralma',
  hp_es='Apellido materno del diseñador. Greda colada y borosilicato soplado a boca: la línea que <span class="em">sobrevivió a la desaparición de un oficio.</span>',
  hp_en="The designer's maternal surname. Cast clay and mouth-blown borosilicate: the line that <span class=\"em\">survived a craft's disappearance.</span>",
@@ -682,6 +683,13 @@ P.append(dict(
  ])))
 
 # ---------------------------------------------------------------- escribir
+def hero_media(p):
+    if p.get('hero_video'):
+        poster = p.get('hero_poster', p['hero'])
+        return ('<video src="%s" poster="%s" autoplay muted loop playsinline preload="auto" aria-label="%s" data-motion></video>'
+                % (p['hero_video'], poster, p['h1_es']))
+    return '<img src="%s" alt="%s">' % (p['hero'], p['h1_es'])
+
 def plate_media(p):
     if p.get('plate_video'):
         return ('<video src="%s" poster="%s" autoplay muted loop playsinline preload="metadata" aria-label="%s" data-motion></video>'
@@ -689,6 +697,7 @@ def plate_media(p):
     return '<img src="%s" alt="%s" data-cap="%s" loading="lazy">' % (p['plate'], p['plate_alt'], p['plate_cap'])
 
 for p in P:
+    p['hero_media'] = hero_media(p)
     p['plate_media'] = plate_media(p)
     html = TPL.format(**p)
     with io.open(p['slug'], 'w', encoding='utf-8') as f:
