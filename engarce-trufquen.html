@@ -5,7 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Engarce — Trufquén</title>
 <meta name="description" content="Engarce: once piezas únicas de greda de Pomaire y cristal soplado a boca. La unión es mecánica, no fusión.">
-<link href="https://fonts.googleapis.com/css2?family=Lato:wght@200;300;400&family=Space+Mono:wght@400&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@125,100..900&family=Lato:wght@200;300;400&family=Space+Mono:wght@400&display=swap" rel="stylesheet">
 <style>
 :root{
   --fondo:#100E0D;--fondo-2:#181513;--grafito:#0A0908;
@@ -17,6 +19,7 @@
 .skip{position:absolute;inset-inline-start:-999px;z-index:120;font-family:'Space Mono',monospace;font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--fondo);background:var(--cobre);padding:1rem 1.4rem}
 .skip:focus{position:fixed;inset-inline-start:0;inset-block-start:0}
 html{scroll-behavior:smooth}
+h1,h2,h3,.pull,.sheet a{font-family:'Archivo','Lato',sans-serif;font-stretch:125%}
 body{font-family:'Lato',sans-serif;font-weight:300;background:var(--fondo);color:var(--mineral);line-height:1.75;-webkit-font-smoothing:antialiased}
 body.locked{overflow:hidden}
 img{display:block;max-width:100%}
@@ -50,7 +53,7 @@ nav.top.solid{height:62px;--bs:.52;background:rgba(16,14,13,.92);backdrop-filter
 .hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 40%}
 .hero::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(10,9,8,.5) 0%,rgba(10,9,8,.08) 32%,rgba(10,9,8,.2) 60%,rgba(16,14,13,.95) 100%)}
 .hero-line{position:absolute;left:0;right:0;bottom:clamp(2.5rem,7vh,5rem);z-index:2;text-align:center;padding:0 1.5rem}
-.hero-line h1{font-weight:200;font-size:clamp(2rem,5vw,3.4rem);letter-spacing:.14em;text-transform:uppercase;color:var(--mineral);margin-bottom:1rem}
+.hero-line h1{font-weight:200;font-size:clamp(2rem,5vw,3.4rem);letter-spacing:.08em;text-transform:uppercase;color:var(--mineral);margin-bottom:1rem}
 .hero-line p{font-weight:200;font-size:clamp(.95rem,1.8vw,1.2rem);line-height:1.6;color:var(--humo);max-width:34rem;margin:0 auto}
 .hero-line .em{color:var(--cobre)}
 
