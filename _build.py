@@ -82,7 +82,7 @@ h2{{font-weight:200;line-height:1.3;font-size:var(--fs-h2)}}
 .pull{{font-weight:200;font-size:var(--fs-pull);line-height:1.5;color:var(--mineral);max-width:44rem;margin:0 auto;border-left:1px solid var(--cobre);padding-left:1.6rem;text-align:left}}
 
 .plate{{width:100%;background:var(--grafito);cursor:zoom-in}}
-.plate img{{width:100%;height:clamp(380px,80vh,820px);object-fit:cover;display:block}}
+.plate img,.plate video{{width:100%;height:clamp(380px,80vh,820px);object-fit:cover;display:block}}
 
 .gal{{padding:clamp(4rem,9vh,6rem) 0}}
 .car{{display:flex;gap:2px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding:0 clamp(1.4rem,5vw,3.5rem);cursor:grab}}
@@ -126,7 +126,8 @@ details.more[open] summary::after{{transform:rotate(45deg)}}
 .fgrid dt{{font-family:'Space Mono',monospace;font-size:var(--fs-micro);letter-spacing:.16em;text-transform:uppercase;color:var(--cobre);margin-bottom:.4rem}}
 .fgrid dd{{font-size:var(--fs-small);line-height:1.7;color:var(--ceniza)}}
 
-footer{{background:var(--grafito);color:var(--humo);padding:clamp(3rem,7vw,4.5rem) 0;text-align:center}}
+footer{{position:relative;background:var(--grafito);color:var(--humo);padding:clamp(3rem,7vw,4.5rem) 0;text-align:center}}
+footer::before{{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(192,126,69,.65) 22%,rgba(192,126,69,.65) 78%,transparent)}}
 footer .fbrand{{display:inline-flex;flex-direction:column;align-items:center;gap:.6rem;margin-bottom:1.5rem}}
 footer .fbrand img{{height:44px}}
 footer .fbrand span{{font-weight:200;letter-spacing:.42em;text-indent:.42em;text-transform:uppercase;color:var(--mineral);font-size:1.1rem}}
@@ -152,8 +153,10 @@ nav.top.solid{{height:56px;--bs:.6}}
 }}
 
 @media (prefers-reduced-motion: no-preference){{
-  .reveal{{opacity:0;transform:translateY(20px);transition:opacity .9s cubic-bezier(.2,.6,.2,1),transform .9s cubic-bezier(.2,.6,.2,1)}}
-  .reveal.in{{opacity:1;transform:none}}
+  @keyframes ignite{{from{{opacity:.18;transform:scale(1.045)}}to{{opacity:1;transform:none}}}}
+  @keyframes emerge{{from{{opacity:0;transform:translateY(14px)}}to{{opacity:1;transform:none}}}}
+  .hero img,.hero video{{animation:ignite 1.5s cubic-bezier(.22,.61,.24,1) .1s both}}
+  .hero-line{{animation:emerge 1s cubic-bezier(.2,.6,.2,1) .55s both}}
 }}
 @media (prefers-reduced-motion: reduce){{
   *,*::before,*::after{{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
@@ -201,7 +204,7 @@ nav.top.solid{{height:56px;--bs:.6}}
 </section>
 
 <figure class="plate">
-  <img src="{plate}" alt="{plate_alt}" data-cap="{plate_cap}" loading="lazy">
+  {plate_media}
 </figure>
 
 <section class="gal band-c">
@@ -370,12 +373,9 @@ document.addEventListener('keydown',function(e){{
   lb.addEventListener('touchstart',function(e){{x0=e.touches[0].clientX}},{{passive:true}});
   lb.addEventListener('touchend',function(e){{if(x0===null)return;var dx=e.changedTouches[0].clientX-x0;if(Math.abs(dx)>50)lbGo(dx>0?-1:1);x0=null}},{{passive:true}})}})();
 
-(function(){{
-  if(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  document.querySelectorAll('section .wrap > *, .plate').forEach(function(el){{el.classList.add('reveal')}});
-  var io=new IntersectionObserver(function(es){{es.forEach(function(e){{if(e.isIntersecting){{e.target.classList.add('in');io.unobserve(e.target)}}}})}},{{threshold:.06,rootMargin:'0px 0px -40px 0px'}});
-  document.querySelectorAll('.reveal').forEach(function(el,i){{el.style.transitionDelay=((i%4)*50)+'ms';io.observe(el)}});
-}})();
+if(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches){{
+  document.querySelectorAll('video[data-motion]').forEach(function(v){{v.pause();v.removeAttribute('autoplay')}});
+}}
 </script>
 </body>
 </html>
@@ -479,7 +479,7 @@ P.append(dict(
  t_en='Halfway through, the country\'s<br>last glassworks <span class="em">closed.</span>',
  l_es='En vez de abandonar la hipótesis, le buscamos un sustrato nuevo: borosilicato en lugar de cristal sonoro. La distancia entre lo postulado y lo ejecutado es, en sí misma, el hallazgo.',
  l_en='Instead of abandoning the hypothesis, we found it a new substrate: borosilicate instead of sonorous crystal. The distance between what was proposed and what was executed is, in itself, the finding.',
- plate='img/bg/tralma-nombre-oficio.jpg', plate_alt='El maestro en el soplete', plate_cap='Soplado de borosilicato a boca',
+ plate='img/tralma/copa-giro-poster.jpg', plate_video='img/tralma/copa-giro.mp4', plate_alt='Copa Tralma girando: borosilicato sobre base de greda colada', plate_cap='La copa terminada',
  g_es='Producción real, no render', g_en='Real production, not a render',
  slides=(
   slide('01','img/tralma/tralma-copa.jpg','Copa','Cup','Borosilicato + greda colada','Borosilicate + cast clay',
@@ -551,9 +551,9 @@ P.append(dict(
   slide('04','img/luminarias/lum-04-difusor.jpg','Boca de salida','Aperture','Difusor a la vista','Diffuser exposed',
         'El diámetro de la boca es la variable que más pesa: decide cuánta luz escapa sin filtrar.',
         'The aperture diameter is the heaviest variable: it decides how much light escapes unfiltered.','04 · boca de salida')+
-  slide('05','img/luminarias/lum-05-gota.jpg','Gota','Droplet','Cuerpo cerrado','Closed body',
-        'Cuerpo cerrado, luz al piso. Sin calado, la greda es opaca y solo trabaja la boca inferior.',
-        'Closed body, light downward. Without perforation, the clay is opaque and only the lower aperture works.','05 · gota')+
+  slide('05','img/luminarias/lum-05-gota.jpg',u'En reposo','At rest',u'Racimo apagado, luz de día','Cluster off, daylight',
+        u'Apagada, la luminaria sigue siendo greda: volumen, textura y cobre a plena luz. El objeto no depende de la ampolleta.',
+        'Switched off, the light is still clay: volume, texture and copper in daylight. The object does not depend on the bulb.',u'05 · en reposo')+
   slide('06','img/luminarias/lum-06-cobre.jpg','Collares','Collars','El sistema desde abajo','The system from below',
         'Desde abajo se ve el sistema completo: cuerpo de greda, collar de cobre y el punto donde ambos se encuentran.',
         'From below the whole system is visible: clay body, copper collar and the point where the two meet.','06 · collares')),
@@ -682,7 +682,14 @@ P.append(dict(
  ])))
 
 # ---------------------------------------------------------------- escribir
+def plate_media(p):
+    if p.get('plate_video'):
+        return ('<video src="%s" poster="%s" autoplay muted loop playsinline preload="metadata" aria-label="%s" data-motion></video>'
+                % (p['plate_video'], p['plate'], p['plate_alt']))
+    return '<img src="%s" alt="%s" data-cap="%s" loading="lazy">' % (p['plate'], p['plate_alt'], p['plate_cap'])
+
 for p in P:
+    p['plate_media'] = plate_media(p)
     html = TPL.format(**p)
     with io.open(p['slug'], 'w', encoding='utf-8') as f:
         f.write(html)
