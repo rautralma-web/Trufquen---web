@@ -488,12 +488,12 @@ P.append(dict(
   slide('02','img/tralma/tralma-frontera.jpg','Frontera visible','Visible border','Unión mecánica','Mechanical union',
         'Greda y vidrio conservan una línea nítida entre sí. No hay masa única: esa frontera es la prueba de que la unión es mecánica.',
         'Clay and glass keep a sharp line between them. There is no single mass: that border proves the union is mechanical.','02 · frontera visible')+
-  slide('03','img/tralma/tralma-en-uso.jpg','En uso','In use','Con líquido','With liquid',
-        'Fotografiada en uso, con vino. La pieza no se exhibe: se toma. El peso de la greda equilibra el vidrio lleno.',
-        'Photographed in use, with wine. The piece isn\'t exhibited: it\'s held. The clay\'s weight balances the filled glass.','03 · en uso')+
-  slide('04','img/tralma/tralma-en-uso-exterior.jpg','En uso · exterior','In use · outdoors','Luz natural','Natural light',
-        'A contraluz, el borosilicato desaparece y solo queda la greda sosteniendo el líquido.',
-        'Backlit, the borosilicate vanishes and only the clay remains, holding the liquid.','04 · en uso · exterior')+
+  slide('03','img/tralma/tralma-soplado.jpg',u'Soplado a la llama','Flame-blown',u'Borosilicato en formación','Borosilicate in the making',
+        u'El vidrio incandescente se sopla contra la base de greda ya colada. La copa nace de esa unión, no se ensambla después.',
+        'The molten glass is blown against the already-cast clay base. The cup is born from that union, not assembled afterward.',u'03 · soplado a la llama')+
+  slide('04','img/tralma/tralma-vino.jpg',u'Con vino','With wine',u'La pieza en uso','The piece in use',
+        u'Llena, la copa se lee entera: el vino ocupa el vidrio y la greda lo sostiene desde abajo. El peso equilibra la mano.',
+        'Filled, the cup reads whole: the wine occupies the glass and the clay holds it from below. The weight balances the hand.',u'04 · con vino')+
   slide('05','img/tralma/tralma-condensacion.jpg','Condensación','Condensation','Superficie fría','Cold surface',
         'El vidrio se escarcha y la greda no. Dos materiales, dos comportamientos térmicos, un mismo cuerpo.',
         'The glass frosts over and the clay doesn\'t. Two materials, two thermal behaviors, one body.','05 · condensación')+
