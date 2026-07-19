@@ -606,9 +606,9 @@ P.append(dict(
   slide('04','img/probetas/pr-04-relieve.jpg','Relieve','Relief','El vidrio como ojo','Glass as eye',
         'Tres salidas simétricas en un mismo cuerpo. La simetría reparte el empuje para que ninguna pared reciba toda la carga.',
         'Three symmetrical outlets in one body. Symmetry distributes the push so no single wall takes the whole load.','PR·04 · relieve')+
-  slide('05','img/probetas/pr-05-pocillo.jpg','Pocillo','Bowl','Vidrio contenido arriba','Glass contained above',
-        'Inversión del planteo: greda abajo como base, vidrio arriba como volumen. El primer antecedente de lo que sería Tralma.',
-        'The setup inverted: clay below as base, glass above as volume. The first antecedent of what would become Tralma.','PR·05 · pocillo')+
+  slide('05','img/probetas/pr-05-frontera.jpg',u'La frontera','The border',u'Greda y vidrio en la boca','Clay and glass at the mouth',
+        u'El detalle que lo probó todo: el vidrio se derrama sobre el labio de greda y se ancla sin fundirse. La unión es mecánica, y aquí se ve.',
+        'The detail that proved everything: glass spills over the clay lip and anchors without melting. The union is mechanical, and here you can see it.',u'PR·05 · la frontera')+
   slide('06','img/probetas/pr-06-torno.jpg','Asas de vidrio','Glass handles','El ensayo en el torno','The trial on the lathe',
         'El vidrio sale por dos costados y forma asas. La pieza queda sobre el torno: el registro se toma sin mover la evidencia.',
         'The glass emerges from two sides and forms handles. The piece stays on the lathe: the record is taken without moving the evidence.','PR·06 · asas de vidrio')),
