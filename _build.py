@@ -89,9 +89,9 @@ h2{{font-weight:200;line-height:1.3;font-size:var(--fs-h2)}}
 .car{{display:flex;gap:2px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding:0 clamp(1.4rem,5vw,3.5rem);cursor:grab}}
 .car::-webkit-scrollbar{{display:none}}
 .car.drag{{cursor:grabbing;scroll-snap-type:none}}
-.car figure{{flex:0 0 clamp(280px,44vw,580px);scroll-snap-align:center;margin:0;position:relative;overflow:hidden;background:var(--grafito)}}
-.car img{{width:100%;aspect-ratio:4/5;object-fit:cover;transition:opacity .5s,transform 1s cubic-bezier(.2,.6,.2,1);opacity:.42}}
-.car .ph{{width:100%;aspect-ratio:4/5;background:linear-gradient(155deg,#2a2018,#12100c 60%,#0c0a08);display:flex;align-items:center;justify-content:center;opacity:.42;transition:opacity .5s}}
+.car figure{{flex:0 0 clamp(320px,60vw,760px);scroll-snap-align:center;margin:0;position:relative;overflow:hidden;background:var(--grafito)}}
+.car img{{width:100%;aspect-ratio:3/2;object-fit:cover;transition:opacity .5s,transform 1s cubic-bezier(.2,.6,.2,1);opacity:.42}}
+.car .ph{{width:100%;aspect-ratio:3/2;background:linear-gradient(155deg,#2a2018,#12100c 60%,#0c0a08);display:flex;align-items:center;justify-content:center;opacity:.42;transition:opacity .5s}}
 .car .ph span{{font-family:'Space Mono',monospace;font-size:var(--fs-micro);letter-spacing:.2em;color:rgba(240,235,227,.55);text-transform:uppercase}}
 .car figure.on img,.car figure.on .ph{{opacity:1}}
 .car figure.on:hover img{{transform:scale(1.03)}}
