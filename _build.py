@@ -89,9 +89,9 @@ h2{{font-weight:200;line-height:1.3;font-size:var(--fs-h2)}}
 .car{{display:flex;gap:2px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding:0 clamp(1.4rem,5vw,3.5rem);cursor:grab}}
 .car::-webkit-scrollbar{{display:none}}
 .car.drag{{cursor:grabbing;scroll-snap-type:none}}
-.car figure{{flex:0 0 clamp(320px,60vw,760px);scroll-snap-align:center;margin:0;position:relative;overflow:hidden;background:var(--grafito)}}
-.car img{{width:100%;aspect-ratio:3/2;object-fit:cover;transition:opacity .5s,transform 1s cubic-bezier(.2,.6,.2,1);opacity:.42}}
-.car .ph{{width:100%;aspect-ratio:3/2;background:linear-gradient(155deg,#2a2018,#12100c 60%,#0c0a08);display:flex;align-items:center;justify-content:center;opacity:.42;transition:opacity .5s}}
+.car figure{{flex:0 0 {car_w};scroll-snap-align:center;margin:0;position:relative;overflow:hidden;background:var(--grafito)}}
+.car img{{width:100%;aspect-ratio:{car_ar};object-fit:cover;transition:opacity .5s,transform 1s cubic-bezier(.2,.6,.2,1);opacity:.42}}
+.car .ph{{width:100%;aspect-ratio:{car_ar};background:linear-gradient(155deg,#2a2018,#12100c 60%,#0c0a08);display:flex;align-items:center;justify-content:center;opacity:.42;transition:opacity .5s}}
 .car .ph span{{font-family:'Space Mono',monospace;font-size:var(--fs-micro);letter-spacing:.2em;color:rgba(240,235,227,.55);text-transform:uppercase}}
 .car figure.on img,.car figure.on .ph{{opacity:1}}
 .car figure.on:hover img{{transform:scale(1.03)}}
@@ -412,7 +412,8 @@ P.append(dict(
  quote_es='Sé dónde y cuándo el vidrio incandescente puede expandirse contra la arcilla sin quebrarla. Ese punto no está en un manual: lo aprendí probándolo pieza por pieza, durante años, hasta poder repetirlo.',
  quote_en="I know where and when incandescent glass can expand against the clay without cracking it. That point isn't in a manual: I learned it testing it piece by piece, over years, until I could repeat it.",
  meta='Engarce: once piezas únicas de greda de Pomaire y cristal soplado a boca. La unión es mecánica, no fusión.',
- hero='img/engarce/hero.jpg', heropos='center 40%',
+ hero='img/engarce/engarce-hero-poster.jpg', hero_video='img/engarce/engarce-hero.mp4', hero_poster='img/engarce/engarce-hero-poster.jpg', heropos='center 55%',
+ car_ar='2 / 3', car_w='clamp(240px,42vw,440px)',
  h1_es='Engarce', h1_en='Engarce',
  hp_es='El cristal se expande contra la greda y queda retenido por forma. La unión es mecánica, <span class="em">no una fusión.</span>',
  hp_en='Glass expands against the clay and is held by form. The union is mechanical, <span class="em">not a fusion.</span>',
@@ -424,24 +425,39 @@ P.append(dict(
  plate='img/bg/engarce-genealogia.jpg', plate_alt='Proceso de la serie Engarce', plate_cap='Engarce · proceso',
  g_es='Once piezas, una misma tesis', g_en='Eleven pieces, one thesis',
  slides=(
-  slide('01','img/engarce/engarce-01-modelada.jpg','Modelada a mano','Hand-modeled','15–37 cm · greda de Pomaire','15–37 cm · Pomaire clay',
-        'La greda se levanta sin torno. Cada cuerpo es irrepetible, y el cristal debe adaptarse a esa irregularidad.',
-        'The clay is raised without a wheel. Each body is unrepeatable, and the glass must adapt to that irregularity.','01 · modelada a mano')+
-  slide('02','img/engarce/engarce-02-torneada.jpg','Torneada','Wheel-turned','28–40 cm · greda de Pomaire','28–40 cm · Pomaire clay',
-        'La simetría del torno reparte el empuje del vidrio de forma pareja. Es la geometría que más resiste.',
-        "The wheel's symmetry distributes the glass's push evenly. It's the geometry that resists most.",'02 · torneada')+
-  slide('03','img/engarce/engarce-03-torneada-texturizada.jpg','Torneada y texturizada','Wheel-turned and textured','28–39 cm · greda de Pomaire','28–39 cm · Pomaire clay',
-        'La textura no es decorativa: aumenta la superficie de agarre y el cristal ancla mejor.',
-        "The texture isn't decorative: it increases grip surface and the glass anchors better.",'03 · torneada y texturizada')+
-  slide('04','img/engarce/engarce-04-translucido.jpg','Greda + cristal translúcido','Clay + translucent crystal','Cristal soplado a boca','Mouth-blown crystal',
-        'Contra el fondo negro, el cristal existe como forma autónoma y la greda como masa terrestre.',
-        'Against the black background, the glass exists as autonomous form and the clay as earthly mass.','04 · greda + cristal translúcido')+
-  slide('05','img/engarce/engarce-05-relieve.jpg','Anclaje por relieve','Relief anchoring','Unión mecánica','Mechanical union',
-        'El relieve retiene el cristal por presión de forma. No hay adhesión química en ningún punto.',
-        'The relief retains the glass by form pressure. There is no chemical adhesion at any point.','05 · anclaje por relieve')+
-  slide('06','img/engarce/engarce-06-perforacion.jpg','Anclaje por perforación','Perforation anchoring','Unión mecánica','Mechanical union',
-        'El cristal atraviesa el calado y ancla al otro lado de la pared. La greda no se rompe si la abertura es menor que la masa que la rodea.',
-        "The glass crosses the perforation and anchors on the other side of the wall. The clay doesn't break if the opening is smaller than the surrounding mass.",'06 · anclaje por perforación')),
+  slide('01','img/engarce/serie-01.jpg',u'Horqueta','Fork',u'Greda de Pomaire + cristal soplado','Pomaire clay + blown crystal',
+        u'Una horqueta de greda muerde la base del cristal. El vidrio se expandió contra ella y quedó retenido por la forma.',
+        'A clay fork bites the base of the crystal. The glass expanded against it and was held by form.',u'01 · horqueta')+
+  slide('02','img/engarce/serie-02.jpg',u'Balance','Balance',u'Greda de Pomaire + cristal soplado','Pomaire clay + blown crystal',
+        u'El cuerpo de vidrio descansa sobre una barra de greda. El punto de apoyo es también el punto de anclaje.',
+        'The glass body rests on a clay bar. The support point is also the anchor point.',u'02 · balance')+
+  slide('03','img/engarce/serie-03.jpg',u'Abrazo','Embrace',u'Greda de Pomaire + cristal soplado','Pomaire clay + blown crystal',
+        u'Un brazo de greda envuelve el cristal por el costado. La curva sigue la pared de vidrio sin tocar su boca.',
+        'A clay arm wraps the crystal from the side. The curve follows the glass wall without touching its mouth.',u'03 · abrazo')+
+  slide('04','img/engarce/serie-04.jpg',u'Disco','Disc',u'Greda de Pomaire + cristal soplado','Pomaire clay + blown crystal',
+        u'Un disco macizo de greda corona el cristal. El vidrio se estrecha bajo su peso y lo sostiene desde abajo.',
+        'A solid clay disc crowns the crystal. The glass narrows under its weight and holds it from below.',u'04 · disco')+
+  slide('05','img/engarce/serie-05.jpg',u'Gancho','Hook',u'Greda de Pomaire + cristal soplado','Pomaire clay + blown crystal',
+        u'Un gancho de greda entra por la base y ancla al interior. La unión es mecánica, sin adhesión química.',
+        'A clay hook enters through the base and anchors inside. The union is mechanical, with no chemical adhesion.',u'05 · gancho')+
+  slide('06','img/engarce/serie-06.jpg',u'Óvalo','Oval',u'Greda de Pomaire + cristal soplado','Pomaire clay + blown crystal',
+        u'Un óvalo de greda se hunde en el flanco del cristal. El vidrio se cerró sobre él en caliente y lo dejó preso.',
+        'A clay oval sinks into the crystal flank. The glass closed over it while hot and trapped it.',u'06 · óvalo')+
+  slide('07','img/engarce/serie-07.jpg',u'Envolvente','Wrap',u'Greda de Pomaire + cristal soplado','Pomaire clay + blown crystal',
+        u'La greda recorre el cristal en diagonal. Donde la pared es lisa el contacto es firme; donde no, se desprendería.',
+        'The clay runs across the crystal diagonally. Where the wall is smooth the contact holds; where not, it would detach.',u'07 · envolvente')+
+  slide('08','img/engarce/serie-08.jpg',u'Trípode','Tripod',u'Greda de Pomaire + cristal soplado','Pomaire clay + blown crystal',
+        u'Tres puntos de greda sostienen el cuerpo esférico. El equilibrio nace del reparto del peso, no de un pegamento.',
+        'Three clay points support the spherical body. Balance comes from weight distribution, not from glue.',u'08 · trípode')+
+  slide('09','img/engarce/serie-09.jpg',u'Flecha','Arrow',u'Greda de Pomaire + cristal soplado','Pomaire clay + blown crystal',
+        u'Una flecha de greda atraviesa el cristal de lado a lado. El calado retiene la pieza por ambas paredes.',
+        'A clay arrow crosses the crystal side to side. The perforation retains the piece through both walls.',u'09 · flecha')+
+  slide('10','img/engarce/serie-10.jpg',u'Discos texturados','Textured discs',u'Greda de Pomaire + cristal soplado','Pomaire clay + blown crystal',
+        u'Dos discos de greda con textura aprietan el cristal por el centro. La rugosidad aumenta la superficie de agarre.',
+        'Two textured clay discs grip the crystal at the center. The roughness increases the grip surface.',u'10 · discos texturados')+
+  slide('11','img/engarce/serie-11.jpg',u'Perforación','Perforation',u'Greda de Pomaire + cristal soplado','Pomaire clay + blown crystal',
+        u'El cristal atraviesa dos placas caladas y ancla al otro lado. La greda no se rompe: la abertura es menor que su masa.',
+        "The glass crosses two perforated plates and anchors on the far side. The clay doesn't break: the opening is smaller than its mass.",u'11 · perforación')),
  ficha=ficha([
   ('Serie','Series','11 piezas únicas · 2018–2019','11 unique pieces · 2018–2019'),
   ('Materialidad','Materiality','Greda de Pomaire + cristal soplado a boca','Pomaire clay + mouth-blown crystal'),
@@ -697,9 +713,16 @@ def plate_media(p):
     return '<img src="%s" alt="%s" data-cap="%s" loading="lazy">' % (p['plate'], p['plate_alt'], p['plate_cap'])
 
 for p in P:
+    p.setdefault('car_ar', '3 / 2')
+    p.setdefault('car_w', 'clamp(320px,60vw,760px)')
     p['hero_media'] = hero_media(p)
     p['plate_media'] = plate_media(p)
     html = TPL.format(**p)
+    # total de slides dinámico (Engarce tiene 11; el resto 6)
+    n_slides = html.count('aria-roledescription="slide"')
+    html = html.replace(' de 6" data-n=', ' de %d" data-n=' % n_slides)
+    html = html.replace('<span class="car-count" id="count">01 / 06</span>',
+                        '<span class="car-count" id="count">01 / %02d</span>' % n_slides)
     with io.open(p['slug'], 'w', encoding='utf-8') as f:
         f.write(html)
     print('OK  ' + p['slug'])
