@@ -98,9 +98,6 @@ h2{font-weight:200;line-height:1.3;font-size:var(--fs-h2);color:var(--tinta)}
 .split-img{margin:0;overflow:hidden;background:var(--grafito);cursor:zoom-in;position:relative}
 .split-img img{width:100%;height:100%;object-fit:cover;display:block}
 @media(max-width:820px){.split,.split.rev{grid-template-columns:1fr;min-height:0}.split .split-txt,.split.rev .split-txt{order:1;padding:3.5rem 1.5rem 2.5rem}.split .split-img,.split.rev .split-img{order:2;height:58vh}}
-.simbolo{margin:1.8rem 0 0;padding:1.6rem 1.4rem;background:var(--fondo-2);border-left:1px solid var(--cobre)}
-.simbolo img{width:min(300px,86%);height:auto;display:block}
-.simbolo figcaption{font-family:'Space Mono',monospace;font-size:var(--fs-micro);letter-spacing:.14em;color:var(--humo);text-transform:uppercase;margin-top:1rem;line-height:1.8}
 
 /* Piezas — bandas a ancho completo, apiladas. Texto alterna izq/der. */
 .band{position:relative;padding:clamp(3rem,7vh,5.5rem) 0}
@@ -156,6 +153,10 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;back
 footer .fbrand{display:inline-flex;flex-direction:column;align-items:center;gap:0.6rem;margin-bottom:1.5rem}
 footer .fbrand img{height:44px}
 footer .fbrand span{font-weight:200;letter-spacing:0.42em;text-indent:0.42em;text-transform:uppercase;color:var(--mineral);font-size:1.1rem}
+footer .social{display:flex;justify-content:center;gap:1.2rem;margin-bottom:1.4rem}
+footer .social a{color:var(--humo);transition:color .2s;display:inline-flex;min-width:44px;min-height:44px;align-items:center;justify-content:center}
+footer .social a:hover{color:var(--cobre)}
+footer .social svg{width:19px;height:19px}
 footer a{font-family:'Space Mono',monospace;font-size:var(--fs-ui);letter-spacing:0.14em;color:var(--humo);text-transform:uppercase;margin:0 0.7rem;line-height:2.4}
 footer a:hover{color:var(--cobre)}
 .legal{font-family:'Space Mono',monospace;font-size:var(--fs-micro);letter-spacing:0.08em;color:rgba(160,150,140,0.85);line-height:1.9;text-transform:uppercase;margin-top:2rem;max-width:44rem;margin-left:auto;margin-right:auto;padding:0 1.5rem}
@@ -330,14 +331,14 @@ nav.top.solid{height:56px;--bs:.6}
     </article>
 
     <article class="band">
-      <div class="shot"><img src="img/home/piece-nueva-etapa.jpg" alt="Pieza en desarrollo" data-cap="Nueva etapa · 2026" loading="lazy"></div>
+      <div class="shot"><img src="img/home/piece-nueva-etapa.jpg" alt="Pieza en desarrollo" data-cap="Nueva etapa · 2026" loading="lazy" style="object-position:center 28%"></div>
       <div class="meta">
         <span class="num">06</span>
         <div>
           <h3><span data-es>Nueva etapa</span><span data-en>New chapter</span></h3>
           <span class="yr">2026 · <span data-es>En desarrollo</span><span data-en>In development</span></span>
         </div>
-        <p class="desc"><span data-es>Nuevas piezas desde el mismo cruce material, hacia Design Week México.</span><span data-en class="block">New pieces from the same material crossing, toward Design Week México.</span></p>
+        <p class="desc"><span data-es>Nuevas piezas desde el mismo cruce material.</span><span data-en class="block">New pieces from the same material crossing.</span></p>
       </div>
     </article>
   </div>
@@ -349,10 +350,6 @@ nav.top.solid{height:56px;--bs:.6}
     <span class="idx">02 — <span data-es>El nombre</span><span data-en>The name</span></span>
     <h2><span data-es><em>Trufquén</em> es ceniza en mapuzungun.<br><span class="em">Lo que queda cuando el fuego terminó.</span></span><span data-en class="block"><em>Trufquén</em> is ash in Mapuzungun.<br><span class="em">What remains when the fire is done.</span></span></h2>
     <p class="lede"><span data-es>No la materia antes del fuego. No el fuego. La ceniza: evidencia de una transformación que no admite retorno. El nombre nació con nuestra primera pieza y desde entonces ordena el método.</span><span data-en class="block">Not the matter before the fire. Not the fire. The ash: evidence of a transformation that admits no return. The name was born with our first piece and has ordered the method ever since.</span></p>
-    <figure class="simbolo">
-      <img src="img/ahumador/pichikemenkue-horizontal.png" alt="Rombo Pichikemenküe, iconografía mapuche" loading="lazy">
-      <figcaption><span data-es>Rombo Pichikemenküe · iconografía mapuche · su proyección horizontal define la sección del Ahumador</span><span data-en>Pichikemenküe rhombus · Mapuche iconography · its horizontal projection defines the Ahumador's section</span></figcaption>
-    </figure>
   </div>
   <figure class="split-img">
     <img src="img/bg/home-nombre.jpg" alt="Vidrio incandescente en el momento del soplado" data-cap="Transformación térmica · el instante" loading="lazy">
@@ -397,15 +394,18 @@ nav.top.solid{height:56px;--bs:.6}
           <summary><span data-es>Trayectoria completa</span><span data-en>Full track record</span></summary>
           <div class="track">
             <div class="trow"><span class="y">2026</span><span class="t">Design Week México · <span data-es>seleccionado</span><span data-en>selected</span></span></div>
+            <div class="trow"><span class="y">2025</span><span class="t"><span data-es>Diplomado en Preparación, Evaluación y Gestión de Proyectos · Universidad Adolfo Ibáñez</span><span data-en>Diploma in Project Preparation, Evaluation and Management · Universidad Adolfo Ibáñez</span></span></div>
             <div class="trow"><span class="y">2019</span><span class="t">New York Now · <span data-es>finalista mejor producto revelación</span><span data-en>finalist, best breakthrough product</span></span></div>
             <div class="trow"><span class="y">2019</span><span class="t">Wanted Design · "Chilenos en NY" · <span data-es>GAM / La Moneda</span><span data-en>GAM / La Moneda</span></span></div>
             <div class="trow"><span class="y">2018</span><span class="t">BID Bienal Iberoamericana, Madrid · Matadero</span></div>
             <div class="trow"><span class="y">2018</span><span class="t">Engarce · <span data-es>individual en Centro Cultural GAM</span><span data-en>solo show at GAM Cultural Center</span></span></div>
             <div class="trow"><span class="y">2018</span><span class="t">Wanted Design, Nueva York</span></div>
             <div class="trow"><span class="y">2017</span><span class="t"><span data-es>Patente de invención · INAPI</span><span data-en>Invention patent · INAPI</span></span></div>
-            <div class="trow"><span class="y">2017</span><span class="t">Premios CLAP · CMCM · <span data-es>ganador entre 300+</span><span data-en>winner among 300+</span></span></div>
+            <div class="trow"><span class="y">2017</span><span class="t">Premios CLAP · <span data-es>mejor concepto de diseño y mejor diseño industrial miscelánea</span><span data-en>best design concept and best miscellaneous industrial design</span></span></div>
+            <div class="trow"><span class="y">2017</span><span class="t">CMCM — Cambiando Mundos Cambiando Mentes · <span data-es>categoría Hecho en Chile, ganador entre 300+ proyectos</span><span data-en>Hecho en Chile category, winner among 300+ projects</span></span></div>
             <div class="trow"><span class="y">2015</span><span class="t">Milán · "Comer con diseño" · <span data-es>Espacio Giovanni Sacchi</span><span data-en>Giovanni Sacchi Space</span></span></div>
             <div class="trow"><span class="y">2015</span><span class="t">BID-EST, Madrid · Matadero</span></div>
+            <div class="trow"><span class="y">2011–2014</span><span class="t"><span data-es>Diseñador Industrial de Mobiliario y Producto · IP INACAP</span><span data-en>Industrial Design in Furniture and Product · IP INACAP</span></span></div>
           </div>
         </details>
       </div>
@@ -426,6 +426,11 @@ nav.top.solid{height:56px;--bs:.6}
   <div class="fbrand">
     <img src="img/brand/icon-blanco.png" alt="">
     <span>Trufquén</span>
+  </div>
+  <div class="social">
+    <a href="https://instagram.com/trufquen" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.2" cy="6.8" r="1.1" fill="currentColor" stroke="none"/></svg></a>
+    <a href="https://facebook.com/Trufquen" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M13.6 21v-7.2h2.2l.3-2.6h-2.5v-1.6c0-.75.2-1.27 1.28-1.27h1.38V5.98c-.24-.03-1.06-.1-2-.1-2 0-3.36 1.22-3.36 3.46v1.93H8.6v2.6h2.32V21" fill="currentColor" stroke="none"/></svg></a>
+    <a href="https://trufquen.studio" aria-label="Trufquén Studio"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><ellipse cx="12" cy="12" rx="4.2" ry="10"/><line x1="2" y1="12" x2="22" y2="12"/></svg></a>
   </div>
   <div>
     <a href="https://trufquen.studio">trufquen.studio</a>

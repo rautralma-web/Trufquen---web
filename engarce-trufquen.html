@@ -75,6 +75,9 @@ h2{font-weight:200;line-height:1.3;font-size:var(--fs-h2)}
 .plate img{width:100%;height:clamp(380px,80vh,820px);object-fit:cover;display:block}
 .plate video{width:100%;height:auto;max-height:90vh;object-fit:contain;background:var(--grafito);display:block;margin:0 auto}
 
+.rombo{background:#000;text-align:center;padding:clamp(3rem,7vh,5rem) 0}
+.rombo img{width:min(420px,70%);margin:0 auto;display:block}
+.rombo p{font-family:'Space Mono',monospace;font-size:var(--fs-micro);letter-spacing:.14em;color:var(--humo);text-transform:uppercase;margin-top:1.4rem;line-height:1.8}
 .gal{padding:clamp(4rem,9vh,6rem) 0}
 .car{display:flex;gap:2px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding:0 clamp(1.4rem,5vw,3.5rem);cursor:grab}
 .car::-webkit-scrollbar{display:none}
@@ -122,6 +125,10 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;back
 footer .fbrand{display:inline-flex;flex-direction:column;align-items:center;gap:.6rem;margin-bottom:1.5rem}
 footer .fbrand img{height:44px}
 footer .fbrand span{font-weight:200;letter-spacing:.42em;text-indent:.42em;text-transform:uppercase;color:var(--mineral);font-size:1.1rem}
+footer .social{display:flex;justify-content:center;gap:1.2rem;margin-bottom:1.4rem}
+footer .social a{color:var(--humo);transition:color .2s;display:inline-flex;min-width:44px;min-height:44px;align-items:center;justify-content:center}
+footer .social a:hover{color:var(--cobre)}
+footer .social svg{width:19px;height:19px}
 footer a{font-family:'Space Mono',monospace;font-size:var(--fs-ui);letter-spacing:.14em;color:var(--humo);text-transform:uppercase;margin:0 .7rem;line-height:2.4}
 footer a:hover{color:var(--cobre)}
 .legal{font-family:'Space Mono',monospace;font-size:var(--fs-micro);letter-spacing:.08em;color:rgba(160,150,140,.85);line-height:1.9;text-transform:uppercase;margin-top:2rem;max-width:44rem;margin-left:auto;margin-right:auto;padding:0 1.5rem}
@@ -232,10 +239,10 @@ nav.top.solid{height:56px;--bs:.6}
     <figure role="group" aria-roledescription="slide" aria-label="09 de 11" data-n="09" data-t-es="Flecha" data-t-en="Arrow" data-s-es="Greda de Pomaire + cristal soplado" data-s-en="Pomaire clay + blown crystal" data-d-es="Una flecha de greda atraviesa el cristal de lado a lado. El calado retiene la pieza por ambas paredes." data-d-en="A clay arrow crosses the crystal side to side. The perforation retains the piece through both walls.">
       <img src="img/engarce/serie-09.jpg" alt="Flecha" data-cap="09 · flecha" loading="lazy">
     </figure>
-    <figure role="group" aria-roledescription="slide" aria-label="10 de 11" data-n="10" data-t-es="Discos texturados" data-t-en="Textured discs" data-s-es="Greda de Pomaire + cristal soplado" data-s-en="Pomaire clay + blown crystal" data-d-es="Dos discos de greda con textura aprietan el cristal por el centro. La rugosidad aumenta la superficie de agarre." data-d-en="Two textured clay discs grip the crystal at the center. The roughness increases the grip surface.">
-      <img src="img/engarce/serie-10.jpg" alt="Discos texturados" data-cap="10 · discos texturados" loading="lazy">
+    <figure role="group" aria-roledescription="slide" aria-label="10 de 11" data-n="10" data-t-es="Disco texturado" data-t-en="Textured disc" data-s-es="Greda de Pomaire + cristal soplado" data-s-en="Pomaire clay + blown crystal" data-d-es="Un disco de greda con textura envuelve el cristal por el centro. La rugosidad aumenta la superficie de agarre." data-d-en="A textured clay disc wraps the crystal at the center. The roughness increases the grip surface.">
+      <img src="img/engarce/serie-10.jpg" alt="Disco texturado" data-cap="10 · disco texturado" loading="lazy">
     </figure>
-    <figure role="group" aria-roledescription="slide" aria-label="11 de 11" data-n="11" data-t-es="Perforación" data-t-en="Perforation" data-s-es="Greda de Pomaire + cristal soplado" data-s-en="Pomaire clay + blown crystal" data-d-es="El cristal atraviesa dos placas caladas y ancla al otro lado. La greda no se rompe: la abertura es menor que su masa." data-d-en="The glass crosses two perforated plates and anchors on the far side. The clay doesn't break: the opening is smaller than its mass.">
+    <figure role="group" aria-roledescription="slide" aria-label="11 de 11" data-n="11" data-t-es="Perforación" data-t-en="Perforation" data-s-es="Greda de Pomaire + cristal soplado" data-s-en="Pomaire clay + blown crystal" data-d-es="El cristal atraviesa una placa calada que lo envuelve y ancla al otro lado. La greda no se rompe: la abertura es menor que su masa." data-d-en="The glass crosses a perforated plate that wraps it and anchors on the far side. The clay doesn't break: the opening is smaller than its mass.">
       <img src="img/engarce/serie-11.jpg" alt="Perforación" data-cap="11 · perforación" loading="lazy">
     </figure>
   </div>
@@ -274,7 +281,7 @@ nav.top.solid{height:56px;--bs:.6}
 
 <section class="band-c">
   <div class="wrap">
-    <p class="pull"><span data-es>Sé dónde y cuándo el vidrio incandescente puede expandirse contra la arcilla sin quebrarla. Ese punto no está en un manual: lo aprendí probándolo pieza por pieza, durante años, hasta poder repetirlo.</span><span data-en class="block">I know where and when incandescent glass can expand against the clay without cracking it. That point isn't in a manual: I learned it testing it piece by piece, over years, until I could repeat it.</span></p>
+    <p class="pull"><span data-es>Sabemos dónde y cuándo el vidrio incandescente puede expandirse contra la arcilla sin quebrarla. Ese punto no está en un manual: lo aprendimos probándolo pieza por pieza, durante años, hasta poder repetirlo.</span><span data-en class="block">We know where and when incandescent glass can expand against the clay without cracking it. That point isn't in a manual: we learned it testing it piece by piece, over years, until we could repeat it.</span></p>
   </div>
 </section>
 
@@ -301,6 +308,11 @@ nav.top.solid{height:56px;--bs:.6}
 
 <footer>
   <div class="fbrand"><img src="img/brand/icon-blanco.png" alt=""><span>Trufquén</span></div>
+  <div class="social">
+    <a href="https://instagram.com/trufquen" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.2" cy="6.8" r="1.1" fill="currentColor" stroke="none"/></svg></a>
+    <a href="https://facebook.com/Trufquen" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M13.6 21v-7.2h2.2l.3-2.6h-2.5v-1.6c0-.75.2-1.27 1.28-1.27h1.38V5.98c-.24-.03-1.06-.1-2-.1-2 0-3.36 1.22-3.36 3.46v1.93H8.6v2.6h2.32V21" fill="currentColor" stroke="none"/></svg></a>
+    <a href="https://trufquen.studio" aria-label="Trufquén Studio"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><ellipse cx="12" cy="12" rx="4.2" ry="10"/><line x1="2" y1="12" x2="22" y2="12"/></svg></a>
+  </div>
   <div>
     <a href="index.html"><span data-es>Inicio</span><span data-en>Home</span></a>
     <a href="https://trufquen.studio">trufquen.studio</a>
@@ -337,6 +349,14 @@ sheetEl.querySelectorAll('a').forEach(function(a){a.addEventListener('click',clo
 
 var car=document.getElementById('car'), figs=[].slice.call(car.querySelectorAll('figure')), carAt=0, snapping=false;
 function slideW(){return figs[0].getBoundingClientRect().width+2}
+function nearestIdx(){
+  var max=car.scrollWidth-car.clientWidth;
+  if(car.scrollLeft<=1) return 0;
+  if(car.scrollLeft>=max-1) return figs.length-1;
+  var cr=car.getBoundingClientRect(), mid=cr.left+cr.width/2, best=0, bd=Infinity;
+  figs.forEach(function(f,i){var fr=f.getBoundingClientRect();var d=Math.abs((fr.left+fr.width/2)-mid);if(d<bd){bd=d;best=i}});
+  return best;
+}
 function carPaint(i){
   var f=figs[i]; if(!f) return;
   var en=document.body.classList.contains('en');
@@ -351,21 +371,20 @@ function carPaint(i){
   t.classList.remove('fade'); void t.offsetWidth; t.classList.add('fade');
 }
 function snapLeft(i){var fr=figs[i].getBoundingClientRect(),cr=car.getBoundingClientRect();return car.scrollLeft+fr.left-cr.left-(cr.width-fr.width)/2}
-function carIdx(){var i=Math.round((car.scrollLeft-snapLeft(0))/slideW());return Math.max(0,Math.min(figs.length-1,i))}
 var snapT=null;
-function snapFree(){snapping=false;var i=carIdx();if(i!==carAt){carAt=i;carPaint(i)}}
+function snapFree(){snapping=false;var i=nearestIdx();if(i!==carAt){carAt=i;carPaint(i)}}
 function carTo(i,smooth){carAt=i;snapping=true;clearTimeout(snapT);snapT=setTimeout(snapFree,600);car.scrollTo({left:snapLeft(i),behavior:smooth===false?'auto':'smooth'});carPaint(i)}
 function carGo(d){carTo((carAt+d+figs.length)%figs.length)}
 car.addEventListener('scroll',function(){
   if(snapping){clearTimeout(snapT);snapT=setTimeout(snapFree,150);return}
-  var i=carIdx();
+  var i=nearestIdx();
   if(i!==carAt){carAt=i;carPaint(i)}
 });
 (function(){
   var down=false,x0=0,s0=0,moved=0;
   car.addEventListener('mousedown',function(e){down=true;moved=0;x0=e.pageX;s0=car.scrollLeft;car.classList.add('drag')});
   window.addEventListener('mouseup',function(){if(!down)return;down=false;car.classList.remove('drag');
-    carTo(carIdx())});
+    carTo(nearestIdx())});
   car.addEventListener('mousemove',function(e){if(!down)return;e.preventDefault();moved=Math.abs(e.pageX-x0);car.scrollLeft=s0-(e.pageX-x0)});
   car.addEventListener('click',function(e){if(moved>6){e.preventDefault();e.stopPropagation()}},true);
 })();

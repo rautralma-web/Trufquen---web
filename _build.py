@@ -85,6 +85,9 @@ h2{{font-weight:200;line-height:1.3;font-size:var(--fs-h2)}}
 .plate img{{width:100%;height:clamp(380px,80vh,820px);object-fit:cover;display:block}}
 .plate video{{width:100%;height:auto;max-height:90vh;object-fit:contain;background:var(--grafito);display:block;margin:0 auto}}
 
+.rombo{{background:#000;text-align:center;padding:clamp(3rem,7vh,5rem) 0}}
+.rombo img{{width:min(420px,70%);margin:0 auto;display:block}}
+.rombo p{{font-family:'Space Mono',monospace;font-size:var(--fs-micro);letter-spacing:.14em;color:var(--humo);text-transform:uppercase;margin-top:1.4rem;line-height:1.8}}
 .gal{{padding:clamp(4rem,9vh,6rem) 0}}
 .car{{display:flex;gap:2px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding:0 clamp(1.4rem,5vw,3.5rem);cursor:grab}}
 .car::-webkit-scrollbar{{display:none}}
@@ -132,6 +135,10 @@ footer::before{{content:'';position:absolute;top:0;left:0;right:0;height:1px;bac
 footer .fbrand{{display:inline-flex;flex-direction:column;align-items:center;gap:.6rem;margin-bottom:1.5rem}}
 footer .fbrand img{{height:44px}}
 footer .fbrand span{{font-weight:200;letter-spacing:.42em;text-indent:.42em;text-transform:uppercase;color:var(--mineral);font-size:1.1rem}}
+footer .social{{display:flex;justify-content:center;gap:1.2rem;margin-bottom:1.4rem}}
+footer .social a{{color:var(--humo);transition:color .2s;display:inline-flex;min-width:44px;min-height:44px;align-items:center;justify-content:center}}
+footer .social a:hover{{color:var(--cobre)}}
+footer .social svg{{width:19px;height:19px}}
 footer a{{font-family:'Space Mono',monospace;font-size:var(--fs-ui);letter-spacing:.14em;color:var(--humo);text-transform:uppercase;margin:0 .7rem;line-height:2.4}}
 footer a:hover{{color:var(--cobre)}}
 .legal{{font-family:'Space Mono',monospace;font-size:var(--fs-micro);letter-spacing:.08em;color:rgba(160,150,140,.85);line-height:1.9;text-transform:uppercase;margin-top:2rem;max-width:44rem;margin-left:auto;margin-right:auto;padding:0 1.5rem}}
@@ -203,7 +210,7 @@ nav.top.solid{{height:56px;--bs:.6}}
     <p class="lede"><span data-es>{l2_es}</span><span data-en class="block">{l2_en}</span></p>
   </div>
 </section>
-
+{rombo_section}
 <figure class="plate">
   {plate_media}
 </figure>
@@ -268,6 +275,11 @@ nav.top.solid{{height:56px;--bs:.6}}
 
 <footer>
   <div class="fbrand"><img src="img/brand/icon-blanco.png" alt=""><span>Trufquén</span></div>
+  <div class="social">
+    <a href="https://instagram.com/trufquen" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.2" cy="6.8" r="1.1" fill="currentColor" stroke="none"/></svg></a>
+    <a href="https://facebook.com/Trufquen" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M13.6 21v-7.2h2.2l.3-2.6h-2.5v-1.6c0-.75.2-1.27 1.28-1.27h1.38V5.98c-.24-.03-1.06-.1-2-.1-2 0-3.36 1.22-3.36 3.46v1.93H8.6v2.6h2.32V21" fill="currentColor" stroke="none"/></svg></a>
+    <a href="https://trufquen.studio" aria-label="Trufquén Studio"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><ellipse cx="12" cy="12" rx="4.2" ry="10"/><line x1="2" y1="12" x2="22" y2="12"/></svg></a>
+  </div>
   <div>
     <a href="index.html"><span data-es>Inicio</span><span data-en>Home</span></a>
     <a href="https://trufquen.studio">trufquen.studio</a>
@@ -304,6 +316,14 @@ sheetEl.querySelectorAll('a').forEach(function(a){{a.addEventListener('click',cl
 
 var car=document.getElementById('car'), figs=[].slice.call(car.querySelectorAll('figure')), carAt=0, snapping=false;
 function slideW(){{return figs[0].getBoundingClientRect().width+2}}
+function nearestIdx(){{
+  var max=car.scrollWidth-car.clientWidth;
+  if(car.scrollLeft<=1) return 0;
+  if(car.scrollLeft>=max-1) return figs.length-1;
+  var cr=car.getBoundingClientRect(), mid=cr.left+cr.width/2, best=0, bd=Infinity;
+  figs.forEach(function(f,i){{var fr=f.getBoundingClientRect();var d=Math.abs((fr.left+fr.width/2)-mid);if(d<bd){{bd=d;best=i}}}});
+  return best;
+}}
 function carPaint(i){{
   var f=figs[i]; if(!f) return;
   var en=document.body.classList.contains('en');
@@ -318,21 +338,20 @@ function carPaint(i){{
   t.classList.remove('fade'); void t.offsetWidth; t.classList.add('fade');
 }}
 function snapLeft(i){{var fr=figs[i].getBoundingClientRect(),cr=car.getBoundingClientRect();return car.scrollLeft+fr.left-cr.left-(cr.width-fr.width)/2}}
-function carIdx(){{var i=Math.round((car.scrollLeft-snapLeft(0))/slideW());return Math.max(0,Math.min(figs.length-1,i))}}
 var snapT=null;
-function snapFree(){{snapping=false;var i=carIdx();if(i!==carAt){{carAt=i;carPaint(i)}}}}
+function snapFree(){{snapping=false;var i=nearestIdx();if(i!==carAt){{carAt=i;carPaint(i)}}}}
 function carTo(i,smooth){{carAt=i;snapping=true;clearTimeout(snapT);snapT=setTimeout(snapFree,600);car.scrollTo({{left:snapLeft(i),behavior:smooth===false?'auto':'smooth'}});carPaint(i)}}
 function carGo(d){{carTo((carAt+d+figs.length)%figs.length)}}
 car.addEventListener('scroll',function(){{
   if(snapping){{clearTimeout(snapT);snapT=setTimeout(snapFree,150);return}}
-  var i=carIdx();
+  var i=nearestIdx();
   if(i!==carAt){{carAt=i;carPaint(i)}}
 }});
 (function(){{
   var down=false,x0=0,s0=0,moved=0;
   car.addEventListener('mousedown',function(e){{down=true;moved=0;x0=e.pageX;s0=car.scrollLeft;car.classList.add('drag')}});
   window.addEventListener('mouseup',function(){{if(!down)return;down=false;car.classList.remove('drag');
-    carTo(carIdx())}});
+    carTo(nearestIdx())}});
   car.addEventListener('mousemove',function(e){{if(!down)return;e.preventDefault();moved=Math.abs(e.pageX-x0);car.scrollLeft=s0-(e.pageX-x0)}});
   car.addEventListener('click',function(e){{if(moved>6){{e.preventDefault();e.stopPropagation()}}}},true);
 }})();
@@ -409,8 +428,8 @@ P.append(dict(
  c_a_en='Engarce proved that clay–glass cohesion is possible, controllable and producible. Eleven pieces, two crafts articulated, one technique documented. What in other hands would be a casual finding was fixed here as a repeatable method.',
  c_b_es='También abrió la agenda que sigue: greda negra, cristal de color, matricería en otros materiales. Ese horizonte no es tarea pendiente, sino la señal de un trabajo que entiende cada colección como etapa, no como cierre.',
  c_b_en="It also opened the agenda that continues: black clay, colored crystal, matrix-making in other materials. That horizon isn't unfinished business, but the sign of a practice that sees each collection as a stage, not a closing.",
- quote_es='Sé dónde y cuándo el vidrio incandescente puede expandirse contra la arcilla sin quebrarla. Ese punto no está en un manual: lo aprendí probándolo pieza por pieza, durante años, hasta poder repetirlo.',
- quote_en="I know where and when incandescent glass can expand against the clay without cracking it. That point isn't in a manual: I learned it testing it piece by piece, over years, until I could repeat it.",
+ quote_es='Sabemos dónde y cuándo el vidrio incandescente puede expandirse contra la arcilla sin quebrarla. Ese punto no está en un manual: lo aprendimos probándolo pieza por pieza, durante años, hasta poder repetirlo.',
+ quote_en="We know where and when incandescent glass can expand against the clay without cracking it. That point isn't in a manual: we learned it testing it piece by piece, over years, until we could repeat it.",
  meta='Engarce: once piezas únicas de greda de Pomaire y cristal soplado a boca. La unión es mecánica, no fusión.',
  hero='img/engarce/engarce-hero-poster.jpg', hero_video='img/engarce/engarce-hero.mp4', hero_poster='img/engarce/engarce-hero-poster.jpg', heropos='center 55%',
  car_ar='2 / 3', car_w='clamp(240px,42vw,440px)',
@@ -452,12 +471,12 @@ P.append(dict(
   slide('09','img/engarce/serie-09.jpg',u'Flecha','Arrow',u'Greda de Pomaire + cristal soplado','Pomaire clay + blown crystal',
         u'Una flecha de greda atraviesa el cristal de lado a lado. El calado retiene la pieza por ambas paredes.',
         'A clay arrow crosses the crystal side to side. The perforation retains the piece through both walls.',u'09 · flecha')+
-  slide('10','img/engarce/serie-10.jpg',u'Discos texturados','Textured discs',u'Greda de Pomaire + cristal soplado','Pomaire clay + blown crystal',
-        u'Dos discos de greda con textura aprietan el cristal por el centro. La rugosidad aumenta la superficie de agarre.',
-        'Two textured clay discs grip the crystal at the center. The roughness increases the grip surface.',u'10 · discos texturados')+
+  slide('10','img/engarce/serie-10.jpg',u'Disco texturado','Textured disc',u'Greda de Pomaire + cristal soplado','Pomaire clay + blown crystal',
+        u'Un disco de greda con textura envuelve el cristal por el centro. La rugosidad aumenta la superficie de agarre.',
+        'A textured clay disc wraps the crystal at the center. The roughness increases the grip surface.',u'10 · disco texturado')+
   slide('11','img/engarce/serie-11.jpg',u'Perforación','Perforation',u'Greda de Pomaire + cristal soplado','Pomaire clay + blown crystal',
-        u'El cristal atraviesa dos placas caladas y ancla al otro lado. La greda no se rompe: la abertura es menor que su masa.',
-        "The glass crosses two perforated plates and anchors on the far side. The clay doesn't break: the opening is smaller than its mass.",u'11 · perforación')),
+        u'El cristal atraviesa una placa calada que lo envuelve y ancla al otro lado. La greda no se rompe: la abertura es menor que su masa.',
+        "The glass crosses a perforated plate that wraps it and anchors on the far side. The clay doesn't break: the opening is smaller than its mass.",u'11 · perforación')),
  ficha=ficha([
   ('Serie','Series','11 piezas únicas · 2018–2019','11 unique pieces · 2018–2019'),
   ('Materialidad','Materiality','Greda de Pomaire + cristal soplado a boca','Pomaire clay + mouth-blown crystal'),
@@ -474,8 +493,8 @@ P.append(dict(
 # ---------- TRALMA
 P.append(dict(
  slug='tralma-trufquen.html', title='Tralma',
- l2_es='Lo que en 2019 se planteó como una vinculación estable entre alfarería de Pomaire y soplado a boca, en 2020 se resolvió como investigación de contingencia. CristalArt —heredera de la Cristalería Yungay, tradición sin plomo desde 1922— era la última empresa del país capaz de soplar a escala de proyecto. Su cierre nos dejó sin el oficio que sostenía la técnica, y obligó a rediseñar el proceso sin abandonar la tesis.',
- l2_en="What in 2019 was proposed as a stable link between Pomaire pottery and mouth-blowing was resolved in 2020 as contingency research. CristalArt —heir to Cristalería Yungay, a lead-free tradition since 1922— was the country's last company able to blow at project scale. Its closure left us without the craft that sustained the technique, and forced a redesign of the process without abandoning the thesis.",
+ l2_es='Lo que en 2019 se planteó como una vinculación estable entre alfarería de Pomaire y soplado a boca, en 2020 se resolvió como investigación de contingencia. CristalArt era la última empresa del país capaz de soplar a escala de proyecto. Su cierre nos dejó sin el oficio que sostenía la técnica, y obligó a rediseñar el proceso sin abandonar la tesis.',
+ l2_en="What in 2019 was proposed as a stable link between Pomaire pottery and mouth-blowing was resolved in 2020 as contingency research. CristalArt was the country's last company able to blow at project scale. Its closure left us without the craft that sustained the technique, and forced a redesign of the process without abandoning the thesis.",
  c_idx_es='Alcance',
  c_idx_en='Scope',
  c_t_es='Un resultado logrado<br>bajo presión real',
@@ -494,8 +513,8 @@ P.append(dict(
  idx_es='2020 — Cristalería', idx_en='2020 — Glassware',
  t_es='A mitad de camino cerró<br>la última cristalería <span class="em">del país.</span>',
  t_en='Halfway through, the country\'s<br>last glassworks <span class="em">closed.</span>',
- l_es='En vez de abandonar la hipótesis, le buscamos un sustrato nuevo: borosilicato en lugar de cristal sonoro. La distancia entre lo postulado y lo ejecutado es, en sí misma, el hallazgo.',
- l_en='Instead of abandoning the hypothesis, we found it a new substrate: borosilicate instead of sonorous crystal. The distance between what was proposed and what was executed is, in itself, the finding.',
+ l_es='En vez de abandonar la hipótesis, le buscamos un sustrato nuevo: borosilicato en lugar de cristal sonoro. La distancia entre lo postulado y lo ejecutado es, en sí misma, el hallazgo. Sobre ese sustrato controlamos también la superficie: piezas lisas y piezas con textura, impresa en el molde, no por condensación.',
+ l_en='Instead of abandoning the hypothesis, we found it a new substrate: borosilicate instead of sonorous crystal. The distance between what was proposed and what was executed is, in itself, the finding. On that substrate we also control the surface: smooth pieces and textured ones, printed by the mould, not by condensation.',
  plate='img/tralma/copa-giro-poster.jpg', plate_video='img/tralma/copa-giro.mp4', plate_alt='Copa Tralma girando: borosilicato sobre base de greda colada', plate_cap='La copa terminada',
  g_es='Producción real, no render', g_en='Real production, not a render',
  slides=(
@@ -508,12 +527,12 @@ P.append(dict(
   slide('03','img/tralma/tralma-03-vino.jpg',u'Con vino',u'With wine',u'La pieza en uso','The piece in use',
         u'Llena, la copa se lee entera: el vino ocupa el vidrio y la greda lo sostiene desde abajo. El peso equilibra la mano.',
         u'Filled, the cup reads whole: the wine occupies the glass and the clay holds it from below. The weight balances the hand.',u'03 · con vino')+
-  slide('04','img/tralma/tralma-04-copper.jpg',u'Base de cobre',u'Copper base',u'Variante de terminación','Finish variant',
-        u'Una misma geometría admite otra materialidad en la base. La forma se mantiene; cambia el cuerpo que la sostiene.',
-        u'The same geometry admits another materiality at the base. The form holds; what changes is the body supporting it.',u'04 · base de cobre')+
-  slide('05','img/tralma/tralma-05-greda.jpg',u'Frontera visible',u'Visible border',u'Greda y vidrio','Clay and glass',
-        u'Greda y vidrio conservan una línea nítida entre sí. Esa frontera es la prueba de que la unión es mecánica.',
-        u'Clay and glass keep a sharp line between them. That border is the proof that the union is mechanical.',u'05 · frontera visible')+
+  slide('04','img/tralma/tralma-04-textura.jpg',u'Textura en el vidrio',u'Texture in the glass',u'Borosilicato + greda colada','Borosilicate + cast clay',
+        u'Logramos imprimir textura en el borosilicato sin perder transparencia. No es condensación: es la textura impresa en el molde. La base es greda, no metal.',
+        u"We achieved texture on the borosilicate without losing transparency. It isn't condensation: it's texture printed by the mould. The base is clay, not metal.",u'04 · textura en el vidrio')+
+  slide('05','img/tralma/tralma-05-liso-textura.jpg',u'Lisas y con textura',u'Smooth and textured',u'Misma línea, dos terminaciones','Same line, two finishes',
+        u'La misma copa admite dos terminaciones de superficie: lisa o texturada. Controlamos ambas sobre la misma base de greda colada.',
+        u'The same cup admits two surface finishes: smooth or textured. We control both on the same cast clay base.',u'05 · lisas y con textura')+
   slide('06','img/tralma/tralma-06-uso.jpg',u'Condensación',u'Condensation',u'Superficie fría','Cold surface',
         u'El vidrio se escarcha y la greda no. Dos materiales, dos comportamientos térmicos, un mismo cuerpo en la mano.',
         u'The glass frosts over and the clay does not. Two materials, two thermal behaviors, one body in the hand.',u'06 · condensación')),
@@ -537,8 +556,8 @@ P.append(dict(
  c_idx_en='Scope',
  c_t_es='Lo que la luz<br>dejó instalado',
  c_t_en='What the light<br>left in place',
- c_a_es='Aquí el estudio aprendió a tratar la greda como material con comportamiento óptico, no solo estructural. Entender cuánta luz atraviesa un espesor de arcilla es lo que después permitió leer la frontera greda–vidrio en las otras líneas.',
- c_a_en='Here the studio learned to treat clay as a material with optical behavior, not just structural. Understanding how much light passes through a thickness of clay is what later made it possible to read the clay–glass border in the other lines.',
+ c_a_es='Esta línea fijó también una particularidad del estudio: unir en un mismo objeto distintas materialidades que el territorio chileno dispone —greda, cobre, vidrio—. Entender cuánta luz atraviesa un espesor de arcilla es lo que después permitió leer la frontera greda–vidrio en las otras líneas.',
+ c_a_en='This line also fixed a particularity of the studio: joining in a single object different materialities available in Chilean territory —clay, copper, glass. Understanding how much light passes through a thickness of clay is what later made it possible to read the clay–glass border in the other lines.',
  c_b_es='Es también la línea más doméstica. No exige pedestal ni vitrina: se cuelga sobre una mesa y se enciende todos los días. La prueba de que el sistema resiste el uso cotidiano, no solo la exhibición.',
  c_b_en="It's also the most domestic line. It demands no pedestal or vitrine: it hangs over a table and is switched on every day. Proof that the system withstands daily use, not just exhibition.",
  quote_es='La greda apagada es tierra: mate, porosa, fría. Encendida se vuelve un cuerpo cálido que retiene la luz en su espesor antes de soltarla.',
@@ -546,8 +565,8 @@ P.append(dict(
  meta='Luminarias Trufquén: piezas de iluminación donde la greda deja de contener la luz y pasa a filtrarla.',
  hero='img/luminarias/luminarias-hero-poster.jpg', hero_video='img/luminarias/luminarias-hero.mp4', hero_poster='img/luminarias/luminarias-hero-poster.jpg', heropos='center 50%',
  h1_es='Luminarias', h1_en='Lighting',
- hp_es='La greda deja de contener la luz: <span class="em">la filtra.</span> El espesor y el calado deciden cuánta sale.',
- hp_en='The clay stops containing light: <span class="em">it filters it.</span> Thickness and perforation decide how much escapes.',
+ hp_es='La greda es la protagonista: torneada, calada, colada. Aquí, además, <span class="em">deja de contener la luz y pasa a filtrarla.</span>',
+ hp_en='Clay is the protagonist: turned, perforated, cast. Here, it also <span class="em">stops containing light and starts filtering it.</span>',
  idx_es='2018 — Serie', idx_en='2018 — Series',
  t_es='Lo que define la pieza<br>no es la greda que está:<br><span class="em">es la que se quitó.</span>',
  t_en="What defines the piece<br>isn't the clay that's there:<br><span class=\"em\">it's the clay removed.</span>",
@@ -556,18 +575,18 @@ P.append(dict(
  plate='img/luminarias/plate-calada.jpg', plate_alt='Luminaria esférica encendida', plate_cap='Cuerpo de greda · collar de cobre',
  g_es='Una familia, varias escalas', g_en='One family, several scales',
  slides=(
-  slide('01','img/luminarias/lum-01-esfera.jpg',u'Esfera',u'Sphere',u'Sobremesa · greda torneada','Table lamp · turned clay',
-        u'La boca abierta dirige la luz hacia un costado. Las tres patas nacen del mismo cuerpo, no se agregan después.',
-        u'The open mouth directs light to one side. The three feet are born from the same body, not added afterward.',u'01 · esfera')+
+  slide('01','img/luminarias/lum-01-mesa.jpg',u'En el taller',u'In the workshop',u'Torno · greda cruda','Wheel · raw clay',
+        u'La esfera aún en el taller, junto a la greda cruda que la origina. El contexto del torno importa tanto como la pieza.',
+        u'The sphere still in the workshop, next to the raw clay that originates it. The context of the wheel matters as much as the piece.',u'01 · en el taller')+
   slide('02','img/luminarias/lum-02-racimo.jpg',u'Racimo',u'Cluster',u'Colgantes · remate de cobre','Pendants · copper collar',
         u'Tres cuerpos suspendidos a distinta altura. El cobre remata la boca superior y sostiene el cable textil.',
         u'Three bodies suspended at different heights. Copper finishes the upper mouth and holds the textile cable.',u'02 · racimo')+
   slide('03','img/luminarias/lum-03-calada.jpg',u'Calada',u'Openwork',u'Greda calada + vidrio','Perforated clay + glass',
         u'Cada calado aloja una pieza de vidrio soplado. Apagada se lee como relieve; encendida, cada abertura proyecta su forma.',
         u'Each opening holds a piece of blown glass. Off, it reads as relief; lit, each opening projects its shape.',u'03 · calada')+
-  slide('04','img/luminarias/lum-04-colgante.jpg',u'Colgante estriado',u'Ribbed pendant',u'Textura al torno','Wheel-cut texture',
-        u'La estría se corta en el torno mientras la greda gira. La luz cae al piso y la superficie retiene el gesto de la herramienta.',
-        u"The ribbing is cut on the wheel while the clay turns. Light falls to the floor and the surface keeps the tool's gesture.",u'04 · colgante estriado')+
+  slide('04','img/luminarias/lum-04-calada-encendida.jpg',u'Calada, encendida',u'Openwork, lit',u'Misma pieza en luz','Same piece in light',
+        u'La misma pieza de la lámina anterior, encendida: el calado deja de ser relieve y pasa a proyectar su propio dibujo de luz.',
+        u'The same piece from the previous plate, lit: the openwork stops being relief and starts projecting its own pattern of light.',u'04 · calada encendida')+
   slide('05','img/luminarias/lum-05-ovalo.jpg',u'Óvalo',u'Oval',u'Volumen cerrado','Closed volume',
         u'Un solo cuerpo lenticular con la boca desplazada. La greda se lee como piedra: densa, mate, sin brillo añadido.',
         u'A single lenticular body with the mouth offset. The clay reads as stone: dense, matte, with no added gloss.',u'05 · óvalo')+
@@ -594,8 +613,8 @@ P.append(dict(
  c_t_en='Three findings that still<br>govern the studio',
  c_a_es='La cohesión es posible, y es mecánica: el vidrio queda tomado por forma —perforación, relieve o anillo—. La temperatura es una variable de diseño, no una condición del taller: el diferencial térmico define qué formas resisten.',
  c_a_en='Cohesion is possible, and it is mechanical: the glass is held by form —perforation, relief or ring—. Temperature is a design variable, not a workshop condition: the thermal differential defines which forms hold.',
- c_b_es='Y la greda funciona como matriz: es molde y estructura a la vez. Esa doble función es lo que permitió, después, soplar más de un tipo de vidrio contra ella. Todo lo que vino después está construido sobre estas tres frases.',
- c_b_en='And clay works as a matrix: mold and structure at once. That double function is what later made it possible to blow more than one type of glass against it. Everything that came after is built on these three sentences.',
+ c_b_es='Y la greda funciona como matriz: es molde y estructura a la vez. Esa doble función es lo que permitió, después, soplar más de un tipo de vidrio contra ella. Todo lo que vino después está construido sobre estas tres frases. Sabemos qué espesores, qué temperaturas y qué puntos de cocción y templado hacen que esto funcione pieza a pieza. Ese conocimiento es nuestro, se acumuló probeta por probeta, y no se transfiere con mirar una fotografía.',
+ c_b_en="And clay works as a matrix: mold and structure at once. That double function is what later made it possible to blow more than one type of glass against it. Everything that came after is built on these three sentences. We know what thicknesses, what temperatures, and what firing and tempering points make this work piece by piece. That knowledge is ours, built up test piece by test piece, and it doesn't transfer by looking at a photograph.",
  quote_es='Sin las probetas no hay sistema: hay suerte. El archivo no es un recuerdo, es el procedimiento — cada material nuevo vuelve a pasar por aquí antes de convertirse en pieza.',
  quote_en="Without the test pieces there is no system: there is luck. The archive isn't a memory, it's the procedure — every new material passes through here again before becoming a piece.",
  meta='Probetas Trufquén: el archivo de ensayo que probó que la cohesión greda–vidrio es posible. Fondart Nacional, folio 406861.',
@@ -609,26 +628,32 @@ P.append(dict(
  l_es='Cada probeta es una variable movida a propósito: espesor de pared, geometría del calado, tamaño de la abertura, momento térmico del vidrio. La única forma de saberlo era hacerlo y mirar.',
  l_en="Each test piece is one variable moved on purpose: wall thickness, perforation geometry, opening size, the glass's thermal moment. The only way to know was to do it and look.",
  plate='img/probetas/plate-variables.jpg', plate_alt='Vidrio incandescente soplado dentro de la greda calada', plate_cap='El ensayo en curso',
- g_es='Seis ensayos del conjunto', g_en='Six trials from the set',
+ g_es='Ocho ensayos del conjunto', g_en='Eight trials from the set',
  slides=(
   slide('01','img/probetas/pr-01-quiebre.jpg',u'Quiebre por temperatura',u'Thermal break',u'Ensayo fallido','Failed trial',
         u'El vidrio se contrajo más rápido que la greda y abrió la pared. Este quiebre fijó el límite que había que respetar.',
         u'The glass contracted faster than the clay and split the wall. This break set the limit we had to respect.',u'PR·01 · quiebre')+
-  slide('02','img/probetas/pr-02-anillo.jpg',u'Anillo de vidrio',u'Glass ring',u'Vidrio contenido','Contained glass',
-        u'El vidrio recorre el interior y asoma por el labio. La greda lo contiene sin que exista adhesión química entre ambos.',
-        u'The glass runs along the interior and emerges at the lip. The clay contains it with no chemical adhesion between them.',u'PR·02 · anillo')+
+  slide('02','img/probetas/pr-02-quiebre-detalle.jpg',u'Quiebre, detalle',u'Thermal break, detail',u'Vidrio fracturado','Fractured glass',
+        u'El borde de vidrio quedó dentado dentro del cuerpo de greda. El registro del fallo es tan útil como el de un ensayo exitoso.',
+        u'The glass edge was left jagged inside the clay body. The record of a failure is as useful as that of a successful trial.',u'PR·02 · quiebre, detalle')+
   slide('03','img/probetas/pr-03-macro.jpg',u'La frontera',u'The border',u'Macro del contacto','Contact macro',
         u'El detalle que lo probó todo: greda y vidrio comparten un borde nítido. No hay masa única — la unión es mecánica.',
         u'The detail that proved everything: clay and glass share a sharp edge. There is no single mass — the union is mechanical.',u'PR·03 · la frontera')+
-  slide('04','img/probetas/pr-04-pocillo.jpg',u'Vidrio en la grieta',u'Glass in the crack',u'Greda oscura','Dark clay',
+  slide('04','img/probetas/pr-04-grieta.jpg',u'Grieta controlada',u'Controlled crack',u'Vidrio ámbar alojado','Amber glass lodged inside',
         u'La grieta deja ver el vidrio ámbar alojado dentro. Lo que en otra pieza sería falla, aquí quedó documentado como dato.',
-        u'The crack reveals the amber glass lodged inside. What would be a defect elsewhere was documented here as data.',u'PR·04 · vidrio en la grieta')+
-  slide('05','img/probetas/pr-05-grieta.jpg',u'Grieta controlada',u'Controlled crack',u'Registro en taller','Workshop record',
-        u'Aprendimos a anticipar dónde cedería la pared. La grieta dejó de ser accidente y pasó a ser una variable del diseño.',
-        u'We learned to anticipate where the wall would give. The crack stopped being an accident and became a design variable.',u'PR·05 · grieta controlada')+
-  slide('06','img/probetas/pr-06-calce.jpg',u'Calce',u'The fit',u'Vidrio alojado en el calado','Glass set in the perforation',
-        u'Cada perforación aloja una lente de vidrio. El calado no es ornamento: es el sistema de anclaje de toda la pieza.',
-        u'Each perforation holds a glass lens. The openwork is not ornament: it is the anchoring system of the whole piece.',u'PR·06 · calce')),
+        u'The crack reveals the amber glass lodged inside. What would be a defect elsewhere was documented here as data.',u'PR·04 · grieta controlada')+
+  slide('05','img/probetas/pr-05-mano.jpg',u'Prueba en mano',u'Trial in hand',u'Verificación directa','Direct verification',
+        u'Cada probeta se revisa también en la mano, no solo en el banco. El peso y el calce se confirman con el cuerpo, no solo con la vista.',
+        u'Each test piece is also checked by hand, not only on the bench. Weight and fit are confirmed with the body, not just by sight.',u'PR·05 · prueba en mano')+
+  slide('06','img/probetas/pr-06-individualidad.jpg',u'Grieta que individualiza',u'Individualizing crack',u'Vidrio ámbar visible','Amber glass visible',
+        u'La misma grieta controlada, en un cuerpo más alto: cada probeta se agrieta distinto y esa diferencia pasó a leerse como identidad, no como defecto.',
+        u'The same controlled crack, in a taller body: each test piece cracks differently, and that difference came to read as identity, not defect.',u'PR·06 · grieta que individualiza')+
+  slide('07','img/probetas/pr-07-fallida.jpg',u'Probeta fallida',u'Failed test piece',u'Vidrio fracturado en banco','Glass shattered on the bench',
+        u'El vidrio se fracturó por completo al separarse de la greda. Un fallo total también delimita el rango que sí funciona.',
+        u'The glass shattered completely when it separated from the clay. A total failure also delimits the range that does work.',u'PR·07 · probeta fallida')+
+  slide('08','img/probetas/pr-08-calce.jpg',u'Fuente por calce',u'Vessel by fit',u'Vidrio alojado en el calado','Glass set in the perforation',
+        u'El vidrio se aloja en el calado de la fuente sin adhesión química. El calado no es ornamento: es el sistema de anclaje de toda la pieza.',
+        u'The glass sits in the vessel\'s openwork with no chemical adhesion. The openwork is not ornament: it is the anchoring system of the whole piece.',u'PR·08 · fuente por calce')),
  ficha=ficha([
   ('Etapa','Stage','Investigación 2017 · Fondart Nacional, folio 406861','Research 2017 · National Fondart, folio 406861'),
   ('Materiales','Materials','Greda roja de Pomaire · cristal sonoro · borosilicato','Pomaire red clay · sonorous crystal · borosilicate'),
@@ -641,6 +666,12 @@ P.append(dict(
 # ---------- AHUMADOR  (solo 4 fotos reales -> 2 marcadores)
 P.append(dict(
  slug='ahumador-trufquen.html', title='Ahumador',
+ rombo_section='''<section class="rombo">
+  <div class="wrap narrow">
+    <img src="img/ahumador/pichikemenkue-blanco.png" alt="Rombo Pichikemenküe, iconografía mapuche" loading="lazy">
+    <p><span data-es>Rombo Pichikemenküe · iconografía mapuche · su proyección horizontal define la sección constructiva del Ahumador</span><span data-en>Pichikemenküe rhombus · Mapuche iconography · its horizontal projection defines the smoking vessel's constructive section</span></p>
+  </div>
+</section>''',
  l2_es='Astillas de madera en la base, alimento sobre parrilla de acero, y una cámara de greda que concentra humo y calor en un solo gesto. La forma nace de una matriz geométrica de la iconografía mapuche —el rombo del Pichikemenküe— convertida en sección constructiva: dos cuerpos que calzan mediante una pestaña perimetral, sellando la cámara sin herrajes ni juntas sintéticas.',
  l2_en='Wood chips at the base, food on a steel grill, and a clay chamber that concentrates smoke and heat in a single gesture. The form is born from a geometric matrix of Mapuche iconography —the Pichikemenküe rhombus— turned into a constructive section: two bodies fitting through a perimeter flange, sealing the chamber without hardware or synthetic joints.',
  c_idx_es='Probado en cocina profesional',
@@ -653,12 +684,12 @@ P.append(dict(
  c_b_en="A second validation in real service confirmed the smoked aroma and flavor in direct-fire preparation, with a size rated appropriate for service kitchens. The piece wasn't tested in a lab: it was tested by cooking.",
  quote_es='La geometría que previene fisuras en la cocción es la misma que define el carácter del objeto. El nombre del estudio nace aquí: trufquén, ceniza en mapuzungun.',
  quote_en="The geometry that prevents cracking during firing is the same one that defines the object's character. The studio's name is born here: trufquén, ash in Mapuzungun.",
- meta='Ahumador Trufquén: el artefacto de greda de Pomaire que origina el estudio. Cocción y ahumado en un solo objeto. Invención registrada en INAPI.',
+ meta='Ahumador Trufquén: el artefacto de greda de Pomaire que origina el estudio. Cocción y ahumado en un solo objeto. Patente de invención registrada en INAPI.',
  hero='img/ahumador/ahumador-hero-poster.jpg', hero_video='img/ahumador/ahumador-hero.mp4', hero_poster='img/ahumador/ahumador-hero-poster.jpg', heropos='center 50%',
  h1_es='Ahumador', h1_en='Smoking vessel',
  hp_es='Cocina y ahúma en un solo cuerpo de greda, sobre la llama de una cocina convencional. <span class="em">La invención que origina el estudio.</span>',
  hp_en='Cooks and smokes in a single clay body, over a conventional stove flame. <span class="em">The invention that originates the studio.</span>',
- idx_es='2014 — Patente INAPI', idx_en='2014 — INAPI patent',
+ idx_es='2014 — Patente de invención INAPI', idx_en='2014 — INAPI invention patent',
  t_es='Ahumar dentro de la cocina,<br><span class="em">no fuera de ella.</span>',
  t_en='Smoking inside the kitchen,<br><span class="em">not outside it.</span>',
  l_es='Hasta este artefacto, ahumar exigía cámaras externas o esencias artificiales. El control vuelve al cocinero: intensidad, color y punto se regulan en el mismo objeto.',
@@ -666,26 +697,24 @@ P.append(dict(
  plate='img/ahumador/plate-torno.jpg', plate_alt='Greda levantada al torno en el taller alfarero', plate_cap='La greda se levanta al torno · taller alfarero',
  g_es='La misma greda, dos estados', g_en='The same clay, two states',
  slides=(
-  slide('01','img/ahumador/ahumador-01-greda.jpg',u'Greda cruda',u'Raw clay',u'Antes del horno','Before the kiln',
-        u'La pieza recién levantada, todavía húmeda. En este estado la greda admite corte y textura; después del fuego ya no.',
-        u'The piece just raised, still damp. In this state the clay accepts cutting and texture; after the fire it no longer does.',u'01 · greda cruda')+
-  slide('02','img/ahumador/ahumador-02-corte.jpg',u'El corte',u'The cut',u'Trabajo en verde','Green-state work',
-        u'El perfil se define a mano sobre la pieza en verde. Cada corte decide cómo asentará la tapa sobre el cuerpo.',
-        u'The profile is defined by hand on the green piece. Each cut decides how the lid will seat on the body.',u'02 · el corte')+
-  slide('03','img/ahumador/ahumador-03-taller.jpg',u'En el taller',u'In the workshop',u'Secado previo a cocción','Drying before firing',
-        u'El conjunto completo esperando el horno. Las piezas se secan juntas para que se contraigan a un mismo ritmo.',
-        u'The complete set awaiting the kiln. The pieces dry together so they shrink at the same rate.',u'03 · en el taller')+
-  slide('04','img/ahumador/ahumador-04-natural.jpg',u'Greda natural',u'Natural clay',u'Sin esmaltar','Unglazed',
+  slide('01','img/ahumador/ahu-01-esmaltado.jpg',u'Terminación esmaltada',u'Glazed finish',u'Set completo · esmalte negro','Complete set · black glaze',
+        u'El conjunto terminado en esmalte cerámico negro: ahumador, base y fuente de corte comparten la misma familia de formas.',
+        u'The set finished in black ceramic glaze: smoking vessel, base and cutting vessel share the same family of forms.',u'01 · terminación esmaltada')+
+  slide('02','img/ahumador/ahu-02-greda-cruda.jpg',u'Greda cruda',u'Raw clay',u'Fuente de corte · recién levantada','Cutting vessel · just raised',
+        u'La fuente de corte recién levantada al torno, todavía húmeda. En este estado la greda admite corte y textura; después del fuego ya no.',
+        u'The cutting vessel just raised on the wheel, still damp. In this state the clay accepts cutting and texture; after the fire it no longer does.',u'02 · greda cruda')+
+  slide('03','img/ahumador/ahu-03-natural-taller.jpg',u'En el taller',u'In the workshop',u'Terminación natural, sin esmaltar','Natural finish, unglazed',
+        u'El conjunto sin esmaltar, secándose al aire libre sobre troncos del taller. El color es el de la greda, no un recubrimiento.',
+        u'The unglazed set, drying outdoors on workshop logs. The color is the clay\'s own, not a coating.',u'03 · en el taller')+
+  slide('04','img/ahumador/ahu-04-corte.jpg',u'El corte',u'The cut',u'Trabajo en verde','Green-state work',
+        u'El perfil de la fuente se define a mano sobre la pieza en verde. Cada corte decide cómo calzará el conjunto.',
+        u'The vessel\'s profile is defined by hand on the green piece. Each cut decides how the set will fit together.',u'04 · el corte')+
+  slide('05','img/ahumador/ahu-05-kultrun.jpg',u'Fuente de corte',u'Cutting vessel',u'Geometría del conjunto','Set geometry',
+        u'Vista superior de la fuente, aún en greda cruda. Repite la sección del ahumador a otra escala: el sistema comparte una sola familia de formas.',
+        u"Top view of the vessel, still raw clay. It repeats the smoking vessel's section at another scale: the whole system shares a single family of forms.",u'05 · fuente de corte')+
+  slide('06','img/ahumador/ahu-06-producto.jpg',u'Greda natural',u'Natural clay',u'Sin esmaltar · foto de producto','Unglazed · product photo',
         u'Terminación natural: la greda queda a la vista, sellada por bruñido. El color es el del material, no un recubrimiento.',
-        u"Natural finish: the clay stays exposed, sealed by burnishing. The color is the material's own, not a coating.",u'04 · greda natural')+
-  slide('05','img/ahumador/ahumador-05-kultrun.jpg',u'Fuente de corte',u'Cutting vessel',u'Geometría del conjunto','Set geometry',
-        u'La fuente repite la sección del ahumador a otra escala. El sistema completo comparte una sola familia de formas.',
-        u"The vessel repeats the smoker's section at another scale. The whole system shares a single family of forms.",u'05 · fuente de corte')+
-  slide('06','img/ahumador/pichikemenkue-horizontal.png',u'Geometría de origen','Origin geometry',
-        u'Rombo Pichikemenküe','Pichikemenküe rhombus',
-        u'El rombo Pichikemenküe, iconografía mapuche. Su proyección horizontal define la sección constructiva del ahumador.',
-        'The Pichikemenküe rhombus, Mapuche iconography. Its horizontal projection defines the constructive section of the smoking vessel.',
-        u'Rombo Pichikemenküe — iconografía mapuche','sym')),
+        u"Natural finish: the clay stays exposed, sealed by burnishing. The color is the material's own, not a coating.",u'06 · greda natural')),
  ficha=ficha([
   ('Pieza','Piece','Pieza 0 · 2014 · origen del estudio','Piece 0 · 2014 · origin of the studio'),
   ('Material','Material','Greda de Pomaire. Verificada libre de plomo (ICP-OES).','Pomaire clay. Verified lead-free (ICP-OES).'),
@@ -715,6 +744,7 @@ def plate_media(p):
 for p in P:
     p.setdefault('car_ar', '3 / 2')
     p.setdefault('car_w', 'clamp(320px,60vw,760px)')
+    p.setdefault('rombo_section', '')
     p['hero_media'] = hero_media(p)
     p['plate_media'] = plate_media(p)
     html = TPL.format(**p)

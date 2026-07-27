@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Ahumador — Trufquén</title>
-<meta name="description" content="Ahumador Trufquén: el artefacto de greda de Pomaire que origina el estudio. Cocción y ahumado en un solo objeto. Invención registrada en INAPI.">
+<meta name="description" content="Ahumador Trufquén: el artefacto de greda de Pomaire que origina el estudio. Cocción y ahumado en un solo objeto. Patente de invención registrada en INAPI.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@125,100..900&family=Lato:wght@200;300;400&family=Space+Mono:wght@400&display=swap" rel="stylesheet">
@@ -75,6 +75,9 @@ h2{font-weight:200;line-height:1.3;font-size:var(--fs-h2)}
 .plate img{width:100%;height:clamp(380px,80vh,820px);object-fit:cover;display:block}
 .plate video{width:100%;height:auto;max-height:90vh;object-fit:contain;background:var(--grafito);display:block;margin:0 auto}
 
+.rombo{background:#000;text-align:center;padding:clamp(3rem,7vh,5rem) 0}
+.rombo img{width:min(420px,70%);margin:0 auto;display:block}
+.rombo p{font-family:'Space Mono',monospace;font-size:var(--fs-micro);letter-spacing:.14em;color:var(--humo);text-transform:uppercase;margin-top:1.4rem;line-height:1.8}
 .gal{padding:clamp(4rem,9vh,6rem) 0}
 .car{display:flex;gap:2px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding:0 clamp(1.4rem,5vw,3.5rem);cursor:grab}
 .car::-webkit-scrollbar{display:none}
@@ -122,6 +125,10 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;back
 footer .fbrand{display:inline-flex;flex-direction:column;align-items:center;gap:.6rem;margin-bottom:1.5rem}
 footer .fbrand img{height:44px}
 footer .fbrand span{font-weight:200;letter-spacing:.42em;text-indent:.42em;text-transform:uppercase;color:var(--mineral);font-size:1.1rem}
+footer .social{display:flex;justify-content:center;gap:1.2rem;margin-bottom:1.4rem}
+footer .social a{color:var(--humo);transition:color .2s;display:inline-flex;min-width:44px;min-height:44px;align-items:center;justify-content:center}
+footer .social a:hover{color:var(--cobre)}
+footer .social svg{width:19px;height:19px}
 footer a{font-family:'Space Mono',monospace;font-size:var(--fs-ui);letter-spacing:.14em;color:var(--humo);text-transform:uppercase;margin:0 .7rem;line-height:2.4}
 footer a:hover{color:var(--cobre)}
 .legal{font-family:'Space Mono',monospace;font-size:var(--fs-micro);letter-spacing:.08em;color:rgba(160,150,140,.85);line-height:1.9;text-transform:uppercase;margin-top:2rem;max-width:44rem;margin-left:auto;margin-right:auto;padding:0 1.5rem}
@@ -187,13 +194,18 @@ nav.top.solid{height:56px;--bs:.6}
 
 <section>
   <div class="wrap narrow">
-    <span class="idx"><span data-es>2014 — Patente INAPI</span><span data-en>2014 — INAPI patent</span></span>
+    <span class="idx"><span data-es>2014 — Patente de invención INAPI</span><span data-en>2014 — INAPI invention patent</span></span>
     <h2><span data-es>Ahumar dentro de la cocina,<br><span class="em">no fuera de ella.</span></span><span data-en class="block">Smoking inside the kitchen,<br><span class="em">not outside it.</span></span></h2>
     <p class="lede"><span data-es>Hasta este artefacto, ahumar exigía cámaras externas o esencias artificiales. El control vuelve al cocinero: intensidad, color y punto se regulan en el mismo objeto.</span><span data-en class="block">Until this device, smoking required external chambers or artificial essences. Control returns to the cook: intensity, color and doneness are regulated in the same object.</span></p>
     <p class="lede"><span data-es>Astillas de madera en la base, alimento sobre parrilla de acero, y una cámara de greda que concentra humo y calor en un solo gesto. La forma nace de una matriz geométrica de la iconografía mapuche —el rombo del Pichikemenküe— convertida en sección constructiva: dos cuerpos que calzan mediante una pestaña perimetral, sellando la cámara sin herrajes ni juntas sintéticas.</span><span data-en class="block">Wood chips at the base, food on a steel grill, and a clay chamber that concentrates smoke and heat in a single gesture. The form is born from a geometric matrix of Mapuche iconography —the Pichikemenküe rhombus— turned into a constructive section: two bodies fitting through a perimeter flange, sealing the chamber without hardware or synthetic joints.</span></p>
   </div>
 </section>
-
+<section class="rombo">
+  <div class="wrap narrow">
+    <img src="img/ahumador/pichikemenkue-blanco.png" alt="Rombo Pichikemenküe, iconografía mapuche" loading="lazy">
+    <p><span data-es>Rombo Pichikemenküe · iconografía mapuche · su proyección horizontal define la sección constructiva del Ahumador</span><span data-en>Pichikemenküe rhombus · Mapuche iconography · its horizontal projection defines the smoking vessel's constructive section</span></p>
+  </div>
+</section>
 <figure class="plate">
   <img src="img/ahumador/plate-torno.jpg" alt="Greda levantada al torno en el taller alfarero" data-cap="La greda se levanta al torno · taller alfarero" loading="lazy">
 </figure>
@@ -205,23 +217,23 @@ nav.top.solid{height:56px;--bs:.6}
   </div>
 
   <div class="car" id="car" role="region" aria-roledescription="carousel" aria-label="La misma greda, dos estados">
-    <figure role="group" aria-roledescription="slide" aria-label="01 de 6" data-n="01" data-t-es="Greda cruda" data-t-en="Raw clay" data-s-es="Antes del horno" data-s-en="Before the kiln" data-d-es="La pieza recién levantada, todavía húmeda. En este estado la greda admite corte y textura; después del fuego ya no." data-d-en="The piece just raised, still damp. In this state the clay accepts cutting and texture; after the fire it no longer does.">
-      <img src="img/ahumador/ahumador-01-greda.jpg" alt="Greda cruda" data-cap="01 · greda cruda" loading="lazy">
+    <figure role="group" aria-roledescription="slide" aria-label="01 de 6" data-n="01" data-t-es="Terminación esmaltada" data-t-en="Glazed finish" data-s-es="Set completo · esmalte negro" data-s-en="Complete set · black glaze" data-d-es="El conjunto terminado en esmalte cerámico negro: ahumador, base y fuente de corte comparten la misma familia de formas." data-d-en="The set finished in black ceramic glaze: smoking vessel, base and cutting vessel share the same family of forms.">
+      <img src="img/ahumador/ahu-01-esmaltado.jpg" alt="Terminación esmaltada" data-cap="01 · terminación esmaltada" loading="lazy">
     </figure>
-    <figure role="group" aria-roledescription="slide" aria-label="02 de 6" data-n="02" data-t-es="El corte" data-t-en="The cut" data-s-es="Trabajo en verde" data-s-en="Green-state work" data-d-es="El perfil se define a mano sobre la pieza en verde. Cada corte decide cómo asentará la tapa sobre el cuerpo." data-d-en="The profile is defined by hand on the green piece. Each cut decides how the lid will seat on the body.">
-      <img src="img/ahumador/ahumador-02-corte.jpg" alt="El corte" data-cap="02 · el corte" loading="lazy">
+    <figure role="group" aria-roledescription="slide" aria-label="02 de 6" data-n="02" data-t-es="Greda cruda" data-t-en="Raw clay" data-s-es="Fuente de corte · recién levantada" data-s-en="Cutting vessel · just raised" data-d-es="La fuente de corte recién levantada al torno, todavía húmeda. En este estado la greda admite corte y textura; después del fuego ya no." data-d-en="The cutting vessel just raised on the wheel, still damp. In this state the clay accepts cutting and texture; after the fire it no longer does.">
+      <img src="img/ahumador/ahu-02-greda-cruda.jpg" alt="Greda cruda" data-cap="02 · greda cruda" loading="lazy">
     </figure>
-    <figure role="group" aria-roledescription="slide" aria-label="03 de 6" data-n="03" data-t-es="En el taller" data-t-en="In the workshop" data-s-es="Secado previo a cocción" data-s-en="Drying before firing" data-d-es="El conjunto completo esperando el horno. Las piezas se secan juntas para que se contraigan a un mismo ritmo." data-d-en="The complete set awaiting the kiln. The pieces dry together so they shrink at the same rate.">
-      <img src="img/ahumador/ahumador-03-taller.jpg" alt="En el taller" data-cap="03 · en el taller" loading="lazy">
+    <figure role="group" aria-roledescription="slide" aria-label="03 de 6" data-n="03" data-t-es="En el taller" data-t-en="In the workshop" data-s-es="Terminación natural, sin esmaltar" data-s-en="Natural finish, unglazed" data-d-es="El conjunto sin esmaltar, secándose al aire libre sobre troncos del taller. El color es el de la greda, no un recubrimiento." data-d-en="The unglazed set, drying outdoors on workshop logs. The color is the clay's own, not a coating.">
+      <img src="img/ahumador/ahu-03-natural-taller.jpg" alt="En el taller" data-cap="03 · en el taller" loading="lazy">
     </figure>
-    <figure role="group" aria-roledescription="slide" aria-label="04 de 6" data-n="04" data-t-es="Greda natural" data-t-en="Natural clay" data-s-es="Sin esmaltar" data-s-en="Unglazed" data-d-es="Terminación natural: la greda queda a la vista, sellada por bruñido. El color es el del material, no un recubrimiento." data-d-en="Natural finish: the clay stays exposed, sealed by burnishing. The color is the material's own, not a coating.">
-      <img src="img/ahumador/ahumador-04-natural.jpg" alt="Greda natural" data-cap="04 · greda natural" loading="lazy">
+    <figure role="group" aria-roledescription="slide" aria-label="04 de 6" data-n="04" data-t-es="El corte" data-t-en="The cut" data-s-es="Trabajo en verde" data-s-en="Green-state work" data-d-es="El perfil de la fuente se define a mano sobre la pieza en verde. Cada corte decide cómo calzará el conjunto." data-d-en="The vessel's profile is defined by hand on the green piece. Each cut decides how the set will fit together.">
+      <img src="img/ahumador/ahu-04-corte.jpg" alt="El corte" data-cap="04 · el corte" loading="lazy">
     </figure>
-    <figure role="group" aria-roledescription="slide" aria-label="05 de 6" data-n="05" data-t-es="Fuente de corte" data-t-en="Cutting vessel" data-s-es="Geometría del conjunto" data-s-en="Set geometry" data-d-es="La fuente repite la sección del ahumador a otra escala. El sistema completo comparte una sola familia de formas." data-d-en="The vessel repeats the smoker's section at another scale. The whole system shares a single family of forms.">
-      <img src="img/ahumador/ahumador-05-kultrun.jpg" alt="Fuente de corte" data-cap="05 · fuente de corte" loading="lazy">
+    <figure role="group" aria-roledescription="slide" aria-label="05 de 6" data-n="05" data-t-es="Fuente de corte" data-t-en="Cutting vessel" data-s-es="Geometría del conjunto" data-s-en="Set geometry" data-d-es="Vista superior de la fuente, aún en greda cruda. Repite la sección del ahumador a otra escala: el sistema comparte una sola familia de formas." data-d-en="Top view of the vessel, still raw clay. It repeats the smoking vessel's section at another scale: the whole system shares a single family of forms.">
+      <img src="img/ahumador/ahu-05-kultrun.jpg" alt="Fuente de corte" data-cap="05 · fuente de corte" loading="lazy">
     </figure>
-    <figure class="sym" role="group" aria-roledescription="slide" aria-label="06 de 6" data-n="06" data-t-es="Geometría de origen" data-t-en="Origin geometry" data-s-es="Rombo Pichikemenküe" data-s-en="Pichikemenküe rhombus" data-d-es="El rombo Pichikemenküe, iconografía mapuche. Su proyección horizontal define la sección constructiva del ahumador." data-d-en="The Pichikemenküe rhombus, Mapuche iconography. Its horizontal projection defines the constructive section of the smoking vessel.">
-      <img src="img/ahumador/pichikemenkue-horizontal.png" alt="Geometría de origen" data-cap="Rombo Pichikemenküe — iconografía mapuche" loading="lazy">
+    <figure role="group" aria-roledescription="slide" aria-label="06 de 6" data-n="06" data-t-es="Greda natural" data-t-en="Natural clay" data-s-es="Sin esmaltar · foto de producto" data-s-en="Unglazed · product photo" data-d-es="Terminación natural: la greda queda a la vista, sellada por bruñido. El color es el del material, no un recubrimiento." data-d-en="Natural finish: the clay stays exposed, sealed by burnishing. The color is the material's own, not a coating.">
+      <img src="img/ahumador/ahu-06-producto.jpg" alt="Greda natural" data-cap="06 · greda natural" loading="lazy">
     </figure>
   </div>
 
@@ -285,6 +297,11 @@ nav.top.solid{height:56px;--bs:.6}
 
 <footer>
   <div class="fbrand"><img src="img/brand/icon-blanco.png" alt=""><span>Trufquén</span></div>
+  <div class="social">
+    <a href="https://instagram.com/trufquen" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.2" cy="6.8" r="1.1" fill="currentColor" stroke="none"/></svg></a>
+    <a href="https://facebook.com/Trufquen" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M13.6 21v-7.2h2.2l.3-2.6h-2.5v-1.6c0-.75.2-1.27 1.28-1.27h1.38V5.98c-.24-.03-1.06-.1-2-.1-2 0-3.36 1.22-3.36 3.46v1.93H8.6v2.6h2.32V21" fill="currentColor" stroke="none"/></svg></a>
+    <a href="https://trufquen.studio" aria-label="Trufquén Studio"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><ellipse cx="12" cy="12" rx="4.2" ry="10"/><line x1="2" y1="12" x2="22" y2="12"/></svg></a>
+  </div>
   <div>
     <a href="index.html"><span data-es>Inicio</span><span data-en>Home</span></a>
     <a href="https://trufquen.studio">trufquen.studio</a>
@@ -321,6 +338,14 @@ sheetEl.querySelectorAll('a').forEach(function(a){a.addEventListener('click',clo
 
 var car=document.getElementById('car'), figs=[].slice.call(car.querySelectorAll('figure')), carAt=0, snapping=false;
 function slideW(){return figs[0].getBoundingClientRect().width+2}
+function nearestIdx(){
+  var max=car.scrollWidth-car.clientWidth;
+  if(car.scrollLeft<=1) return 0;
+  if(car.scrollLeft>=max-1) return figs.length-1;
+  var cr=car.getBoundingClientRect(), mid=cr.left+cr.width/2, best=0, bd=Infinity;
+  figs.forEach(function(f,i){var fr=f.getBoundingClientRect();var d=Math.abs((fr.left+fr.width/2)-mid);if(d<bd){bd=d;best=i}});
+  return best;
+}
 function carPaint(i){
   var f=figs[i]; if(!f) return;
   var en=document.body.classList.contains('en');
@@ -335,21 +360,20 @@ function carPaint(i){
   t.classList.remove('fade'); void t.offsetWidth; t.classList.add('fade');
 }
 function snapLeft(i){var fr=figs[i].getBoundingClientRect(),cr=car.getBoundingClientRect();return car.scrollLeft+fr.left-cr.left-(cr.width-fr.width)/2}
-function carIdx(){var i=Math.round((car.scrollLeft-snapLeft(0))/slideW());return Math.max(0,Math.min(figs.length-1,i))}
 var snapT=null;
-function snapFree(){snapping=false;var i=carIdx();if(i!==carAt){carAt=i;carPaint(i)}}
+function snapFree(){snapping=false;var i=nearestIdx();if(i!==carAt){carAt=i;carPaint(i)}}
 function carTo(i,smooth){carAt=i;snapping=true;clearTimeout(snapT);snapT=setTimeout(snapFree,600);car.scrollTo({left:snapLeft(i),behavior:smooth===false?'auto':'smooth'});carPaint(i)}
 function carGo(d){carTo((carAt+d+figs.length)%figs.length)}
 car.addEventListener('scroll',function(){
   if(snapping){clearTimeout(snapT);snapT=setTimeout(snapFree,150);return}
-  var i=carIdx();
+  var i=nearestIdx();
   if(i!==carAt){carAt=i;carPaint(i)}
 });
 (function(){
   var down=false,x0=0,s0=0,moved=0;
   car.addEventListener('mousedown',function(e){down=true;moved=0;x0=e.pageX;s0=car.scrollLeft;car.classList.add('drag')});
   window.addEventListener('mouseup',function(){if(!down)return;down=false;car.classList.remove('drag');
-    carTo(carIdx())});
+    carTo(nearestIdx())});
   car.addEventListener('mousemove',function(e){if(!down)return;e.preventDefault();moved=Math.abs(e.pageX-x0);car.scrollLeft=s0-(e.pageX-x0)});
   car.addEventListener('click',function(e){if(moved>6){e.preventDefault();e.stopPropagation()}},true);
 })();

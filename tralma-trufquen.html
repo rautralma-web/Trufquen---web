@@ -75,6 +75,9 @@ h2{font-weight:200;line-height:1.3;font-size:var(--fs-h2)}
 .plate img{width:100%;height:clamp(380px,80vh,820px);object-fit:cover;display:block}
 .plate video{width:100%;height:auto;max-height:90vh;object-fit:contain;background:var(--grafito);display:block;margin:0 auto}
 
+.rombo{background:#000;text-align:center;padding:clamp(3rem,7vh,5rem) 0}
+.rombo img{width:min(420px,70%);margin:0 auto;display:block}
+.rombo p{font-family:'Space Mono',monospace;font-size:var(--fs-micro);letter-spacing:.14em;color:var(--humo);text-transform:uppercase;margin-top:1.4rem;line-height:1.8}
 .gal{padding:clamp(4rem,9vh,6rem) 0}
 .car{display:flex;gap:2px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding:0 clamp(1.4rem,5vw,3.5rem);cursor:grab}
 .car::-webkit-scrollbar{display:none}
@@ -122,6 +125,10 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;back
 footer .fbrand{display:inline-flex;flex-direction:column;align-items:center;gap:.6rem;margin-bottom:1.5rem}
 footer .fbrand img{height:44px}
 footer .fbrand span{font-weight:200;letter-spacing:.42em;text-indent:.42em;text-transform:uppercase;color:var(--mineral);font-size:1.1rem}
+footer .social{display:flex;justify-content:center;gap:1.2rem;margin-bottom:1.4rem}
+footer .social a{color:var(--humo);transition:color .2s;display:inline-flex;min-width:44px;min-height:44px;align-items:center;justify-content:center}
+footer .social a:hover{color:var(--cobre)}
+footer .social svg{width:19px;height:19px}
 footer a{font-family:'Space Mono',monospace;font-size:var(--fs-ui);letter-spacing:.14em;color:var(--humo);text-transform:uppercase;margin:0 .7rem;line-height:2.4}
 footer a:hover{color:var(--cobre)}
 .legal{font-family:'Space Mono',monospace;font-size:var(--fs-micro);letter-spacing:.08em;color:rgba(160,150,140,.85);line-height:1.9;text-transform:uppercase;margin-top:2rem;max-width:44rem;margin-left:auto;margin-right:auto;padding:0 1.5rem}
@@ -189,8 +196,8 @@ nav.top.solid{height:56px;--bs:.6}
   <div class="wrap narrow">
     <span class="idx"><span data-es>2020 — Cristalería</span><span data-en>2020 — Glassware</span></span>
     <h2><span data-es>A mitad de camino cerró<br>la última cristalería <span class="em">del país.</span></span><span data-en class="block">Halfway through, the country's<br>last glassworks <span class="em">closed.</span></span></h2>
-    <p class="lede"><span data-es>En vez de abandonar la hipótesis, le buscamos un sustrato nuevo: borosilicato en lugar de cristal sonoro. La distancia entre lo postulado y lo ejecutado es, en sí misma, el hallazgo.</span><span data-en class="block">Instead of abandoning the hypothesis, we found it a new substrate: borosilicate instead of sonorous crystal. The distance between what was proposed and what was executed is, in itself, the finding.</span></p>
-    <p class="lede"><span data-es>Lo que en 2019 se planteó como una vinculación estable entre alfarería de Pomaire y soplado a boca, en 2020 se resolvió como investigación de contingencia. CristalArt —heredera de la Cristalería Yungay, tradición sin plomo desde 1922— era la última empresa del país capaz de soplar a escala de proyecto. Su cierre nos dejó sin el oficio que sostenía la técnica, y obligó a rediseñar el proceso sin abandonar la tesis.</span><span data-en class="block">What in 2019 was proposed as a stable link between Pomaire pottery and mouth-blowing was resolved in 2020 as contingency research. CristalArt —heir to Cristalería Yungay, a lead-free tradition since 1922— was the country's last company able to blow at project scale. Its closure left us without the craft that sustained the technique, and forced a redesign of the process without abandoning the thesis.</span></p>
+    <p class="lede"><span data-es>En vez de abandonar la hipótesis, le buscamos un sustrato nuevo: borosilicato en lugar de cristal sonoro. La distancia entre lo postulado y lo ejecutado es, en sí misma, el hallazgo. Sobre ese sustrato controlamos también la superficie: piezas lisas y piezas con textura, impresa en el molde, no por condensación.</span><span data-en class="block">Instead of abandoning the hypothesis, we found it a new substrate: borosilicate instead of sonorous crystal. The distance between what was proposed and what was executed is, in itself, the finding. On that substrate we also control the surface: smooth pieces and textured ones, printed by the mould, not by condensation.</span></p>
+    <p class="lede"><span data-es>Lo que en 2019 se planteó como una vinculación estable entre alfarería de Pomaire y soplado a boca, en 2020 se resolvió como investigación de contingencia. CristalArt era la última empresa del país capaz de soplar a escala de proyecto. Su cierre nos dejó sin el oficio que sostenía la técnica, y obligó a rediseñar el proceso sin abandonar la tesis.</span><span data-en class="block">What in 2019 was proposed as a stable link between Pomaire pottery and mouth-blowing was resolved in 2020 as contingency research. CristalArt was the country's last company able to blow at project scale. Its closure left us without the craft that sustained the technique, and forced a redesign of the process without abandoning the thesis.</span></p>
   </div>
 </section>
 
@@ -214,11 +221,11 @@ nav.top.solid{height:56px;--bs:.6}
     <figure role="group" aria-roledescription="slide" aria-label="03 de 6" data-n="03" data-t-es="Con vino" data-t-en="With wine" data-s-es="La pieza en uso" data-s-en="The piece in use" data-d-es="Llena, la copa se lee entera: el vino ocupa el vidrio y la greda lo sostiene desde abajo. El peso equilibra la mano." data-d-en="Filled, the cup reads whole: the wine occupies the glass and the clay holds it from below. The weight balances the hand.">
       <img src="img/tralma/tralma-03-vino.jpg" alt="Con vino" data-cap="03 · con vino" loading="lazy">
     </figure>
-    <figure role="group" aria-roledescription="slide" aria-label="04 de 6" data-n="04" data-t-es="Base de cobre" data-t-en="Copper base" data-s-es="Variante de terminación" data-s-en="Finish variant" data-d-es="Una misma geometría admite otra materialidad en la base. La forma se mantiene; cambia el cuerpo que la sostiene." data-d-en="The same geometry admits another materiality at the base. The form holds; what changes is the body supporting it.">
-      <img src="img/tralma/tralma-04-copper.jpg" alt="Base de cobre" data-cap="04 · base de cobre" loading="lazy">
+    <figure role="group" aria-roledescription="slide" aria-label="04 de 6" data-n="04" data-t-es="Textura en el vidrio" data-t-en="Texture in the glass" data-s-es="Borosilicato + greda colada" data-s-en="Borosilicate + cast clay" data-d-es="Logramos imprimir textura en el borosilicato sin perder transparencia. No es condensación: es la textura impresa en el molde. La base es greda, no metal." data-d-en="We achieved texture on the borosilicate without losing transparency. It isn't condensation: it's texture printed by the mould. The base is clay, not metal.">
+      <img src="img/tralma/tralma-04-textura.jpg" alt="Textura en el vidrio" data-cap="04 · textura en el vidrio" loading="lazy">
     </figure>
-    <figure role="group" aria-roledescription="slide" aria-label="05 de 6" data-n="05" data-t-es="Frontera visible" data-t-en="Visible border" data-s-es="Greda y vidrio" data-s-en="Clay and glass" data-d-es="Greda y vidrio conservan una línea nítida entre sí. Esa frontera es la prueba de que la unión es mecánica." data-d-en="Clay and glass keep a sharp line between them. That border is the proof that the union is mechanical.">
-      <img src="img/tralma/tralma-05-greda.jpg" alt="Frontera visible" data-cap="05 · frontera visible" loading="lazy">
+    <figure role="group" aria-roledescription="slide" aria-label="05 de 6" data-n="05" data-t-es="Lisas y con textura" data-t-en="Smooth and textured" data-s-es="Misma línea, dos terminaciones" data-s-en="Same line, two finishes" data-d-es="La misma copa admite dos terminaciones de superficie: lisa o texturada. Controlamos ambas sobre la misma base de greda colada." data-d-en="The same cup admits two surface finishes: smooth or textured. We control both on the same cast clay base.">
+      <img src="img/tralma/tralma-05-liso-textura.jpg" alt="Lisas y con textura" data-cap="05 · lisas y con textura" loading="lazy">
     </figure>
     <figure role="group" aria-roledescription="slide" aria-label="06 de 6" data-n="06" data-t-es="Condensación" data-t-en="Condensation" data-s-es="Superficie fría" data-s-en="Cold surface" data-d-es="El vidrio se escarcha y la greda no. Dos materiales, dos comportamientos térmicos, un mismo cuerpo en la mano." data-d-en="The glass frosts over and the clay does not. Two materials, two thermal behaviors, one body in the hand.">
       <img src="img/tralma/tralma-06-uso.jpg" alt="Condensación" data-cap="06 · condensación" loading="lazy">
@@ -284,6 +291,11 @@ nav.top.solid{height:56px;--bs:.6}
 
 <footer>
   <div class="fbrand"><img src="img/brand/icon-blanco.png" alt=""><span>Trufquén</span></div>
+  <div class="social">
+    <a href="https://instagram.com/trufquen" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.2" cy="6.8" r="1.1" fill="currentColor" stroke="none"/></svg></a>
+    <a href="https://facebook.com/Trufquen" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M13.6 21v-7.2h2.2l.3-2.6h-2.5v-1.6c0-.75.2-1.27 1.28-1.27h1.38V5.98c-.24-.03-1.06-.1-2-.1-2 0-3.36 1.22-3.36 3.46v1.93H8.6v2.6h2.32V21" fill="currentColor" stroke="none"/></svg></a>
+    <a href="https://trufquen.studio" aria-label="Trufquén Studio"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><ellipse cx="12" cy="12" rx="4.2" ry="10"/><line x1="2" y1="12" x2="22" y2="12"/></svg></a>
+  </div>
   <div>
     <a href="index.html"><span data-es>Inicio</span><span data-en>Home</span></a>
     <a href="https://trufquen.studio">trufquen.studio</a>
@@ -320,6 +332,14 @@ sheetEl.querySelectorAll('a').forEach(function(a){a.addEventListener('click',clo
 
 var car=document.getElementById('car'), figs=[].slice.call(car.querySelectorAll('figure')), carAt=0, snapping=false;
 function slideW(){return figs[0].getBoundingClientRect().width+2}
+function nearestIdx(){
+  var max=car.scrollWidth-car.clientWidth;
+  if(car.scrollLeft<=1) return 0;
+  if(car.scrollLeft>=max-1) return figs.length-1;
+  var cr=car.getBoundingClientRect(), mid=cr.left+cr.width/2, best=0, bd=Infinity;
+  figs.forEach(function(f,i){var fr=f.getBoundingClientRect();var d=Math.abs((fr.left+fr.width/2)-mid);if(d<bd){bd=d;best=i}});
+  return best;
+}
 function carPaint(i){
   var f=figs[i]; if(!f) return;
   var en=document.body.classList.contains('en');
@@ -334,21 +354,20 @@ function carPaint(i){
   t.classList.remove('fade'); void t.offsetWidth; t.classList.add('fade');
 }
 function snapLeft(i){var fr=figs[i].getBoundingClientRect(),cr=car.getBoundingClientRect();return car.scrollLeft+fr.left-cr.left-(cr.width-fr.width)/2}
-function carIdx(){var i=Math.round((car.scrollLeft-snapLeft(0))/slideW());return Math.max(0,Math.min(figs.length-1,i))}
 var snapT=null;
-function snapFree(){snapping=false;var i=carIdx();if(i!==carAt){carAt=i;carPaint(i)}}
+function snapFree(){snapping=false;var i=nearestIdx();if(i!==carAt){carAt=i;carPaint(i)}}
 function carTo(i,smooth){carAt=i;snapping=true;clearTimeout(snapT);snapT=setTimeout(snapFree,600);car.scrollTo({left:snapLeft(i),behavior:smooth===false?'auto':'smooth'});carPaint(i)}
 function carGo(d){carTo((carAt+d+figs.length)%figs.length)}
 car.addEventListener('scroll',function(){
   if(snapping){clearTimeout(snapT);snapT=setTimeout(snapFree,150);return}
-  var i=carIdx();
+  var i=nearestIdx();
   if(i!==carAt){carAt=i;carPaint(i)}
 });
 (function(){
   var down=false,x0=0,s0=0,moved=0;
   car.addEventListener('mousedown',function(e){down=true;moved=0;x0=e.pageX;s0=car.scrollLeft;car.classList.add('drag')});
   window.addEventListener('mouseup',function(){if(!down)return;down=false;car.classList.remove('drag');
-    carTo(carIdx())});
+    carTo(nearestIdx())});
   car.addEventListener('mousemove',function(e){if(!down)return;e.preventDefault();moved=Math.abs(e.pageX-x0);car.scrollLeft=s0-(e.pageX-x0)});
   car.addEventListener('click',function(e){if(moved>6){e.preventDefault();e.stopPropagation()}},true);
 })();
