@@ -51,7 +51,7 @@ nav.top.solid{height:62px;--bs:.52;background:rgba(16,14,13,.92);backdrop-filter
 .sheet .close{position:absolute;top:1.6rem;right:clamp(1.2rem,4vw,3rem);background:none;border:none;font-family:'Space Mono',monospace;font-size:var(--fs-ui);letter-spacing:.16em;text-transform:uppercase;color:var(--mineral);cursor:pointer;min-height:44px;min-width:44px;display:inline-flex;align-items:center;justify-content:center}
 
 .hero{position:relative;height:100vh;height:100dvh;background:var(--grafito);overflow:hidden}
-.hero img,.hero video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 45%}
+.hero img,.hero video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 50%}
 .hero::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(10,9,8,.5) 0%,rgba(10,9,8,.08) 32%,rgba(10,9,8,.2) 60%,rgba(16,14,13,.95) 100%)}
 .hero-line{position:absolute;left:0;right:0;bottom:clamp(2.5rem,7vh,5rem);z-index:2;text-align:center;padding:0 1.5rem}
 .hero-line h1{font-weight:200;font-size:var(--fs-h1);letter-spacing:.08em;text-transform:uppercase;color:var(--mineral);margin-bottom:1rem}
@@ -178,7 +178,7 @@ nav.top.solid{height:56px;--bs:.6}
 
 <main id="contenido">
 <header class="hero">
-  <img src="img/probetas/hero.jpg" alt="Probetas">
+  <video src="img/probetas/probeta-hero.mp4" poster="img/probetas/probeta-hero-poster.jpg" autoplay muted loop playsinline preload="auto" aria-label="Probetas" data-motion></video>
   <div class="hero-line">
     <h1><span data-es>Probetas</span><span data-en>Test pieces</span></h1>
     <p><span data-es>El año en que dejamos de suponer. Esto no es una colección: <span class="em">es la evidencia.</span></span><span data-en class="block">The year we stopped assuming. This isn't a collection: <span class="em">it's the evidence.</span></span></p>
@@ -195,7 +195,7 @@ nav.top.solid{height:56px;--bs:.6}
 </section>
 
 <figure class="plate">
-  <img src="img/probetas/plate-soplado.jpg" alt="Vidrio incandescente soplado dentro de la greda calada" data-cap="El ensayo en curso" loading="lazy">
+  <img src="img/probetas/plate-variables.jpg" alt="Vidrio incandescente soplado dentro de la greda calada" data-cap="El ensayo en curso" loading="lazy">
 </figure>
 
 <section class="gal band-c">
@@ -205,23 +205,23 @@ nav.top.solid{height:56px;--bs:.6}
   </div>
 
   <div class="car" id="car" role="region" aria-roledescription="carousel" aria-label="Seis ensayos del conjunto">
-    <figure role="group" aria-roledescription="slide" aria-label="01 de 6" data-n="01" data-t-es="Pantalla calada" data-t-en="Perforated screen" data-s-es="Antes del vidrio" data-s-en="Before the glass" data-d-es="La matriz sola. El calado define por dónde podrá salir el vidrio y cuánta pared queda para resistir el empuje." data-d-en="The matrix alone. The perforation defines where the glass can emerge and how much wall remains to resist the push.">
-      <img src="img/probetas/pr-01-calada.jpg" alt="Pantalla calada" data-cap="PR·01 · pantalla calada" loading="lazy">
+    <figure role="group" aria-roledescription="slide" aria-label="01 de 6" data-n="01" data-t-es="Quiebre por temperatura" data-t-en="Thermal break" data-s-es="Ensayo fallido" data-s-en="Failed trial" data-d-es="El vidrio se contrajo más rápido que la greda y abrió la pared. Este quiebre fijó el límite que había que respetar." data-d-en="The glass contracted faster than the clay and split the wall. This break set the limit we had to respect.">
+      <img src="img/probetas/pr-01-quiebre.jpg" alt="Quiebre por temperatura" data-cap="PR·01 · quiebre" loading="lazy">
     </figure>
-    <figure role="group" aria-roledescription="slide" aria-label="02 de 6" data-n="02" data-t-es="Domo sobre ranura" data-t-en="Dome over slot" data-s-es="Anclaje lateral" data-s-en="Lateral anchoring" data-d-es="El vidrio se expande hacia arriba y escapa por las ranuras laterales. El anclaje ocurre fuera del eje." data-d-en="The glass expands upward and escapes through lateral slots. Anchoring happens off-axis.">
-      <img src="img/probetas/pr-02-domo.jpg" alt="Domo sobre ranura" data-cap="PR·02 · domo sobre ranura" loading="lazy">
+    <figure role="group" aria-roledescription="slide" aria-label="02 de 6" data-n="02" data-t-es="Anillo de vidrio" data-t-en="Glass ring" data-s-es="Vidrio contenido" data-s-en="Contained glass" data-d-es="El vidrio recorre el interior y asoma por el labio. La greda lo contiene sin que exista adhesión química entre ambos." data-d-en="The glass runs along the interior and emerges at the lip. The clay contains it with no chemical adhesion between them.">
+      <img src="img/probetas/pr-02-anillo.jpg" alt="Anillo de vidrio" data-cap="PR·02 · anillo" loading="lazy">
     </figure>
-    <figure role="group" aria-roledescription="slide" aria-label="03 de 6" data-n="03" data-t-es="Gota por calado" data-t-en="Droplet through perforation" data-s-es="Presión controlada" data-s-en="Controlled pressure" data-d-es="El vidrio sale por la abertura y forma una lente. Hallazgo: la greda no se rompe si la abertura es menor que la masa que la rodea." data-d-en="The glass emerges and forms a lens. Finding: the clay doesn't break if the opening is smaller than the surrounding mass.">
-      <img src="img/probetas/pr-03-gota.jpg" alt="Gota por calado" data-cap="PR·03 · gota por calado" loading="lazy">
+    <figure role="group" aria-roledescription="slide" aria-label="03 de 6" data-n="03" data-t-es="La frontera" data-t-en="The border" data-s-es="Macro del contacto" data-s-en="Contact macro" data-d-es="El detalle que lo probó todo: greda y vidrio comparten un borde nítido. No hay masa única — la unión es mecánica." data-d-en="The detail that proved everything: clay and glass share a sharp edge. There is no single mass — the union is mechanical.">
+      <img src="img/probetas/pr-03-macro.jpg" alt="La frontera" data-cap="PR·03 · la frontera" loading="lazy">
     </figure>
-    <figure role="group" aria-roledescription="slide" aria-label="04 de 6" data-n="04" data-t-es="Relieve" data-t-en="Relief" data-s-es="El vidrio como ojo" data-s-en="Glass as eye" data-d-es="Tres salidas simétricas en un mismo cuerpo. La simetría reparte el empuje para que ninguna pared reciba toda la carga." data-d-en="Three symmetrical outlets in one body. Symmetry distributes the push so no single wall takes the whole load.">
-      <img src="img/probetas/pr-04-relieve.jpg" alt="Relieve" data-cap="PR·04 · relieve" loading="lazy">
+    <figure role="group" aria-roledescription="slide" aria-label="04 de 6" data-n="04" data-t-es="Vidrio en la grieta" data-t-en="Glass in the crack" data-s-es="Greda oscura" data-s-en="Dark clay" data-d-es="La grieta deja ver el vidrio ámbar alojado dentro. Lo que en otra pieza sería falla, aquí quedó documentado como dato." data-d-en="The crack reveals the amber glass lodged inside. What would be a defect elsewhere was documented here as data.">
+      <img src="img/probetas/pr-04-pocillo.jpg" alt="Vidrio en la grieta" data-cap="PR·04 · vidrio en la grieta" loading="lazy">
     </figure>
-    <figure role="group" aria-roledescription="slide" aria-label="05 de 6" data-n="05" data-t-es="La frontera" data-t-en="The border" data-s-es="Greda y vidrio en la boca" data-s-en="Clay and glass at the mouth" data-d-es="El detalle que lo probó todo: el vidrio se derrama sobre el labio de greda y se ancla sin fundirse. La unión es mecánica, y aquí se ve." data-d-en="The detail that proved everything: glass spills over the clay lip and anchors without melting. The union is mechanical, and here you can see it.">
-      <img src="img/probetas/pr-05-frontera.jpg" alt="La frontera" data-cap="PR·05 · la frontera" loading="lazy">
+    <figure role="group" aria-roledescription="slide" aria-label="05 de 6" data-n="05" data-t-es="Grieta controlada" data-t-en="Controlled crack" data-s-es="Registro en taller" data-s-en="Workshop record" data-d-es="Aprendimos a anticipar dónde cedería la pared. La grieta dejó de ser accidente y pasó a ser una variable del diseño." data-d-en="We learned to anticipate where the wall would give. The crack stopped being an accident and became a design variable.">
+      <img src="img/probetas/pr-05-grieta.jpg" alt="Grieta controlada" data-cap="PR·05 · grieta controlada" loading="lazy">
     </figure>
-    <figure role="group" aria-roledescription="slide" aria-label="06 de 6" data-n="06" data-t-es="Asas de vidrio" data-t-en="Glass handles" data-s-es="El ensayo en el torno" data-s-en="The trial on the lathe" data-d-es="El vidrio sale por dos costados y forma asas. La pieza queda sobre el torno: el registro se toma sin mover la evidencia." data-d-en="The glass emerges from two sides and forms handles. The piece stays on the lathe: the record is taken without moving the evidence.">
-      <img src="img/probetas/pr-06-torno.jpg" alt="Asas de vidrio" data-cap="PR·06 · asas de vidrio" loading="lazy">
+    <figure role="group" aria-roledescription="slide" aria-label="06 de 6" data-n="06" data-t-es="Calce" data-t-en="The fit" data-s-es="Vidrio alojado en el calado" data-s-en="Glass set in the perforation" data-d-es="Cada perforación aloja una lente de vidrio. El calado no es ornamento: es el sistema de anclaje de toda la pieza." data-d-en="Each perforation holds a glass lens. The openwork is not ornament: it is the anchoring system of the whole piece.">
+      <img src="img/probetas/pr-06-calce.jpg" alt="Calce" data-cap="PR·06 · calce" loading="lazy">
     </figure>
   </div>
 

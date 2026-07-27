@@ -51,7 +51,7 @@ nav.top.solid{height:62px;--bs:.52;background:rgba(16,14,13,.92);backdrop-filter
 .sheet .close{position:absolute;top:1.6rem;right:clamp(1.2rem,4vw,3rem);background:none;border:none;font-family:'Space Mono',monospace;font-size:var(--fs-ui);letter-spacing:.16em;text-transform:uppercase;color:var(--mineral);cursor:pointer;min-height:44px;min-width:44px;display:inline-flex;align-items:center;justify-content:center}
 
 .hero{position:relative;height:100vh;height:100dvh;background:var(--grafito);overflow:hidden}
-.hero img,.hero video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 55%}
+.hero img,.hero video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 50%}
 .hero::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(10,9,8,.5) 0%,rgba(10,9,8,.08) 32%,rgba(10,9,8,.2) 60%,rgba(16,14,13,.95) 100%)}
 .hero-line{position:absolute;left:0;right:0;bottom:clamp(2.5rem,7vh,5rem);z-index:2;text-align:center;padding:0 1.5rem}
 .hero-line h1{font-weight:200;font-size:var(--fs-h1);letter-spacing:.08em;text-transform:uppercase;color:var(--mineral);margin-bottom:1rem}
@@ -178,7 +178,7 @@ nav.top.solid{height:56px;--bs:.6}
 
 <main id="contenido">
 <header class="hero">
-  <img src="img/ahumador/hero.jpg" alt="Ahumador">
+  <video src="img/ahumador/ahumador-hero.mp4" poster="img/ahumador/ahumador-hero-poster.jpg" autoplay muted loop playsinline preload="auto" aria-label="Ahumador" data-motion></video>
   <div class="hero-line">
     <h1><span data-es>Ahumador</span><span data-en>Smoking vessel</span></h1>
     <p><span data-es>Cocina y ahúma en un solo cuerpo de greda, sobre la llama de una cocina convencional. <span class="em">La invención que origina el estudio.</span></span><span data-en class="block">Cooks and smokes in a single clay body, over a conventional stove flame. <span class="em">The invention that originates the studio.</span></span></p>
@@ -205,20 +205,20 @@ nav.top.solid{height:56px;--bs:.6}
   </div>
 
   <div class="car" id="car" role="region" aria-roledescription="carousel" aria-label="La misma greda, dos estados">
-    <figure role="group" aria-roledescription="slide" aria-label="01 de 6" data-n="01" data-t-es="Greda natural bruñida" data-t-en="Burnished natural clay" data-s-es="Sellada con piedra de río" data-s-en="Sealed with river stone" data-d-es="Sin recubrimientos. La superficie se impermeabiliza por fricción: es un sellado mecánico, no químico." data-d-en="No coatings. The surface is waterproofed by friction: a mechanical seal, not a chemical one.">
-      <img src="img/ahumador/ahumador-01-brunida.jpg" alt="Greda natural bruñida" data-cap="01 · greda natural bruñida" loading="lazy">
+    <figure role="group" aria-roledescription="slide" aria-label="01 de 6" data-n="01" data-t-es="Greda cruda" data-t-en="Raw clay" data-s-es="Antes del horno" data-s-en="Before the kiln" data-d-es="La pieza recién levantada, todavía húmeda. En este estado la greda admite corte y textura; después del fuego ya no." data-d-en="The piece just raised, still damp. In this state the clay accepts cutting and texture; after the fire it no longer does.">
+      <img src="img/ahumador/ahumador-01-greda.jpg" alt="Greda cruda" data-cap="01 · greda cruda" loading="lazy">
     </figure>
-    <figure role="group" aria-roledescription="slide" aria-label="02 de 6" data-n="02" data-t-es="Esmaltada negra" data-t-en="Black glazed" data-s-es="Esmalte cerámico" data-s-en="Ceramic glaze" data-d-es="La misma pieza, otro estado. El esmalte cambia la lectura del volumen sin tocar su geometría." data-d-en="The same piece, another state. The glaze changes how the volume reads without touching its geometry.">
-      <img src="img/ahumador/finish-negro.jpg" alt="Esmaltada negra" data-cap="02 · esmaltada negra" loading="lazy">
+    <figure role="group" aria-roledescription="slide" aria-label="02 de 6" data-n="02" data-t-es="El corte" data-t-en="The cut" data-s-es="Trabajo en verde" data-s-en="Green-state work" data-d-es="El perfil se define a mano sobre la pieza en verde. Cada corte decide cómo asentará la tapa sobre el cuerpo." data-d-en="The profile is defined by hand on the green piece. Each cut decides how the lid will seat on the body.">
+      <img src="img/ahumador/ahumador-02-corte.jpg" alt="El corte" data-cap="02 · el corte" loading="lazy">
     </figure>
-    <figure role="group" aria-roledescription="slide" aria-label="03 de 6" data-n="03" data-t-es="El conjunto" data-t-en="The set" data-s-es="Platos bajos y platos base" data-s-en="Low plates and base plates" data-d-es="Cocinar, servir y consumir ocurren en un mismo sistema material. La pieza va del fuego a la mesa sin trasvasije." data-d-en="Cooking, serving and eating happen within one material system. The piece goes from fire to table without transfer.">
-      <img src="img/ahumador/conjunto.jpg" alt="El conjunto" data-cap="03 · el conjunto" loading="lazy">
+    <figure role="group" aria-roledescription="slide" aria-label="03 de 6" data-n="03" data-t-es="En el taller" data-t-en="In the workshop" data-s-es="Secado previo a cocción" data-s-en="Drying before firing" data-d-es="El conjunto completo esperando el horno. Las piezas se secan juntas para que se contraigan a un mismo ritmo." data-d-en="The complete set awaiting the kiln. The pieces dry together so they shrink at the same rate.">
+      <img src="img/ahumador/ahumador-03-taller.jpg" alt="En el taller" data-cap="03 · en el taller" loading="lazy">
     </figure>
-    <figure role="group" aria-roledescription="slide" aria-label="04 de 6" data-n="04" data-t-es="La cámara" data-t-en="The chamber" data-s-es="Tapa con pestaña de calce" data-s-en="Lid with fitting flange" data-d-es="Dos cuerpos que calzan por una pestaña perimetral. El humo queda sellado sin herrajes ni juntas sintéticas." data-d-en="Two bodies fitting through a perimeter flange. The smoke is sealed without hardware or synthetic joints.">
-      <img src="img/ahumador/finish-natural.jpg" alt="La cámara" data-cap="04 · la cámara" loading="lazy">
+    <figure role="group" aria-roledescription="slide" aria-label="04 de 6" data-n="04" data-t-es="Greda natural" data-t-en="Natural clay" data-s-es="Sin esmaltar" data-s-en="Unglazed" data-d-es="Terminación natural: la greda queda a la vista, sellada por bruñido. El color es el del material, no un recubrimiento." data-d-en="Natural finish: the clay stays exposed, sealed by burnishing. The color is the material's own, not a coating.">
+      <img src="img/ahumador/ahumador-04-natural.jpg" alt="Greda natural" data-cap="04 · greda natural" loading="lazy">
     </figure>
-    <figure role="group" aria-roledescription="slide" aria-label="05 de 6" data-n="05" data-t-es="Sobre la llama" data-t-en="Over the flame" data-s-es="En uso, sobre brasas" data-s-en="In use, over embers" data-d-es="El ahumador trabaja directo sobre las brasas: la greda va del fuego a la mesa sin intermediarios." data-d-en="The smoking vessel works directly over embers: the clay goes from fire to table with nothing in between.">
-      <img src="img/ahumador/ahumador-05-fuego.jpg" alt="Sobre la llama" data-cap="05 · sobre la llama" loading="lazy">
+    <figure role="group" aria-roledescription="slide" aria-label="05 de 6" data-n="05" data-t-es="Fuente de corte" data-t-en="Cutting vessel" data-s-es="Geometría del conjunto" data-s-en="Set geometry" data-d-es="La fuente repite la sección del ahumador a otra escala. El sistema completo comparte una sola familia de formas." data-d-en="The vessel repeats the smoker's section at another scale. The whole system shares a single family of forms.">
+      <img src="img/ahumador/ahumador-05-kultrun.jpg" alt="Fuente de corte" data-cap="05 · fuente de corte" loading="lazy">
     </figure>
     <figure class="sym" role="group" aria-roledescription="slide" aria-label="06 de 6" data-n="06" data-t-es="Geometría de origen" data-t-en="Origin geometry" data-s-es="Rombo Pichikemenküe" data-s-en="Pichikemenküe rhombus" data-d-es="El rombo Pichikemenküe, iconografía mapuche. Su proyección horizontal define la sección constructiva del ahumador." data-d-en="The Pichikemenküe rhombus, Mapuche iconography. Its horizontal projection defines the constructive section of the smoking vessel.">
       <img src="img/ahumador/pichikemenkue-horizontal.png" alt="Geometría de origen" data-cap="Rombo Pichikemenküe — iconografía mapuche" loading="lazy">

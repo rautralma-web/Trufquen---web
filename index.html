@@ -147,7 +147,7 @@ details.more[open] summary::after{transform:rotate(45deg)}
 .names .r{font-family:'Space Mono',monospace;font-size:var(--fs-micro);color:var(--humo);letter-spacing:0.12em;text-transform:uppercase;line-height:1.6;text-align:right;flex-shrink:0}
 @media(max-width:520px){.names > div{flex-direction:column;gap:0.2rem;align-items:flex-start}.names .r{text-align:left}}
 
-.contact{text-align:center;background:var(--fondo-2)}
+.contact{text-align:center;background:var(--fondo-2);padding:clamp(3rem,7vh,5.5rem) 0}
 .cta{display:inline-block;border:1px solid var(--cobre);color:var(--cobre);padding:1rem 2.4rem;font-family:'Space Mono',monospace;font-size:var(--fs-ui);letter-spacing:0.2em;text-transform:uppercase;margin-top:2rem;transition:all .25s}
 .cta:hover{background:var(--cobre);color:var(--grafito)}
 
@@ -215,7 +215,10 @@ nav.top.solid{height:56px;--bs:.6}
 <main id="contenido">
 <!-- HERO — reemplazable por <video> (ver specs) -->
 <header class="hero">
-  <img src="img/home/hero-vidrio-greda-wide-flip.jpg" alt="Vidrio incandescente soplado dentro de un molde de greda">
+  <video autoplay muted loop playsinline preload="auto" poster="img/home/hero-trufquen-poster.jpg" aria-label="Vidrio incandescente soplándose dentro de una pieza calada de greda" data-motion>
+    <source src="img/home/hero-trufquen.mp4" type="video/mp4">
+    <img src="img/home/hero-trufquen-poster.jpg" alt="Vidrio incandescente soplado dentro de una pieza calada de greda">
+  </video>
   <div class="hero-line">
     <p><span data-es>Greda, vidrio y fuego<br>como <span class="em">sistema.</span></span><span data-en class="block">Clay, glass and fire<br>as a <span class="em">system.</span></span></p>
     <span class="scroll-hint"><span data-es>Estudio de diseño material · Santiago</span><span data-en>Material design studio · Santiago</span></span>
@@ -267,7 +270,7 @@ nav.top.solid{height:56px;--bs:.6}
 
   <div class="wrap">
     <article class="band">
-      <div class="shot"><img src="img/ahumador/hero.jpg" alt="Ahumador Trufquén" data-cap="Ahumador · 2014 · greda de Pomaire" loading="lazy"></div>
+      <div class="shot"><img src="img/home/piece-ahumador.jpg" alt="Ahumador Trufquén" data-cap="Ahumador · 2014 · greda de Pomaire" loading="lazy"></div>
       <div class="meta">
         <span class="num">01</span>
         <div>
@@ -279,7 +282,7 @@ nav.top.solid{height:56px;--bs:.6}
     </article>
 
     <article class="band">
-      <div class="shot"><img src="img/home/piece-probetas.jpg" alt="Probeta de greda con vidrio" data-cap="Probetas · 2017 · ensayo greda–vidrio" loading="lazy"></div>
+      <div class="shot"><img src="img/home/piece-probetas-new.jpg" alt="Probeta de greda con vidrio" data-cap="Probetas · 2017 · ensayo greda–vidrio" loading="lazy"></div>
       <div class="meta">
         <span class="num">02</span>
         <div>
@@ -303,7 +306,7 @@ nav.top.solid{height:56px;--bs:.6}
     </article>
 
     <article class="band">
-      <div class="shot"><img src="img/home/piece-luminarias-v2.jpg" alt="Luminaria de greda encendida" data-cap="Luminarias · greda y cobre" loading="lazy"></div>
+      <div class="shot"><img src="img/home/piece-luminarias-new.jpg" alt="Luminaria de greda encendida" data-cap="Luminarias · greda y cobre" loading="lazy"></div>
       <div class="meta">
         <span class="num">04</span>
         <div>
@@ -315,7 +318,7 @@ nav.top.solid{height:56px;--bs:.6}
     </article>
 
     <article class="band">
-      <div class="shot"><img src="img/home/piece-tralma.jpg" alt="Copa Tralma" data-cap="Tralma · 2020 · borosilicato y greda colada" loading="lazy"></div>
+      <div class="shot"><img src="img/home/piece-tralma-new.jpg" alt="Copa Tralma" data-cap="Tralma · 2020 · borosilicato y greda colada" loading="lazy"></div>
       <div class="meta">
         <span class="num">05</span>
         <div>
@@ -327,7 +330,7 @@ nav.top.solid{height:56px;--bs:.6}
     </article>
 
     <article class="band">
-      <div class="shot"><img src="img/home/piece-2026.jpg" alt="Pieza en desarrollo" data-cap="Nueva etapa · 2026" loading="lazy"></div>
+      <div class="shot"><img src="img/home/piece-nueva-etapa.jpg" alt="Pieza en desarrollo" data-cap="Nueva etapa · 2026" loading="lazy"></div>
       <div class="meta">
         <span class="num">06</span>
         <div>

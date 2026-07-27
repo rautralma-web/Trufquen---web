@@ -51,7 +51,7 @@ nav.top.solid{height:62px;--bs:.52;background:rgba(16,14,13,.92);backdrop-filter
 .sheet .close{position:absolute;top:1.6rem;right:clamp(1.2rem,4vw,3rem);background:none;border:none;font-family:'Space Mono',monospace;font-size:var(--fs-ui);letter-spacing:.16em;text-transform:uppercase;color:var(--mineral);cursor:pointer;min-height:44px;min-width:44px;display:inline-flex;align-items:center;justify-content:center}
 
 .hero{position:relative;height:100vh;height:100dvh;background:var(--grafito);overflow:hidden}
-.hero img,.hero video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 45%}
+.hero img,.hero video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 50%}
 .hero::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(10,9,8,.5) 0%,rgba(10,9,8,.08) 32%,rgba(10,9,8,.2) 60%,rgba(16,14,13,.95) 100%)}
 .hero-line{position:absolute;left:0;right:0;bottom:clamp(2.5rem,7vh,5rem);z-index:2;text-align:center;padding:0 1.5rem}
 .hero-line h1{font-weight:200;font-size:var(--fs-h1);letter-spacing:.08em;text-transform:uppercase;color:var(--mineral);margin-bottom:1rem}
@@ -178,7 +178,7 @@ nav.top.solid{height:56px;--bs:.6}
 
 <main id="contenido">
 <header class="hero">
-  <img src="img/luminarias/hero.jpg" alt="Luminarias">
+  <video src="img/luminarias/luminarias-hero.mp4" poster="img/luminarias/luminarias-hero-poster.jpg" autoplay muted loop playsinline preload="auto" aria-label="Luminarias" data-motion></video>
   <div class="hero-line">
     <h1><span data-es>Luminarias</span><span data-en>Lighting</span></h1>
     <p><span data-es>La greda deja de contener la luz: <span class="em">la filtra.</span> El espesor y el calado deciden cuánta sale.</span><span data-en class="block">The clay stops containing light: <span class="em">it filters it.</span> Thickness and perforation decide how much escapes.</span></p>
@@ -195,7 +195,7 @@ nav.top.solid{height:56px;--bs:.6}
 </section>
 
 <figure class="plate">
-  <img src="img/luminarias/plate-esfera.jpg" alt="Luminaria esférica encendida" data-cap="Cuerpo de greda · collar de cobre" loading="lazy">
+  <img src="img/luminarias/plate-calada.jpg" alt="Luminaria esférica encendida" data-cap="Cuerpo de greda · collar de cobre" loading="lazy">
 </figure>
 
 <section class="gal band-c">
@@ -205,23 +205,23 @@ nav.top.solid{height:56px;--bs:.6}
   </div>
 
   <div class="car" id="car" role="region" aria-roledescription="carousel" aria-label="Una familia, varias escalas">
-    <figure role="group" aria-roledescription="slide" aria-label="01 de 6" data-n="01" data-t-es="Racimo" data-t-en="Cluster" data-s-es="Tres cuerpos suspendidos" data-s-en="Three suspended bodies" data-d-es="Tres esferas de greda colgando del mismo punto. La luz de una lava la superficie de la otra." data-d-en="Three clay spheres hanging from the same point. The light of one washes the surface of the next.">
-      <img src="img/luminarias/lum-01-racimo.jpg" alt="Racimo" data-cap="01 · racimo" loading="lazy">
+    <figure role="group" aria-roledescription="slide" aria-label="01 de 6" data-n="01" data-t-es="Esfera" data-t-en="Sphere" data-s-es="Sobremesa · greda torneada" data-s-en="Table lamp · turned clay" data-d-es="La boca abierta dirige la luz hacia un costado. Las tres patas nacen del mismo cuerpo, no se agregan después." data-d-en="The open mouth directs light to one side. The three feet are born from the same body, not added afterward.">
+      <img src="img/luminarias/lum-01-esfera.jpg" alt="Esfera" data-cap="01 · esfera" loading="lazy">
     </figure>
-    <figure role="group" aria-roledescription="slide" aria-label="02 de 6" data-n="02" data-t-es="Anillo de cobre" data-t-en="Copper ring" data-s-es="Encuentro con el difusor" data-s-en="Meeting the diffuser" data-d-es="El cobre acepta la variación de la greda; la greda no acepta la del cobre. El ajuste ocurre siempre del lado del metal." data-d-en="Copper accepts clay's variation; clay doesn't accept copper's. The adjustment always happens on the metal's side.">
-      <img src="img/luminarias/lum-02-anillo.jpg" alt="Anillo de cobre" data-cap="02 · anillo de cobre" loading="lazy">
+    <figure role="group" aria-roledescription="slide" aria-label="02 de 6" data-n="02" data-t-es="Racimo" data-t-en="Cluster" data-s-es="Colgantes · remate de cobre" data-s-en="Pendants · copper collar" data-d-es="Tres cuerpos suspendidos a distinta altura. El cobre remata la boca superior y sostiene el cable textil." data-d-en="Three bodies suspended at different heights. Copper finishes the upper mouth and holds the textile cable.">
+      <img src="img/luminarias/lum-02-racimo.jpg" alt="Racimo" data-cap="02 · racimo" loading="lazy">
     </figure>
-    <figure role="group" aria-roledescription="slide" aria-label="03 de 6" data-n="03" data-t-es="Sobremesa" data-t-en="Table lamp" data-s-es="Luz rasante" data-s-en="Grazing light" data-d-es="Apoyada, la boca queda casi a ras de la mesa. La luz sale lateral y revela la textura de lo que toca." data-d-en="Resting, the aperture sits nearly flush with the table. Light exits sideways and reveals the texture of what it touches.">
-      <img src="img/luminarias/lum-03-sobremesa.jpg" alt="Sobremesa" data-cap="03 · sobremesa" loading="lazy">
+    <figure role="group" aria-roledescription="slide" aria-label="03 de 6" data-n="03" data-t-es="Calada" data-t-en="Openwork" data-s-es="Greda calada + vidrio" data-s-en="Perforated clay + glass" data-d-es="Cada calado aloja una pieza de vidrio soplado. Apagada se lee como relieve; encendida, cada abertura proyecta su forma." data-d-en="Each opening holds a piece of blown glass. Off, it reads as relief; lit, each opening projects its shape.">
+      <img src="img/luminarias/lum-03-calada.jpg" alt="Calada" data-cap="03 · calada" loading="lazy">
     </figure>
-    <figure role="group" aria-roledescription="slide" aria-label="04 de 6" data-n="04" data-t-es="Boca de salida" data-t-en="Aperture" data-s-es="Difusor a la vista" data-s-en="Diffuser exposed" data-d-es="El diámetro de la boca es la variable que más pesa: decide cuánta luz escapa sin filtrar." data-d-en="The aperture diameter is the heaviest variable: it decides how much light escapes unfiltered.">
-      <img src="img/luminarias/lum-04-difusor.jpg" alt="Boca de salida" data-cap="04 · boca de salida" loading="lazy">
+    <figure role="group" aria-roledescription="slide" aria-label="04 de 6" data-n="04" data-t-es="Colgante estriado" data-t-en="Ribbed pendant" data-s-es="Textura al torno" data-s-en="Wheel-cut texture" data-d-es="La estría se corta en el torno mientras la greda gira. La luz cae al piso y la superficie retiene el gesto de la herramienta." data-d-en="The ribbing is cut on the wheel while the clay turns. Light falls to the floor and the surface keeps the tool's gesture.">
+      <img src="img/luminarias/lum-04-colgante.jpg" alt="Colgante estriado" data-cap="04 · colgante estriado" loading="lazy">
     </figure>
-    <figure role="group" aria-roledescription="slide" aria-label="05 de 6" data-n="05" data-t-es="En reposo" data-t-en="At rest" data-s-es="Racimo apagado, luz de día" data-s-en="Cluster off, daylight" data-d-es="Apagada, la luminaria sigue siendo greda: volumen, textura y cobre a plena luz. El objeto no depende de la ampolleta." data-d-en="Switched off, the light is still clay: volume, texture and copper in daylight. The object does not depend on the bulb.">
-      <img src="img/luminarias/lum-05-gota.jpg" alt="En reposo" data-cap="05 · en reposo" loading="lazy">
+    <figure role="group" aria-roledescription="slide" aria-label="05 de 6" data-n="05" data-t-es="Óvalo" data-t-en="Oval" data-s-es="Volumen cerrado" data-s-en="Closed volume" data-d-es="Un solo cuerpo lenticular con la boca desplazada. La greda se lee como piedra: densa, mate, sin brillo añadido." data-d-en="A single lenticular body with the mouth offset. The clay reads as stone: dense, matte, with no added gloss.">
+      <img src="img/luminarias/lum-05-ovalo.jpg" alt="Óvalo" data-cap="05 · óvalo" loading="lazy">
     </figure>
-    <figure role="group" aria-roledescription="slide" aria-label="06 de 6" data-n="06" data-t-es="Collares" data-t-en="Collars" data-s-es="El sistema desde abajo" data-s-en="The system from below" data-d-es="Desde abajo se ve el sistema completo: cuerpo de greda, collar de cobre y el punto donde ambos se encuentran." data-d-en="From below the whole system is visible: clay body, copper collar and the point where the two meet.">
-      <img src="img/luminarias/lum-06-cobre.jpg" alt="Collares" data-cap="06 · collares" loading="lazy">
+    <figure role="group" aria-roledescription="slide" aria-label="06 de 6" data-n="06" data-t-es="El calado encendido" data-t-en="The openwork lit" data-s-es="Detalle en uso" data-s-en="Lit detail" data-d-es="Encendida, la pieza deja de contener la luz y pasa a filtrarla. El vidrio de cada abertura la concentra antes de soltarla." data-d-en="Lit, the piece stops containing light and starts filtering it. The glass in each opening concentrates it before releasing it.">
+      <img src="img/luminarias/lum-06-detalle.jpg" alt="El calado encendido" data-cap="06 · el calado encendido" loading="lazy">
     </figure>
   </div>
 
