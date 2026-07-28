@@ -7,3 +7,4 @@
 # Material bruto: img/ se versiona solo con archivos curados ya rastreados
 # (los nuevos exports finales se agregan con: git add -f img/...)
 img/*
+.wrangler/
