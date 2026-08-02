@@ -65,6 +65,7 @@ html{scroll-behavior:smooth}
 h1,h2,h3,.pull,.sheet a,.proj-nav-name{font-family:'Archivo','Lato',sans-serif;font-stretch:125%}
 body{font-family:'Lato',sans-serif;font-weight:300;background:var(--fondo);color:var(--mineral);line-height:1.75;-webkit-font-smoothing:antialiased}
 body.locked{overflow:hidden}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 img{display:block;max-width:100%}
 picture{display:block}
 a{color:inherit;text-decoration:none}
@@ -241,7 +242,7 @@ nav.top.solid{height:56px;--bs:.6}
 
 <nav class="top" id="nav">
   <button class="menubtn" id="menuBtn" aria-expanded="false" aria-controls="sheet"><span data-es>Menú</span><span data-en>Menu</span></button>
-  <a href="/" class="brand"><img src="img/brand/icon-blanco.png" alt=""><span class="word">Trufquén</span></a>
+  <a href="/" class="brand"><img src="img/brand/icon-blanco.png" width="300" height="130" alt=""><span class="word">Trufquén</span></a>
   <button class="langbtn" id="langBtn" aria-label="Cambiar idioma / Switch language">EN/ES</button>
 </nav>
 
@@ -276,7 +277,7 @@ nav.top.solid{height:56px;--bs:.6}
   </div>
 </section>
 
-<button type="button" class="plate js-btn" aria-label="Ampliar imagen: Vidrio incandescente soplado dentro de la greda calada" data-label-es="Ampliar imagen: Vidrio incandescente soplado dentro de la greda calada" data-label-en="Enlarge image: Incandescent glass blown inside the perforated clay"><picture><source srcset="img/probetas/plate-variables.avif" type="image/avif"><source srcset="img/probetas/plate-variables.webp" type="image/webp"><img src="img/probetas/plate-variables.jpg" alt="Vidrio incandescente soplado dentro de la greda calada" data-cap="El ensayo en curso" loading="lazy"></picture></button>
+<button type="button" class="plate js-btn" aria-label="Ampliar imagen: Vidrio incandescente soplado dentro de la greda calada" data-label-es="Ampliar imagen: Vidrio incandescente soplado dentro de la greda calada" data-label-en="Enlarge image: Incandescent glass blown inside the perforated clay"><picture><source srcset="img/probetas/plate-variables.avif" type="image/avif"><source srcset="img/probetas/plate-variables.webp" type="image/webp"><img src="img/probetas/plate-variables.jpg" width="1800" height="1350" alt="Vidrio incandescente soplado dentro de la greda calada" data-cap="El ensayo en curso" loading="lazy"></picture></button>
 
 <section class="gal band-c">
   <div class="wrap narrow" style="margin-bottom:3rem">
@@ -286,28 +287,28 @@ nav.top.solid{height:56px;--bs:.6}
 
   <div class="car" id="car" role="region" aria-roledescription="carousel" aria-label="Ocho ensayos del conjunto">
     <figure role="group" aria-roledescription="slide" aria-label="01 de 8" data-n="01" data-t-es="Quiebre por temperatura" data-t-en="Thermal break" data-s-es="Ensayo fallido" data-s-en="Failed trial" data-d-es="El vidrio se contrajo más rápido que la greda y abrió la pared. Este quiebre fijó el límite que había que respetar." data-d-en="The glass contracted faster than the clay and split the wall. This break set the limit we had to respect.">
-      <button type="button" class="js-btn" aria-label="Ampliar imagen: Quiebre por temperatura" data-label-es="Ampliar imagen: Quiebre por temperatura" data-label-en="Enlarge image: Thermal break"><picture><source srcset="img/probetas/pr-01-quiebre.avif" type="image/avif"><source srcset="img/probetas/pr-01-quiebre.webp" type="image/webp"><img src="img/probetas/pr-01-quiebre.jpg" alt="Quiebre por temperatura" data-cap="PR·01 · quiebre" loading="lazy"></picture></button>
+      <button type="button" class="js-btn" aria-label="Ampliar imagen: Quiebre por temperatura" data-label-es="Ampliar imagen: Quiebre por temperatura" data-label-en="Enlarge image: Thermal break"><picture><source srcset="img/probetas/pr-01-quiebre.avif" type="image/avif"><source srcset="img/probetas/pr-01-quiebre.webp" type="image/webp"><img src="img/probetas/pr-01-quiebre.jpg" width="1672" height="941" alt="Quiebre por temperatura" data-cap="PR·01 · quiebre" loading="lazy"></picture></button>
     </figure>
     <figure role="group" aria-roledescription="slide" aria-label="02 de 8" data-n="02" data-t-es="Quiebre, detalle" data-t-en="Thermal break, detail" data-s-es="Vidrio fracturado" data-s-en="Fractured glass" data-d-es="El borde de vidrio quedó dentado dentro del cuerpo de greda. El registro del fallo es tan útil como el de un ensayo exitoso." data-d-en="The glass edge was left jagged inside the clay body. The record of a failure is as useful as that of a successful trial.">
-      <button type="button" class="js-btn" aria-label="Ampliar imagen: Quiebre, detalle" data-label-es="Ampliar imagen: Quiebre, detalle" data-label-en="Enlarge image: Thermal break, detail"><picture><source srcset="img/probetas/pr-02-quiebre-detalle.avif" type="image/avif"><source srcset="img/probetas/pr-02-quiebre-detalle.webp" type="image/webp"><img src="img/probetas/pr-02-quiebre-detalle.jpg" alt="Quiebre, detalle" data-cap="PR·02 · quiebre, detalle" loading="lazy"></picture></button>
+      <button type="button" class="js-btn" aria-label="Ampliar imagen: Quiebre, detalle" data-label-es="Ampliar imagen: Quiebre, detalle" data-label-en="Enlarge image: Thermal break, detail"><picture><source srcset="img/probetas/pr-02-quiebre-detalle.avif" type="image/avif"><source srcset="img/probetas/pr-02-quiebre-detalle.webp" type="image/webp"><img src="img/probetas/pr-02-quiebre-detalle.jpg" width="1672" height="941" alt="Quiebre, detalle" data-cap="PR·02 · quiebre, detalle" loading="lazy"></picture></button>
     </figure>
     <figure role="group" aria-roledescription="slide" aria-label="03 de 8" data-n="03" data-t-es="La frontera" data-t-en="The border" data-s-es="Macro del contacto" data-s-en="Contact macro" data-d-es="El detalle que lo probó todo: greda y vidrio comparten un borde nítido. No hay masa única — la unión es mecánica." data-d-en="The detail that proved everything: clay and glass share a sharp edge. There is no single mass — the union is mechanical.">
-      <button type="button" class="js-btn" aria-label="Ampliar imagen: La frontera" data-label-es="Ampliar imagen: La frontera" data-label-en="Enlarge image: The border"><picture><source srcset="img/probetas/pr-03-macro.avif" type="image/avif"><source srcset="img/probetas/pr-03-macro.webp" type="image/webp"><img src="img/probetas/pr-03-macro.jpg" alt="La frontera" data-cap="PR·03 · la frontera" loading="lazy"></picture></button>
+      <button type="button" class="js-btn" aria-label="Ampliar imagen: La frontera" data-label-es="Ampliar imagen: La frontera" data-label-en="Enlarge image: The border"><picture><source srcset="img/probetas/pr-03-macro.avif" type="image/avif"><source srcset="img/probetas/pr-03-macro.webp" type="image/webp"><img src="img/probetas/pr-03-macro.jpg" width="1539" height="1022" alt="La frontera" data-cap="PR·03 · la frontera" loading="lazy"></picture></button>
     </figure>
     <figure role="group" aria-roledescription="slide" aria-label="04 de 8" data-n="04" data-t-es="Grieta controlada" data-t-en="Controlled crack" data-s-es="Vidrio ámbar alojado" data-s-en="Amber glass lodged inside" data-d-es="La grieta deja ver el vidrio ámbar alojado dentro. Lo que en otra pieza sería falla, aquí quedó documentado como dato." data-d-en="The crack reveals the amber glass lodged inside. What would be a defect elsewhere was documented here as data.">
-      <button type="button" class="js-btn" aria-label="Ampliar imagen: Grieta controlada" data-label-es="Ampliar imagen: Grieta controlada" data-label-en="Enlarge image: Controlled crack"><picture><source srcset="img/probetas/pr-04-grieta.avif" type="image/avif"><source srcset="img/probetas/pr-04-grieta.webp" type="image/webp"><img src="img/probetas/pr-04-grieta.jpg" alt="Grieta controlada" data-cap="PR·04 · grieta controlada" loading="lazy"></picture></button>
+      <button type="button" class="js-btn" aria-label="Ampliar imagen: Grieta controlada" data-label-es="Ampliar imagen: Grieta controlada" data-label-en="Enlarge image: Controlled crack"><picture><source srcset="img/probetas/pr-04-grieta.avif" type="image/avif"><source srcset="img/probetas/pr-04-grieta.webp" type="image/webp"><img src="img/probetas/pr-04-grieta.jpg" width="1800" height="1011" alt="Grieta controlada" data-cap="PR·04 · grieta controlada" loading="lazy"></picture></button>
     </figure>
     <figure role="group" aria-roledescription="slide" aria-label="05 de 8" data-n="05" data-t-es="Prueba en mano" data-t-en="Trial in hand" data-s-es="Verificación directa" data-s-en="Direct verification" data-d-es="Cada probeta se revisa también en la mano, no solo en el banco. El peso y el calce se confirman con el cuerpo, no solo con la vista." data-d-en="Each test piece is also checked by hand, not only on the bench. Weight and fit are confirmed with the body, not just by sight.">
-      <button type="button" class="js-btn" aria-label="Ampliar imagen: Prueba en mano" data-label-es="Ampliar imagen: Prueba en mano" data-label-en="Enlarge image: Trial in hand"><picture><source srcset="img/probetas/pr-05-mano.avif" type="image/avif"><source srcset="img/probetas/pr-05-mano.webp" type="image/webp"><img src="img/probetas/pr-05-mano.jpg" alt="Prueba en mano" data-cap="PR·05 · prueba en mano" loading="lazy"></picture></button>
+      <button type="button" class="js-btn" aria-label="Ampliar imagen: Prueba en mano" data-label-es="Ampliar imagen: Prueba en mano" data-label-en="Enlarge image: Trial in hand"><picture><source srcset="img/probetas/pr-05-mano.avif" type="image/avif"><source srcset="img/probetas/pr-05-mano.webp" type="image/webp"><img src="img/probetas/pr-05-mano.jpg" width="1674" height="940" alt="Prueba en mano" data-cap="PR·05 · prueba en mano" loading="lazy"></picture></button>
     </figure>
     <figure role="group" aria-roledescription="slide" aria-label="06 de 8" data-n="06" data-t-es="Grieta que individualiza" data-t-en="Individualizing crack" data-s-es="Vidrio ámbar visible" data-s-en="Amber glass visible" data-d-es="La misma grieta controlada, en un cuerpo más alto: cada probeta se agrieta distinto y esa diferencia pasó a leerse como identidad, no como defecto." data-d-en="The same controlled crack, in a taller body: each test piece cracks differently, and that difference came to read as identity, not defect.">
-      <button type="button" class="js-btn" aria-label="Ampliar imagen: Grieta que individualiza" data-label-es="Ampliar imagen: Grieta que individualiza" data-label-en="Enlarge image: Individualizing crack"><picture><source srcset="img/probetas/pr-06-individualidad.avif" type="image/avif"><source srcset="img/probetas/pr-06-individualidad.webp" type="image/webp"><img src="img/probetas/pr-06-individualidad.jpg" alt="Grieta que individualiza" data-cap="PR·06 · grieta que individualiza" loading="lazy"></picture></button>
+      <button type="button" class="js-btn" aria-label="Ampliar imagen: Grieta que individualiza" data-label-es="Ampliar imagen: Grieta que individualiza" data-label-en="Enlarge image: Individualizing crack"><picture><source srcset="img/probetas/pr-06-individualidad.avif" type="image/avif"><source srcset="img/probetas/pr-06-individualidad.webp" type="image/webp"><img src="img/probetas/pr-06-individualidad.jpg" width="1800" height="1011" alt="Grieta que individualiza" data-cap="PR·06 · grieta que individualiza" loading="lazy"></picture></button>
     </figure>
     <figure role="group" aria-roledescription="slide" aria-label="07 de 8" data-n="07" data-t-es="Probeta fallida" data-t-en="Failed test piece" data-s-es="Vidrio fracturado en banco" data-s-en="Glass shattered on the bench" data-d-es="El vidrio se fracturó por completo al separarse de la greda. Un fallo total también delimita el rango que sí funciona." data-d-en="The glass shattered completely when it separated from the clay. A total failure also delimits the range that does work.">
-      <button type="button" class="js-btn" aria-label="Ampliar imagen: Probeta fallida" data-label-es="Ampliar imagen: Probeta fallida" data-label-en="Enlarge image: Failed test piece"><picture><source srcset="img/probetas/pr-07-fallida.avif" type="image/avif"><source srcset="img/probetas/pr-07-fallida.webp" type="image/webp"><img src="img/probetas/pr-07-fallida.jpg" alt="Probeta fallida" data-cap="PR·07 · probeta fallida" loading="lazy"></picture></button>
+      <button type="button" class="js-btn" aria-label="Ampliar imagen: Probeta fallida" data-label-es="Ampliar imagen: Probeta fallida" data-label-en="Enlarge image: Failed test piece"><picture><source srcset="img/probetas/pr-07-fallida.avif" type="image/avif"><source srcset="img/probetas/pr-07-fallida.webp" type="image/webp"><img src="img/probetas/pr-07-fallida.jpg" width="1672" height="941" alt="Probeta fallida" data-cap="PR·07 · probeta fallida" loading="lazy"></picture></button>
     </figure>
     <figure role="group" aria-roledescription="slide" aria-label="08 de 8" data-n="08" data-t-es="Fuente por calce" data-t-en="Vessel by fit" data-s-es="Vidrio alojado en el calado" data-s-en="Glass set in the perforation" data-d-es="El vidrio se aloja en el calado de la fuente sin adhesión química. El calado no es ornamento: es el sistema de anclaje de toda la pieza." data-d-en="The glass sits in the vessel's openwork with no chemical adhesion. The openwork is not ornament: it is the anchoring system of the whole piece.">
-      <button type="button" class="js-btn" aria-label="Ampliar imagen: Fuente por calce" data-label-es="Ampliar imagen: Fuente por calce" data-label-en="Enlarge image: Vessel by fit"><picture><source srcset="img/probetas/pr-08-calce.avif" type="image/avif"><source srcset="img/probetas/pr-08-calce.webp" type="image/webp"><img src="img/probetas/pr-08-calce.jpg" alt="Fuente por calce" data-cap="PR·08 · fuente por calce" loading="lazy"></picture></button>
+      <button type="button" class="js-btn" aria-label="Ampliar imagen: Fuente por calce" data-label-es="Ampliar imagen: Fuente por calce" data-label-en="Enlarge image: Vessel by fit"><picture><source srcset="img/probetas/pr-08-calce.avif" type="image/avif"><source srcset="img/probetas/pr-08-calce.webp" type="image/webp"><img src="img/probetas/pr-08-calce.jpg" width="1800" height="1196" alt="Fuente por calce" data-cap="PR·08 · fuente por calce" loading="lazy"></picture></button>
     </figure>
   </div>
 
@@ -367,12 +368,12 @@ nav.top.solid{height:56px;--bs:.6}
 
 <section class="proj-nav">
   <div class="wrap">
-    <a href="ahumador-trufquen" class="proj-nav-link proj-nav-prev">
+    <a href="ahumador-trufquen" class="proj-nav-link proj-nav-prev" data-track="project_prev">
       <span class="proj-nav-label"><span data-es>← Proyecto anterior</span><span data-en>← Previous project</span></span>
       <span class="proj-nav-name"><span data-es>Ahumador</span><span data-en>Smoking vessel</span></span>
     </a>
     <a href="/#piezas" class="proj-nav-all"><span data-es>Volver a piezas</span><span data-en>Back to pieces</span></a>
-    <a href="engarce-trufquen" class="proj-nav-link proj-nav-next">
+    <a href="engarce-trufquen" class="proj-nav-link proj-nav-next" data-track="project_next">
       <span class="proj-nav-label"><span data-es>Proyecto siguiente →</span><span data-en>Next project →</span></span>
       <span class="proj-nav-name"><span data-es>Engarce</span><span data-en>Engarce</span></span>
     </a>
@@ -382,7 +383,7 @@ nav.top.solid{height:56px;--bs:.6}
 
 <footer>
   <a href="#top" class="back-top"><span data-es>Volver arriba</span><span data-en>Back to top</span> ↑</a>
-  <div class="fbrand"><img src="img/brand/icon-blanco.png" alt=""><span>Trufquén</span></div>
+  <div class="fbrand"><img src="img/brand/icon-blanco.png" width="300" height="130" alt=""><span>Trufquén</span></div>
   <div class="social">
     <a href="https://instagram.com/trufquen" target="_blank" rel="noopener" aria-label="Instagram" data-track="social_instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.2" cy="6.8" r="1.1" fill="currentColor" stroke="none"/></svg></a>
     <a href="https://facebook.com/Trufquen" target="_blank" rel="noopener" aria-label="Facebook" data-track="social_facebook"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M13.6 21v-7.2h2.2l.3-2.6h-2.5v-1.6c0-.75.2-1.27 1.28-1.27h1.38V5.98c-.24-.03-1.06-.1-2-.1-2 0-3.36 1.22-3.36 3.46v1.93H8.6v2.6h2.32V21" fill="currentColor" stroke="none"/></svg></a>
@@ -411,6 +412,7 @@ nav.top.solid{height:56px;--bs:.6}
   <button class="lb-nav lb-next" id="lbNext" aria-label="Imagen siguiente" data-label-es="Imagen siguiente" data-label-en="Next image">›</button>
   <div class="lb-count" id="lbCount"></div>
   <div class="lb-cap" id="lbCap"></div>
+  <div class="sr-only" id="lbAnnounce" aria-live="polite" aria-atomic="true"></div>
 </div>
 
 <script>
@@ -434,10 +436,12 @@ var sheetEl=document.getElementById('sheet'), menuBtn=document.getElementById('m
 function openSheet(){
   sheetPrevFocus=document.activeElement;
   sheetEl.classList.add('open');sheetEl.removeAttribute('inert');sheetEl.setAttribute('aria-hidden','false');
+  document.body.classList.add('locked');
   menuBtn.setAttribute('aria-expanded','true');document.getElementById('sheetClose').focus();
 }
 function closeSheet(){
   sheetEl.classList.remove('open');sheetEl.setAttribute('inert','');sheetEl.setAttribute('aria-hidden','true');
+  document.body.classList.remove('locked');
   menuBtn.setAttribute('aria-expanded','false');if(sheetPrevFocus)sheetPrevFocus.focus();
 }
 sheetEl.addEventListener('keydown',function(e){trapTab(sheetEl,e)});
@@ -495,20 +499,30 @@ document.getElementById('btnNext').addEventListener('click',function(){carGo(1)}
 carPaint(0);
 ariaLang();
 
-var lbSet=[],lbAt=0,lb=document.getElementById('lb'),lbImg=document.getElementById('lbImg'),lbPrevFocus=null;
+var lbSet=[],lbAt=0,lb=document.getElementById('lb'),lbImg=document.getElementById('lbImg'),lbPrevFocus=null,
+    lbAnnounce=document.getElementById('lbAnnounce'),
+    lbBg=[document.getElementById('nav'),document.getElementById('contenido'),document.querySelector('footer')];
 function lbOpen(img){
   lbPrevFocus=document.activeElement;
   lbSet=[].slice.call(document.querySelectorAll('.js-btn img'));lbAt=lbSet.indexOf(img);lbRender();
   lb.classList.add('open');lb.removeAttribute('inert');lb.setAttribute('aria-hidden','false');
-  document.body.classList.add('locked');document.getElementById('lbX').focus();
+  document.body.classList.add('locked');
+  lbBg.forEach(function(el){if(el)el.setAttribute('inert','')});
+  document.getElementById('lbX').focus();
 }
 function lbRender(){var im=lbSet[lbAt];if(!im)return;lbImg.src=im.currentSrc||im.src;lbImg.alt=im.alt||'';
-  document.getElementById('lbCap').textContent=im.dataset.cap||im.alt||'';
-  document.getElementById('lbCount').textContent=(lbAt+1)+' / '+lbSet.length}
+  var cap=im.dataset.cap||im.alt||'';
+  document.getElementById('lbCap').textContent=cap;
+  document.getElementById('lbCount').textContent=(lbAt+1)+' / '+lbSet.length;
+  var en=document.body.classList.contains('en');
+  lbAnnounce.textContent=(lbAt+1)+(en?' of ':' de ')+lbSet.length+': '+cap;
+}
 function lbGo(d){lbAt=(lbAt+d+lbSet.length)%lbSet.length;lbRender()}
 function lbClose(){
   lb.classList.remove('open');lb.setAttribute('inert','');lb.setAttribute('aria-hidden','true');
-  document.body.classList.remove('locked');if(lbPrevFocus)lbPrevFocus.focus();
+  document.body.classList.remove('locked');
+  lbBg.forEach(function(el){if(el)el.removeAttribute('inert')});
+  if(lbPrevFocus)lbPrevFocus.focus();
 }
 document.getElementById('lbX').addEventListener('click',lbClose);
 document.getElementById('lbPrev').addEventListener('click',function(){lbGo(-1)});
