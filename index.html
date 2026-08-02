@@ -150,7 +150,7 @@ h2{font-weight:200;line-height:1.3;font-size:var(--fs-h2);color:var(--tinta)}
 .pieces-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(2.5rem,5vw,4rem) clamp(1.8rem,4vw,3rem)}
 @media(max-width:760px){.pieces-grid{grid-template-columns:1fr;gap:clamp(2.5rem,7vh,4rem)}}
 .band{position:relative}
-.band .shot{position:relative;overflow:hidden;background:linear-gradient(150deg,#2a2018,#12100c);cursor:zoom-in}
+.band .shot{position:relative;z-index:2;overflow:hidden;background:linear-gradient(150deg,#2a2018,#12100c);cursor:zoom-in}
 .band .shot img{width:100%;height:clamp(300px,44vh,480px);object-fit:cover;transition:transform 1.1s cubic-bezier(.2,.6,.2,1)}
 .band .shot:hover img{transform:scale(1.03)}
 .band .shot::after{content:"⤢";position:absolute;right:1.2rem;bottom:1.2rem;font-size:0.85rem;color:rgba(240,235,227,0.8);opacity:0;transition:opacity .3s;pointer-events:none}
@@ -158,12 +158,12 @@ h2{font-weight:200;line-height:1.3;font-size:var(--fs-h2);color:var(--tinta)}
 .band .meta{display:flex;flex-direction:column;align-items:center;text-align:center;gap:0.3rem;padding-top:1.9rem}
 .band .num{font-family:'Space Mono',monospace;font-size:var(--fs-micro);letter-spacing:0.2em;color:var(--cobre)}
 .band h3{font-weight:200;font-size:var(--fs-h3);letter-spacing:0.02em;line-height:1.15}
-.band h3 a{position:relative;display:inline-block;transition:color .25s}
-.band h3 a::after{content:'';position:absolute;left:0;right:0;bottom:-4px;height:1px;background:var(--cobre);transform:scaleX(0);transform-origin:left;transition:transform .35s cubic-bezier(.2,.6,.2,1)}
-.band h3 a:hover{color:var(--cobre)}
-.band h3 a:hover::after{transform:scaleX(1)}
 .band .yr{font-family:'Space Mono',monospace;font-size:var(--fs-micro);letter-spacing:0.16em;color:var(--humo);text-transform:uppercase;display:block;margin-top:0.45rem}
 .band .desc{font-size:var(--fs-small);line-height:1.8;color:var(--ceniza);max-width:36rem;padding-top:0.3rem;margin:0 auto}
+.card-link{display:inline-flex;align-items:center;gap:0.35rem;min-height:44px;margin-top:0.6rem;font-family:'Space Mono',monospace;font-size:var(--fs-micro);letter-spacing:0.14em;text-transform:uppercase;color:var(--cobre);transition:gap .25s}
+.card-link:hover{gap:0.55rem}
+.card-link::after{content:'';position:absolute;inset:0;z-index:1}
+.card-info{display:inline-flex;align-items:center;min-height:44px;margin-top:0.6rem;font-family:'Space Mono',monospace;font-size:var(--fs-micro);letter-spacing:0.14em;text-transform:uppercase;color:var(--humo)}
 
 /* Estudio — Raúl */
 .founder{display:grid;grid-template-columns:0.85fr 1.15fr;gap:clamp(2rem,5vw,4rem);align-items:center;text-align:left;margin-top:3rem}
@@ -334,10 +334,11 @@ nav.top.solid{height:56px;--bs:.6}
       <div class="meta">
         <span class="num">01</span>
         <div>
-          <h3><a href="ahumador-trufquen"><span data-es>Ahumador</span><span data-en>Smoking vessel</span></a></h3>
+          <h3><span data-es>Ahumador</span><span data-en>Smoking vessel</span></h3>
           <span class="yr">2014 · <span data-es>Patente INAPI</span><span data-en>INAPI patent</span></span>
         </div>
         <p class="desc"><span data-es>Cocina y ahúma en un solo cuerpo de greda, sobre la llama de una cocina convencional. La invención que origina el estudio.</span><span data-en class="block">Cooks and smokes in a single clay body, over a conventional stove flame. The invention that originates the studio.</span></p>
+        <a href="ahumador-trufquen" class="card-link"><span data-es>Ver proyecto</span><span data-en>View project</span> →</a>
       </div>
     </article>
 
@@ -346,10 +347,11 @@ nav.top.solid{height:56px;--bs:.6}
       <div class="meta">
         <span class="num">02</span>
         <div>
-          <h3><a href="probetas-trufquen"><span data-es>Probetas</span><span data-en>Test pieces</span></a></h3>
+          <h3><span data-es>Probetas</span><span data-en>Test pieces</span></h3>
           <span class="yr">2017 · <span data-es>Fondart · Investigación</span><span data-en>Fondart · Research</span></span>
         </div>
         <p class="desc"><span data-es>El ensayo que probó que la cohesión greda–vidrio era posible y determinó su naturaleza mecánica.</span><span data-en class="block">The trial that proved clay–glass cohesion was possible and determined its mechanical nature.</span></p>
+        <a href="probetas-trufquen" class="card-link"><span data-es>Ver proyecto</span><span data-en>View project</span> →</a>
       </div>
     </article>
 
@@ -358,10 +360,11 @@ nav.top.solid{height:56px;--bs:.6}
       <div class="meta">
         <span class="num">03</span>
         <div>
-          <h3><a href="engarce-trufquen">Engarce</a></h3>
+          <h3>Engarce</h3>
           <span class="yr">2018 · <span data-es>11 piezas únicas</span><span data-en>11 unique pieces</span></span>
         </div>
         <p class="desc"><span data-es>El cristal se expande contra estructuras de greda y queda retenido por forma. La serie que fijó los parámetros del estudio.</span><span data-en class="block">Glass expands against clay structures and is held by form. The series that set the studio's parameters.</span></p>
+        <a href="engarce-trufquen" class="card-link"><span data-es>Ver proyecto</span><span data-en>View project</span> →</a>
       </div>
     </article>
 
@@ -370,10 +373,11 @@ nav.top.solid{height:56px;--bs:.6}
       <div class="meta">
         <span class="num">04</span>
         <div>
-          <h3><a href="luminarias-trufquen"><span data-es>Luminarias</span><span data-en>Lighting</span></a></h3>
+          <h3><span data-es>Luminarias</span><span data-en>Lighting</span></h3>
           <span class="yr">2018 · <span data-es>Serie</span><span data-en>Series</span></span>
         </div>
         <p class="desc"><span data-es>La greda deja de contener la luz: la filtra. El espesor y el calado deciden cuánta sale.</span><span data-en class="block">The clay stops containing light: it filters it. Thickness and perforation decide how much escapes.</span></p>
+        <a href="luminarias-trufquen" class="card-link"><span data-es>Ver proyecto</span><span data-en>View project</span> →</a>
       </div>
     </article>
 
@@ -382,10 +386,11 @@ nav.top.solid{height:56px;--bs:.6}
       <div class="meta">
         <span class="num">05</span>
         <div>
-          <h3><a href="tralma-trufquen">Tralma</a></h3>
+          <h3>Tralma</h3>
           <span class="yr">2020 · <span data-es>Cristalería</span><span data-en>Glassware</span></span>
         </div>
         <p class="desc"><span data-es>Borosilicato soplado a boca sobre greda colada. La línea que sobrevivió al cierre de la última cristalería del país.</span><span data-en class="block">Mouth-blown borosilicate over cast clay. The line that survived the closing of the country's last glassworks.</span></p>
+        <a href="tralma-trufquen" class="card-link"><span data-es>Ver proyecto</span><span data-en>View project</span> →</a>
       </div>
     </article>
 
@@ -398,6 +403,7 @@ nav.top.solid{height:56px;--bs:.6}
           <span class="yr">2026 · <span data-es>En desarrollo</span><span data-en>In development</span></span>
         </div>
         <p class="desc"><span data-es>Nuevas piezas desde el mismo cruce material.</span><span data-en class="block">New pieces from the same material crossing.</span></p>
+        <span class="card-info"><span data-es>Información bajo solicitud</span><span data-en>Information on request</span></span>
       </div>
     </article>
   </div>
