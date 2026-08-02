@@ -577,15 +577,25 @@ document.addEventListener('click', function(e){{
 </html>
 """
 
-def pic(src, img_attrs):
-    base = src.rsplit('.', 1)[0]
+def pic(src, img_attrs, sizes=None):
+    base, ext = src.rsplit('.', 1)
     w, h = img_size(src)
+    small = w > 640 and os.path.exists(os.path.join(_SITE_DIR, base + '-640.' + ext))
+    if small:
+        sz = sizes or '100vw'
+        avif_src = '%s-640.avif 640w, %s.avif %dw' % (base, base, w)
+        webp_src = '%s-640.webp 640w, %s.webp %dw' % (base, base, w)
+        img_src = '%s-640.%s 640w, %s %dw' % (base, ext, src, w)
+        return ('<picture><source srcset="%s" sizes="%s" type="image/avif">'
+                '<source srcset="%s" sizes="%s" type="image/webp">'
+                '<img src="%s" srcset="%s" sizes="%s" width="%d" height="%d" %s></picture>'
+                % (avif_src, sz, webp_src, sz, src, img_src, sz, w, h, img_attrs))
     return ('<picture><source srcset="%s.avif" type="image/avif"><source srcset="%s.webp" type="image/webp">'
             '<img src="%s" width="%d" height="%d" %s></picture>' % (base, base, src, w, h, img_attrs))
 
 def slide(n, img, t_es, t_en, s_es, s_en, d_es, d_en, cap, fig_class=''):
     inner = ('<button type="button" class="js-btn" aria-label="Ampliar imagen: %s" data-label-es="Ampliar imagen: %s" data-label-en="Enlarge image: %s">%s</button>'
-              % (t_es, t_es, t_en, pic(img, 'alt="%s" data-cap="%s" loading="lazy"' % (t_es, cap)))) if img else \
+              % (t_es, t_es, t_en, pic(img, 'alt="%s" data-cap="%s" loading="lazy"' % (t_es, cap), sizes='(max-width:760px) 100vw, 60vw'))) if img else \
             '<div class="ph"><span>Imagen pendiente</span></div>'
     cls = (' class="%s"' % fig_class) if fig_class else ''
     return ('    <figure%s role="group" aria-roledescription="slide" aria-label="%s de 6" data-n="%s" data-t-es="%s" data-t-en="%s" data-s-es="%s" data-s-en="%s" data-d-es="%s" data-d-en="%s">\n      %s\n    </figure>\n'
@@ -857,12 +867,12 @@ P.append(dict(
 # ---------- AHUMADOR  (solo 4 fotos reales -> 2 marcadores)
 P.append(dict(
  slug='ahumador-trufquen.html', title='Ahumador',
- rombo_section='''<section class="rombo">
+ rombo_section=('''<section class="rombo">
   <div class="wrap narrow">
-    <picture><source srcset="img/ahumador/pichikemenkue-blanco.avif" type="image/avif"><source srcset="img/ahumador/pichikemenkue-blanco.webp" type="image/webp"><img src="img/ahumador/pichikemenkue-blanco.png" width="1260" height="470" alt="Rombo Pichikemenküe, iconografía mapuche" loading="lazy"></picture>
+    %s
     <p><span data-es>Rombo Pichikemenküe · iconografía mapuche · su proyección horizontal define la sección constructiva del Ahumador</span><span data-en>Pichikemenküe rhombus · Mapuche iconography · its horizontal projection defines the smoking vessel's constructive section</span></p>
   </div>
-</section>''',
+</section>''' % pic('img/ahumador/pichikemenkue-blanco.png', 'alt="Rombo Pichikemenküe, iconografía mapuche" loading="lazy"', sizes='(max-width:700px) 100vw, 38rem')),
  l2_es='Astillas de madera en la base, alimento sobre parrilla de acero, y una cámara de greda que concentra humo y calor en un solo gesto. La forma nace de una matriz geométrica de la iconografía mapuche —el rombo del Pichikemenküe— convertida en sección constructiva: dos cuerpos que calzan mediante una pestaña perimetral, sellando la cámara sin herrajes ni juntas sintéticas.',
  l2_en='Wood chips at the base, food on a steel grill, and a clay chamber that concentrates smoke and heat in a single gesture. The form is born from a geometric matrix of Mapuche iconography —the Pichikemenküe rhombus— turned into a constructive section: two bodies fitting through a perimeter flange, sealing the chamber without hardware or synthetic joints.',
  c_idx_es='Probado en cocina profesional',
@@ -929,7 +939,7 @@ def hero_media(p):
         poster = p.get('hero_poster', p['hero'])
         return ('<video src="%s" poster="%s" autoplay muted loop playsinline preload="auto" aria-label="%s" data-label-es="%s" data-label-en="%s" data-motion></video>%s'
                 % (p['hero_video'], poster, p['h1_es'], p['h1_es'], p['h1_en'], VIDEO_TOGGLE))
-    return pic(p['hero'], 'alt="%s"' % p['h1_es'])
+    return pic(p['hero'], 'alt="%s"' % p['h1_es'], sizes='100vw')
 
 def plate_media(p):
     alt_en = p.get('plate_alt_en', p['plate_alt'])
@@ -937,7 +947,7 @@ def plate_media(p):
         return ('<div class="plate"><video src="%s" poster="%s" autoplay muted loop playsinline preload="metadata" aria-label="%s" data-label-es="%s" data-label-en="%s" data-motion></video>%s</div>'
                 % (p['plate_video'], p['plate'], p['plate_alt'], p['plate_alt'], alt_en, VIDEO_TOGGLE))
     return ('<button type="button" class="plate js-btn" aria-label="Ampliar imagen: %s" data-label-es="Ampliar imagen: %s" data-label-en="Enlarge image: %s">%s</button>'
-            % (p['plate_alt'], p['plate_alt'], alt_en, pic(p['plate'], 'alt="%s" data-cap="%s" loading="lazy"' % (p['plate_alt'], p['plate_cap']))))
+            % (p['plate_alt'], p['plate_alt'], alt_en, pic(p['plate'], 'alt="%s" data-cap="%s" loading="lazy"' % (p['plate_alt'], p['plate_cap']), sizes='100vw')))
 
 for p in P:
     p.setdefault('car_ar', '3 / 2')
