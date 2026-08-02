@@ -76,6 +76,7 @@ h1,h2,h3,.pull,.sheet a{{font-family:'Archivo','Lato',sans-serif;font-stretch:12
 body{{font-family:'Lato',sans-serif;font-weight:300;background:var(--fondo);color:var(--mineral);line-height:1.75;-webkit-font-smoothing:antialiased}}
 body.locked{{overflow:hidden}}
 img{{display:block;max-width:100%}}
+picture{{display:block}}
 a{{color:inherit;text-decoration:none}}
 .lang [data-en]{{display:none}}
 .lang.en [data-es]{{display:none}}
@@ -503,12 +504,19 @@ if(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').ma
   document.querySelectorAll('video[data-motion]').forEach(function(v){{v.pause();v.removeAttribute('autoplay');userPausedVideos.add(v)}});
 }}
 </script>
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{{"token": "af92bff511b04c5eb85a580f2dfcf333"}}'></script><!-- End Cloudflare Web Analytics -->
 </body>
 </html>
 """
 
+def pic(src, img_attrs):
+    base = src.rsplit('.', 1)[0]
+    return ('<picture><source srcset="%s.avif" type="image/avif"><source srcset="%s.webp" type="image/webp">'
+            '<img src="%s" %s></picture>' % (base, base, src, img_attrs))
+
 def slide(n, img, t_es, t_en, s_es, s_en, d_es, d_en, cap, fig_class=''):
-    inner = ('<button type="button" class="js-btn" aria-label="Ampliar imagen: %s"><img src="%s" alt="%s" data-cap="%s" loading="lazy"></button>' % (t_es, img, t_es, cap)) if img else \
+    inner = ('<button type="button" class="js-btn" aria-label="Ampliar imagen: %s">%s</button>'
+              % (t_es, pic(img, 'alt="%s" data-cap="%s" loading="lazy"' % (t_es, cap)))) if img else \
             '<div class="ph"><span>Imagen pendiente</span></div>'
     cls = (' class="%s"' % fig_class) if fig_class else ''
     return ('    <figure%s role="group" aria-roledescription="slide" aria-label="%s de 6" data-n="%s" data-t-es="%s" data-t-en="%s" data-s-es="%s" data-s-en="%s" data-d-es="%s" data-d-en="%s">\n      %s\n    </figure>\n'
@@ -774,7 +782,7 @@ P.append(dict(
  slug='ahumador-trufquen.html', title='Ahumador',
  rombo_section='''<section class="rombo">
   <div class="wrap narrow">
-    <img src="img/ahumador/pichikemenkue-blanco.png" alt="Rombo Pichikemenküe, iconografía mapuche" loading="lazy">
+    <picture><source srcset="img/ahumador/pichikemenkue-blanco.avif" type="image/avif"><source srcset="img/ahumador/pichikemenkue-blanco.webp" type="image/webp"><img src="img/ahumador/pichikemenkue-blanco.png" alt="Rombo Pichikemenküe, iconografía mapuche" loading="lazy"></picture>
     <p><span data-es>Rombo Pichikemenküe · iconografía mapuche · su proyección horizontal define la sección constructiva del Ahumador</span><span data-en>Pichikemenküe rhombus · Mapuche iconography · its horizontal projection defines the smoking vessel's constructive section</span></p>
   </div>
 </section>''',
@@ -844,15 +852,14 @@ def hero_media(p):
         poster = p.get('hero_poster', p['hero'])
         return ('<video src="%s" poster="%s" autoplay muted loop playsinline preload="auto" aria-label="%s" data-motion></video>%s'
                 % (p['hero_video'], poster, p['h1_es'], VIDEO_TOGGLE))
-    return '<img src="%s" alt="%s">' % (p['hero'], p['h1_es'])
+    return pic(p['hero'], 'alt="%s"' % p['h1_es'])
 
 def plate_media(p):
     if p.get('plate_video'):
         return ('<div class="plate"><video src="%s" poster="%s" autoplay muted loop playsinline preload="metadata" aria-label="%s" data-motion></video>%s</div>'
                 % (p['plate_video'], p['plate'], p['plate_alt'], VIDEO_TOGGLE))
-    return ('<button type="button" class="plate js-btn" aria-label="Ampliar imagen: %s">'
-            '<img src="%s" alt="%s" data-cap="%s" loading="lazy"></button>'
-            % (p['plate_alt'], p['plate'], p['plate_alt'], p['plate_cap']))
+    return ('<button type="button" class="plate js-btn" aria-label="Ampliar imagen: %s">%s</button>'
+            % (p['plate_alt'], pic(p['plate'], 'alt="%s" data-cap="%s" loading="lazy"' % (p['plate_alt'], p['plate_cap']))))
 
 for p in P:
     p.setdefault('car_ar', '3 / 2')
