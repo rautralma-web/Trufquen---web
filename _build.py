@@ -15,6 +15,48 @@ TPL = """<!DOCTYPE html>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>{title} — Trufquén</title>
 <meta name="description" content="{meta}">
+<link rel="canonical" href="https://trufquen.studio/{canonical_slug}">
+<link rel="icon" href="/favicon.ico" sizes="32x32">
+<link rel="icon" href="img/brand/favicon-192.png" type="image/png" sizes="192x192">
+<link rel="icon" href="img/brand/favicon-512.png" type="image/png" sizes="512x512">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta name="theme-color" content="#0A0908">
+<meta property="og:title" content="{title} — Trufquén">
+<meta property="og:description" content="{meta}">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://trufquen.studio/{canonical_slug}">
+<meta property="og:image" content="https://trufquen.studio/{og_image}">
+<meta property="og:image:width" content="1280">
+<meta property="og:image:height" content="720">
+<meta property="og:image:alt" content="{h1_es}">
+<meta property="og:locale" content="es_CL">
+<meta property="og:locale:alternate" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{title} — Trufquén">
+<meta name="twitter:description" content="{meta}">
+<meta name="twitter:image" content="https://trufquen.studio/{og_image}">
+<meta name="twitter:image:alt" content="{h1_es}">
+<script type="application/ld+json">
+{{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {{"@type":"ListItem","position":1,"name":"Trufquén","item":"https://trufquen.studio/"}},
+    {{"@type":"ListItem","position":2,"name":"{title}","item":"https://trufquen.studio/{canonical_slug}"}}
+  ]
+}}
+</script>
+<script type="application/ld+json">
+{{
+  "@context": "https://schema.org",
+  "@type": "CreativeWork",
+  "name": "{title}",
+  "description": "{meta}",
+  "url": "https://trufquen.studio/{canonical_slug}",
+  "image": "https://trufquen.studio/{og_image}",
+  "creator": {{"@type":"Organization","name":"Trufquén","url":"https://trufquen.studio/"}}
+}}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@125,100..900&family=Lato:wght@200;300;400&family=Space+Mono:wght@400&display=swap" rel="stylesheet">
@@ -39,6 +81,14 @@ a{{color:inherit;text-decoration:none}}
 .lang.en [data-es]{{display:none}}
 .lang.en [data-en]{{display:inline}}
 .lang.en [data-en].block{{display:block}}
+.js-btn{{display:block;width:100%;border:0;padding:0;margin:0;background:none;font:inherit;text-align:inherit;color:inherit;-webkit-appearance:none;appearance:none}}
+.js-btn:focus-visible{{outline:2px solid var(--cobre);outline-offset:2px}}
+.video-toggle{{position:absolute;z-index:3;background:rgba(10,9,8,.55);backdrop-filter:blur(6px);border:1px solid rgba(240,235,227,.3);color:var(--mineral);width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:opacity .2s,background .2s}}
+.video-toggle:hover{{background:rgba(10,9,8,.8)}}
+.video-toggle svg{{width:16px;height:16px;fill:currentColor}}
+.hero .video-toggle{{right:clamp(1.2rem,4vw,3rem);bottom:clamp(2.5rem,7vh,5rem)}}
+.plate{{position:relative}}
+.plate .video-toggle{{right:1.2rem;bottom:1.2rem}}
 
 nav.top{{position:fixed;top:0;left:0;right:0;z-index:80;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;
   height:var(--navh,104px);padding:0 clamp(1.2rem,4vw,3rem);pointer-events:none;
@@ -140,6 +190,7 @@ footer .social a{{color:var(--humo);transition:color .2s;display:inline-flex;min
 footer .social a:hover{{color:var(--cobre)}}
 footer .social svg{{width:19px;height:19px}}
 footer a{{font-family:'Space Mono',monospace;font-size:var(--fs-ui);letter-spacing:.14em;color:var(--humo);text-transform:uppercase;margin:0 .7rem;line-height:2.4}}
+.fcontact{{margin-top:.4rem}}
 footer a:hover{{color:var(--cobre)}}
 .legal{{font-family:'Space Mono',monospace;font-size:var(--fs-micro);letter-spacing:.08em;color:rgba(160,150,140,.85);line-height:1.9;text-transform:uppercase;margin-top:2rem;max-width:44rem;margin-left:auto;margin-right:auto;padding:0 1.5rem}}
 
@@ -176,20 +227,20 @@ nav.top.solid{{height:56px;--bs:.6}}
 
 <nav class="top" id="nav">
   <button class="menubtn" id="menuBtn" aria-expanded="false" aria-controls="sheet"><span data-es>Menú</span><span data-en>Menu</span></button>
-  <a href="index.html" class="brand"><img src="img/brand/icon-blanco.png" alt=""><span class="word">Trufquén</span></a>
+  <a href="/" class="brand"><img src="img/brand/icon-blanco.png" alt=""><span class="word">Trufquén</span></a>
   <button class="langbtn" id="langBtn" aria-label="Cambiar idioma / Switch language">EN/ES</button>
 </nav>
 
-<div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-label="Menú de navegación">
+<div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-label="Menú de navegación" aria-hidden="true" inert>
   <button class="close" id="sheetClose"><span data-es>Cerrar</span><span data-en>Close</span></button>
   <nav>
-    <a href="index.html"><span data-es>Inicio</span><span data-en>Home</span></a>
-    <a href="ahumador-trufquen.html"><span data-es>Ahumador</span><span data-en>Smoking vessel</span></a>
-    <a href="probetas-trufquen.html"><span data-es>Probetas</span><span data-en>Test pieces</span></a>
-    <a href="engarce-trufquen.html">Engarce</a>
-    <a href="luminarias-trufquen.html"><span data-es>Luminarias</span><span data-en>Lighting</span></a>
-    <a href="tralma-trufquen.html">Tralma</a>
-    <a href="index.html#contacto"><span data-es>Contacto</span><span data-en>Contact</span></a>
+    <a href="/"><span data-es>Inicio</span><span data-en>Home</span></a>
+    <a href="ahumador-trufquen"><span data-es>Ahumador</span><span data-en>Smoking vessel</span></a>
+    <a href="probetas-trufquen"><span data-es>Probetas</span><span data-en>Test pieces</span></a>
+    <a href="engarce-trufquen">Engarce</a>
+    <a href="luminarias-trufquen"><span data-es>Luminarias</span><span data-en>Lighting</span></a>
+    <a href="tralma-trufquen">Tralma</a>
+    <a href="/#contacto"><span data-es>Contacto</span><span data-en>Contact</span></a>
   </nav>
 </div>
 
@@ -211,9 +262,7 @@ nav.top.solid{{height:56px;--bs:.6}}
   </div>
 </section>
 {rombo_section}
-<figure class="plate">
-  {plate_media}
-</figure>
+{plate_media}
 
 <section class="gal band-c">
   <div class="wrap narrow" style="margin-bottom:3rem">
@@ -281,15 +330,20 @@ nav.top.solid{{height:56px;--bs:.6}}
     <a href="https://trufquen.studio" aria-label="Trufquén Studio"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><ellipse cx="12" cy="12" rx="4.2" ry="10"/><line x1="2" y1="12" x2="22" y2="12"/></svg></a>
   </div>
   <div>
-    <a href="index.html"><span data-es>Inicio</span><span data-en>Home</span></a>
+    <a href="/"><span data-es>Inicio</span><span data-en>Home</span></a>
     <a href="https://trufquen.studio">trufquen.studio</a>
     <a href="https://instagram.com/trufquen">@trufquen</a>
-    <a href="mailto:contacto@trufquen.studio">contacto@trufquen.studio</a>
+  </div>
+  <div class="fcontact">
+    <a href="mailto:contacto@trufquen.studio?subject=Exposici%C3%B3n%20%E2%80%94%20Trufqu%C3%A9n"><span data-es>Exposición</span><span data-en>Exhibition</span></a>
+    <a href="mailto:contacto@trufquen.studio?subject=Colaboraci%C3%B3n%20%E2%80%94%20Trufqu%C3%A9n"><span data-es>Colaboración</span><span data-en>Collaboration</span></a>
+    <a href="mailto:contacto@trufquen.studio?subject=Prensa%20%E2%80%94%20Trufqu%C3%A9n"><span data-es>Prensa</span><span data-en>Press</span></a>
+    <a href="mailto:contacto@trufquen.studio?subject=Encargo%20o%20adquisici%C3%B3n%20%E2%80%94%20Trufqu%C3%A9n"><span data-es>Encargo</span><span data-en>Commission</span></a>
   </div>
   <p class="legal"><span data-es>© 2026 Trufquén · Marca registrada INAPI N° 1391981 · Patente de invención INAPI N° 2015-01441 · Santiago de Chile</span><span data-en class="block">© 2026 Trufquén · Registered trademark INAPI No. 1391981 · INAPI invention patent No. 2015-01441 · Santiago, Chile</span></p>
 </footer>
 
-<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Vista ampliada de imagen">
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Vista ampliada de imagen" aria-hidden="true" inert>
   <button class="lb-x" id="lbX" aria-label="Cerrar">✕</button>
   <button class="lb-nav lb-prev" id="lbPrev" aria-label="Imagen anterior">‹</button>
   <img id="lbImg" alt="">
@@ -304,9 +358,29 @@ function ariaLang(){{var en=document.body.classList.contains('en');
   for(var k in m){{var el=document.getElementById(k);if(el)el.setAttribute('aria-label',en?m[k][1]:m[k][0])}}
   figs.forEach(function(f,i){{f.setAttribute('aria-label',('0'+(i+1)).slice(-2)+(en?' of ':' de ')+figs.length)}})}}
 function toggleLang(){{var b=document.body;b.classList.toggle('en');document.documentElement.lang=b.classList.contains('en')?'en':'es';carPaint(carAt);ariaLang()}}
+/* trampa de foco genérica para diálogos (menú y visor) */
+function focusablesIn(container){{
+  return [].slice.call(container.querySelectorAll('a[href],button:not([disabled]),[tabindex]:not([tabindex="-1"])'));
+}}
+function trapTab(container,e){{
+  if(e.key!=='Tab')return;
+  var f=focusablesIn(container); if(!f.length)return;
+  var i=f.indexOf(document.activeElement);
+  if(e.shiftKey && i<=0){{e.preventDefault();f[f.length-1].focus()}}
+  else if(!e.shiftKey && i===f.length-1){{e.preventDefault();f[0].focus()}}
+}}
+
 var sheetEl=document.getElementById('sheet'), menuBtn=document.getElementById('menuBtn'), sheetPrevFocus=null;
-function openSheet(){{sheetPrevFocus=document.activeElement;sheetEl.classList.add('open');menuBtn.setAttribute('aria-expanded','true');document.getElementById('sheetClose').focus()}}
-function closeSheet(){{sheetEl.classList.remove('open');menuBtn.setAttribute('aria-expanded','false');if(sheetPrevFocus)sheetPrevFocus.focus()}}
+function openSheet(){{
+  sheetPrevFocus=document.activeElement;
+  sheetEl.classList.add('open');sheetEl.removeAttribute('inert');sheetEl.setAttribute('aria-hidden','false');
+  menuBtn.setAttribute('aria-expanded','true');document.getElementById('sheetClose').focus();
+}}
+function closeSheet(){{
+  sheetEl.classList.remove('open');sheetEl.setAttribute('inert','');sheetEl.setAttribute('aria-hidden','true');
+  menuBtn.setAttribute('aria-expanded','false');if(sheetPrevFocus)sheetPrevFocus.focus();
+}}
+sheetEl.addEventListener('keydown',function(e){{trapTab(sheetEl,e)}});
 menuBtn.addEventListener('click',openSheet);
 document.getElementById('sheetClose').addEventListener('click',closeSheet);
 document.getElementById('langBtn').addEventListener('click',toggleLang);
@@ -362,25 +436,27 @@ carPaint(0);
 ariaLang();
 
 var lbSet=[],lbAt=0,lb=document.getElementById('lb'),lbImg=document.getElementById('lbImg'),lbPrevFocus=null;
-function lbOpen(img){{lbPrevFocus=document.activeElement;lbSet=[].slice.call(document.querySelectorAll('.car img, .plate img, .hero img'));lbAt=lbSet.indexOf(img);lbRender();lb.classList.add('open');document.body.classList.add('locked');document.getElementById('lbX').focus()}}
+function lbOpen(img){{
+  lbPrevFocus=document.activeElement;
+  lbSet=[].slice.call(document.querySelectorAll('.js-btn img'));lbAt=lbSet.indexOf(img);lbRender();
+  lb.classList.add('open');lb.removeAttribute('inert');lb.setAttribute('aria-hidden','false');
+  document.body.classList.add('locked');document.getElementById('lbX').focus();
+}}
 function lbRender(){{var im=lbSet[lbAt];if(!im)return;lbImg.src=im.currentSrc||im.src;lbImg.alt=im.alt||'';
   document.getElementById('lbCap').textContent=im.dataset.cap||im.alt||'';
   document.getElementById('lbCount').textContent=(lbAt+1)+' / '+lbSet.length}}
 function lbGo(d){{lbAt=(lbAt+d+lbSet.length)%lbSet.length;lbRender()}}
-function lbClose(){{lb.classList.remove('open');document.body.classList.remove('locked');if(lbPrevFocus)lbPrevFocus.focus()}}
+function lbClose(){{
+  lb.classList.remove('open');lb.setAttribute('inert','');lb.setAttribute('aria-hidden','true');
+  document.body.classList.remove('locked');if(lbPrevFocus)lbPrevFocus.focus();
+}}
 document.getElementById('lbX').addEventListener('click',lbClose);
 document.getElementById('lbPrev').addEventListener('click',function(){{lbGo(-1)}});
 document.getElementById('lbNext').addEventListener('click',function(){{lbGo(1)}});
-lb.addEventListener('keydown',function(e){{
-  if(e.key!=='Tab')return;
-  var f=[document.getElementById('lbX'),document.getElementById('lbPrev'),document.getElementById('lbNext')];
-  var i=f.indexOf(document.activeElement);
-  if(e.shiftKey && (i<=0)){{e.preventDefault();f[f.length-1].focus()}}
-  else if(!e.shiftKey && i===f.length-1){{e.preventDefault();f[0].focus()}}
-}});
+lb.addEventListener('keydown',function(e){{trapTab(lb,e)}});
 document.addEventListener('click',function(e){{
-  var t=e.target.closest('.car figure, .plate');
-  if(t){{var im=t.querySelector('img');if(im){{e.preventDefault();lbOpen(im)}}}}
+  var t=e.target.closest('.js-btn');
+  if(t){{var im=t.querySelector('img');if(im){{lbOpen(im)}}}}
 }});
 lb.addEventListener('click',function(e){{if(e.target===lb)lbClose()}});
 document.addEventListener('keydown',function(e){{
@@ -393,8 +469,38 @@ document.addEventListener('keydown',function(e){{
   lb.addEventListener('touchstart',function(e){{x0=e.touches[0].clientX}},{{passive:true}});
   lb.addEventListener('touchend',function(e){{if(x0===null)return;var dx=e.changedTouches[0].clientX-x0;if(Math.abs(dx)>50)lbGo(dx>0?-1:1);x0=null}},{{passive:true}})}})();
 
+/* control de pausa/reproducción + pausa automática fuera de pantalla */
+var userPausedVideos=new WeakSet();
+document.querySelectorAll('[data-video-toggle]').forEach(function(btn){{
+  var vid=btn.parentElement.querySelector('video[data-motion]');
+  if(!vid) return;
+  function sync(){{
+    var playing=!vid.paused;
+    var ip=btn.querySelector('[data-icon-pause]'), ir=btn.querySelector('[data-icon-play]');
+    if(ip)ip.style.display=playing?'block':'none';
+    if(ir)ir.style.display=playing?'none':'block';
+    var en=document.body.classList.contains('en');
+    btn.setAttribute('aria-label',playing?(en?'Pause video':'Pausar video'):(en?'Play video':'Reproducir video'));
+  }}
+  btn.addEventListener('click',function(){{
+    if(vid.paused){{vid.play();userPausedVideos.delete(vid)}}else{{vid.pause();userPausedVideos.add(vid)}}
+  }});
+  vid.addEventListener('play',sync); vid.addEventListener('pause',sync);
+  sync();
+}});
+if('IntersectionObserver' in window){{
+  var videoIO=new IntersectionObserver(function(entries){{
+    entries.forEach(function(en){{
+      var v=en.target;
+      if(en.isIntersecting){{ if(!userPausedVideos.has(v)) v.play(); }}
+      else {{ v.pause(); }}
+    }});
+  }},{{threshold:.25}});
+  document.querySelectorAll('video[data-motion]').forEach(function(v){{videoIO.observe(v)}});
+}}
+
 if(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches){{
-  document.querySelectorAll('video[data-motion]').forEach(function(v){{v.pause();v.removeAttribute('autoplay')}});
+  document.querySelectorAll('video[data-motion]').forEach(function(v){{v.pause();v.removeAttribute('autoplay');userPausedVideos.add(v)}});
 }}
 </script>
 </body>
@@ -402,7 +508,7 @@ if(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').ma
 """
 
 def slide(n, img, t_es, t_en, s_es, s_en, d_es, d_en, cap, fig_class=''):
-    inner = ('<img src="%s" alt="%s" data-cap="%s" loading="lazy">' % (img, t_es, cap)) if img else \
+    inner = ('<button type="button" class="js-btn" aria-label="Ampliar imagen: %s"><img src="%s" alt="%s" data-cap="%s" loading="lazy"></button>' % (t_es, img, t_es, cap)) if img else \
             '<div class="ph"><span>Imagen pendiente</span></div>'
     cls = (' class="%s"' % fig_class) if fig_class else ''
     return ('    <figure%s role="group" aria-roledescription="slide" aria-label="%s de 6" data-n="%s" data-t-es="%s" data-t-en="%s" data-s-es="%s" data-s-en="%s" data-d-es="%s" data-d-en="%s">\n      %s\n    </figure>\n'
@@ -728,23 +834,32 @@ P.append(dict(
  ])))
 
 # ---------------------------------------------------------------- escribir
+VIDEO_TOGGLE = ('<button type="button" class="video-toggle" data-video-toggle aria-label="Pausar video">'
+                 '<svg viewBox="0 0 24 24" data-icon-pause><rect x="6" y="5" width="4" height="14"/><rect x="14" y="5" width="4" height="14"/></svg>'
+                 '<svg viewBox="0 0 24 24" data-icon-play style="display:none"><path d="M7 5l12 7-12 7z"/></svg>'
+                 '</button>')
+
 def hero_media(p):
     if p.get('hero_video'):
         poster = p.get('hero_poster', p['hero'])
-        return ('<video src="%s" poster="%s" autoplay muted loop playsinline preload="auto" aria-label="%s" data-motion></video>'
-                % (p['hero_video'], poster, p['h1_es']))
+        return ('<video src="%s" poster="%s" autoplay muted loop playsinline preload="auto" aria-label="%s" data-motion></video>%s'
+                % (p['hero_video'], poster, p['h1_es'], VIDEO_TOGGLE))
     return '<img src="%s" alt="%s">' % (p['hero'], p['h1_es'])
 
 def plate_media(p):
     if p.get('plate_video'):
-        return ('<video src="%s" poster="%s" autoplay muted loop playsinline preload="metadata" aria-label="%s" data-motion></video>'
-                % (p['plate_video'], p['plate'], p['plate_alt']))
-    return '<img src="%s" alt="%s" data-cap="%s" loading="lazy">' % (p['plate'], p['plate_alt'], p['plate_cap'])
+        return ('<div class="plate"><video src="%s" poster="%s" autoplay muted loop playsinline preload="metadata" aria-label="%s" data-motion></video>%s</div>'
+                % (p['plate_video'], p['plate'], p['plate_alt'], VIDEO_TOGGLE))
+    return ('<button type="button" class="plate js-btn" aria-label="Ampliar imagen: %s">'
+            '<img src="%s" alt="%s" data-cap="%s" loading="lazy"></button>'
+            % (p['plate_alt'], p['plate'], p['plate_alt'], p['plate_cap']))
 
 for p in P:
     p.setdefault('car_ar', '3 / 2')
     p.setdefault('car_w', 'clamp(320px,60vw,760px)')
     p.setdefault('rombo_section', '')
+    p['canonical_slug'] = p['slug'][:-5]  # sin ".html"
+    p['og_image'] = p.get('hero_poster', p['hero'])
     p['hero_media'] = hero_media(p)
     p['plate_media'] = plate_media(p)
     html = TPL.format(**p)

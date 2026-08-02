@@ -6,6 +6,26 @@
 <title>Trufquén — Estudio de diseño material</title>
 <meta name="description" content="Trufquén es un estudio chileno de diseño material. Greda, vidrio y fuego como sistema.">
 <link rel="canonical" href="https://trufquen.studio/">
+<link rel="icon" href="/favicon.ico" sizes="32x32">
+<link rel="icon" href="img/brand/favicon-192.png" type="image/png" sizes="192x192">
+<link rel="icon" href="img/brand/favicon-512.png" type="image/png" sizes="512x512">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta name="theme-color" content="#0A0908">
+<meta property="og:title" content="Trufquén — Estudio de diseño material">
+<meta property="og:description" content="Trufquén es un estudio chileno de diseño material. Greda, vidrio y fuego como sistema.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://trufquen.studio/">
+<meta property="og:image" content="https://trufquen.studio/img/home/hero-trufquen-poster.jpg">
+<meta property="og:image:width" content="1280">
+<meta property="og:image:height" content="720">
+<meta property="og:image:alt" content="Vidrio incandescente soplado dentro de una pieza calada de greda">
+<meta property="og:locale" content="es_CL">
+<meta property="og:locale:alternate" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Trufquén — Estudio de diseño material">
+<meta name="twitter:description" content="Trufquén es un estudio chileno de diseño material. Greda, vidrio y fuego como sistema.">
+<meta name="twitter:image" content="https://trufquen.studio/img/home/hero-trufquen-poster.jpg">
+<meta name="twitter:image:alt" content="Vidrio incandescente soplado dentro de una pieza calada de greda">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -49,6 +69,12 @@ a{color:inherit;text-decoration:none}
 .lang.en [data-es]{display:none}
 .lang.en [data-en]{display:inline}
 .lang.en [data-en].block{display:block}
+.js-btn{display:block;width:100%;border:0;padding:0;margin:0;background:none;font:inherit;text-align:inherit;color:inherit;-webkit-appearance:none;appearance:none}
+.js-btn:focus-visible{outline:2px solid var(--cobre);outline-offset:2px}
+.video-toggle{position:absolute;z-index:3;background:rgba(10,9,8,0.55);backdrop-filter:blur(6px);border:1px solid rgba(240,235,227,0.3);color:var(--mineral);width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:opacity .2s,background .2s}
+.video-toggle:hover{background:rgba(10,9,8,0.8)}
+.video-toggle svg{width:16px;height:16px;fill:currentColor}
+.hero .video-toggle{right:clamp(1.2rem,4vw,3rem);bottom:clamp(2.5rem,7vh,5rem)}
 
 /* ---------- HEADER: logo grande, centrado, contraste automático ---------- */
 nav.top{position:fixed;top:0;left:0;right:0;z-index:80;display:grid;overflow:visible;grid-template-columns:1fr auto 1fr;align-items:center;
@@ -82,6 +108,8 @@ nav.top.solid{height:62px;--bs:0.52;background:rgba(16,14,13,0.92);backdrop-filt
 .hero-line h1{font-weight:200;font-size:var(--fs-h2);line-height:1.5;color:var(--mineral);max-width:34rem;margin:0 auto}
 .hero-line .em{color:var(--cobre)}
 .scroll-hint{font-family:'Space Mono',monospace;font-size:var(--fs-micro);letter-spacing:0.24em;text-transform:uppercase;color:rgba(240,235,227,0.5);margin-top:2rem;display:block}
+.hero-cta{display:inline-block;margin-top:1.4rem;font-family:'Space Mono',monospace;font-size:var(--fs-ui);letter-spacing:0.14em;text-transform:uppercase;color:var(--mineral);border-bottom:1px solid rgba(240,235,227,0.4);padding-bottom:0.3rem;transition:color .2s,border-color .2s}
+.hero-cta:hover{color:var(--cobre);border-color:var(--cobre)}
 
 /* ---------- ESTRUCTURA ---------- */
 .wrap{max-width:1180px;margin:0 auto;padding:0 clamp(1.4rem,5vw,3.5rem)}
@@ -165,6 +193,12 @@ details.more[open] summary::after{transform:rotate(45deg)}
 
 .contact{text-align:center;background:var(--fondo-2);padding:clamp(3rem,7vh,5.5rem) 0}
 .cta{display:inline-block;border:1px solid var(--cobre);color:var(--cobre);padding:1rem 2.4rem;font-family:'Space Mono',monospace;font-size:var(--fs-ui);letter-spacing:0.2em;text-transform:uppercase;margin-top:2rem;transition:all .25s}
+.contact-options{display:flex;flex-wrap:wrap;gap:0.8rem;justify-content:center;margin-top:2rem}
+.contact-options a{display:inline-block;border:1px solid var(--cobre);color:var(--cobre);padding:0.85rem 1.5rem;font-family:'Space Mono',monospace;font-size:var(--fs-ui);letter-spacing:0.14em;text-transform:uppercase;transition:all .25s;min-height:44px;display:inline-flex;align-items:center}
+.contact-options a:hover{background:var(--cobre);color:var(--grafito)}
+.contact-email{margin-top:1.6rem;font-family:'Space Mono',monospace;font-size:var(--fs-micro);letter-spacing:0.1em;color:var(--humo)}
+.contact-email a{color:var(--humo);transition:color .2s}
+.contact-email a:hover{color:var(--cobre)}
 .cta:hover{background:var(--cobre);color:var(--grafito)}
 
 footer{position:relative;background:var(--grafito);color:var(--humo);padding:clamp(3rem,7vw,4.5rem) 0;text-align:center}
@@ -221,7 +255,7 @@ nav.top.solid{height:56px;--bs:.6}
   <button class="langbtn" id="langBtn" aria-label="Cambiar idioma / Switch language">EN/ES</button>
 </nav>
 
-<div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-label="Menú de navegación">
+<div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-label="Menú de navegación" aria-hidden="true" inert>
   <button class="close" id="sheetClose"><span data-es>Cerrar</span><span data-en>Close</span></button>
   <nav>
     <a href="#piezas"><span data-es>Piezas</span><span data-en>Pieces</span></a>
@@ -239,9 +273,14 @@ nav.top.solid{height:56px;--bs:.6}
     <source src="img/home/hero-trufquen.mp4" type="video/mp4">
     <img src="img/home/hero-trufquen-poster.jpg" alt="Vidrio incandescente soplado dentro de una pieza calada de greda">
   </video>
+  <button type="button" class="video-toggle" data-video-toggle aria-label="Pausar video">
+    <svg viewBox="0 0 24 24" data-icon-pause><rect x="6" y="5" width="4" height="14"/><rect x="14" y="5" width="4" height="14"/></svg>
+    <svg viewBox="0 0 24 24" data-icon-play style="display:none"><path d="M7 5l12 7-12 7z"/></svg>
+  </button>
   <div class="hero-line">
     <h1><span data-es>Greda, vidrio y fuego<br>como <span class="em">sistema.</span></span><span data-en class="block">Clay, glass and fire<br>as a <span class="em">system.</span></span></h1>
     <span class="scroll-hint"><span data-es>Estudio de diseño material · Santiago</span><span data-en>Material design studio · Santiago</span></span>
+    <a href="#piezas" class="hero-cta"><span data-es>Ver piezas</span><span data-en>View pieces</span> →</a>
   </div>
 </header>
 
@@ -273,9 +312,9 @@ nav.top.solid{height:56px;--bs:.6}
 </section>
 
 <!-- PLANO -->
-<figure class="plate" data-lb="proceso">
+<button type="button" class="plate js-btn" data-lb="proceso" aria-label="Ampliar imagen: Soplado de vidrio incandescente contra greda">
   <img src="img/home/proceso-soplado.jpg" alt="Soplado de vidrio incandescente contra greda" data-cap="Soplado de cristal en pieza de greda calada" loading="lazy">
-</figure>
+</button>
 
 <!-- PIEZAS -->
 <section id="piezas">
@@ -290,11 +329,11 @@ nav.top.solid{height:56px;--bs:.6}
 
   <div class="wrap">
     <article class="band">
-      <div class="shot"><img src="img/home/piece-ahumador.jpg" alt="Ahumador Trufquén" data-cap="Ahumador · 2014 · greda de Pomaire" loading="lazy"></div>
+      <button type="button" class="shot js-btn" aria-label="Ampliar imagen: Ahumador Trufquén"><img src="img/home/piece-ahumador.jpg" alt="Ahumador Trufquén" data-cap="Ahumador · 2014 · greda de Pomaire" loading="lazy"></button>
       <div class="meta">
         <span class="num">01</span>
         <div>
-          <h3><a href="ahumador-trufquen.html"><span data-es>Ahumador</span><span data-en>Smoking vessel</span></a></h3>
+          <h3><a href="ahumador-trufquen"><span data-es>Ahumador</span><span data-en>Smoking vessel</span></a></h3>
           <span class="yr">2014 · <span data-es>Patente INAPI</span><span data-en>INAPI patent</span></span>
         </div>
         <p class="desc"><span data-es>Cocina y ahúma en un solo cuerpo de greda, sobre la llama de una cocina convencional. La invención que origina el estudio.</span><span data-en class="block">Cooks and smokes in a single clay body, over a conventional stove flame. The invention that originates the studio.</span></p>
@@ -302,11 +341,11 @@ nav.top.solid{height:56px;--bs:.6}
     </article>
 
     <article class="band">
-      <div class="shot"><img src="img/home/piece-probetas-new.jpg" alt="Probeta de greda con vidrio" data-cap="Probetas · 2017 · ensayo greda–vidrio" loading="lazy"></div>
+      <button type="button" class="shot js-btn" aria-label="Ampliar imagen: Probeta de greda con vidrio"><img src="img/home/piece-probetas-new.jpg" alt="Probeta de greda con vidrio" data-cap="Probetas · 2017 · ensayo greda–vidrio" loading="lazy"></button>
       <div class="meta">
         <span class="num">02</span>
         <div>
-          <h3><a href="probetas-trufquen.html"><span data-es>Probetas</span><span data-en>Test pieces</span></a></h3>
+          <h3><a href="probetas-trufquen"><span data-es>Probetas</span><span data-en>Test pieces</span></a></h3>
           <span class="yr">2017 · <span data-es>Fondart · Investigación</span><span data-en>Fondart · Research</span></span>
         </div>
         <p class="desc"><span data-es>El ensayo que probó que la cohesión greda–vidrio era posible y determinó su naturaleza mecánica.</span><span data-en class="block">The trial that proved clay–glass cohesion was possible and determined its mechanical nature.</span></p>
@@ -314,11 +353,11 @@ nav.top.solid{height:56px;--bs:.6}
     </article>
 
     <article class="band">
-      <div class="shot"><img src="img/home/piece-engarce-v2.jpg" alt="Pieza Engarce" data-cap="Engarce · 2018 · greda y cristal soplado a boca" loading="lazy"></div>
+      <button type="button" class="shot js-btn" aria-label="Ampliar imagen: Pieza Engarce"><img src="img/home/piece-engarce-v2.jpg" alt="Pieza Engarce" data-cap="Engarce · 2018 · greda y cristal soplado a boca" loading="lazy"></button>
       <div class="meta">
         <span class="num">03</span>
         <div>
-          <h3><a href="engarce-trufquen.html">Engarce</a></h3>
+          <h3><a href="engarce-trufquen">Engarce</a></h3>
           <span class="yr">2018 · <span data-es>11 piezas únicas</span><span data-en>11 unique pieces</span></span>
         </div>
         <p class="desc"><span data-es>El cristal se expande contra estructuras de greda y queda retenido por forma. La serie que fijó los parámetros del estudio.</span><span data-en class="block">Glass expands against clay structures and is held by form. The series that set the studio's parameters.</span></p>
@@ -326,11 +365,11 @@ nav.top.solid{height:56px;--bs:.6}
     </article>
 
     <article class="band">
-      <div class="shot"><img src="img/home/piece-luminarias-new.jpg" alt="Luminaria de greda encendida" data-cap="Luminarias · greda y cobre" loading="lazy"></div>
+      <button type="button" class="shot js-btn" aria-label="Ampliar imagen: Luminaria de greda encendida"><img src="img/home/piece-luminarias-new.jpg" alt="Luminaria de greda encendida" data-cap="Luminarias · greda y cobre" loading="lazy"></button>
       <div class="meta">
         <span class="num">04</span>
         <div>
-          <h3><a href="luminarias-trufquen.html"><span data-es>Luminarias</span><span data-en>Lighting</span></a></h3>
+          <h3><a href="luminarias-trufquen"><span data-es>Luminarias</span><span data-en>Lighting</span></a></h3>
           <span class="yr">2018 · <span data-es>Serie</span><span data-en>Series</span></span>
         </div>
         <p class="desc"><span data-es>La greda deja de contener la luz: la filtra. El espesor y el calado deciden cuánta sale.</span><span data-en class="block">The clay stops containing light: it filters it. Thickness and perforation decide how much escapes.</span></p>
@@ -338,11 +377,11 @@ nav.top.solid{height:56px;--bs:.6}
     </article>
 
     <article class="band">
-      <div class="shot"><img src="img/home/piece-tralma-new.jpg" alt="Copa Tralma" data-cap="Tralma · 2020 · borosilicato y greda colada" loading="lazy"></div>
+      <button type="button" class="shot js-btn" aria-label="Ampliar imagen: Copa Tralma"><img src="img/home/piece-tralma-new.jpg" alt="Copa Tralma" data-cap="Tralma · 2020 · borosilicato y greda colada" loading="lazy"></button>
       <div class="meta">
         <span class="num">05</span>
         <div>
-          <h3><a href="tralma-trufquen.html">Tralma</a></h3>
+          <h3><a href="tralma-trufquen">Tralma</a></h3>
           <span class="yr">2020 · <span data-es>Cristalería</span><span data-en>Glassware</span></span>
         </div>
         <p class="desc"><span data-es>Borosilicato soplado a boca sobre greda colada. La línea que sobrevivió al cierre de la última cristalería del país.</span><span data-en class="block">Mouth-blown borosilicate over cast clay. The line that survived the closing of the country's last glassworks.</span></p>
@@ -350,7 +389,7 @@ nav.top.solid{height:56px;--bs:.6}
     </article>
 
     <article class="band">
-      <div class="shot"><img src="img/home/piece-nueva-etapa.jpg" alt="Pieza en desarrollo" data-cap="Nueva etapa · 2026" loading="lazy" style="object-position:center 28%"></div>
+      <button type="button" class="shot js-btn" aria-label="Ampliar imagen: Pieza en desarrollo"><img src="img/home/piece-nueva-etapa.jpg" alt="Pieza en desarrollo" data-cap="Nueva etapa · 2026" loading="lazy" style="object-position:center 28%"></button>
       <div class="meta">
         <span class="num">06</span>
         <div>
@@ -370,16 +409,16 @@ nav.top.solid{height:56px;--bs:.6}
     <h2><span data-es><em>Trufquén</em> es ceniza en mapuzungun.<br><span class="em">Lo que queda cuando el fuego terminó.</span></span><span data-en class="block"><em>Trufquén</em> is ash in Mapuzungun.<br><span class="em">What remains when the fire is done.</span></span></h2>
     <p class="lede"><span data-es>No la materia antes del fuego. No el fuego. La ceniza: evidencia de una transformación que no admite retorno. El nombre nació con nuestra primera pieza y desde entonces ordena el método.</span><span data-en class="block">Not the matter before the fire. Not the fire. The ash: evidence of a transformation that admits no return. The name was born with our first piece and has ordered the method ever since.</span></p>
   </div>
-  <figure class="split-img">
+  <button type="button" class="split-img js-btn" aria-label="Ampliar imagen: Vidrio incandescente en el momento del soplado">
     <img src="img/bg/home-nombre.jpg" alt="Vidrio incandescente en el momento del soplado" data-cap="Transformación térmica · el instante" loading="lazy">
-  </figure>
+  </button>
 </section>
 
 <!-- TALLER — editorial asimétrico invertido -->
 <section id="taller" class="split rev">
-  <figure class="split-img">
+  <button type="button" class="split-img js-btn" aria-label="Ampliar imagen: El maestro Raúl Lizama soplando cristal a boca">
     <img src="img/bg/taller-lizama.jpg" alt="El maestro Raúl Lizama soplando cristal a boca" data-cap="Maestro Raúl Lizama · soplado a boca · CristalArt" loading="lazy">
-  </figure>
+  </button>
   <div class="split-txt">
     <span class="idx">03 — <span data-es>El taller</span><span data-en>The workshop</span></span>
     <h2><span data-es>El diseño no reemplaza al oficio:<br><span class="em">lo articula.</span></span><span data-en class="block">Design does not replace craft:<br><span class="em">it articulates it.</span></span></h2>
@@ -401,7 +440,9 @@ nav.top.solid{height:56px;--bs:.6}
     <span class="idx">04 — <span data-es>El estudio</span><span data-en>The studio</span></span>
     <div class="founder">
       <figure>
-        <img src="img/home/raul-taller.jpg" alt="Raúl Hernández Tralma en el taller" data-cap="Raúl Hernández Tralma · taller" loading="lazy">
+        <button type="button" class="js-btn" aria-label="Ampliar imagen: Raúl Hernández Tralma en el taller">
+          <img src="img/home/raul-taller.jpg" alt="Raúl Hernández Tralma en el taller" data-cap="Raúl Hernández Tralma · taller" loading="lazy">
+        </button>
         <figcaption><span data-es>Raúl Hernández Tralma · taller</span><span data-en>Raúl Hernández Tralma · workshop</span></figcaption>
       </figure>
       <div>
@@ -436,7 +477,13 @@ nav.top.solid{height:56px;--bs:.6}
 <section id="contacto" class="contact">
   <div class="wrap narrow">
     <h2><span data-es>Exhibiciones, colaboraciones,<br>prensa y encargos</span><span data-en class="block">Exhibitions, collaborations,<br>press and commissions</span></h2>
-    <a href="mailto:contacto@trufquen.studio" class="cta">contacto@trufquen.studio</a>
+    <div class="contact-options">
+      <a href="mailto:contacto@trufquen.studio?subject=Exposici%C3%B3n%20%E2%80%94%20Trufqu%C3%A9n"><span data-es>Exposición</span><span data-en>Exhibition</span></a>
+      <a href="mailto:contacto@trufquen.studio?subject=Colaboraci%C3%B3n%20%E2%80%94%20Trufqu%C3%A9n"><span data-es>Colaboración</span><span data-en>Collaboration</span></a>
+      <a href="mailto:contacto@trufquen.studio?subject=Prensa%20%E2%80%94%20Trufqu%C3%A9n"><span data-es>Prensa</span><span data-en>Press</span></a>
+      <a href="mailto:contacto@trufquen.studio?subject=Encargo%20o%20adquisici%C3%B3n%20%E2%80%94%20Trufqu%C3%A9n"><span data-es>Encargo o adquisición</span><span data-en>Commission or acquisition</span></a>
+    </div>
+    <p class="contact-email"><a href="mailto:contacto@trufquen.studio">contacto@trufquen.studio</a></p>
   </div>
 </section>
 </main>
@@ -459,7 +506,7 @@ nav.top.solid{height:56px;--bs:.6}
 </footer>
 
 <!-- LIGHTBOX -->
-<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Vista ampliada de imagen">
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Vista ampliada de imagen" aria-hidden="true" inert>
   <button class="lb-x" id="lbX" aria-label="Cerrar">✕</button>
   <button class="lb-nav lb-prev" id="lbPrev" aria-label="Imagen anterior">‹</button>
   <img id="lbImg" alt="">
@@ -480,9 +527,29 @@ function toggleLang(){
   ariaLang();
 }
 ariaLang();
+/* trampa de foco genérica para diálogos (menú y visor) */
+function focusablesIn(container){
+  return [].slice.call(container.querySelectorAll('a[href],button:not([disabled]),[tabindex]:not([tabindex="-1"])'));
+}
+function trapTab(container,e){
+  if(e.key!=='Tab')return;
+  var f=focusablesIn(container); if(!f.length)return;
+  var i=f.indexOf(document.activeElement);
+  if(e.shiftKey && i<=0){e.preventDefault();f[f.length-1].focus()}
+  else if(!e.shiftKey && i===f.length-1){e.preventDefault();f[0].focus()}
+}
+
 var sheetEl=document.getElementById('sheet'), menuBtn=document.getElementById('menuBtn'), sheetPrevFocus=null;
-function openSheet(){sheetPrevFocus=document.activeElement;sheetEl.classList.add('open');menuBtn.setAttribute('aria-expanded','true');document.getElementById('sheetClose').focus()}
-function closeSheet(){sheetEl.classList.remove('open');menuBtn.setAttribute('aria-expanded','false');if(sheetPrevFocus)sheetPrevFocus.focus()}
+function openSheet(){
+  sheetPrevFocus=document.activeElement;
+  sheetEl.classList.add('open');sheetEl.removeAttribute('inert');sheetEl.setAttribute('aria-hidden','false');
+  menuBtn.setAttribute('aria-expanded','true');document.getElementById('sheetClose').focus();
+}
+function closeSheet(){
+  sheetEl.classList.remove('open');sheetEl.setAttribute('inert','');sheetEl.setAttribute('aria-hidden','true');
+  menuBtn.setAttribute('aria-expanded','false');if(sheetPrevFocus)sheetPrevFocus.focus();
+}
+sheetEl.addEventListener('keydown',function(e){trapTab(sheetEl,e)});
 menuBtn.addEventListener('click',openSheet);
 document.getElementById('sheetClose').addEventListener('click',closeSheet);
 document.getElementById('langBtn').addEventListener('click',toggleLang);
@@ -502,12 +569,13 @@ var lb=document.getElementById('lb'), lbImg=document.getElementById('lbImg'),
 
 function lbCollect(){
   // todas las imágenes ampliables de la página, en orden de aparición
-  return [].slice.call(document.querySelectorAll('.band .shot img, .plate img, .split-img img, .founder img, .hero img'));
+  return [].slice.call(document.querySelectorAll('.js-btn img'));
 }
 function lbOpen(img){
   lbPrevFocus=document.activeElement;
   lbSet=lbCollect(); lbAt=lbSet.indexOf(img);
-  lbRender(); lb.classList.add('open'); document.body.classList.add('locked');
+  lbRender(); lb.classList.add('open'); lb.removeAttribute('inert'); lb.setAttribute('aria-hidden','false');
+  document.body.classList.add('locked');
   document.getElementById('lbX').focus();
 }
 function lbRender(){
@@ -518,21 +586,18 @@ function lbRender(){
   lbCount.textContent=(lbAt+1)+' / '+lbSet.length;
 }
 function lbGo(d){ lbAt=(lbAt+d+lbSet.length)%lbSet.length; lbRender(); }
-function lbClose(){ lb.classList.remove('open'); document.body.classList.remove('locked'); if(lbPrevFocus)lbPrevFocus.focus(); }
+function lbClose(){
+  lb.classList.remove('open'); lb.setAttribute('inert',''); lb.setAttribute('aria-hidden','true');
+  document.body.classList.remove('locked'); if(lbPrevFocus)lbPrevFocus.focus();
+}
 document.getElementById('lbX').addEventListener('click',lbClose);
 document.getElementById('lbPrev').addEventListener('click',function(){lbGo(-1)});
 document.getElementById('lbNext').addEventListener('click',function(){lbGo(1)});
-lb.addEventListener('keydown',function(e){
-  if(e.key!=='Tab')return;
-  var f=[document.getElementById('lbX'),document.getElementById('lbPrev'),document.getElementById('lbNext')];
-  var i=f.indexOf(document.activeElement);
-  if(e.shiftKey && i<=0){e.preventDefault();f[f.length-1].focus()}
-  else if(!e.shiftKey && i===f.length-1){e.preventDefault();f[0].focus()}
-});
+lb.addEventListener('keydown',function(e){trapTab(lb,e)});
 
 document.addEventListener('click',function(e){
-  var t=e.target.closest('.band .shot, .plate, .founder figure');
-  if(t){ var im=t.querySelector('img'); if(im){ e.preventDefault(); lbOpen(im); } }
+  var t=e.target.closest('.js-btn');
+  if(t){ var im=t.querySelector('img'); if(im){ lbOpen(im); } }
 });
 lb.addEventListener('click',function(e){ if(e.target===lb) lbClose(); });
 document.addEventListener('keydown',function(e){
@@ -551,6 +616,23 @@ document.addEventListener('keydown',function(e){
     if(Math.abs(dx)>50) lbGo(dx>0?-1:1); x0=null;
   },{passive:true});
 })();
+
+/* control de pausa/reproducción de video */
+document.querySelectorAll('[data-video-toggle]').forEach(function(btn){
+  var vid=btn.parentElement.querySelector('video[data-motion]');
+  if(!vid) return;
+  function sync(){
+    var playing=!vid.paused;
+    var ip=btn.querySelector('[data-icon-pause]'), ir=btn.querySelector('[data-icon-play]');
+    if(ip)ip.style.display=playing?'block':'none';
+    if(ir)ir.style.display=playing?'none':'block';
+    var en=document.body.classList.contains('en');
+    btn.setAttribute('aria-label',playing?(en?'Pause video':'Pausar video'):(en?'Play video':'Reproducir video'));
+  }
+  btn.addEventListener('click',function(){ if(vid.paused){vid.play()}else{vid.pause()} });
+  vid.addEventListener('play',sync); vid.addEventListener('pause',sync);
+  sync();
+});
 
 /* movimiento reducido: pausar video */
 if(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches){
