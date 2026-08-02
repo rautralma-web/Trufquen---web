@@ -72,7 +72,7 @@ TPL = """<!DOCTYPE html>
 .skip{{position:absolute;inset-inline-start:-999px;z-index:120;font-family:'Space Mono',monospace;font-size:var(--fs-ui);letter-spacing:.14em;text-transform:uppercase;color:var(--fondo);background:var(--cobre);padding:1rem 1.4rem}}
 .skip:focus{{position:fixed;inset-inline-start:0;inset-block-start:0}}
 html{{scroll-behavior:smooth}}
-h1,h2,h3,.pull,.sheet a{{font-family:'Archivo','Lato',sans-serif;font-stretch:125%}}
+h1,h2,h3,.pull,.sheet a,.proj-nav-name{{font-family:'Archivo','Lato',sans-serif;font-stretch:125%}}
 body{{font-family:'Lato',sans-serif;font-weight:300;background:var(--fondo);color:var(--mineral);line-height:1.75;-webkit-font-smoothing:antialiased}}
 body.locked{{overflow:hidden}}
 img{{display:block;max-width:100%}}
@@ -181,6 +181,17 @@ details.more[open] summary::after{{transform:rotate(45deg)}}
 .fgrid dt{{font-family:'Space Mono',monospace;font-size:var(--fs-micro);letter-spacing:.16em;text-transform:uppercase;color:var(--cobre);margin-bottom:.4rem}}
 .fgrid dd{{font-size:var(--fs-small);line-height:1.7;color:var(--ceniza)}}
 
+.proj-nav{{border-top:1px solid var(--linea)}}
+.proj-nav .wrap{{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:1.5rem clamp(1rem,4vw,3rem);padding:clamp(2.5rem,6vh,4rem) clamp(1.4rem,5vw,3.5rem)}}
+.proj-nav-link{{display:flex;flex-direction:column;gap:0.35rem}}
+.proj-nav-prev{{align-items:flex-start;text-align:left}}
+.proj-nav-next{{align-items:flex-end;text-align:right;order:3}}
+.proj-nav-label{{font-family:'Space Mono',monospace;font-size:var(--fs-micro);letter-spacing:0.14em;text-transform:uppercase;color:var(--humo)}}
+.proj-nav-name{{font-size:var(--fs-h3);font-weight:200;letter-spacing:0.02em;color:var(--mineral);transition:color .2s}}
+.proj-nav-link:hover .proj-nav-name{{color:var(--cobre)}}
+.proj-nav-all{{order:2;font-family:'Space Mono',monospace;font-size:var(--fs-ui);letter-spacing:0.14em;text-transform:uppercase;color:var(--cobre);border:1px solid var(--cobre);padding:0.85rem 1.6rem;min-height:44px;display:inline-flex;align-items:center;transition:all .25s}}
+.proj-nav-all:hover{{background:var(--cobre);color:var(--grafito)}}
+@media(max-width:640px){{.proj-nav .wrap{{flex-direction:column;text-align:center}}.proj-nav-prev{{order:1}}.proj-nav-all{{order:2}}.proj-nav-next{{order:3;align-items:center;text-align:center}}}}
 footer{{position:relative;background:var(--grafito);color:var(--humo);padding:clamp(3rem,7vw,4.5rem) 0;text-align:center}}
 footer::before{{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(192,126,69,.65) 22%,rgba(192,126,69,.65) 78%,transparent)}}
 footer .fbrand{{display:inline-flex;flex-direction:column;align-items:center;gap:.6rem;margin-bottom:1.5rem}}
@@ -331,6 +342,20 @@ nav.top.solid{{height:56px;--bs:.6}}
       <dl class="fgrid">
 {ficha}      </dl>
     </details>
+  </div>
+</section>
+
+<section class="proj-nav">
+  <div class="wrap">
+    <a href="{prev_slug}" class="proj-nav-link proj-nav-prev">
+      <span class="proj-nav-label"><span data-es>← Proyecto anterior</span><span data-en>← Previous project</span></span>
+      <span class="proj-nav-name"><span data-es>{prev_es}</span><span data-en>{prev_en}</span></span>
+    </a>
+    <a href="/#piezas" class="proj-nav-all"><span data-es>Volver a piezas</span><span data-en>Back to pieces</span></a>
+    <a href="{next_slug}" class="proj-nav-link proj-nav-next">
+      <span class="proj-nav-label"><span data-es>Proyecto siguiente →</span><span data-en>Next project →</span></span>
+      <span class="proj-nav-name"><span data-es>{next_es}</span><span data-en>{next_en}</span></span>
+    </a>
   </div>
 </section>
 </main>
@@ -547,6 +572,14 @@ def ficha(rows):
                    % r for r in rows)
 
 # ---------------------------------------------------------------- datos
+LINE_ORDER = [
+    ('ahumador-trufquen', 'Ahumador', 'Smoking vessel'),
+    ('probetas-trufquen', 'Probetas', 'Test pieces'),
+    ('engarce-trufquen', 'Engarce', 'Engarce'),
+    ('luminarias-trufquen', 'Luminarias', 'Lighting'),
+    ('tralma-trufquen', 'Tralma', 'Tralma'),
+]
+
 P = []
 
 # ---------- ENGARCE
@@ -888,6 +921,10 @@ for p in P:
     p.setdefault('rombo_section', '')
     p['canonical_slug'] = p['slug'][:-5]  # sin ".html"
     p['og_image'] = p.get('hero_poster', p['hero'])
+    _slugs = [x[0] for x in LINE_ORDER]
+    _i = _slugs.index(p['canonical_slug'])
+    p['prev_slug'], p['prev_es'], p['prev_en'] = LINE_ORDER[(_i - 1) % len(LINE_ORDER)]
+    p['next_slug'], p['next_es'], p['next_en'] = LINE_ORDER[(_i + 1) % len(LINE_ORDER)]
     p['hero_media'] = hero_media(p)
     p['plate_media'] = plate_media(p)
     html = TPL.format(**p)
