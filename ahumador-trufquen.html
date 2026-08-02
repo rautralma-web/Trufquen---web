@@ -182,8 +182,20 @@ footer .social a:hover{color:var(--cobre)}
 footer .social svg{width:19px;height:19px}
 footer a{font-family:'Space Mono',monospace;font-size:var(--fs-ui);letter-spacing:.14em;color:var(--humo);text-transform:uppercase;margin:0 .7rem;line-height:2.4}
 .fcontact{margin-top:.4rem}
+.contact-dropdown{display:inline-block}
+.contact-dropdown summary{cursor:pointer;list-style:none;display:inline-flex;align-items:center;gap:0.6rem;min-height:44px;padding:0.85rem 1.6rem;border:1px solid var(--cobre);color:var(--cobre);font-family:'Space Mono',monospace;font-size:var(--fs-ui);letter-spacing:0.14em;text-transform:uppercase;transition:all .25s}
+.contact-dropdown summary::-webkit-details-marker{display:none}
+.contact-dropdown summary::after{content:"+";font-size:1.1rem;line-height:1;transition:transform .25s}
+.contact-dropdown:hover summary,.contact-dropdown[open] summary{background:var(--cobre);color:var(--grafito)}
+.contact-dropdown[open] summary::after{transform:rotate(45deg)}
+.contact-dropdown-list{display:flex;flex-direction:column;margin-top:0.6rem;border:1px solid var(--linea)}
+.contact-dropdown-list a{display:flex;align-items:center;justify-content:center;min-height:44px;padding:0.9rem 1.4rem;font-family:'Space Mono',monospace;font-size:var(--fs-ui);letter-spacing:0.1em;text-transform:uppercase;color:var(--ceniza);border-top:1px solid var(--linea);transition:color .2s,background .2s}
+.contact-dropdown-list a:first-child{border-top:none}
+.contact-dropdown-list a:hover{color:var(--cobre);background:rgba(192,126,69,.08)}
 footer a:hover{color:var(--cobre)}
 .legal{font-family:'Space Mono',monospace;font-size:var(--fs-micro);letter-spacing:.08em;color:rgba(160,150,140,.85);line-height:1.9;text-transform:uppercase;margin-top:2rem;max-width:44rem;margin-left:auto;margin-right:auto;padding:0 1.5rem}
+.back-top{position:absolute;top:clamp(1.5rem,4vw,2.5rem);right:clamp(1.2rem,4vw,3rem);display:inline-flex;align-items:center;gap:0.4rem;min-height:44px;font-family:'Space Mono',monospace;font-size:var(--fs-micro);letter-spacing:0.14em;text-transform:uppercase;color:var(--humo);transition:color .2s}
+.back-top:hover{color:var(--cobre)}
 
 .lb{position:fixed;inset:0;z-index:100;background:rgba(8,7,6,.98);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .35s}
 .lb.open{opacity:1;pointer-events:auto}
@@ -213,7 +225,7 @@ nav.top.solid{height:56px;--bs:.6}
 }
 </style>
 </head>
-<body class="lang">
+<body class="lang" id="top">
 <a href="#contenido" class="skip"><span data-es>Saltar al contenido</span><span data-en>Skip to content</span></a>
 
 <nav class="top" id="nav">
@@ -222,7 +234,7 @@ nav.top.solid{height:56px;--bs:.6}
   <button class="langbtn" id="langBtn" aria-label="Cambiar idioma / Switch language">EN/ES</button>
 </nav>
 
-<div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-label="Menú de navegación" aria-hidden="true" inert>
+<div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-label="Menú de navegación" data-label-es="Menú de navegación" data-label-en="Navigation menu" aria-hidden="true" inert>
   <button class="close" id="sheetClose"><span data-es>Cerrar</span><span data-en>Close</span></button>
   <nav>
     <a href="/"><span data-es>Inicio</span><span data-en>Home</span></a>
@@ -237,7 +249,7 @@ nav.top.solid{height:56px;--bs:.6}
 
 <main id="contenido">
 <header class="hero">
-  <video src="img/ahumador/ahumador-hero.mp4" poster="img/ahumador/ahumador-hero-poster.jpg" autoplay muted loop playsinline preload="auto" aria-label="Ahumador" data-motion></video><button type="button" class="video-toggle" data-video-toggle aria-label="Pausar video"><svg viewBox="0 0 24 24" data-icon-pause><rect x="6" y="5" width="4" height="14"/><rect x="14" y="5" width="4" height="14"/></svg><svg viewBox="0 0 24 24" data-icon-play style="display:none"><path d="M7 5l12 7-12 7z"/></svg></button>
+  <video src="img/ahumador/ahumador-hero.mp4" poster="img/ahumador/ahumador-hero-poster.jpg" autoplay muted loop playsinline preload="auto" aria-label="Ahumador" data-label-es="Ahumador" data-label-en="Smoking vessel" data-motion></video><button type="button" class="video-toggle" data-video-toggle aria-label="Pausar video"><svg viewBox="0 0 24 24" data-icon-pause><rect x="6" y="5" width="4" height="14"/><rect x="14" y="5" width="4" height="14"/></svg><svg viewBox="0 0 24 24" data-icon-play style="display:none"><path d="M7 5l12 7-12 7z"/></svg></button>
   <div class="hero-line">
     <h1><span data-es>Ahumador</span><span data-en>Smoking vessel</span></h1>
     <p><span data-es>Cocina y ahúma en un solo cuerpo de greda, sobre la llama de una cocina convencional. <span class="em">La invención que origina el estudio.</span></span><span data-en class="block">Cooks and smokes in a single clay body, over a conventional stove flame. <span class="em">The invention that originates the studio.</span></span></p>
@@ -258,7 +270,7 @@ nav.top.solid{height:56px;--bs:.6}
     <p><span data-es>Rombo Pichikemenküe · iconografía mapuche · su proyección horizontal define la sección constructiva del Ahumador</span><span data-en>Pichikemenküe rhombus · Mapuche iconography · its horizontal projection defines the smoking vessel's constructive section</span></p>
   </div>
 </section>
-<button type="button" class="plate js-btn" aria-label="Ampliar imagen: Greda levantada al torno en el taller alfarero"><picture><source srcset="img/ahumador/plate-torno.avif" type="image/avif"><source srcset="img/ahumador/plate-torno.webp" type="image/webp"><img src="img/ahumador/plate-torno.jpg" alt="Greda levantada al torno en el taller alfarero" data-cap="La greda se levanta al torno · taller alfarero" loading="lazy"></picture></button>
+<button type="button" class="plate js-btn" aria-label="Ampliar imagen: Greda levantada al torno en el taller alfarero" data-label-es="Ampliar imagen: Greda levantada al torno en el taller alfarero" data-label-en="Enlarge image: Clay raised on the wheel in the pottery workshop"><picture><source srcset="img/ahumador/plate-torno.avif" type="image/avif"><source srcset="img/ahumador/plate-torno.webp" type="image/webp"><img src="img/ahumador/plate-torno.jpg" alt="Greda levantada al torno en el taller alfarero" data-cap="La greda se levanta al torno · taller alfarero" loading="lazy"></picture></button>
 
 <section class="gal band-c">
   <div class="wrap narrow" style="margin-bottom:3rem">
@@ -268,22 +280,22 @@ nav.top.solid{height:56px;--bs:.6}
 
   <div class="car" id="car" role="region" aria-roledescription="carousel" aria-label="La misma greda, dos estados">
     <figure role="group" aria-roledescription="slide" aria-label="01 de 6" data-n="01" data-t-es="Terminación esmaltada" data-t-en="Glazed finish" data-s-es="Set completo · esmalte negro" data-s-en="Complete set · black glaze" data-d-es="El conjunto terminado en esmalte cerámico negro: ahumador, base y fuente de corte comparten la misma familia de formas." data-d-en="The set finished in black ceramic glaze: smoking vessel, base and cutting vessel share the same family of forms.">
-      <button type="button" class="js-btn" aria-label="Ampliar imagen: Terminación esmaltada"><picture><source srcset="img/ahumador/ahu-01-esmaltado.avif" type="image/avif"><source srcset="img/ahumador/ahu-01-esmaltado.webp" type="image/webp"><img src="img/ahumador/ahu-01-esmaltado.jpg" alt="Terminación esmaltada" data-cap="01 · terminación esmaltada" loading="lazy"></picture></button>
+      <button type="button" class="js-btn" aria-label="Ampliar imagen: Terminación esmaltada" data-label-es="Ampliar imagen: Terminación esmaltada" data-label-en="Enlarge image: Glazed finish"><picture><source srcset="img/ahumador/ahu-01-esmaltado.avif" type="image/avif"><source srcset="img/ahumador/ahu-01-esmaltado.webp" type="image/webp"><img src="img/ahumador/ahu-01-esmaltado.jpg" alt="Terminación esmaltada" data-cap="01 · terminación esmaltada" loading="lazy"></picture></button>
     </figure>
     <figure role="group" aria-roledescription="slide" aria-label="02 de 6" data-n="02" data-t-es="Greda cruda" data-t-en="Raw clay" data-s-es="Fuente de corte · recién levantada" data-s-en="Cutting vessel · just raised" data-d-es="La fuente de corte recién levantada al torno, todavía húmeda. En este estado la greda admite corte y textura; después del fuego ya no." data-d-en="The cutting vessel just raised on the wheel, still damp. In this state the clay accepts cutting and texture; after the fire it no longer does.">
-      <button type="button" class="js-btn" aria-label="Ampliar imagen: Greda cruda"><picture><source srcset="img/ahumador/ahu-02-greda-cruda.avif" type="image/avif"><source srcset="img/ahumador/ahu-02-greda-cruda.webp" type="image/webp"><img src="img/ahumador/ahu-02-greda-cruda.jpg" alt="Greda cruda" data-cap="02 · greda cruda" loading="lazy"></picture></button>
+      <button type="button" class="js-btn" aria-label="Ampliar imagen: Greda cruda" data-label-es="Ampliar imagen: Greda cruda" data-label-en="Enlarge image: Raw clay"><picture><source srcset="img/ahumador/ahu-02-greda-cruda.avif" type="image/avif"><source srcset="img/ahumador/ahu-02-greda-cruda.webp" type="image/webp"><img src="img/ahumador/ahu-02-greda-cruda.jpg" alt="Greda cruda" data-cap="02 · greda cruda" loading="lazy"></picture></button>
     </figure>
     <figure role="group" aria-roledescription="slide" aria-label="03 de 6" data-n="03" data-t-es="En el taller" data-t-en="In the workshop" data-s-es="Terminación natural, sin esmaltar" data-s-en="Natural finish, unglazed" data-d-es="El conjunto sin esmaltar, secándose al aire libre sobre troncos del taller. El color es el de la greda, no un recubrimiento." data-d-en="The unglazed set, drying outdoors on workshop logs. The color is the clay's own, not a coating.">
-      <button type="button" class="js-btn" aria-label="Ampliar imagen: En el taller"><picture><source srcset="img/ahumador/ahu-03-natural-taller.avif" type="image/avif"><source srcset="img/ahumador/ahu-03-natural-taller.webp" type="image/webp"><img src="img/ahumador/ahu-03-natural-taller.jpg" alt="En el taller" data-cap="03 · en el taller" loading="lazy"></picture></button>
+      <button type="button" class="js-btn" aria-label="Ampliar imagen: En el taller" data-label-es="Ampliar imagen: En el taller" data-label-en="Enlarge image: In the workshop"><picture><source srcset="img/ahumador/ahu-03-natural-taller.avif" type="image/avif"><source srcset="img/ahumador/ahu-03-natural-taller.webp" type="image/webp"><img src="img/ahumador/ahu-03-natural-taller.jpg" alt="En el taller" data-cap="03 · en el taller" loading="lazy"></picture></button>
     </figure>
     <figure role="group" aria-roledescription="slide" aria-label="04 de 6" data-n="04" data-t-es="El corte" data-t-en="The cut" data-s-es="Trabajo en verde" data-s-en="Green-state work" data-d-es="El perfil de la fuente se define a mano sobre la pieza en verde. Cada corte decide cómo calzará el conjunto." data-d-en="The vessel's profile is defined by hand on the green piece. Each cut decides how the set will fit together.">
-      <button type="button" class="js-btn" aria-label="Ampliar imagen: El corte"><picture><source srcset="img/ahumador/ahu-04-corte.avif" type="image/avif"><source srcset="img/ahumador/ahu-04-corte.webp" type="image/webp"><img src="img/ahumador/ahu-04-corte.jpg" alt="El corte" data-cap="04 · el corte" loading="lazy"></picture></button>
+      <button type="button" class="js-btn" aria-label="Ampliar imagen: El corte" data-label-es="Ampliar imagen: El corte" data-label-en="Enlarge image: The cut"><picture><source srcset="img/ahumador/ahu-04-corte.avif" type="image/avif"><source srcset="img/ahumador/ahu-04-corte.webp" type="image/webp"><img src="img/ahumador/ahu-04-corte.jpg" alt="El corte" data-cap="04 · el corte" loading="lazy"></picture></button>
     </figure>
     <figure role="group" aria-roledescription="slide" aria-label="05 de 6" data-n="05" data-t-es="Fuente de corte" data-t-en="Cutting vessel" data-s-es="Geometría del conjunto" data-s-en="Set geometry" data-d-es="Vista superior de la fuente, aún en greda cruda. Repite la sección del ahumador a otra escala: el sistema comparte una sola familia de formas." data-d-en="Top view of the vessel, still raw clay. It repeats the smoking vessel's section at another scale: the whole system shares a single family of forms.">
-      <button type="button" class="js-btn" aria-label="Ampliar imagen: Fuente de corte"><picture><source srcset="img/ahumador/ahu-05-kultrun.avif" type="image/avif"><source srcset="img/ahumador/ahu-05-kultrun.webp" type="image/webp"><img src="img/ahumador/ahu-05-kultrun.jpg" alt="Fuente de corte" data-cap="05 · fuente de corte" loading="lazy"></picture></button>
+      <button type="button" class="js-btn" aria-label="Ampliar imagen: Fuente de corte" data-label-es="Ampliar imagen: Fuente de corte" data-label-en="Enlarge image: Cutting vessel"><picture><source srcset="img/ahumador/ahu-05-kultrun.avif" type="image/avif"><source srcset="img/ahumador/ahu-05-kultrun.webp" type="image/webp"><img src="img/ahumador/ahu-05-kultrun.jpg" alt="Fuente de corte" data-cap="05 · fuente de corte" loading="lazy"></picture></button>
     </figure>
     <figure role="group" aria-roledescription="slide" aria-label="06 de 6" data-n="06" data-t-es="Greda natural" data-t-en="Natural clay" data-s-es="Sin esmaltar · foto de producto" data-s-en="Unglazed · product photo" data-d-es="Terminación natural: la greda queda a la vista, sellada por bruñido. El color es el del material, no un recubrimiento." data-d-en="Natural finish: the clay stays exposed, sealed by burnishing. The color is the material's own, not a coating.">
-      <button type="button" class="js-btn" aria-label="Ampliar imagen: Greda natural"><picture><source srcset="img/ahumador/ahu-06-producto.avif" type="image/avif"><source srcset="img/ahumador/ahu-06-producto.webp" type="image/webp"><img src="img/ahumador/ahu-06-producto.jpg" alt="Greda natural" data-cap="06 · greda natural" loading="lazy"></picture></button>
+      <button type="button" class="js-btn" aria-label="Ampliar imagen: Greda natural" data-label-es="Ampliar imagen: Greda natural" data-label-en="Enlarge image: Natural clay"><picture><source srcset="img/ahumador/ahu-06-producto.avif" type="image/avif"><source srcset="img/ahumador/ahu-06-producto.webp" type="image/webp"><img src="img/ahumador/ahu-06-producto.jpg" alt="Greda natural" data-cap="06 · greda natural" loading="lazy"></picture></button>
     </figure>
   </div>
 
@@ -299,8 +311,8 @@ nav.top.solid{height:56px;--bs:.6}
     <div class="car-ctl">
       <span class="car-count" id="count">01 / 06</span>
       <div class="car-btns">
-        <button class="car-btn" id="btnPrev" aria-controls="car" aria-label="Pieza anterior">‹</button>
-        <button class="car-btn" id="btnNext" aria-controls="car" aria-label="Pieza siguiente">›</button>
+        <button class="car-btn" id="btnPrev" aria-controls="car" aria-label="Pieza anterior" data-label-es="Pieza anterior" data-label-en="Previous piece">‹</button>
+        <button class="car-btn" id="btnNext" aria-controls="car" aria-label="Pieza siguiente" data-label-es="Pieza siguiente" data-label-en="Next piece">›</button>
       </div>
     </div>
   </div>
@@ -346,39 +358,41 @@ nav.top.solid{height:56px;--bs:.6}
 </main>
 
 <footer>
+  <a href="#top" class="back-top"><span data-es>Volver arriba</span><span data-en>Back to top</span> ↑</a>
   <div class="fbrand"><img src="img/brand/icon-blanco.png" alt=""><span>Trufquén</span></div>
   <div class="social">
     <a href="https://instagram.com/trufquen" target="_blank" rel="noopener" aria-label="Instagram" data-track="social_instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.2" cy="6.8" r="1.1" fill="currentColor" stroke="none"/></svg></a>
     <a href="https://facebook.com/Trufquen" target="_blank" rel="noopener" aria-label="Facebook" data-track="social_facebook"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M13.6 21v-7.2h2.2l.3-2.6h-2.5v-1.6c0-.75.2-1.27 1.28-1.27h1.38V5.98c-.24-.03-1.06-.1-2-.1-2 0-3.36 1.22-3.36 3.46v1.93H8.6v2.6h2.32V21" fill="currentColor" stroke="none"/></svg></a>
-    <a href="https://trufquen.studio" aria-label="Trufquén Studio" data-track="social_web"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><ellipse cx="12" cy="12" rx="4.2" ry="10"/><line x1="2" y1="12" x2="22" y2="12"/></svg></a>
   </div>
   <div>
     <a href="/"><span data-es>Inicio</span><span data-en>Home</span></a>
     <a href="https://trufquen.studio">trufquen.studio</a>
     <a href="https://instagram.com/trufquen">@trufquen</a>
   </div>
-  <div class="fcontact">
-    <a href="mailto:contacto@trufquen.studio?subject=Exposici%C3%B3n%20%E2%80%94%20Trufqu%C3%A9n" data-track="mailto_exposicion"><span data-es>Exposición</span><span data-en>Exhibition</span></a>
-    <a href="mailto:contacto@trufquen.studio?subject=Colaboraci%C3%B3n%20%E2%80%94%20Trufqu%C3%A9n" data-track="mailto_colaboracion"><span data-es>Colaboración</span><span data-en>Collaboration</span></a>
-    <a href="mailto:contacto@trufquen.studio?subject=Prensa%20%E2%80%94%20Trufqu%C3%A9n" data-track="mailto_prensa"><span data-es>Prensa</span><span data-en>Press</span></a>
-    <a href="mailto:contacto@trufquen.studio?subject=Encargo%20o%20adquisici%C3%B3n%20%E2%80%94%20Trufqu%C3%A9n" data-track="mailto_encargo"><span data-es>Encargo</span><span data-en>Commission</span></a>
-  </div>
+  <details class="contact-dropdown fcontact">
+    <summary><span data-es>Escríbenos</span><span data-en>Write to us</span></summary>
+    <div class="contact-dropdown-list">
+      <a href="mailto:contacto@trufquen.studio?subject=Exposici%C3%B3n%20%E2%80%94%20Trufqu%C3%A9n" data-track="mailto_exposicion"><span data-es>Exposición</span><span data-en>Exhibition</span></a>
+      <a href="mailto:contacto@trufquen.studio?subject=Colaboraci%C3%B3n%20%E2%80%94%20Trufqu%C3%A9n" data-track="mailto_colaboracion"><span data-es>Colaboración</span><span data-en>Collaboration</span></a>
+      <a href="mailto:contacto@trufquen.studio?subject=Prensa%20%E2%80%94%20Trufqu%C3%A9n" data-track="mailto_prensa"><span data-es>Prensa</span><span data-en>Press</span></a>
+      <a href="mailto:contacto@trufquen.studio?subject=Encargo%20o%20adquisici%C3%B3n%20%E2%80%94%20Trufqu%C3%A9n" data-track="mailto_encargo"><span data-es>Encargo o adquisición</span><span data-en>Commission or acquisition</span></a>
+    </div>
+  </details>
   <p class="legal"><span data-es>© 2026 Trufquén · Marca registrada INAPI N° 1391981 · Patente de invención INAPI N° 2015-01441 · Santiago de Chile</span><span data-en class="block">© 2026 Trufquén · Registered trademark INAPI No. 1391981 · INAPI invention patent No. 2015-01441 · Santiago, Chile</span></p>
 </footer>
 
-<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Vista ampliada de imagen" aria-hidden="true" inert>
-  <button class="lb-x" id="lbX" aria-label="Cerrar">✕</button>
-  <button class="lb-nav lb-prev" id="lbPrev" aria-label="Imagen anterior">‹</button>
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Vista ampliada de imagen" data-label-es="Vista ampliada de imagen" data-label-en="Enlarged image view" aria-hidden="true" inert>
+  <button class="lb-x" id="lbX" aria-label="Cerrar" data-label-es="Cerrar" data-label-en="Close">✕</button>
+  <button class="lb-nav lb-prev" id="lbPrev" aria-label="Imagen anterior" data-label-es="Imagen anterior" data-label-en="Previous image">‹</button>
   <img id="lbImg" alt="">
-  <button class="lb-nav lb-next" id="lbNext" aria-label="Imagen siguiente">›</button>
+  <button class="lb-nav lb-next" id="lbNext" aria-label="Imagen siguiente" data-label-es="Imagen siguiente" data-label-en="Next image">›</button>
   <div class="lb-count" id="lbCount"></div>
   <div class="lb-cap" id="lbCap"></div>
 </div>
 
 <script>
 function ariaLang(){var en=document.body.classList.contains('en');
-  var m={btnPrev:['Pieza anterior','Previous piece'],btnNext:['Pieza siguiente','Next piece'],lbX:['Cerrar','Close'],lbPrev:['Imagen anterior','Previous image'],lbNext:['Imagen siguiente','Next image']};
-  for(var k in m){var el=document.getElementById(k);if(el)el.setAttribute('aria-label',en?m[k][1]:m[k][0])}
+  document.querySelectorAll('[data-label-es]').forEach(function(el){el.setAttribute('aria-label',en?el.getAttribute('data-label-en'):el.getAttribute('data-label-es'))});
   figs.forEach(function(f,i){f.setAttribute('aria-label',('0'+(i+1)).slice(-2)+(en?' of ':' de ')+figs.length)})}
 function toggleLang(){var b=document.body;b.classList.toggle('en');document.documentElement.lang=b.classList.contains('en')?'en':'es';carPaint(carAt);ariaLang()}
 /* trampa de foco genérica para diálogos (menú y visor) */

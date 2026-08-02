@@ -192,8 +192,20 @@ footer .social a:hover{{color:var(--cobre)}}
 footer .social svg{{width:19px;height:19px}}
 footer a{{font-family:'Space Mono',monospace;font-size:var(--fs-ui);letter-spacing:.14em;color:var(--humo);text-transform:uppercase;margin:0 .7rem;line-height:2.4}}
 .fcontact{{margin-top:.4rem}}
+.contact-dropdown{{display:inline-block}}
+.contact-dropdown summary{{cursor:pointer;list-style:none;display:inline-flex;align-items:center;gap:0.6rem;min-height:44px;padding:0.85rem 1.6rem;border:1px solid var(--cobre);color:var(--cobre);font-family:'Space Mono',monospace;font-size:var(--fs-ui);letter-spacing:0.14em;text-transform:uppercase;transition:all .25s}}
+.contact-dropdown summary::-webkit-details-marker{{display:none}}
+.contact-dropdown summary::after{{content:"+";font-size:1.1rem;line-height:1;transition:transform .25s}}
+.contact-dropdown:hover summary,.contact-dropdown[open] summary{{background:var(--cobre);color:var(--grafito)}}
+.contact-dropdown[open] summary::after{{transform:rotate(45deg)}}
+.contact-dropdown-list{{display:flex;flex-direction:column;margin-top:0.6rem;border:1px solid var(--linea)}}
+.contact-dropdown-list a{{display:flex;align-items:center;justify-content:center;min-height:44px;padding:0.9rem 1.4rem;font-family:'Space Mono',monospace;font-size:var(--fs-ui);letter-spacing:0.1em;text-transform:uppercase;color:var(--ceniza);border-top:1px solid var(--linea);transition:color .2s,background .2s}}
+.contact-dropdown-list a:first-child{{border-top:none}}
+.contact-dropdown-list a:hover{{color:var(--cobre);background:rgba(192,126,69,.08)}}
 footer a:hover{{color:var(--cobre)}}
 .legal{{font-family:'Space Mono',monospace;font-size:var(--fs-micro);letter-spacing:.08em;color:rgba(160,150,140,.85);line-height:1.9;text-transform:uppercase;margin-top:2rem;max-width:44rem;margin-left:auto;margin-right:auto;padding:0 1.5rem}}
+.back-top{{position:absolute;top:clamp(1.5rem,4vw,2.5rem);right:clamp(1.2rem,4vw,3rem);display:inline-flex;align-items:center;gap:0.4rem;min-height:44px;font-family:'Space Mono',monospace;font-size:var(--fs-micro);letter-spacing:0.14em;text-transform:uppercase;color:var(--humo);transition:color .2s}}
+.back-top:hover{{color:var(--cobre)}}
 
 .lb{{position:fixed;inset:0;z-index:100;background:rgba(8,7,6,.98);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .35s}}
 .lb.open{{opacity:1;pointer-events:auto}}
@@ -223,7 +235,7 @@ nav.top.solid{{height:56px;--bs:.6}}
 }}
 </style>
 </head>
-<body class="lang">
+<body class="lang" id="top">
 <a href="#contenido" class="skip"><span data-es>Saltar al contenido</span><span data-en>Skip to content</span></a>
 
 <nav class="top" id="nav">
@@ -232,7 +244,7 @@ nav.top.solid{{height:56px;--bs:.6}}
   <button class="langbtn" id="langBtn" aria-label="Cambiar idioma / Switch language">EN/ES</button>
 </nav>
 
-<div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-label="Menú de navegación" aria-hidden="true" inert>
+<div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-label="Menú de navegación" data-label-es="Menú de navegación" data-label-en="Navigation menu" aria-hidden="true" inert>
   <button class="close" id="sheetClose"><span data-es>Cerrar</span><span data-en>Close</span></button>
   <nav>
     <a href="/"><span data-es>Inicio</span><span data-en>Home</span></a>
@@ -286,8 +298,8 @@ nav.top.solid{{height:56px;--bs:.6}}
     <div class="car-ctl">
       <span class="car-count" id="count">01 / 06</span>
       <div class="car-btns">
-        <button class="car-btn" id="btnPrev" aria-controls="car" aria-label="Pieza anterior">‹</button>
-        <button class="car-btn" id="btnNext" aria-controls="car" aria-label="Pieza siguiente">›</button>
+        <button class="car-btn" id="btnPrev" aria-controls="car" aria-label="Pieza anterior" data-label-es="Pieza anterior" data-label-en="Previous piece">‹</button>
+        <button class="car-btn" id="btnNext" aria-controls="car" aria-label="Pieza siguiente" data-label-es="Pieza siguiente" data-label-en="Next piece">›</button>
       </div>
     </div>
   </div>
@@ -324,39 +336,41 @@ nav.top.solid{{height:56px;--bs:.6}}
 </main>
 
 <footer>
+  <a href="#top" class="back-top"><span data-es>Volver arriba</span><span data-en>Back to top</span> ↑</a>
   <div class="fbrand"><img src="img/brand/icon-blanco.png" alt=""><span>Trufquén</span></div>
   <div class="social">
     <a href="https://instagram.com/trufquen" target="_blank" rel="noopener" aria-label="Instagram" data-track="social_instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.2" cy="6.8" r="1.1" fill="currentColor" stroke="none"/></svg></a>
     <a href="https://facebook.com/Trufquen" target="_blank" rel="noopener" aria-label="Facebook" data-track="social_facebook"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M13.6 21v-7.2h2.2l.3-2.6h-2.5v-1.6c0-.75.2-1.27 1.28-1.27h1.38V5.98c-.24-.03-1.06-.1-2-.1-2 0-3.36 1.22-3.36 3.46v1.93H8.6v2.6h2.32V21" fill="currentColor" stroke="none"/></svg></a>
-    <a href="https://trufquen.studio" aria-label="Trufquén Studio" data-track="social_web"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><ellipse cx="12" cy="12" rx="4.2" ry="10"/><line x1="2" y1="12" x2="22" y2="12"/></svg></a>
   </div>
   <div>
     <a href="/"><span data-es>Inicio</span><span data-en>Home</span></a>
     <a href="https://trufquen.studio">trufquen.studio</a>
     <a href="https://instagram.com/trufquen">@trufquen</a>
   </div>
-  <div class="fcontact">
-    <a href="mailto:contacto@trufquen.studio?subject=Exposici%C3%B3n%20%E2%80%94%20Trufqu%C3%A9n" data-track="mailto_exposicion"><span data-es>Exposición</span><span data-en>Exhibition</span></a>
-    <a href="mailto:contacto@trufquen.studio?subject=Colaboraci%C3%B3n%20%E2%80%94%20Trufqu%C3%A9n" data-track="mailto_colaboracion"><span data-es>Colaboración</span><span data-en>Collaboration</span></a>
-    <a href="mailto:contacto@trufquen.studio?subject=Prensa%20%E2%80%94%20Trufqu%C3%A9n" data-track="mailto_prensa"><span data-es>Prensa</span><span data-en>Press</span></a>
-    <a href="mailto:contacto@trufquen.studio?subject=Encargo%20o%20adquisici%C3%B3n%20%E2%80%94%20Trufqu%C3%A9n" data-track="mailto_encargo"><span data-es>Encargo</span><span data-en>Commission</span></a>
-  </div>
+  <details class="contact-dropdown fcontact">
+    <summary><span data-es>Escríbenos</span><span data-en>Write to us</span></summary>
+    <div class="contact-dropdown-list">
+      <a href="mailto:contacto@trufquen.studio?subject=Exposici%C3%B3n%20%E2%80%94%20Trufqu%C3%A9n" data-track="mailto_exposicion"><span data-es>Exposición</span><span data-en>Exhibition</span></a>
+      <a href="mailto:contacto@trufquen.studio?subject=Colaboraci%C3%B3n%20%E2%80%94%20Trufqu%C3%A9n" data-track="mailto_colaboracion"><span data-es>Colaboración</span><span data-en>Collaboration</span></a>
+      <a href="mailto:contacto@trufquen.studio?subject=Prensa%20%E2%80%94%20Trufqu%C3%A9n" data-track="mailto_prensa"><span data-es>Prensa</span><span data-en>Press</span></a>
+      <a href="mailto:contacto@trufquen.studio?subject=Encargo%20o%20adquisici%C3%B3n%20%E2%80%94%20Trufqu%C3%A9n" data-track="mailto_encargo"><span data-es>Encargo o adquisición</span><span data-en>Commission or acquisition</span></a>
+    </div>
+  </details>
   <p class="legal"><span data-es>© 2026 Trufquén · Marca registrada INAPI N° 1391981 · Patente de invención INAPI N° 2015-01441 · Santiago de Chile</span><span data-en class="block">© 2026 Trufquén · Registered trademark INAPI No. 1391981 · INAPI invention patent No. 2015-01441 · Santiago, Chile</span></p>
 </footer>
 
-<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Vista ampliada de imagen" aria-hidden="true" inert>
-  <button class="lb-x" id="lbX" aria-label="Cerrar">✕</button>
-  <button class="lb-nav lb-prev" id="lbPrev" aria-label="Imagen anterior">‹</button>
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Vista ampliada de imagen" data-label-es="Vista ampliada de imagen" data-label-en="Enlarged image view" aria-hidden="true" inert>
+  <button class="lb-x" id="lbX" aria-label="Cerrar" data-label-es="Cerrar" data-label-en="Close">✕</button>
+  <button class="lb-nav lb-prev" id="lbPrev" aria-label="Imagen anterior" data-label-es="Imagen anterior" data-label-en="Previous image">‹</button>
   <img id="lbImg" alt="">
-  <button class="lb-nav lb-next" id="lbNext" aria-label="Imagen siguiente">›</button>
+  <button class="lb-nav lb-next" id="lbNext" aria-label="Imagen siguiente" data-label-es="Imagen siguiente" data-label-en="Next image">›</button>
   <div class="lb-count" id="lbCount"></div>
   <div class="lb-cap" id="lbCap"></div>
 </div>
 
 <script>
 function ariaLang(){{var en=document.body.classList.contains('en');
-  var m={{btnPrev:['Pieza anterior','Previous piece'],btnNext:['Pieza siguiente','Next piece'],lbX:['Cerrar','Close'],lbPrev:['Imagen anterior','Previous image'],lbNext:['Imagen siguiente','Next image']}};
-  for(var k in m){{var el=document.getElementById(k);if(el)el.setAttribute('aria-label',en?m[k][1]:m[k][0])}}
+  document.querySelectorAll('[data-label-es]').forEach(function(el){{el.setAttribute('aria-label',en?el.getAttribute('data-label-en'):el.getAttribute('data-label-es'))}});
   figs.forEach(function(f,i){{f.setAttribute('aria-label',('0'+(i+1)).slice(-2)+(en?' of ':' de ')+figs.length)}})}}
 function toggleLang(){{var b=document.body;b.classList.toggle('en');document.documentElement.lang=b.classList.contains('en')?'en':'es';carPaint(carAt);ariaLang()}}
 /* trampa de foco genérica para diálogos (menú y visor) */
@@ -521,8 +535,8 @@ def pic(src, img_attrs):
             '<img src="%s" %s></picture>' % (base, base, src, img_attrs))
 
 def slide(n, img, t_es, t_en, s_es, s_en, d_es, d_en, cap, fig_class=''):
-    inner = ('<button type="button" class="js-btn" aria-label="Ampliar imagen: %s">%s</button>'
-              % (t_es, pic(img, 'alt="%s" data-cap="%s" loading="lazy"' % (t_es, cap)))) if img else \
+    inner = ('<button type="button" class="js-btn" aria-label="Ampliar imagen: %s" data-label-es="Ampliar imagen: %s" data-label-en="Enlarge image: %s">%s</button>'
+              % (t_es, t_es, t_en, pic(img, 'alt="%s" data-cap="%s" loading="lazy"' % (t_es, cap)))) if img else \
             '<div class="ph"><span>Imagen pendiente</span></div>'
     cls = (' class="%s"' % fig_class) if fig_class else ''
     return ('    <figure%s role="group" aria-roledescription="slide" aria-label="%s de 6" data-n="%s" data-t-es="%s" data-t-en="%s" data-s-es="%s" data-s-en="%s" data-d-es="%s" data-d-en="%s">\n      %s\n    </figure>\n'
@@ -561,7 +575,7 @@ P.append(dict(
  t_en='In jewelry, to set a stone is to hold it<br><span class="em">without melting it.</span>',
  l_es='El nombre no es metáfora: es la descripción técnica exacta. El cristal ancla por perforación, relieve o anillo. Donde la greda es lisa, se desprende.',
  l_en="The name isn't a metaphor: it's the exact technical description. The glass anchors by perforation, relief or ring. Where the clay is smooth, it detaches.",
- plate='img/engarce/plate-material.jpg', plate_alt='La serie Engarce completa sobre banco de taller', plate_cap='Once piezas · la serie completa',
+ plate='img/engarce/plate-material.jpg', plate_alt='La serie Engarce completa sobre banco de taller', plate_alt_en='The complete Engarce series on the workshop bench', plate_cap='Once piezas · la serie completa',
  g_es='Once piezas, una misma tesis', g_en='Eleven pieces, one thesis',
  slides=(
   slide('01','img/engarce/serie-01.jpg',u'Horqueta','Fork',u'Greda de Pomaire + cristal soplado','Pomaire clay + blown crystal',
@@ -624,7 +638,7 @@ P.append(dict(
  c_b_es='Demostró que la técnica no depende de un único vidrio ni de un único proveedor. Esa versatilidad amplía el trabajo futuro y es, en la práctica, una barrera para quien intente copiar el resultado sin el proceso detrás.',
  c_b_en="It proved the technique doesn't depend on a single glass or a single supplier. That versatility broadens future work and is, in practice, a barrier for anyone trying to copy the result without the process behind it.",
  quote_es='Sabemos hacer esto; y sabemos rehacerlo cuando el terreno se mueve. Esa capacidad —no una copa en particular— es lo que la línea deja instalado.',
- quote_en='We know how to do this; and we know how to redo it when the ground shifts. That capacity —not any one cup— is what the line leaves installed.',
+ quote_en='We know how to do this; and we know how to redo it when the ground shifts. That capacity —not any one cup— is what the line leaves in place.',
  meta='Tralma: greda colada y vidrio borosilicato soplado a boca. La línea que sobrevivió al cierre de la última cristalería del país.',
  hero='img/tralma/tralma-hero-poster.jpg', hero_video='img/tralma/tralma-fabricacion.mp4', hero_poster='img/tralma/tralma-hero-poster.jpg', heropos='center 45%',
  h1_es='Tralma', h1_en='Tralma',
@@ -634,8 +648,8 @@ P.append(dict(
  t_es='A mitad de camino cerró<br>la última cristalería <span class="em">del país.</span>',
  t_en='Halfway through, the country\'s<br>last glassworks <span class="em">closed.</span>',
  l_es='En vez de abandonar la hipótesis, le buscamos un sustrato nuevo: borosilicato en lugar de cristal sonoro. La distancia entre lo postulado y lo ejecutado es, en sí misma, el hallazgo. Sobre ese sustrato controlamos también la superficie: piezas lisas y piezas con textura, impresa en el molde, no por condensación.',
- l_en='Instead of abandoning the hypothesis, we found it a new substrate: borosilicate instead of sonorous crystal. The distance between what was proposed and what was executed is, in itself, the finding. On that substrate we also control the surface: smooth pieces and textured ones, printed by the mould, not by condensation.',
- plate='img/tralma/copa-giro-poster.jpg', plate_video='img/tralma/copa-giro.mp4', plate_alt='Copa Tralma girando: borosilicato sobre base de greda colada', plate_cap='La copa terminada',
+ l_en='Instead of abandoning the hypothesis, we found a new substrate for it: borosilicate instead of sonorous crystal. The distance between what was proposed and what was executed is, in itself, the finding. On that substrate we also control the surface: smooth pieces and textured ones, printed by the mould, not by condensation.',
+ plate='img/tralma/copa-giro-poster.jpg', plate_video='img/tralma/copa-giro.mp4', plate_alt='Copa Tralma girando: borosilicato sobre base de greda colada', plate_alt_en='Tralma cup turning: borosilicate over a cast clay base', plate_cap='La copa terminada',
  g_es='Producción real, no render', g_en='Real production, not a render',
  slides=(
   slide('01','img/tralma/tralma-01-soplado.jpg',u'Soplado a la llama',u'Flame-blown',u'Borosilicato en formación','Borosilicate in the making',
@@ -691,8 +705,8 @@ P.append(dict(
  t_es='Lo que define la pieza<br>no es la greda que está:<br><span class="em">es la que se quitó.</span>',
  t_en="What defines the piece<br>isn't the clay that's there:<br><span class=\"em\">it's the clay removed.</span>",
  l_es='Un calado demasiado abierto encandila; uno demasiado cerrado no ilumina. Entre esos dos fracasos hay un rango angosto que no se calcula: se prueba encendiendo la pieza.',
- l_en="A perforation too open glares; too closed lights nothing. Between those two failures lies a narrow range that isn't calculated: it's tested by switching the piece on.",
- plate='img/luminarias/plate-calada.jpg', plate_alt='Luminaria esférica encendida', plate_cap='Cuerpo de greda · collar de cobre',
+ l_en="A perforation too open glares; one too closed lights nothing. Between those two failures lies a narrow range that isn't calculated: it's tested by switching the piece on.",
+ plate='img/luminarias/plate-calada.jpg', plate_alt='Luminaria esférica encendida', plate_alt_en='Lit spherical lamp', plate_cap='Cuerpo de greda · collar de cobre',
  g_es='Una familia, varias escalas', g_en='One family, several scales',
  slides=(
   slide('01','img/luminarias/lum-01-mesa.jpg',u'En el taller',u'In the workshop',u'Torno · greda cruda','Wheel · raw clay',
@@ -747,7 +761,7 @@ P.append(dict(
  t_en='Many failed.<br>The ones that failed gave<br><span class="em">as much information as the ones that held.</span>',
  l_es='Cada probeta es una variable movida a propósito: espesor de pared, geometría del calado, tamaño de la abertura, momento térmico del vidrio. La única forma de saberlo era hacerlo y mirar.',
  l_en="Each test piece is one variable moved on purpose: wall thickness, perforation geometry, opening size, the glass's thermal moment. The only way to know was to do it and look.",
- plate='img/probetas/plate-variables.jpg', plate_alt='Vidrio incandescente soplado dentro de la greda calada', plate_cap='El ensayo en curso',
+ plate='img/probetas/plate-variables.jpg', plate_alt='Vidrio incandescente soplado dentro de la greda calada', plate_alt_en='Incandescent glass blown inside the perforated clay', plate_cap='El ensayo en curso',
  g_es='Ocho ensayos del conjunto', g_en='Eight trials from the set',
  slides=(
   slide('01','img/probetas/pr-01-quiebre.jpg',u'Quiebre por temperatura',u'Thermal break',u'Ensayo fallido','Failed trial',
@@ -814,7 +828,7 @@ P.append(dict(
  t_en='Smoking inside the kitchen,<br><span class="em">not outside it.</span>',
  l_es='Hasta este artefacto, ahumar exigía cámaras externas o esencias artificiales. El control vuelve al cocinero: intensidad, color y punto se regulan en el mismo objeto.',
  l_en='Until this device, smoking required external chambers or artificial essences. Control returns to the cook: intensity, color and doneness are regulated in the same object.',
- plate='img/ahumador/plate-torno.jpg', plate_alt='Greda levantada al torno en el taller alfarero', plate_cap='La greda se levanta al torno · taller alfarero',
+ plate='img/ahumador/plate-torno.jpg', plate_alt='Greda levantada al torno en el taller alfarero', plate_alt_en='Clay raised on the wheel in the pottery workshop', plate_cap='La greda se levanta al torno · taller alfarero',
  g_es='La misma greda, dos estados', g_en='The same clay, two states',
  slides=(
   slide('01','img/ahumador/ahu-01-esmaltado.jpg',u'Terminación esmaltada',u'Glazed finish',u'Set completo · esmalte negro','Complete set · black glaze',
@@ -856,16 +870,17 @@ VIDEO_TOGGLE = ('<button type="button" class="video-toggle" data-video-toggle ar
 def hero_media(p):
     if p.get('hero_video'):
         poster = p.get('hero_poster', p['hero'])
-        return ('<video src="%s" poster="%s" autoplay muted loop playsinline preload="auto" aria-label="%s" data-motion></video>%s'
-                % (p['hero_video'], poster, p['h1_es'], VIDEO_TOGGLE))
+        return ('<video src="%s" poster="%s" autoplay muted loop playsinline preload="auto" aria-label="%s" data-label-es="%s" data-label-en="%s" data-motion></video>%s'
+                % (p['hero_video'], poster, p['h1_es'], p['h1_es'], p['h1_en'], VIDEO_TOGGLE))
     return pic(p['hero'], 'alt="%s"' % p['h1_es'])
 
 def plate_media(p):
+    alt_en = p.get('plate_alt_en', p['plate_alt'])
     if p.get('plate_video'):
-        return ('<div class="plate"><video src="%s" poster="%s" autoplay muted loop playsinline preload="metadata" aria-label="%s" data-motion></video>%s</div>'
-                % (p['plate_video'], p['plate'], p['plate_alt'], VIDEO_TOGGLE))
-    return ('<button type="button" class="plate js-btn" aria-label="Ampliar imagen: %s">%s</button>'
-            % (p['plate_alt'], pic(p['plate'], 'alt="%s" data-cap="%s" loading="lazy"' % (p['plate_alt'], p['plate_cap']))))
+        return ('<div class="plate"><video src="%s" poster="%s" autoplay muted loop playsinline preload="metadata" aria-label="%s" data-label-es="%s" data-label-en="%s" data-motion></video>%s</div>'
+                % (p['plate_video'], p['plate'], p['plate_alt'], p['plate_alt'], alt_en, VIDEO_TOGGLE))
+    return ('<button type="button" class="plate js-btn" aria-label="Ampliar imagen: %s" data-label-es="Ampliar imagen: %s" data-label-en="Enlarge image: %s">%s</button>'
+            % (p['plate_alt'], p['plate_alt'], alt_en, pic(p['plate'], 'alt="%s" data-cap="%s" loading="lazy"' % (p['plate_alt'], p['plate_cap']))))
 
 for p in P:
     p.setdefault('car_ar', '3 / 2')
