@@ -63,6 +63,7 @@ html{scroll-behavior:smooth}
 h1,h2,h3,.pull,.hero-line p,.sheet a{font-family:'Archivo','Lato',sans-serif;font-stretch:125%}
 body{font-family:'Lato',sans-serif;font-weight:300;background:var(--fondo);color:var(--mineral);line-height:1.75;-webkit-font-smoothing:antialiased}
 body.locked{overflow:hidden}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 img{display:block;max-width:100%}
 a{color:inherit;text-decoration:none}
 .lang [data-en]{display:none}
@@ -266,7 +267,7 @@ nav.top.solid{height:56px;--bs:.6}
 <nav class="top" id="nav">
   <button class="menubtn" id="menuBtn" aria-expanded="false" aria-controls="sheet"><span data-es>Menú</span><span data-en>Menu</span></button>
   <a href="#" class="brand">
-    <img src="img/brand/icon-blanco.png" alt="">
+    <img src="img/brand/icon-blanco.png" width="300" height="130" alt="">
     <span class="word">Trufquén</span>
   </a>
   <button class="langbtn" id="langBtn" aria-label="Cambiar idioma / Switch language">EN/ES</button>
@@ -298,7 +299,7 @@ nav.top.solid{height:56px;--bs:.6}
 <header class="hero">
   <video autoplay muted loop playsinline preload="auto" poster="img/home/hero-trufquen-poster.jpg" aria-label="Vidrio incandescente soplándose dentro de una pieza calada de greda" data-label-es="Vidrio incandescente soplándose dentro de una pieza calada de greda" data-label-en="Incandescent glass being blown inside a perforated clay piece" data-motion>
     <source src="img/home/hero-trufquen.mp4" type="video/mp4">
-    <img src="img/home/hero-trufquen-poster.jpg" alt="Vidrio incandescente soplado dentro de una pieza calada de greda">
+    <img src="img/home/hero-trufquen-poster.jpg" width="1280" height="720" alt="Vidrio incandescente soplado dentro de una pieza calada de greda">
   </video>
   <button type="button" class="video-toggle" data-video-toggle aria-label="Pausar video">
     <svg viewBox="0 0 24 24" data-icon-pause><rect x="6" y="5" width="4" height="14"/><rect x="14" y="5" width="4" height="14"/></svg>
@@ -340,7 +341,7 @@ nav.top.solid{height:56px;--bs:.6}
 
 <!-- PLANO -->
 <button type="button" class="plate js-btn" data-lb="proceso" aria-label="Ampliar imagen: Soplado de vidrio incandescente contra greda" data-label-es="Ampliar imagen: Soplado de vidrio incandescente contra greda" data-label-en="Enlarge image: Incandescent glass blown against clay">
-  <picture><source srcset="img/home/proceso-soplado.avif" type="image/avif"><source srcset="img/home/proceso-soplado.webp" type="image/webp"><img src="img/home/proceso-soplado.jpg" alt="Soplado de vidrio incandescente contra greda" data-cap="Soplado de cristal en pieza de greda calada" loading="lazy"></picture>
+  <picture><source srcset="img/home/proceso-soplado.avif" type="image/avif"><source srcset="img/home/proceso-soplado.webp" type="image/webp"><img src="img/home/proceso-soplado.jpg" width="1150" height="980" alt="Soplado de vidrio incandescente contra greda" data-cap="Soplado de cristal en pieza de greda calada" loading="lazy"></picture>
 </button>
 
 <!-- PIEZAS -->
@@ -356,7 +357,7 @@ nav.top.solid{height:56px;--bs:.6}
 
   <div class="wrap pieces-grid">
     <article class="band">
-      <div class="shot"><picture><source srcset="img/home/piece-ahumador.avif" type="image/avif"><source srcset="img/home/piece-ahumador.webp" type="image/webp"><img src="img/home/piece-ahumador.jpg" alt="Ahumador Trufquén" data-cap="Ahumador · 2014 · greda de Pomaire" loading="lazy"></picture></div>
+      <div class="shot"><picture><source srcset="img/home/piece-ahumador.avif" type="image/avif"><source srcset="img/home/piece-ahumador.webp" type="image/webp"><img src="img/home/piece-ahumador.jpg" width="1800" height="1350" alt="Ahumador Trufquén" data-cap="Ahumador · 2014 · greda de Pomaire" loading="lazy"></picture></div>
       <div class="meta">
         <span class="num">01</span>
         <div>
@@ -369,7 +370,7 @@ nav.top.solid{height:56px;--bs:.6}
     </article>
 
     <article class="band">
-      <div class="shot"><picture><source srcset="img/home/piece-probetas-new.avif" type="image/avif"><source srcset="img/home/piece-probetas-new.webp" type="image/webp"><img src="img/home/piece-probetas-new.jpg" alt="Probeta de greda con vidrio" data-cap="Probetas · 2017 · ensayo greda–vidrio" loading="lazy"></picture></div>
+      <div class="shot"><picture><source srcset="img/home/piece-probetas-new.avif" type="image/avif"><source srcset="img/home/piece-probetas-new.webp" type="image/webp"><img src="img/home/piece-probetas-new.jpg" width="1800" height="1013" alt="Probeta de greda con vidrio" data-cap="Probetas · 2017 · ensayo greda–vidrio" loading="lazy"></picture></div>
       <div class="meta">
         <span class="num">02</span>
         <div>
@@ -382,7 +383,7 @@ nav.top.solid{height:56px;--bs:.6}
     </article>
 
     <article class="band">
-      <div class="shot"><picture><source srcset="img/home/piece-engarce-v2.avif" type="image/avif"><source srcset="img/home/piece-engarce-v2.webp" type="image/webp"><img src="img/home/piece-engarce-v2.jpg" alt="Pieza Engarce" data-cap="Engarce · 2018 · greda y cristal soplado a boca" loading="lazy"></picture></div>
+      <div class="shot"><picture><source srcset="img/home/piece-engarce-v2.avif" type="image/avif"><source srcset="img/home/piece-engarce-v2.webp" type="image/webp"><img src="img/home/piece-engarce-v2.jpg" width="2832" height="1551" alt="Pieza Engarce" data-cap="Engarce · 2018 · greda y cristal soplado a boca" loading="lazy"></picture></div>
       <div class="meta">
         <span class="num">03</span>
         <div>
@@ -395,7 +396,7 @@ nav.top.solid{height:56px;--bs:.6}
     </article>
 
     <article class="band">
-      <div class="shot"><picture><source srcset="img/home/piece-luminarias-new.avif" type="image/avif"><source srcset="img/home/piece-luminarias-new.webp" type="image/webp"><img src="img/home/piece-luminarias-new.jpg" alt="Luminaria de greda encendida" data-cap="Luminarias · greda y cobre" loading="lazy"></picture></div>
+      <div class="shot"><picture><source srcset="img/home/piece-luminarias-new.avif" type="image/avif"><source srcset="img/home/piece-luminarias-new.webp" type="image/webp"><img src="img/home/piece-luminarias-new.jpg" width="1800" height="1350" alt="Luminaria de greda encendida" data-cap="Luminarias · greda y cobre" loading="lazy"></picture></div>
       <div class="meta">
         <span class="num">04</span>
         <div>
@@ -408,7 +409,7 @@ nav.top.solid{height:56px;--bs:.6}
     </article>
 
     <article class="band">
-      <div class="shot"><picture><source srcset="img/home/piece-tralma-new.avif" type="image/avif"><source srcset="img/home/piece-tralma-new.webp" type="image/webp"><img src="img/home/piece-tralma-new.jpg" alt="Copa Tralma" data-cap="Tralma · 2020 · borosilicato y greda colada" loading="lazy"></picture></div>
+      <div class="shot"><picture><source srcset="img/home/piece-tralma-new.avif" type="image/avif"><source srcset="img/home/piece-tralma-new.webp" type="image/webp"><img src="img/home/piece-tralma-new.jpg" width="1800" height="1350" alt="Copa Tralma" data-cap="Tralma · 2020 · borosilicato y greda colada" loading="lazy"></picture></div>
       <div class="meta">
         <span class="num">05</span>
         <div>
@@ -421,7 +422,7 @@ nav.top.solid{height:56px;--bs:.6}
     </article>
 
     <article class="band">
-      <button type="button" class="shot js-btn" aria-label="Ampliar imagen: Pieza en desarrollo" data-label-es="Ampliar imagen: Pieza en desarrollo" data-label-en="Enlarge image: Piece in development"><picture><source srcset="img/home/piece-nueva-etapa.avif" type="image/avif"><source srcset="img/home/piece-nueva-etapa.webp" type="image/webp"><img src="img/home/piece-nueva-etapa.jpg" alt="Pieza en desarrollo" data-cap="Nueva etapa · 2026" loading="lazy" style="object-position:center 28%"></picture></button>
+      <button type="button" class="shot js-btn" aria-label="Ampliar imagen: Pieza en desarrollo" data-label-es="Ampliar imagen: Pieza en desarrollo" data-label-en="Enlarge image: Piece in development"><picture><source srcset="img/home/piece-nueva-etapa.avif" type="image/avif"><source srcset="img/home/piece-nueva-etapa.webp" type="image/webp"><img src="img/home/piece-nueva-etapa.jpg" width="1800" height="1350" alt="Pieza en desarrollo" data-cap="Nueva etapa · 2026" loading="lazy" style="object-position:center 28%"></picture></button>
       <div class="meta">
         <span class="num">06</span>
         <div>
@@ -443,14 +444,14 @@ nav.top.solid{height:56px;--bs:.6}
     <p class="lede"><span data-es>No la materia antes del fuego. No el fuego. La ceniza: evidencia de una transformación que no admite retorno. El nombre nació con nuestra primera pieza y desde entonces ordena el método.</span><span data-en class="block">Not the matter before the fire. Not the fire. The ash: evidence of a transformation that admits no return. The name was born with our first piece and has ordered the method ever since.</span></p>
   </div>
   <button type="button" class="split-img js-btn" aria-label="Ampliar imagen: Vidrio incandescente en el momento del soplado" data-label-es="Ampliar imagen: Vidrio incandescente en el momento del soplado" data-label-en="Enlarge image: Incandescent glass at the moment of blowing">
-    <picture><source srcset="img/bg/home-nombre.avif" type="image/avif"><source srcset="img/bg/home-nombre.webp" type="image/webp"><img src="img/bg/home-nombre.jpg" alt="Vidrio incandescente en el momento del soplado" data-cap="Transformación térmica · el instante" loading="lazy"></picture>
+    <picture><source srcset="img/bg/home-nombre.avif" type="image/avif"><source srcset="img/bg/home-nombre.webp" type="image/webp"><img src="img/bg/home-nombre.jpg" width="1800" height="1200" alt="Vidrio incandescente en el momento del soplado" data-cap="Transformación térmica · el instante" loading="lazy"></picture>
   </button>
 </section>
 
 <!-- TALLER — editorial asimétrico invertido -->
 <section id="taller" class="split rev">
   <button type="button" class="split-img js-btn" aria-label="Ampliar imagen: El maestro Raúl Lizama soplando cristal a boca" data-label-es="Ampliar imagen: El maestro Raúl Lizama soplando cristal a boca" data-label-en="Enlarge image: Master Raúl Lizama mouth-blowing crystal">
-    <picture><source srcset="img/bg/taller-lizama.avif" type="image/avif"><source srcset="img/bg/taller-lizama.webp" type="image/webp"><img src="img/bg/taller-lizama.jpg" alt="El maestro Raúl Lizama soplando cristal a boca" data-cap="Maestro Raúl Lizama · soplado a boca · CristalArt" loading="lazy"></picture>
+    <picture><source srcset="img/bg/taller-lizama.avif" type="image/avif"><source srcset="img/bg/taller-lizama.webp" type="image/webp"><img src="img/bg/taller-lizama.jpg" width="933" height="1400" alt="El maestro Raúl Lizama soplando cristal a boca" data-cap="Maestro Raúl Lizama · soplado a boca · CristalArt" loading="lazy"></picture>
   </button>
   <div class="split-txt">
     <span class="idx">03 — <span data-es>El taller</span><span data-en>The workshop</span></span>
@@ -474,7 +475,7 @@ nav.top.solid{height:56px;--bs:.6}
     <div class="founder">
       <figure>
         <button type="button" class="js-btn" aria-label="Ampliar imagen: Raúl Hernández Tralma en el taller" data-label-es="Ampliar imagen: Raúl Hernández Tralma en el taller" data-label-en="Enlarge image: Raúl Hernández Tralma in the workshop">
-          <picture><source srcset="img/home/raul-taller.avif" type="image/avif"><source srcset="img/home/raul-taller.webp" type="image/webp"><img src="img/home/raul-taller.jpg" alt="Raúl Hernández Tralma en el taller" data-cap="Raúl Hernández Tralma · taller" loading="lazy"></picture>
+          <picture><source srcset="img/home/raul-taller.avif" type="image/avif"><source srcset="img/home/raul-taller.webp" type="image/webp"><img src="img/home/raul-taller.jpg" width="1200" height="1800" alt="Raúl Hernández Tralma en el taller" data-cap="Raúl Hernández Tralma · taller" loading="lazy"></picture>
         </button>
         <figcaption><span data-es>Raúl Hernández Tralma · taller</span><span data-en>Raúl Hernández Tralma · workshop</span></figcaption>
       </figure>
@@ -527,7 +528,7 @@ nav.top.solid{height:56px;--bs:.6}
 <footer>
   <a href="#top" class="back-top"><span data-es>Volver arriba</span><span data-en>Back to top</span> ↑</a>
   <div class="fbrand">
-    <img src="img/brand/icon-blanco.png" alt="">
+    <img src="img/brand/icon-blanco.png" width="300" height="130" alt="">
     <span>Trufquén</span>
   </div>
   <div class="social">
@@ -549,6 +550,7 @@ nav.top.solid{height:56px;--bs:.6}
   <button class="lb-nav lb-next" id="lbNext" aria-label="Imagen siguiente" data-label-es="Imagen siguiente" data-label-en="Next image">›</button>
   <div class="lb-count" id="lbCount"></div>
   <div class="lb-cap" id="lbCap"></div>
+  <div class="sr-only" id="lbAnnounce" aria-live="polite" aria-atomic="true"></div>
 </div>
 
 <script>
@@ -580,10 +582,12 @@ var sheetEl=document.getElementById('sheet'), menuBtn=document.getElementById('m
 function openSheet(){
   sheetPrevFocus=document.activeElement;
   sheetEl.classList.add('open');sheetEl.removeAttribute('inert');sheetEl.setAttribute('aria-hidden','false');
+  document.body.classList.add('locked');
   menuBtn.setAttribute('aria-expanded','true');document.getElementById('sheetClose').focus();
 }
 function closeSheet(){
   sheetEl.classList.remove('open');sheetEl.setAttribute('inert','');sheetEl.setAttribute('aria-hidden','true');
+  document.body.classList.remove('locked');
   menuBtn.setAttribute('aria-expanded','false');if(sheetPrevFocus)sheetPrevFocus.focus();
 }
 sheetEl.addEventListener('keydown',function(e){trapTab(sheetEl,e)});
@@ -602,7 +606,9 @@ sheetEl.querySelectorAll('a').forEach(function(a){a.addEventListener('click',clo
 /* ---- LIGHTBOX + CARRUSEL ---- */
 var lbSet=[], lbAt=0, lbPrevFocus=null;
 var lb=document.getElementById('lb'), lbImg=document.getElementById('lbImg'),
-    lbCap=document.getElementById('lbCap'), lbCount=document.getElementById('lbCount');
+    lbCap=document.getElementById('lbCap'), lbCount=document.getElementById('lbCount'),
+    lbAnnounce=document.getElementById('lbAnnounce'),
+    lbBg=[document.getElementById('nav'), document.getElementById('contenido'), document.querySelector('footer')];
 
 function lbCollect(){
   // todas las imágenes ampliables de la página, en orden de aparición
@@ -613,19 +619,25 @@ function lbOpen(img){
   lbSet=lbCollect(); lbAt=lbSet.indexOf(img);
   lbRender(); lb.classList.add('open'); lb.removeAttribute('inert'); lb.setAttribute('aria-hidden','false');
   document.body.classList.add('locked');
+  lbBg.forEach(function(el){if(el)el.setAttribute('inert','')});
   document.getElementById('lbX').focus();
 }
 function lbRender(){
   var im=lbSet[lbAt]; if(!im) return;
   lbImg.src=im.currentSrc||im.src;
   lbImg.alt=im.alt||'';
-  lbCap.textContent=im.dataset.cap||im.alt||'';
+  var cap=im.dataset.cap||im.alt||'';
+  lbCap.textContent=cap;
   lbCount.textContent=(lbAt+1)+' / '+lbSet.length;
+  var en=document.body.classList.contains('en');
+  lbAnnounce.textContent=(lbAt+1)+(en?' of ':' de ')+lbSet.length+': '+cap;
 }
 function lbGo(d){ lbAt=(lbAt+d+lbSet.length)%lbSet.length; lbRender(); }
 function lbClose(){
   lb.classList.remove('open'); lb.setAttribute('inert',''); lb.setAttribute('aria-hidden','true');
-  document.body.classList.remove('locked'); if(lbPrevFocus)lbPrevFocus.focus();
+  document.body.classList.remove('locked');
+  lbBg.forEach(function(el){if(el)el.removeAttribute('inert')});
+  if(lbPrevFocus)lbPrevFocus.focus();
 }
 document.getElementById('lbX').addEventListener('click',lbClose);
 document.getElementById('lbPrev').addEventListener('click',function(){lbGo(-1)});

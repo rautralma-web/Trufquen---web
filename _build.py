@@ -6,6 +6,15 @@ Garantiza header, footer, paleta y estructura idénticos en todas.
 Ejecutar:  python3 _build.py
 """
 import io, os
+from PIL import Image
+
+_SITE_DIR = os.path.dirname(os.path.abspath(__file__))
+_size_cache = {}
+def img_size(rel_path):
+    if rel_path not in _size_cache:
+        with Image.open(os.path.join(_SITE_DIR, rel_path)) as im:
+            _size_cache[rel_path] = im.size
+    return _size_cache[rel_path]
 
 # ---------------------------------------------------------------- plantilla
 TPL = """<!DOCTYPE html>
@@ -75,6 +84,7 @@ html{{scroll-behavior:smooth}}
 h1,h2,h3,.pull,.sheet a,.proj-nav-name{{font-family:'Archivo','Lato',sans-serif;font-stretch:125%}}
 body{{font-family:'Lato',sans-serif;font-weight:300;background:var(--fondo);color:var(--mineral);line-height:1.75;-webkit-font-smoothing:antialiased}}
 body.locked{{overflow:hidden}}
+.sr-only{{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}}
 img{{display:block;max-width:100%}}
 picture{{display:block}}
 a{{color:inherit;text-decoration:none}}
@@ -251,7 +261,7 @@ nav.top.solid{{height:56px;--bs:.6}}
 
 <nav class="top" id="nav">
   <button class="menubtn" id="menuBtn" aria-expanded="false" aria-controls="sheet"><span data-es>Menú</span><span data-en>Menu</span></button>
-  <a href="/" class="brand"><img src="img/brand/icon-blanco.png" alt=""><span class="word">Trufquén</span></a>
+  <a href="/" class="brand"><img src="img/brand/icon-blanco.png" width="300" height="130" alt=""><span class="word">Trufquén</span></a>
   <button class="langbtn" id="langBtn" aria-label="Cambiar idioma / Switch language">EN/ES</button>
 </nav>
 
@@ -347,12 +357,12 @@ nav.top.solid{{height:56px;--bs:.6}}
 
 <section class="proj-nav">
   <div class="wrap">
-    <a href="{prev_slug}" class="proj-nav-link proj-nav-prev">
+    <a href="{prev_slug}" class="proj-nav-link proj-nav-prev" data-track="project_prev">
       <span class="proj-nav-label"><span data-es>← Proyecto anterior</span><span data-en>← Previous project</span></span>
       <span class="proj-nav-name"><span data-es>{prev_es}</span><span data-en>{prev_en}</span></span>
     </a>
     <a href="/#piezas" class="proj-nav-all"><span data-es>Volver a piezas</span><span data-en>Back to pieces</span></a>
-    <a href="{next_slug}" class="proj-nav-link proj-nav-next">
+    <a href="{next_slug}" class="proj-nav-link proj-nav-next" data-track="project_next">
       <span class="proj-nav-label"><span data-es>Proyecto siguiente →</span><span data-en>Next project →</span></span>
       <span class="proj-nav-name"><span data-es>{next_es}</span><span data-en>{next_en}</span></span>
     </a>
@@ -362,7 +372,7 @@ nav.top.solid{{height:56px;--bs:.6}}
 
 <footer>
   <a href="#top" class="back-top"><span data-es>Volver arriba</span><span data-en>Back to top</span> ↑</a>
-  <div class="fbrand"><img src="img/brand/icon-blanco.png" alt=""><span>Trufquén</span></div>
+  <div class="fbrand"><img src="img/brand/icon-blanco.png" width="300" height="130" alt=""><span>Trufquén</span></div>
   <div class="social">
     <a href="https://instagram.com/trufquen" target="_blank" rel="noopener" aria-label="Instagram" data-track="social_instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.2" cy="6.8" r="1.1" fill="currentColor" stroke="none"/></svg></a>
     <a href="https://facebook.com/Trufquen" target="_blank" rel="noopener" aria-label="Facebook" data-track="social_facebook"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M13.6 21v-7.2h2.2l.3-2.6h-2.5v-1.6c0-.75.2-1.27 1.28-1.27h1.38V5.98c-.24-.03-1.06-.1-2-.1-2 0-3.36 1.22-3.36 3.46v1.93H8.6v2.6h2.32V21" fill="currentColor" stroke="none"/></svg></a>
@@ -391,6 +401,7 @@ nav.top.solid{{height:56px;--bs:.6}}
   <button class="lb-nav lb-next" id="lbNext" aria-label="Imagen siguiente" data-label-es="Imagen siguiente" data-label-en="Next image">›</button>
   <div class="lb-count" id="lbCount"></div>
   <div class="lb-cap" id="lbCap"></div>
+  <div class="sr-only" id="lbAnnounce" aria-live="polite" aria-atomic="true"></div>
 </div>
 
 <script>
@@ -414,10 +425,12 @@ var sheetEl=document.getElementById('sheet'), menuBtn=document.getElementById('m
 function openSheet(){{
   sheetPrevFocus=document.activeElement;
   sheetEl.classList.add('open');sheetEl.removeAttribute('inert');sheetEl.setAttribute('aria-hidden','false');
+  document.body.classList.add('locked');
   menuBtn.setAttribute('aria-expanded','true');document.getElementById('sheetClose').focus();
 }}
 function closeSheet(){{
   sheetEl.classList.remove('open');sheetEl.setAttribute('inert','');sheetEl.setAttribute('aria-hidden','true');
+  document.body.classList.remove('locked');
   menuBtn.setAttribute('aria-expanded','false');if(sheetPrevFocus)sheetPrevFocus.focus();
 }}
 sheetEl.addEventListener('keydown',function(e){{trapTab(sheetEl,e)}});
@@ -475,20 +488,30 @@ document.getElementById('btnNext').addEventListener('click',function(){{carGo(1)
 carPaint(0);
 ariaLang();
 
-var lbSet=[],lbAt=0,lb=document.getElementById('lb'),lbImg=document.getElementById('lbImg'),lbPrevFocus=null;
+var lbSet=[],lbAt=0,lb=document.getElementById('lb'),lbImg=document.getElementById('lbImg'),lbPrevFocus=null,
+    lbAnnounce=document.getElementById('lbAnnounce'),
+    lbBg=[document.getElementById('nav'),document.getElementById('contenido'),document.querySelector('footer')];
 function lbOpen(img){{
   lbPrevFocus=document.activeElement;
   lbSet=[].slice.call(document.querySelectorAll('.js-btn img'));lbAt=lbSet.indexOf(img);lbRender();
   lb.classList.add('open');lb.removeAttribute('inert');lb.setAttribute('aria-hidden','false');
-  document.body.classList.add('locked');document.getElementById('lbX').focus();
+  document.body.classList.add('locked');
+  lbBg.forEach(function(el){{if(el)el.setAttribute('inert','')}});
+  document.getElementById('lbX').focus();
 }}
 function lbRender(){{var im=lbSet[lbAt];if(!im)return;lbImg.src=im.currentSrc||im.src;lbImg.alt=im.alt||'';
-  document.getElementById('lbCap').textContent=im.dataset.cap||im.alt||'';
-  document.getElementById('lbCount').textContent=(lbAt+1)+' / '+lbSet.length}}
+  var cap=im.dataset.cap||im.alt||'';
+  document.getElementById('lbCap').textContent=cap;
+  document.getElementById('lbCount').textContent=(lbAt+1)+' / '+lbSet.length;
+  var en=document.body.classList.contains('en');
+  lbAnnounce.textContent=(lbAt+1)+(en?' of ':' de ')+lbSet.length+': '+cap;
+}}
 function lbGo(d){{lbAt=(lbAt+d+lbSet.length)%lbSet.length;lbRender()}}
 function lbClose(){{
   lb.classList.remove('open');lb.setAttribute('inert','');lb.setAttribute('aria-hidden','true');
-  document.body.classList.remove('locked');if(lbPrevFocus)lbPrevFocus.focus();
+  document.body.classList.remove('locked');
+  lbBg.forEach(function(el){{if(el)el.removeAttribute('inert')}});
+  if(lbPrevFocus)lbPrevFocus.focus();
 }}
 document.getElementById('lbX').addEventListener('click',lbClose);
 document.getElementById('lbPrev').addEventListener('click',function(){{lbGo(-1)}});
@@ -556,8 +579,9 @@ document.addEventListener('click', function(e){{
 
 def pic(src, img_attrs):
     base = src.rsplit('.', 1)[0]
+    w, h = img_size(src)
     return ('<picture><source srcset="%s.avif" type="image/avif"><source srcset="%s.webp" type="image/webp">'
-            '<img src="%s" %s></picture>' % (base, base, src, img_attrs))
+            '<img src="%s" width="%d" height="%d" %s></picture>' % (base, base, src, w, h, img_attrs))
 
 def slide(n, img, t_es, t_en, s_es, s_en, d_es, d_en, cap, fig_class=''):
     inner = ('<button type="button" class="js-btn" aria-label="Ampliar imagen: %s" data-label-es="Ampliar imagen: %s" data-label-en="Enlarge image: %s">%s</button>'
@@ -835,7 +859,7 @@ P.append(dict(
  slug='ahumador-trufquen.html', title='Ahumador',
  rombo_section='''<section class="rombo">
   <div class="wrap narrow">
-    <picture><source srcset="img/ahumador/pichikemenkue-blanco.avif" type="image/avif"><source srcset="img/ahumador/pichikemenkue-blanco.webp" type="image/webp"><img src="img/ahumador/pichikemenkue-blanco.png" alt="Rombo Pichikemenküe, iconografía mapuche" loading="lazy"></picture>
+    <picture><source srcset="img/ahumador/pichikemenkue-blanco.avif" type="image/avif"><source srcset="img/ahumador/pichikemenkue-blanco.webp" type="image/webp"><img src="img/ahumador/pichikemenkue-blanco.png" width="1260" height="470" alt="Rombo Pichikemenküe, iconografía mapuche" loading="lazy"></picture>
     <p><span data-es>Rombo Pichikemenküe · iconografía mapuche · su proyección horizontal define la sección constructiva del Ahumador</span><span data-en>Pichikemenküe rhombus · Mapuche iconography · its horizontal projection defines the smoking vessel's constructive section</span></p>
   </div>
 </section>''',

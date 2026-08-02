@@ -65,6 +65,7 @@ html{scroll-behavior:smooth}
 h1,h2,h3,.pull,.sheet a,.proj-nav-name{font-family:'Archivo','Lato',sans-serif;font-stretch:125%}
 body{font-family:'Lato',sans-serif;font-weight:300;background:var(--fondo);color:var(--mineral);line-height:1.75;-webkit-font-smoothing:antialiased}
 body.locked{overflow:hidden}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 img{display:block;max-width:100%}
 picture{display:block}
 a{color:inherit;text-decoration:none}
@@ -241,7 +242,7 @@ nav.top.solid{height:56px;--bs:.6}
 
 <nav class="top" id="nav">
   <button class="menubtn" id="menuBtn" aria-expanded="false" aria-controls="sheet"><span data-es>Menú</span><span data-en>Menu</span></button>
-  <a href="/" class="brand"><img src="img/brand/icon-blanco.png" alt=""><span class="word">Trufquén</span></a>
+  <a href="/" class="brand"><img src="img/brand/icon-blanco.png" width="300" height="130" alt=""><span class="word">Trufquén</span></a>
   <button class="langbtn" id="langBtn" aria-label="Cambiar idioma / Switch language">EN/ES</button>
 </nav>
 
@@ -277,11 +278,11 @@ nav.top.solid{height:56px;--bs:.6}
 </section>
 <section class="rombo">
   <div class="wrap narrow">
-    <picture><source srcset="img/ahumador/pichikemenkue-blanco.avif" type="image/avif"><source srcset="img/ahumador/pichikemenkue-blanco.webp" type="image/webp"><img src="img/ahumador/pichikemenkue-blanco.png" alt="Rombo Pichikemenküe, iconografía mapuche" loading="lazy"></picture>
+    <picture><source srcset="img/ahumador/pichikemenkue-blanco.avif" type="image/avif"><source srcset="img/ahumador/pichikemenkue-blanco.webp" type="image/webp"><img src="img/ahumador/pichikemenkue-blanco.png" width="1260" height="470" alt="Rombo Pichikemenküe, iconografía mapuche" loading="lazy"></picture>
     <p><span data-es>Rombo Pichikemenküe · iconografía mapuche · su proyección horizontal define la sección constructiva del Ahumador</span><span data-en>Pichikemenküe rhombus · Mapuche iconography · its horizontal projection defines the smoking vessel's constructive section</span></p>
   </div>
 </section>
-<button type="button" class="plate js-btn" aria-label="Ampliar imagen: Greda levantada al torno en el taller alfarero" data-label-es="Ampliar imagen: Greda levantada al torno en el taller alfarero" data-label-en="Enlarge image: Clay raised on the wheel in the pottery workshop"><picture><source srcset="img/ahumador/plate-torno.avif" type="image/avif"><source srcset="img/ahumador/plate-torno.webp" type="image/webp"><img src="img/ahumador/plate-torno.jpg" alt="Greda levantada al torno en el taller alfarero" data-cap="La greda se levanta al torno · taller alfarero" loading="lazy"></picture></button>
+<button type="button" class="plate js-btn" aria-label="Ampliar imagen: Greda levantada al torno en el taller alfarero" data-label-es="Ampliar imagen: Greda levantada al torno en el taller alfarero" data-label-en="Enlarge image: Clay raised on the wheel in the pottery workshop"><picture><source srcset="img/ahumador/plate-torno.avif" type="image/avif"><source srcset="img/ahumador/plate-torno.webp" type="image/webp"><img src="img/ahumador/plate-torno.jpg" width="1800" height="1196" alt="Greda levantada al torno en el taller alfarero" data-cap="La greda se levanta al torno · taller alfarero" loading="lazy"></picture></button>
 
 <section class="gal band-c">
   <div class="wrap narrow" style="margin-bottom:3rem">
@@ -291,22 +292,22 @@ nav.top.solid{height:56px;--bs:.6}
 
   <div class="car" id="car" role="region" aria-roledescription="carousel" aria-label="La misma greda, dos estados">
     <figure role="group" aria-roledescription="slide" aria-label="01 de 6" data-n="01" data-t-es="Terminación esmaltada" data-t-en="Glazed finish" data-s-es="Set completo · esmalte negro" data-s-en="Complete set · black glaze" data-d-es="El conjunto terminado en esmalte cerámico negro: ahumador, base y fuente de corte comparten la misma familia de formas." data-d-en="The set finished in black ceramic glaze: smoking vessel, base and cutting vessel share the same family of forms.">
-      <button type="button" class="js-btn" aria-label="Ampliar imagen: Terminación esmaltada" data-label-es="Ampliar imagen: Terminación esmaltada" data-label-en="Enlarge image: Glazed finish"><picture><source srcset="img/ahumador/ahu-01-esmaltado.avif" type="image/avif"><source srcset="img/ahumador/ahu-01-esmaltado.webp" type="image/webp"><img src="img/ahumador/ahu-01-esmaltado.jpg" alt="Terminación esmaltada" data-cap="01 · terminación esmaltada" loading="lazy"></picture></button>
+      <button type="button" class="js-btn" aria-label="Ampliar imagen: Terminación esmaltada" data-label-es="Ampliar imagen: Terminación esmaltada" data-label-en="Enlarge image: Glazed finish"><picture><source srcset="img/ahumador/ahu-01-esmaltado.avif" type="image/avif"><source srcset="img/ahumador/ahu-01-esmaltado.webp" type="image/webp"><img src="img/ahumador/ahu-01-esmaltado.jpg" width="1448" height="1086" alt="Terminación esmaltada" data-cap="01 · terminación esmaltada" loading="lazy"></picture></button>
     </figure>
     <figure role="group" aria-roledescription="slide" aria-label="02 de 6" data-n="02" data-t-es="Greda cruda" data-t-en="Raw clay" data-s-es="Fuente de corte · recién levantada" data-s-en="Cutting vessel · just raised" data-d-es="La fuente de corte recién levantada al torno, todavía húmeda. En este estado la greda admite corte y textura; después del fuego ya no." data-d-en="The cutting vessel just raised on the wheel, still damp. In this state the clay accepts cutting and texture; after the fire it no longer does.">
-      <button type="button" class="js-btn" aria-label="Ampliar imagen: Greda cruda" data-label-es="Ampliar imagen: Greda cruda" data-label-en="Enlarge image: Raw clay"><picture><source srcset="img/ahumador/ahu-02-greda-cruda.avif" type="image/avif"><source srcset="img/ahumador/ahu-02-greda-cruda.webp" type="image/webp"><img src="img/ahumador/ahu-02-greda-cruda.jpg" alt="Greda cruda" data-cap="02 · greda cruda" loading="lazy"></picture></button>
+      <button type="button" class="js-btn" aria-label="Ampliar imagen: Greda cruda" data-label-es="Ampliar imagen: Greda cruda" data-label-en="Enlarge image: Raw clay"><picture><source srcset="img/ahumador/ahu-02-greda-cruda.avif" type="image/avif"><source srcset="img/ahumador/ahu-02-greda-cruda.webp" type="image/webp"><img src="img/ahumador/ahu-02-greda-cruda.jpg" width="1672" height="941" alt="Greda cruda" data-cap="02 · greda cruda" loading="lazy"></picture></button>
     </figure>
     <figure role="group" aria-roledescription="slide" aria-label="03 de 6" data-n="03" data-t-es="En el taller" data-t-en="In the workshop" data-s-es="Terminación natural, sin esmaltar" data-s-en="Natural finish, unglazed" data-d-es="El conjunto sin esmaltar, secándose al aire libre sobre troncos del taller. El color es el de la greda, no un recubrimiento." data-d-en="The unglazed set, drying outdoors on workshop logs. The color is the clay's own, not a coating.">
-      <button type="button" class="js-btn" aria-label="Ampliar imagen: En el taller" data-label-es="Ampliar imagen: En el taller" data-label-en="Enlarge image: In the workshop"><picture><source srcset="img/ahumador/ahu-03-natural-taller.avif" type="image/avif"><source srcset="img/ahumador/ahu-03-natural-taller.webp" type="image/webp"><img src="img/ahumador/ahu-03-natural-taller.jpg" alt="En el taller" data-cap="03 · en el taller" loading="lazy"></picture></button>
+      <button type="button" class="js-btn" aria-label="Ampliar imagen: En el taller" data-label-es="Ampliar imagen: En el taller" data-label-en="Enlarge image: In the workshop"><picture><source srcset="img/ahumador/ahu-03-natural-taller.avif" type="image/avif"><source srcset="img/ahumador/ahu-03-natural-taller.webp" type="image/webp"><img src="img/ahumador/ahu-03-natural-taller.jpg" width="1672" height="941" alt="En el taller" data-cap="03 · en el taller" loading="lazy"></picture></button>
     </figure>
     <figure role="group" aria-roledescription="slide" aria-label="04 de 6" data-n="04" data-t-es="El corte" data-t-en="The cut" data-s-es="Trabajo en verde" data-s-en="Green-state work" data-d-es="El perfil de la fuente se define a mano sobre la pieza en verde. Cada corte decide cómo calzará el conjunto." data-d-en="The vessel's profile is defined by hand on the green piece. Each cut decides how the set will fit together.">
-      <button type="button" class="js-btn" aria-label="Ampliar imagen: El corte" data-label-es="Ampliar imagen: El corte" data-label-en="Enlarge image: The cut"><picture><source srcset="img/ahumador/ahu-04-corte.avif" type="image/avif"><source srcset="img/ahumador/ahu-04-corte.webp" type="image/webp"><img src="img/ahumador/ahu-04-corte.jpg" alt="El corte" data-cap="04 · el corte" loading="lazy"></picture></button>
+      <button type="button" class="js-btn" aria-label="Ampliar imagen: El corte" data-label-es="Ampliar imagen: El corte" data-label-en="Enlarge image: The cut"><picture><source srcset="img/ahumador/ahu-04-corte.avif" type="image/avif"><source srcset="img/ahumador/ahu-04-corte.webp" type="image/webp"><img src="img/ahumador/ahu-04-corte.jpg" width="1673" height="940" alt="El corte" data-cap="04 · el corte" loading="lazy"></picture></button>
     </figure>
     <figure role="group" aria-roledescription="slide" aria-label="05 de 6" data-n="05" data-t-es="Fuente de corte" data-t-en="Cutting vessel" data-s-es="Geometría del conjunto" data-s-en="Set geometry" data-d-es="Vista superior de la fuente, aún en greda cruda. Repite la sección del ahumador a otra escala: el sistema comparte una sola familia de formas." data-d-en="Top view of the vessel, still raw clay. It repeats the smoking vessel's section at another scale: the whole system shares a single family of forms.">
-      <button type="button" class="js-btn" aria-label="Ampliar imagen: Fuente de corte" data-label-es="Ampliar imagen: Fuente de corte" data-label-en="Enlarge image: Cutting vessel"><picture><source srcset="img/ahumador/ahu-05-kultrun.avif" type="image/avif"><source srcset="img/ahumador/ahu-05-kultrun.webp" type="image/webp"><img src="img/ahumador/ahu-05-kultrun.jpg" alt="Fuente de corte" data-cap="05 · fuente de corte" loading="lazy"></picture></button>
+      <button type="button" class="js-btn" aria-label="Ampliar imagen: Fuente de corte" data-label-es="Ampliar imagen: Fuente de corte" data-label-en="Enlarge image: Cutting vessel"><picture><source srcset="img/ahumador/ahu-05-kultrun.avif" type="image/avif"><source srcset="img/ahumador/ahu-05-kultrun.webp" type="image/webp"><img src="img/ahumador/ahu-05-kultrun.jpg" width="1539" height="1022" alt="Fuente de corte" data-cap="05 · fuente de corte" loading="lazy"></picture></button>
     </figure>
     <figure role="group" aria-roledescription="slide" aria-label="06 de 6" data-n="06" data-t-es="Greda natural" data-t-en="Natural clay" data-s-es="Sin esmaltar · foto de producto" data-s-en="Unglazed · product photo" data-d-es="Terminación natural: la greda queda a la vista, sellada por bruñido. El color es el del material, no un recubrimiento." data-d-en="Natural finish: the clay stays exposed, sealed by burnishing. The color is the material's own, not a coating.">
-      <button type="button" class="js-btn" aria-label="Ampliar imagen: Greda natural" data-label-es="Ampliar imagen: Greda natural" data-label-en="Enlarge image: Natural clay"><picture><source srcset="img/ahumador/ahu-06-producto.avif" type="image/avif"><source srcset="img/ahumador/ahu-06-producto.webp" type="image/webp"><img src="img/ahumador/ahu-06-producto.jpg" alt="Greda natural" data-cap="06 · greda natural" loading="lazy"></picture></button>
+      <button type="button" class="js-btn" aria-label="Ampliar imagen: Greda natural" data-label-es="Ampliar imagen: Greda natural" data-label-en="Enlarge image: Natural clay"><picture><source srcset="img/ahumador/ahu-06-producto.avif" type="image/avif"><source srcset="img/ahumador/ahu-06-producto.webp" type="image/webp"><img src="img/ahumador/ahu-06-producto.jpg" width="1672" height="941" alt="Greda natural" data-cap="06 · greda natural" loading="lazy"></picture></button>
     </figure>
   </div>
 
@@ -369,12 +370,12 @@ nav.top.solid{height:56px;--bs:.6}
 
 <section class="proj-nav">
   <div class="wrap">
-    <a href="tralma-trufquen" class="proj-nav-link proj-nav-prev">
+    <a href="tralma-trufquen" class="proj-nav-link proj-nav-prev" data-track="project_prev">
       <span class="proj-nav-label"><span data-es>← Proyecto anterior</span><span data-en>← Previous project</span></span>
       <span class="proj-nav-name"><span data-es>Tralma</span><span data-en>Tralma</span></span>
     </a>
     <a href="/#piezas" class="proj-nav-all"><span data-es>Volver a piezas</span><span data-en>Back to pieces</span></a>
-    <a href="probetas-trufquen" class="proj-nav-link proj-nav-next">
+    <a href="probetas-trufquen" class="proj-nav-link proj-nav-next" data-track="project_next">
       <span class="proj-nav-label"><span data-es>Proyecto siguiente →</span><span data-en>Next project →</span></span>
       <span class="proj-nav-name"><span data-es>Probetas</span><span data-en>Test pieces</span></span>
     </a>
@@ -384,7 +385,7 @@ nav.top.solid{height:56px;--bs:.6}
 
 <footer>
   <a href="#top" class="back-top"><span data-es>Volver arriba</span><span data-en>Back to top</span> ↑</a>
-  <div class="fbrand"><img src="img/brand/icon-blanco.png" alt=""><span>Trufquén</span></div>
+  <div class="fbrand"><img src="img/brand/icon-blanco.png" width="300" height="130" alt=""><span>Trufquén</span></div>
   <div class="social">
     <a href="https://instagram.com/trufquen" target="_blank" rel="noopener" aria-label="Instagram" data-track="social_instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.2" cy="6.8" r="1.1" fill="currentColor" stroke="none"/></svg></a>
     <a href="https://facebook.com/Trufquen" target="_blank" rel="noopener" aria-label="Facebook" data-track="social_facebook"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M13.6 21v-7.2h2.2l.3-2.6h-2.5v-1.6c0-.75.2-1.27 1.28-1.27h1.38V5.98c-.24-.03-1.06-.1-2-.1-2 0-3.36 1.22-3.36 3.46v1.93H8.6v2.6h2.32V21" fill="currentColor" stroke="none"/></svg></a>
@@ -413,6 +414,7 @@ nav.top.solid{height:56px;--bs:.6}
   <button class="lb-nav lb-next" id="lbNext" aria-label="Imagen siguiente" data-label-es="Imagen siguiente" data-label-en="Next image">›</button>
   <div class="lb-count" id="lbCount"></div>
   <div class="lb-cap" id="lbCap"></div>
+  <div class="sr-only" id="lbAnnounce" aria-live="polite" aria-atomic="true"></div>
 </div>
 
 <script>
@@ -436,10 +438,12 @@ var sheetEl=document.getElementById('sheet'), menuBtn=document.getElementById('m
 function openSheet(){
   sheetPrevFocus=document.activeElement;
   sheetEl.classList.add('open');sheetEl.removeAttribute('inert');sheetEl.setAttribute('aria-hidden','false');
+  document.body.classList.add('locked');
   menuBtn.setAttribute('aria-expanded','true');document.getElementById('sheetClose').focus();
 }
 function closeSheet(){
   sheetEl.classList.remove('open');sheetEl.setAttribute('inert','');sheetEl.setAttribute('aria-hidden','true');
+  document.body.classList.remove('locked');
   menuBtn.setAttribute('aria-expanded','false');if(sheetPrevFocus)sheetPrevFocus.focus();
 }
 sheetEl.addEventListener('keydown',function(e){trapTab(sheetEl,e)});
@@ -497,20 +501,30 @@ document.getElementById('btnNext').addEventListener('click',function(){carGo(1)}
 carPaint(0);
 ariaLang();
 
-var lbSet=[],lbAt=0,lb=document.getElementById('lb'),lbImg=document.getElementById('lbImg'),lbPrevFocus=null;
+var lbSet=[],lbAt=0,lb=document.getElementById('lb'),lbImg=document.getElementById('lbImg'),lbPrevFocus=null,
+    lbAnnounce=document.getElementById('lbAnnounce'),
+    lbBg=[document.getElementById('nav'),document.getElementById('contenido'),document.querySelector('footer')];
 function lbOpen(img){
   lbPrevFocus=document.activeElement;
   lbSet=[].slice.call(document.querySelectorAll('.js-btn img'));lbAt=lbSet.indexOf(img);lbRender();
   lb.classList.add('open');lb.removeAttribute('inert');lb.setAttribute('aria-hidden','false');
-  document.body.classList.add('locked');document.getElementById('lbX').focus();
+  document.body.classList.add('locked');
+  lbBg.forEach(function(el){if(el)el.setAttribute('inert','')});
+  document.getElementById('lbX').focus();
 }
 function lbRender(){var im=lbSet[lbAt];if(!im)return;lbImg.src=im.currentSrc||im.src;lbImg.alt=im.alt||'';
-  document.getElementById('lbCap').textContent=im.dataset.cap||im.alt||'';
-  document.getElementById('lbCount').textContent=(lbAt+1)+' / '+lbSet.length}
+  var cap=im.dataset.cap||im.alt||'';
+  document.getElementById('lbCap').textContent=cap;
+  document.getElementById('lbCount').textContent=(lbAt+1)+' / '+lbSet.length;
+  var en=document.body.classList.contains('en');
+  lbAnnounce.textContent=(lbAt+1)+(en?' of ':' de ')+lbSet.length+': '+cap;
+}
 function lbGo(d){lbAt=(lbAt+d+lbSet.length)%lbSet.length;lbRender()}
 function lbClose(){
   lb.classList.remove('open');lb.setAttribute('inert','');lb.setAttribute('aria-hidden','true');
-  document.body.classList.remove('locked');if(lbPrevFocus)lbPrevFocus.focus();
+  document.body.classList.remove('locked');
+  lbBg.forEach(function(el){if(el)el.removeAttribute('inert')});
+  if(lbPrevFocus)lbPrevFocus.focus();
 }
 document.getElementById('lbX').addEventListener('click',lbClose);
 document.getElementById('lbPrev').addEventListener('click',function(){lbGo(-1)});
