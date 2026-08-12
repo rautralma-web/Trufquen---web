@@ -135,7 +135,7 @@ h2{font-weight:200;line-height:1.3;font-size:var(--fs-h2)}
 .car::-webkit-scrollbar{display:none}
 .car.drag{cursor:grabbing;scroll-snap-type:none}
 .car figure{flex:0 0 clamp(320px,60vw,760px);scroll-snap-align:center;margin:0;position:relative;overflow:hidden;background:var(--grafito)}
-.car img{width:100%;aspect-ratio:3 / 2;object-fit:cover;transition:opacity .5s,transform 1s cubic-bezier(.2,.6,.2,1);opacity:.42}
+.car img{width:100%;height:auto;aspect-ratio:3 / 2;object-fit:cover;transition:opacity .5s,transform 1s cubic-bezier(.2,.6,.2,1);opacity:.42}
 .car .ph{width:100%;aspect-ratio:3 / 2;background:linear-gradient(155deg,#2a2018,#12100c 60%,#0c0a08);display:flex;align-items:center;justify-content:center;opacity:.42;transition:opacity .5s}
 .car .ph span{font-family:'Space Mono',monospace;font-size:var(--fs-micro);letter-spacing:.2em;color:rgba(240,235,227,.55);text-transform:uppercase}
 .car figure.on img,.car figure.on .ph{opacity:1}
@@ -186,7 +186,7 @@ details.more[open] summary::after{transform:rotate(45deg)}
 footer{position:relative;background:var(--grafito);color:var(--humo);padding:clamp(3rem,7vw,4.5rem) 0;text-align:center}
 footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(192,126,69,.65) 22%,rgba(192,126,69,.65) 78%,transparent)}
 footer .fbrand{display:inline-flex;flex-direction:column;align-items:center;gap:.6rem;margin-bottom:1.5rem}
-footer .fbrand img{height:44px}
+footer .fbrand img{height:44px;width:auto}
 footer .fbrand span{font-weight:200;letter-spacing:.42em;text-indent:.42em;text-transform:uppercase;color:var(--mineral);font-size:1.1rem}
 footer .social{display:flex;justify-content:center;gap:1.2rem;margin-bottom:1.4rem}
 footer .social a{color:var(--humo);transition:color .2s;display:inline-flex;min-width:44px;min-height:44px;align-items:center;justify-content:center}
@@ -242,7 +242,7 @@ nav.top.solid{height:56px;--bs:.6}
 
 <nav class="top" id="nav">
   <button class="menubtn" id="menuBtn" aria-expanded="false" aria-controls="sheet"><span data-es>Menú</span><span data-en>Menu</span></button>
-  <a href="/" class="brand"><img src="img/brand/icon-blanco.png" width="300" height="130" alt=""><span class="word">Trufquén</span></a>
+  <a href="/" class="brand"><img src="img/brand/icon-blanco.png" width="129" height="113" alt=""><span class="word">Trufquén</span></a>
   <button class="langbtn" id="langBtn" aria-label="Cambiar idioma / Switch language">EN/ES</button>
 </nav>
 
@@ -379,7 +379,7 @@ nav.top.solid{height:56px;--bs:.6}
 
 <footer>
   <a href="#top" class="back-top"><span data-es>Volver arriba</span><span data-en>Back to top</span> ↑</a>
-  <div class="fbrand"><img src="img/brand/icon-blanco.png" width="300" height="130" alt=""><span>Trufquén</span></div>
+  <div class="fbrand"><img src="img/brand/icon-blanco.png" width="129" height="113" alt=""><span>Trufquén</span></div>
   <div class="social">
     <a href="https://instagram.com/trufquen" target="_blank" rel="noopener" aria-label="Instagram" data-track="social_instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.2" cy="6.8" r="1.1" fill="currentColor" stroke="none"/></svg></a>
     <a href="https://facebook.com/Trufquen" target="_blank" rel="noopener" aria-label="Facebook" data-track="social_facebook"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M13.6 21v-7.2h2.2l.3-2.6h-2.5v-1.6c0-.75.2-1.27 1.28-1.27h1.38V5.98c-.24-.03-1.06-.1-2-.1-2 0-3.36 1.22-3.36 3.46v1.93H8.6v2.6h2.32V21" fill="currentColor" stroke="none"/></svg></a>
